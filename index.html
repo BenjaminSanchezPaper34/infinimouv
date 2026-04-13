@@ -182,22 +182,7 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
      <div class="browser_width grpelem" id="u269-bw">
       <div class="gradient" id="u269"><!-- group -->
        <div class="clearfix" id="u269_align_to_page">
-        <div class="PamphletWidget clearfix widget_invisible grpelem" id="pamphletu1807" data-islightbox="true"><!-- none box -->
-         <div class="ThumbGroup clearfix grpelem" id="u1819"><!-- none box -->
-          <div class="popup_anchor" id="u1820popup">
-           <div class="Thumb popup_element" id="u1820"><!-- simple frame --></div>
-          </div>
-         </div>
-         <div class="popup_anchor" id="u1812popup" data-lightbox="true">
-          <div class="ContainerGroup gradient clearfix" id="u1812"><!-- stack box -->
-           <div class="Container clearfix grpelem" id="u1813"><!-- group -->
-            <div class="shadow museBGSize rounded-corners clearfix grpelem" id="u1862-3"><!-- content -->
-             <p>&nbsp;</p>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
+        <!-- Ancien popup Muse supprimé — remplacé par le popup moderne dans js/enhancements.js -->
        </div>
       </div>
      </div>
@@ -464,7 +449,7 @@ Muse.Utils.prepHyperlinks(true);
 Muse.Utils.resizeHeight('.browser_width');
 Muse.Utils.requestAnimationFrame(function() { $('body').addClass('initialized'); });
 Muse.Utils.makeButtonsVisibleAfterSettingMinWidth();
-Muse.Utils.initWidget('#pamphletu1807', ['#bp_infinity'], function(elem) { return new WebPro.Widget.ContentSlideShow(elem, {contentLayout_runtime:'lightbox',event:'click',deactivationEvent:'none',autoPlay:false,displayInterval:3000,transitionStyle:'fading',transitionDuration:500,hideAllContentsFirst:false,triggersOnTop:false,shuffle:false,enableSwipe:false,resumeAutoplay:true,resumeAutoplayInterval:3000,playOnce:false,autoActivate_runtime:true,isResponsive:false}); });
+/* Ancien popup Muse désactivé — remplacé par popup moderne */
 Muse.Utils.fullPage('#page');
 $('#u728').registerOpacityScrollEffect([{"fade":142,"in":[-Infinity,590.95],"opacity":0},{"opacity":100,"in":[590.95,590.95]},{"fade":271.39,"in":[590.95,Infinity],"opacity":100}]);
 $('#u740').registerOpacityScrollEffect([{"fade":142,"in":[-Infinity,649.1],"opacity":0},{"opacity":100,"in":[649.1,649.1]},{"fade":1,"in":[649.1,Infinity],"opacity":100}]);

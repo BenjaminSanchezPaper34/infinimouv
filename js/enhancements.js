@@ -249,10 +249,6 @@ document.addEventListener('DOMContentLoaded', function () {
      - sessionStorage pour ne montrer qu'une fois par session
      ================================================================== */
 
-  /* Cacher l'ancien popup Muse */
-  var oldPopup = document.querySelector('#pamphletu1807');
-  if (oldPopup) oldPopup.style.display = 'none';
-
   /* Vérifier si déjà vu cette session */
   if (sessionStorage.getItem('im_promo_seen')) return;
 
