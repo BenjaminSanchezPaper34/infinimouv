@@ -9,7 +9,7 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://infini-mouv.fr/images/logo-infinimouv.png</image:loc>
-      <image:title>Logo Infini Mouv</image:title>
+      <image:title>Logo Infini Mouv - Salle de sport Agde</image:title>
     </image:image>
     <image:image>
       <image:loc>https://infini-mouv.fr/images/couverture-1250x462-infinimouv.jpg</image:loc>
@@ -18,25 +18,13 @@
   </url>
 
   <url>
-    <loc>https://infini-mouv.fr/services.html</loc>
+    <loc>https://infini-mouv.fr/services---equipements.html</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://infini-mouv.fr/images/salle-infinimouv.jpg</image:loc>
-      <image:title>Salle de sport Infini Mouv Agde</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://infini-mouv.fr/images/musculation-infinimouv.jpg</image:loc>
-      <image:title>Zone musculation Infini Mouv Agde</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://infini-mouv.fr/images/bike-infinimouv.jpg</image:loc>
-      <image:title>Bike interactif Spivi Infini Mouv Agde</image:title>
-    </image:image>
-    <image:image>
       <image:loc>https://infini-mouv.fr/images/planning-infinimouv.svg</image:loc>
-      <image:title>Planning cours collectifs Infini Mouv Agde</image:title>
+      <image:title>Planning des cours collectifs Infini Mouv Agde</image:title>
     </image:image>
     <image:image>
       <image:loc>https://infini-mouv.fr/images/app-infinimouv.jpg</image:loc>
