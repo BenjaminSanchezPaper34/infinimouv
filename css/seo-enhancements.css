@@ -74,3 +74,138 @@ a.seo-tel-link {
 a.seo-tel-link:hover {
   text-decoration: underline !important;
 }
+
+
+/* ==========================================================================
+   POPUP PROMO MODERNE
+   Remplace le PamphletWidget Muse par un modal élégant
+   ========================================================================== */
+
+/* --- Overlay backdrop --- */
+#im-promo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 24px;
+}
+
+#im-promo-overlay.im-promo-visible {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 1;
+  visibility: visible;
+}
+
+#im-promo-overlay.im-promo-closing {
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  opacity: 0;
+  transition: all 0.35s ease-in;
+}
+
+/* --- Modal card --- */
+#im-promo-modal {
+  position: relative;
+  max-width: 720px;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#im-promo-overlay.im-promo-visible #im-promo-modal {
+  transform: scale(1) translateY(0);
+}
+
+#im-promo-overlay.im-promo-closing #im-promo-modal {
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.3s ease-in;
+}
+
+/* --- Close button --- */
+#im-promo-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#im-promo-close:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+#im-promo-close:focus-visible {
+  outline: 2px solid #9DD800;
+  outline-offset: 2px;
+}
+
+/* --- Content --- */
+#im-promo-content {
+  background: #000;
+}
+
+#im-promo-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* --- Mobile adjustments --- */
+@media (max-width: 768px) {
+  #im-promo-overlay {
+    padding: 16px;
+  }
+
+  #im-promo-modal {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  #im-promo-close {
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    font-size: 20px;
+  }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  #im-promo-overlay,
+  #im-promo-modal {
+    transition: none !important;
+  }
+}
