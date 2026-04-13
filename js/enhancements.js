@@ -7,6 +7,20 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  /* ------------------------------------------------------------------
+     0. MOBILE : Déplacer la nav hors du conteneur Muse pour position:fixed
+     ------------------------------------------------------------------ */
+  if (window.innerWidth <= 768) {
+    var navOriginal = document.querySelector('#u280-bw');
+    if (navOriginal) {
+      var navClone = navOriginal.cloneNode(true);
+      navClone.id = 'u280-bw-mobile';
+      navClone.style.cssText = '';
+      document.body.insertBefore(navClone, document.body.firstChild);
+      navOriginal.classList.add('nav-moved');
+    }
+  }
+
   /* Attendre que GSAP soit chargé */
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 

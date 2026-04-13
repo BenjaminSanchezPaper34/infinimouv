@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "infini-mouv",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "/Users/benjaminsanchez/Library/Mobile Documents/com~apple~CloudDocs/TRAVAUX/2026/INFINI MOUV - AGDE/site"],
+      "port": 8080
+    }
+  ]
+}
