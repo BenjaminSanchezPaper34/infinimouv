@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /fonts/
+
+Sitemap: https://infini-mouv.fr/sitemap.xml
