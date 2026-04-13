@@ -1,0 +1,76 @@
+/* ==========================================================================
+   SEO ENHANCEMENTS — Couche par-dessus le CSS Muse
+   Ne modifie AUCUN rendu desktop, ajoute uniquement :
+   - Reset des éléments sémantiques HTML5
+   - Styles pour h1/h2 injectés dans le markup
+   - Breadcrumb caché visuellement mais lisible par Google
+   ========================================================================== */
+
+/* --- Reset éléments sémantiques (absents du reset Muse) --- */
+header, main, section, footer, article, aside, figure, figcaption {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* --- h1/h2 injectés : héritent le style parent pour ne pas casser Muse --- */
+h1.muse-seo-h1,
+h2.muse-seo-h2 {
+  display: contents; /* L'élément existe dans le DOM mais n'affecte pas le layout */
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fallback pour navigateurs sans display:contents */
+@supports not (display: contents) {
+  h1.muse-seo-h1,
+  h2.muse-seo-h2 {
+    display: inline;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* --- Breadcrumb visually hidden (lisible par Google + screen readers) --- */
+.seo-breadcrumb {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Skip to content (accessibilité) --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: #006935;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 10000;
+  font-size: 14px;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* --- Numéro de téléphone cliquable --- */
+a.seo-tel-link {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+a.seo-tel-link:hover {
+  text-decoration: underline !important;
+}

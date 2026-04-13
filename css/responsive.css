@@ -1,0 +1,699 @@
+/* ==========================================================================
+   RESPONSIVE — Surcouche mobile/tablette pour le layout Muse
+   Desktop (>1120px) : aucun changement, Muse tel quel
+   Tablette (769-1120px) : conteneur fluide, contenu réduit
+   Mobile (<768px) : layout linéarisé, tout stacké verticalement
+   ========================================================================== */
+
+/* --- TABLETTE (769px - 1120px) --- */
+@media screen and (max-width: 1120px) and (min-width: 769px) {
+
+  #page {
+    width: 100% !important;
+    max-width: 1080px !important;
+    overflow-x: hidden !important;
+  }
+
+  #u280_align_to_page,
+  #u94_align_to_page,
+  #u269_align_to_page,
+  #u1550_align_to_page {
+    width: 100% !important;
+    max-width: 1080px !important;
+    left: auto !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  .browser_width {
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    margin-left: 0 !important;
+  }
+
+  .browser_width > * {
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
+
+
+/* --- MOBILE (<768px) --- */
+@media screen and (max-width: 768px) {
+
+  /* === GLOBAL RESETS === */
+  body {
+    overflow-x: hidden !important;
+  }
+
+  #page {
+    width: 100% !important;
+    min-height: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Neutraliser le positionnement fixe Muse */
+  .browser_width {
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    position: relative !important;
+  }
+
+  .browser_width > * {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+  }
+
+  /* Tous les grpelem/colelem en blocs empilés */
+  .grpelem,
+  .colelem {
+    float: none !important;
+    display: block !important;
+    clear: both !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  /* Conteneurs de page fluides */
+  #u280_align_to_page,
+  #u94_align_to_page,
+  #u269_align_to_page,
+  #u1550_align_to_page {
+    width: 100% !important;
+    left: auto !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Clearfix */
+  .clearfix::after {
+    content: "" !important;
+    display: table !important;
+    clear: both !important;
+  }
+
+
+  /* === NAVIGATION === */
+  #u280-bw,
+  #u280 {
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+    z-index: 1000 !important;
+    background: #fff !important;
+    padding: 12px 16px !important;
+  }
+
+  #u280_align_to_page {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  /* Logo */
+  #u1787 {
+    position: relative !important;
+    margin: 0 !important;
+    left: auto !important;
+    top: auto !important;
+    float: none !important;
+    display: inline-block !important;
+    width: auto !important;
+  }
+
+  #u1787_img {
+    width: 200px !important;
+    height: auto !important;
+  }
+
+  /* Nav links */
+  #u342-4, #u1162-4, #u336-4, #u332-4 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    float: none !important;
+    display: inline-block !important;
+    width: auto !important;
+    margin: 4px !important;
+    min-width: auto !important;
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+  }
+
+  /* Social icons */
+  #u306, #u287 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    float: none !important;
+    display: inline-block !important;
+    width: auto !important;
+    margin: 4px !important;
+  }
+
+
+  /* === HERO VIDEO === */
+  #u350-bw {
+    height: 70vh !important;
+    min-height: 400px !important;
+  }
+
+  #u350 {
+    height: 70vh !important;
+    min-height: 400px !important;
+  }
+
+  #u350 video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Hero title */
+  #u515 {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    width: 90% !important;
+    text-align: center !important;
+  }
+
+  #u404-8 p {
+    font-size: 36px !important;
+    line-height: 1.1 !important;
+  }
+
+  #u404-6 {
+    font-size: 42px !important;
+  }
+
+  /* Hero price */
+  #u1876-10 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 24px 16px !important;
+    margin: 0 !important;
+  }
+
+  #u1876-8 {
+    font-size: 36px !important;
+  }
+
+
+  /* === SERVICES LIST (MUSCULATION, CARDIO, etc.) === */
+  #u728, #u740, #u682, #u694, #u647, #u627, #u560 {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 8px 20px !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+  }
+
+  #u728 .gradient-text,
+  #u740 .gradient-text,
+  #u682 .gradient-text,
+  #u694 .gradient-text,
+  #u647 .gradient-text,
+  #u627 .gradient-text,
+  #u560 .gradient-text {
+    font-size: 28px !important;
+  }
+
+  /* Separators */
+  #u1234, #u1237, #u1246 {
+    width: 100% !important;
+    margin: 16px 0 !important;
+    left: auto !important;
+  }
+
+
+  /* === TARIFS === */
+  #u1265 {
+    text-align: center !important;
+    padding: 0 16px !important;
+  }
+
+  #ppu1306 {
+    width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Gradient card */
+  #u1797 {
+    display: none !important; /* Cache le gradient décoratif, trop large sur mobile */
+  }
+
+  /* Abonnement card */
+  #u1750-26 {
+    width: 100% !important;
+    margin: 0 auto 24px !important;
+    left: auto !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    padding: 24px !important;
+  }
+
+  /* Options card */
+  #u1306 {
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  #u1287-3 {
+    width: 100% !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  #u1290-20, #u1296-16 {
+    width: 100% !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    padding: 16px !important;
+  }
+
+  #u1282-8 {
+    text-align: center !important;
+    padding: 16px !important;
+  }
+
+  #u1282-8 p {
+    font-size: 12px !important;
+  }
+
+
+  /* === AVANTAGES (3 cards) === */
+  #pu837 {
+    width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Background image section */
+  #u837-bw {
+    height: 250px !important;
+    min-height: 250px !important;
+  }
+
+  #u837 {
+    height: 250px !important;
+  }
+
+  /* Cards */
+  #u429-9, #u478-9, #u484-7 {
+    width: 100% !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 12px 0 !important;
+    padding: 24px !important;
+    box-sizing: border-box !important;
+  }
+
+  #u429-9 p, #u478-9 p, #u484-7 p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Icons */
+  #u397, #u372, #u386 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 16px auto !important;
+    display: block !important;
+    float: none !important;
+    text-align: center !important;
+  }
+
+  /* Decorative frames */
+  #u1784, #u1243 {
+    display: none !important;
+  }
+
+  /* CTA button */
+  #u1050-4 {
+    width: 100% !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 24px 0 !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+
+  /* === CONTACT + INSTAGRAM FEED === */
+  #ppu929 {
+    width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  #pu929 {
+    width: 100% !important;
+  }
+
+  #u929 {
+    text-align: center !important;
+  }
+
+  #u893, #u892, #u891-3 {
+    width: 100% !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 16px 0 !important;
+    box-sizing: border-box !important;
+  }
+
+
+  /* === FOOTER === */
+  #u94-bw,
+  #u94 {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 32px 0 !important;
+  }
+
+  #u94_align_to_page {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 16px !important;
+  }
+
+  #pu355 {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  #u355 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 auto !important;
+  }
+
+  #u355_img {
+    width: 200px !important;
+    height: auto !important;
+  }
+
+  #u95-7, #u96-4 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    text-align: center !important;
+    margin: 8px 0 !important;
+    width: auto !important;
+  }
+
+  #u97, #u98 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    display: inline-block !important;
+    float: none !important;
+    margin: 8px !important;
+  }
+
+  #u104 {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 16px !important;
+  }
+
+  #u365 {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  #u101, #u103-4 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    float: none !important;
+    display: inline-block !important;
+    margin: 0 !important;
+    width: auto !important;
+  }
+
+  /* Lightbox widget — hide on mobile */
+  #pamphletu1807 {
+    display: none !important;
+  }
+
+  /* Google Reviews widget */
+  #u1743 {
+    width: 100% !important;
+    position: relative !important;
+    left: auto !important;
+    margin: 0 !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Vertical spacer */
+  .verticalspacer {
+    display: none !important;
+  }
+
+
+  /* === SERVICES PAGE SPECIFIC === */
+
+  /* Hero image */
+  #u1329-bw {
+    height: 50vh !important;
+    min-height: 300px !important;
+  }
+
+  #u1329 {
+    height: 50vh !important;
+    min-height: 300px !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  #u1321 {
+    display: none !important;
+  }
+
+  /* Section title */
+  #u1322 {
+    text-align: center !important;
+    padding: 0 16px !important;
+  }
+
+  /* Intro text */
+  #u1346-4 {
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  #u1346-4 p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Equipment cards */
+  #pu1364-7,
+  #pu1437-3,
+  #pu1440-9 {
+    width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  #u1364-7, #u1376-3,
+  #u1437-3, #u1470-3, #u1479-3,
+  #u1408-7, #u1434-9,
+  #u1440-9, #u1476-3, #u1425-13 {
+    width: 100% !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 12px 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Image cards on services — make them responsive */
+  #u1376-3, #u1437-3, #u1470-3, #u1479-3, #u1476-3 {
+    height: 200px !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  #u1464 {
+    display: none !important;
+  }
+
+  /* Cours collectifs section */
+  #pu1549 {
+    width: 100% !important;
+  }
+
+  #u1549-bw {
+    height: 250px !important;
+    min-height: 250px !important;
+  }
+
+  #u1525 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  /* Cours description */
+  #u1530-4 {
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Cours list */
+  #pu1615-21 {
+    width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  #u1615-21, #u1627-16 {
+    width: 100% !important;
+    position: relative !important;
+    left: auto !important;
+    float: none !important;
+    display: block !important;
+    margin: 0 0 16px 0 !important;
+  }
+
+  #u1615-21 p, #u1627-16 p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Planning */
+  #u1723 {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  #u1719 {
+    min-width: 600px !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* App section */
+  #pu1656 {
+    width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  #u1656 {
+    width: 100% !important;
+    max-width: 250px !important;
+    margin: 0 auto 24px !important;
+    position: relative !important;
+    left: auto !important;
+    float: none !important;
+    display: block !important;
+  }
+
+  #u1656_img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  #pu1635 {
+    width: 100% !important;
+    text-align: center !important;
+    float: none !important;
+    display: block !important;
+    position: relative !important;
+    left: auto !important;
+  }
+
+  #u1635, #u1651 {
+    text-align: center !important;
+  }
+
+  #pu1754 {
+    justify-content: center !important;
+  }
+
+  #u1688-9 {
+    text-align: center !important;
+  }
+
+  #pu1670 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  #u1670, #u1681 {
+    position: relative !important;
+    left: auto !important;
+    float: none !important;
+    display: inline-block !important;
+    margin: 0 !important;
+  }
+
+  /* Separators on services page */
+  #u1343, #u1373, #u1396, #u1555, #u1536, #u1767, #u1522 {
+    width: 100% !important;
+    margin: 16px 0 !important;
+    left: auto !important;
+  }
+}
+
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

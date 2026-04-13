@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/services---equipements.html",
+      "destination": "/services-equipements.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/services---equipements",
+      "destination": "/services-equipements.html",
+      "statusCode": 301
+    }
+  ]
+}
