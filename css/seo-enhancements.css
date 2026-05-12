@@ -223,6 +223,23 @@ a.seo-tel-link:hover {
   border-color: #ffffff;
 }
 
+/* Section storytelling — "Notre histoire" */
+.im-section--story .im-story-text {
+  max-width: 760px;
+  font-size: 17px;
+  line-height: 1.7;
+}
+.im-section--story .im-story-text p {
+  margin: 0 0 18px 0;
+}
+.im-section--story .im-story-signature {
+  font-style: italic;
+  border-left: 3px solid #9DD800;
+  padding-left: 18px;
+  margin-top: 28px !important;
+  color: #cbd5b7;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .im-section {
@@ -234,6 +251,9 @@ a.seo-tel-link:hover {
   }
   .im-intro {
     font-size: 16px;
+  }
+  .im-section--story .im-story-text {
+    font-size: 15.5px;
   }
 }
 
