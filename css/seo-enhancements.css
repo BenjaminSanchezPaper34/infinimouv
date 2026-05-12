@@ -77,6 +77,168 @@ a.seo-tel-link:hover {
 
 
 /* ==========================================================================
+   NOUVELLES SECTIONS — Hors layout Muse, full-width, design intégré
+   ========================================================================== */
+
+.im-section {
+  width: 100%;
+  padding: 64px 24px;
+  box-sizing: border-box;
+  font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+  z-index: 10;
+}
+
+/* Variante fond noir */
+.im-section--dark {
+  background: #1D1D1F;
+  color: #ffffff;
+}
+
+/* Variante gradient vert (CTA) */
+.im-section--gradient {
+  background: linear-gradient(135deg, #9DD800 0%, #006935 100%);
+  color: #ffffff;
+}
+
+.im-container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* Titres de section */
+.im-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.1;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.5px;
+  /* Gradient text vert (sur fond noir) */
+  background: linear-gradient(180deg, #9DD800, #006935);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-right: 0.18em;
+  padding-left: 0.04em;
+  display: inline-block;
+}
+
+.im-title--light {
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+  color: #ffffff;
+}
+
+/* Intro */
+.im-intro {
+  font-size: 18px;
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+  opacity: 0.92;
+}
+
+.im-text-light {
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0 0 28px 0;
+  max-width: 720px;
+}
+
+/* Liste avec chevrons verts (style flèches Regicom) */
+.im-list-arrows {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px 32px;
+}
+
+.im-list-arrows li {
+  position: relative;
+  padding-left: 32px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.im-list-arrows li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(135deg, #9DD800, #006935);
+  clip-path: polygon(0 0, 100% 50%, 0 100%, 30% 50%);
+}
+
+/* Variante : liste alignée à gauche, plus dense */
+.im-list-left {
+  grid-template-columns: 1fr;
+  max-width: 760px;
+}
+
+/* Liste avec checks (Yanga) */
+.im-list-checks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.im-list-checks li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.im-list-checks li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+/* CTA */
+.im-cta {
+  display: inline-block;
+  background: #1D1D1F;
+  color: #9DD800;
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-style: italic;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid transparent;
+}
+.im-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  border-color: #ffffff;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .im-section {
+    padding: 44px 16px;
+  }
+  .im-list-arrows {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .im-intro {
+    font-size: 16px;
+  }
+}
+
+
+/* ==========================================================================
    CARDS DE DESCRIPTION — hauteur auto pour contenu enrichi
    Les cards Muse ont une hauteur fixe par défaut. Avec du texte plus long,
    on permet l'expansion sans overflow.
