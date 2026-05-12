@@ -77,6 +77,28 @@ a.seo-tel-link:hover {
 
 
 /* ==========================================================================
+   FIX TYPO ITALIQUE — webkit-background-clip:text + italic
+   Le clip rectangulaire coupe la dernière lettre car l'italique penche
+   au-delà des bounds. On étend le clip area via du padding.
+   !important nécessaire car Muse injecte des <style> inline qui réinitialisent.
+   ========================================================================== */
+.gradient-text,
+span.gradient-text {
+  padding-right: 0.18em !important;
+  padding-left: 0.04em !important;
+  display: inline-block !important;
+}
+
+/* Pour h1/h2 wrappant un span.gradient-text — ne pas casser le display:contents */
+.muse-seo-h1 > .gradient-text,
+.muse-seo-h2 > .gradient-text {
+  padding-right: 0.18em !important;
+  padding-left: 0.04em !important;
+  display: inline-block !important;
+}
+
+
+/* ==========================================================================
    POPUP PROMO MODERNE
    Remplace le PamphletWidget Muse par un modal élégant
    ========================================================================== */
