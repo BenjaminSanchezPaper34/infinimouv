@@ -78,23 +78,28 @@ a.seo-tel-link:hover {
 
 /* ==========================================================================
    FIX TYPO ITALIQUE — webkit-background-clip:text + italic
-   Le clip rectangulaire coupe la dernière lettre car l'italique penche
-   au-delà des bounds. On étend le clip area via du padding.
-   !important nécessaire car Muse injecte des <style> inline qui réinitialisent.
+   La police Gotham italique a un angle d'inclinaison fort (~12°).
+   Le clip rectangulaire de -webkit-background-clip:text tronque :
+   - Le HAUT-GAUCHE de la 1ère lettre (qui penche à gauche)
+   - Le BAS-DROIT de la dernière lettre (qui penche à droite)
+   Solution : étendre la box de chaque côté avec un padding généreux.
+   !important nécessaire car Muse injecte des <style> inline.
    ========================================================================== */
 .gradient-text,
 span.gradient-text {
-  padding-right: 0.18em !important;
-  padding-left: 0.04em !important;
+  padding-right: 0.3em !important;
+  padding-left: 0.18em !important;
   display: inline-block !important;
+  overflow: visible !important;
 }
 
-/* Pour h1/h2 wrappant un span.gradient-text — ne pas casser le display:contents */
+/* Pour h1/h2 wrappant un span.gradient-text */
 .muse-seo-h1 > .gradient-text,
 .muse-seo-h2 > .gradient-text {
-  padding-right: 0.18em !important;
-  padding-left: 0.04em !important;
+  padding-right: 0.3em !important;
+  padding-left: 0.18em !important;
   display: inline-block !important;
+  overflow: visible !important;
 }
 
 
