@@ -32,9 +32,27 @@
   <meta name="twitter:description" content="Musculation, cardio, cours collectifs Les Mills, bike Spivi, coaching personnalisé à Agde."/>
   <meta name="twitter:image" content="https://infini-mouv.fr/images/services-infinimouv.jpg"/>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="images/favicon.ico?crc=386740555"/>
+  <!-- Favicon & PWA -->
+  <link rel="icon" href="images/favicon.ico?crc=386740555"/>
   <link rel="apple-touch-icon" href="images/logo-infinimouv.png"/>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#9DD800" media="(prefers-color-scheme: light)"/>
+  <meta name="theme-color" content="#006935" media="(prefers-color-scheme: dark)"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Infini Mouv"/>
+  <meta name="application-name" content="Infini Mouv"/>
+  <meta name="format-detection" content="telephone=yes"/>
+
+  <!-- Performance : preconnect aux CDN externes -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+  <link rel="preconnect" href="https://elfsightcdn.com" crossorigin/>
+  <link rel="preconnect" href="https://apps.elfsight.com" crossorigin/>
+  <link rel="dns-prefetch" href="//service.elfsight.com"/>
+
+  <!-- Performance : preload du logo et de l'image hero -->
+  <link rel="preload" as="image" href="images/logo-infinimouv.png" fetchpriority="high"/>
+  <link rel="preload" as="image" href="images/salle-infinimouv.jpg"/>
 
   <!-- SEO : Schema.org JSON-LD (page services) -->
   <script type="application/ld+json">
@@ -334,12 +352,7 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
    </footer>
   </div>
   <!-- JS includes -->
-  <script type="text/javascript">
-   if (document.location.protocol != 'https:') document.write('\x3Cscript src="http://musecdn2.businesscatalyst.com/scripts/4.0/jquery-1.8.3.min.js" type="text/javascript">\x3C/script>');
-</script>
-  <script type="text/javascript">
-   window.jQuery || document.write('\x3Cscript src="scripts/jquery-1.8.3.min.js?crc=209076791" type="text/javascript">\x3C/script>');
-</script>
+  <script src="scripts/jquery-1.8.3.min.js?crc=209076791" type="text/javascript"></script>
   <script type="text/javascript">
    var suppressMissingFileError = false
 </script>
