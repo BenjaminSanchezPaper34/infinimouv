@@ -77,6 +77,26 @@ a.seo-tel-link:hover {
 
 
 /* ==========================================================================
+   CARDS DE DESCRIPTION — hauteur auto pour contenu enrichi
+   Les cards Muse ont une hauteur fixe par défaut. Avec du texte plus long,
+   on permet l'expansion sans overflow.
+   ========================================================================== */
+#u429-9, #u478-9, #u484-7,
+#u1364-7, #u1408-7, #u1434-9, #u1440-9, #u1425-13 {
+  height: auto !important;
+  min-height: 300px;
+}
+
+/* Sur mobile (responsive.css gère déjà height auto, mais on confirme) */
+@media (max-width: 768px) {
+  #u429-9, #u478-9, #u484-7,
+  #u1364-7, #u1408-7, #u1434-9, #u1440-9, #u1425-13 {
+    min-height: 0 !important;
+  }
+}
+
+
+/* ==========================================================================
    FIX TYPO ITALIQUE — webkit-background-clip:text + italic
    La police Gotham italique a un angle d'inclinaison fort (~12°).
    Le clip rectangulaire de -webkit-background-clip:text tronque :
