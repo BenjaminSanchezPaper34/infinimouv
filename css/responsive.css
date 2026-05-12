@@ -815,42 +815,113 @@
      PAGE SERVICES — Éléments spécifiques
      ==================================================================== */
 
-  #ppu1321 {
+  /* L'ancre #cours-collectifs a margin-top: 2445px + float:left dans le
+     CSS Muse, ce qui décale toute la page. On la neutralise tout en gardant
+     le hash link fonctionnel. */
+  #cours-collectifs {
+    position: absolute !important;
+    top: auto !important;
+    margin: 0 !important;
+    float: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+  }
+
+  /* Footer également en float:left sur Muse — neutraliser */
+  #u94-bw {
+    float: none !important;
+    clear: both !important;
+  }
+
+  /* Conteneurs : reset float Muse pour qu'ils flow normalement */
+  #ppu1321,
+  #pu1321 {
     width: 100% !important;
     float: none !important;
     display: block !important;
+    clear: both !important;
+    height: auto !important;
+    min-height: auto !important;
+    position: relative !important;
+    margin: 0 !important;
+    left: auto !important;
   }
 
-  /* Hero image */
+  /* Reset float pour les enfants directs du conteneur Muse de la page services */
+  #pu1321 > * {
+    float: none !important;
+    clear: both !important;
+    position: relative !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Hero image — section hero avec overlay sombre et titre dessus */
   #u1329-bw {
-    height: 45vh !important;
-    min-height: 250px !important;
-    max-height: 400px !important;
+    height: 55vh !important;
+    min-height: 320px !important;
+    max-height: 480px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin: 0 !important;
   }
 
   #u1329 {
-    height: 45vh !important;
-    min-height: 250px !important;
-    max-height: 400px !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 320px !important;
     background-size: cover !important;
     background-position: center !important;
+    position: relative !important;
+  }
+
+  /* Overlay dégradé sombre sur l'image hero pour lisibilité du titre */
+  #u1329-bw::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.55) 70%, rgba(29,29,31,1) 100%);
+    pointer-events: none;
+    z-index: 1;
   }
 
   #u1321 { display: none !important; }
 
-  /* Section title */
+  /* Titre principal SERVICES & ÉQUIPEMENTS — superposé sur le bas du hero */
   #u1322 {
+    position: relative !important;
+    z-index: 10 !important;
     float: none !important;
     display: block !important;
     clear: both !important;
     text-align: center !important;
-    padding: 0 16px !important;
+    padding: 24px 16px 16px !important;
     width: 100% !important;
-    position: relative !important;
+    box-sizing: border-box !important;
     left: auto !important;
+    margin: -90px 0 0 0 !important; /* remonte sur le bas du hero */
+    font-size: 0 !important; /* neutralise le 60px Muse — la taille vient de .gradient-text */
+    line-height: 1 !important;
+    background: transparent !important;
   }
 
-  #u1322 .gradient-text { font-size: 24px !important; }
+  #u1322 .gradient-text {
+    font-size: 28px !important;
+    line-height: 1.1 !important;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  /* Reset margin-left:60px Muse sur TOUS les éléments de la page services */
+  #main-content > *,
+  #main-content .colelem,
+  #main-content .grpelem,
+  #main-content [class*="pu1"],
+  #main-content [class*="u1"] {
+    margin-left: 0 !important;
+  }
 
   /* Intro text */
   #u1346-4 {
@@ -1039,8 +1110,31 @@
     left: auto !important;
   }
 
-  #u1635, #u1651 { text-align: center !important; }
-  #u1635 .gradient-text, #u1651 .gradient-text { font-size: 28px !important; }
+  #u1635, #u1651 {
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 0 !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+  #u1635 .gradient-text, #u1651 .gradient-text {
+    font-size: 28px !important;
+    line-height: 1.1 !important;
+  }
+  #u1688-9 {
+    width: calc(100% - 32px) !important;
+    margin: 16px 16px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  /* Footer container ne doit pas déborder */
+  #u94 {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
 
   #pu1754 {
     float: none !important;

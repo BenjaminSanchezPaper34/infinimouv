@@ -81,12 +81,23 @@ a.seo-tel-link:hover {
    ========================================================================== */
 
 .im-section {
-  width: 100%;
+  /* Full bleed indépendant du parent #page (1080px) ou de tout autre conteneur */
+  width: 100vw;
+  max-width: 100vw;
   padding: 64px 24px;
   box-sizing: border-box;
   font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   position: relative;
   z-index: 10;
+  /* Indispensable car le layout Muse utilise float:left partout —
+     sans clear, les sections se positionnent à y=0 du #page et passent
+     derrière le hero. clear:both force le placement après tous les floats. */
+  clear: both !important;
+  float: none !important;
+  display: block !important;
+  /* Sortir du conteneur 1080px Muse : décaler à gauche pour aligner sur viewport */
+  margin-left: calc(-50vw + 50%);
+  margin-right: 0;
 }
 
 /* Variante fond noir */
@@ -204,23 +215,26 @@ a.seo-tel-link:hover {
   font-size: 18px;
 }
 
-/* CTA */
+/* CTA — fond blanc, texte vert foncé : contraste fort sur gradient vert */
 .im-cta {
   display: inline-block;
-  background: #1D1D1F;
-  color: #9DD800;
+  background: #ffffff;
+  color: #006935;
   padding: 14px 32px;
   border-radius: 999px;
   font-weight: 700;
   font-style: italic;
+  font-size: 15px;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
   border: 2px solid transparent;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
 }
 .im-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  border-color: #ffffff;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+  background: #1D1D1F;
+  color: #9DD800;
 }
 
 /* Section storytelling — "Notre histoire" */
