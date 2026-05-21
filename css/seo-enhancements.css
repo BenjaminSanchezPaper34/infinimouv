@@ -153,9 +153,47 @@ a.seo-tel-link:hover {
 .im-container--center {
   text-align: center;
 }
-.im-container--center .im-text-light {
+.im-container--center .im-text-light,
+.im-container--center .im-intro {
   margin-left: auto;
   margin-right: auto;
+  max-width: 720px;
+}
+/* Les feature cards restent alignées à gauche en interne */
+.im-container--center .im-feature-card {
+  text-align: left;
+}
+
+/* Titre style Muse — reproduit "NOTRE OFFRE" : uppercase, italique, gradient vert */
+.im-title-muse {
+  font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.05;
+  margin: 0 0 36px 0;
+  display: inline-block;
+}
+.im-title-muse .gradient-text {
+  background: linear-gradient(180deg, #9DD800, #006935);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-right: 0.3em !important;
+  padding-left: 0.18em !important;
+  display: inline-block !important;
+  overflow: visible !important;
+}
+.im-title-muse .gradient-text--white {
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+}
+
+/* Forcer le centrage du titre dans la FAQ même si la liste reste à gauche */
+.im-section--faq .im-faq-list {
+  text-align: left;
 }
 
 /* Eyebrow (petite étiquette au-dessus du titre) */
