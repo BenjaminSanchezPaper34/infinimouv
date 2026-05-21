@@ -28,6 +28,22 @@
   <meta property="og:image:height" content="462"/>
   <meta property="og:url" content="https://infini-mouv.fr/"/>
 
+  <!-- SEO : Open Graph Local Business (geo tags) -->
+  <meta property="place:location:latitude" content="43.3107"/>
+  <meta property="place:location:longitude" content="3.4753"/>
+  <meta property="business:contact_data:street_address" content="4 avenue du 11 Novembre 1918"/>
+  <meta property="business:contact_data:locality" content="Agde"/>
+  <meta property="business:contact_data:postal_code" content="34300"/>
+  <meta property="business:contact_data:country_name" content="France"/>
+  <meta property="business:contact_data:phone_number" content="+33986673838"/>
+  <meta property="business:contact_data:website" content="https://infini-mouv.fr"/>
+
+  <!-- SEO : Geo Meta Tags (standards Dublin Core + ICBM) -->
+  <meta name="geo.region" content="FR-34"/>
+  <meta name="geo.placename" content="Agde, Hérault, Occitanie"/>
+  <meta name="geo.position" content="43.3107;3.4753"/>
+  <meta name="ICBM" content="43.3107, 3.4753"/>
+
   <!-- SEO : Twitter Card -->
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Infini Mouv | Salle de Sport à Agde"/>
@@ -58,18 +74,34 @@
   <!-- Performance : preload de la vidéo hero (LCP probable desktop) -->
   <link rel="preload" as="video" href="assets/horizontal.webm" type="video/webm"/>
 
-  <!-- SEO : Schema.org JSON-LD -->
+  <!-- SEO : Schema.org JSON-LD — GymOrSportsClub enrichi pour SEO local -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "GymOrSportsClub",
+    "@type": ["GymOrSportsClub", "LocalBusiness", "HealthAndBeautyBusiness"],
+    "@id": "https://infini-mouv.fr/#gym",
     "name": "Infini Mouv",
-    "alternateName": "Infini Mouv Agde",
+    "alternateName": ["Infini Mouv Agde", "Salle de sport Infini Mouv"],
     "url": "https://infini-mouv.fr",
-    "logo": "https://infini-mouv.fr/images/logo-infinimouv.webp",
-    "image": "https://infini-mouv.fr/images/couverture-1250x462-infinimouv.jpg",
-    "description": "Salle de sport à Agde proposant musculation, cardio-training, cross-training, cours collectifs Les Mills, bike interactif Spivi et coaching personnalisé. Ouverte 7j/7 de 6h à 23h.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://infini-mouv.fr/images/logo-infinimouv.png",
+      "width": 367,
+      "height": 49
+    },
+    "image": [
+      "https://infini-mouv.fr/images/couverture-1250x462-infinimouv.jpg",
+      "https://infini-mouv.fr/images/salle-infinimouv.jpg",
+      "https://infini-mouv.fr/images/musculation-infinimouv.jpg"
+    ],
+    "description": "Salle de sport à Agde proposant musculation, cardio-training, cross-training, cours collectifs Les Mills, bike interactif Spivi et coaching personnalisé. Ouverte 7j/7 de 6h à 23h. Air purifié, ambiance zen.",
+    "slogan": "Trouvez votre vraie nature",
+    "founder": {
+      "@type": "Person",
+      "name": "Cyril Despès"
+    },
     "telephone": ["+33458461883", "+33986673838"],
+    "email": "agde@infini-mouv.fr",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "4 avenue du 11 Novembre 1918",
@@ -83,19 +115,59 @@
       "latitude": 43.3107,
       "longitude": 3.4753
     },
-    "openingHoursSpecification": {
+    "hasMap": "https://www.google.com/maps?q=Infini+Mouv+4+avenue+du+11+Novembre+1918+34300+Agde",
+    "openingHoursSpecification": [{
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
       "opens": "06:00",
       "closes": "23:00"
-    },
-    "priceRange": "24,90€ - 39,90€",
+    }],
+    "priceRange": "€",
     "currenciesAccepted": "EUR",
-    "paymentAccepted": "Cash, Credit Card",
+    "paymentAccepted": ["Cash", "Credit Card", "Debit Card"],
+    "areaServed": [
+      { "@type": "City", "name": "Agde", "containedInPlace": { "@type": "AdministrativeArea", "name": "Hérault" } },
+      { "@type": "City", "name": "Cap d'Agde" },
+      { "@type": "City", "name": "Vias" },
+      { "@type": "City", "name": "Marseillan" },
+      { "@type": "City", "name": "Florensac" },
+      { "@type": "City", "name": "Bessan" },
+      { "@type": "City", "name": "Pézenas" },
+      { "@type": "City", "name": "Béziers" }
+    ],
+    "knowsAbout": [
+      "Musculation", "Cardio-training", "Cross-training", "Cours collectifs Les Mills",
+      "Bike interactif Spivi", "BodyPump", "BodyCombat", "BodyBalance", "BodyAttack",
+      "RPM", "Sh'Bam", "CAF Cuisses Abdos Fessiers", "Pilates", "Yoga", "Stretching", "Zumba",
+      "Coaching sportif personnalisé", "Nutrition sportive", "Plan alimentaire",
+      "Impédancemétrie", "Perte de poids", "Prise de masse musculaire", "Remise en forme"
+    ],
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Accès libre 7j/7 de 6h à 23h", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Air purifié et renouvelé", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Vestiaires + douches", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Salle climatisée et chauffée", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Parking gratuit (parking du cinéma)", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Coachs sportifs diplômés", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Machines Matrix", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Bike interactif Spivi", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Cross-training extérieur couvert", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Espace nutrition + scan 3D", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Fontaine Yanga (option Confort)", "value": true }
+    ],
     "sameAs": [
       "https://www.facebook.com/infinimouvagde/",
-      "https://www.instagram.com/infinimouv_agde/"
+      "https://www.instagram.com/infinimouv_agde/",
+      "https://www.google.com/maps?q=Infini+Mouv+Agde"
     ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "50",
+      "reviewCount": "50"
+    },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Abonnements Infini Mouv",
@@ -105,24 +177,131 @@
           "name": "Abonnement 12 mois",
           "price": "27.90",
           "priceCurrency": "EUR",
-          "description": "Musculation, cross-training, cardio, cours virtuels Les Mills, bike Spivi, douches"
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "27.90",
+            "priceCurrency": "EUR",
+            "unitText": "MONTH"
+          },
+          "description": "Musculation, cross-training, cardio, cours virtuels Les Mills, bike Spivi, accès aux douches",
+          "availability": "https://schema.org/InStock"
         },
         {
           "@type": "Offer",
           "name": "Option Confort",
           "price": "5.00",
           "priceCurrency": "EUR",
-          "description": "Boisson Yanga, suivi coaching mensuel, cours avec coach"
+          "description": "Boisson hydratante Yanga, suivi coaching mensuel, cours avec coach (en supplément)"
         },
         {
           "@type": "Offer",
           "name": "Option Premium",
           "price": "15.00",
           "priceCurrency": "EUR",
-          "description": "Suivi coaching expert, suivi nutritionnel"
+          "description": "Suivi coaching expert + suivi nutritionnel (en supplément)"
         }
       ]
+    },
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Musculation", "description": "Plateau Matrix avec machines guidées et poids libres" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cardio-training", "description": "Tapis, vélos elliptiques, rameurs, escalators" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cross-training", "description": "Terrain extérieur couvert avec cage Crossfit" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bike interactif Spivi" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cours collectifs Les Mills" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Coaching personnalisé", "description": "1-2 entretiens individuels mensuels + impédancemétrie" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Plan alimentaire et nutrition", "description": "Coach certifié, bilan complet + 7 suivis annuels, scan 3D" } }
+    ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "name": "Réserver un cours",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://apps.apple.com/fr/app/xplor-active/id1519197587",
+        "actionPlatform": ["http://schema.org/IOSPlatform", "http://schema.org/AndroidPlatform"]
+      }
     }
+  }
+  </script>
+
+  <!-- SEO : FAQPage Schema — déclenche les rich snippets "People also ask" -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quels sont les horaires d'ouverture d'Infini Mouv ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Infini Mouv est ouverte 7 jours sur 7, de 6h00 à 23h00. Vous accédez à la salle en autonomie, à votre rythme."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Où se trouve la salle de sport Infini Mouv à Agde ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Infini Mouv est située au 4 avenue du 11 Novembre 1918, 34300 Agde, sur le parking du cinéma. Accès facile depuis Cap d'Agde, Vias, Marseillan, Florensac, Bessan et Pézenas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien coûte un abonnement chez Infini Mouv ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "L'abonnement 12 mois est à 27,90€/mois. Les formules 3 mois et sans engagement sont également disponibles. Options Confort (+5€) avec boisson Yanga et suivi coaching, ou Premium (+15€) avec coaching expert et suivi nutritionnel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quels cours collectifs sont proposés ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CAF (Cuisses Abdos Fessiers), Pilates, Stretching, Zumba (sous licence), BodyPump Les Mills, Yoga, Cross Training. Plus tous les cours en vidéo Les Mills disponibles selon votre planning : BodyCombat, BodyBalance, BodyAttack, RPM, Sh'Bam."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Y a-t-il du coaching personnalisé ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, nos coachs diplômés proposent un suivi sur mesure : 1 à 2 entretiens individuels par mois pour établir un programme adapté à vos objectifs (perte de poids, prise de masse, remise en forme) et un test d'impédancemétrie mensuel pour analyser votre évolution."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment réserver un cours collectif ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les cours collectifs sont accessibles sur réservation via l'application gratuite Xplor Active. Code centre : infinimouv. Utilisez la même adresse mail que celle de votre inscription à la salle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Y a-t-il un parking ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, la salle est située sur le parking du cinéma d'Agde — stationnement gratuit et facile."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quels équipements de musculation propose la salle ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Plateau de musculation entièrement équipé d'appareils Matrix : machines guidées pour un travail sécurisé, poids libres (haltères, barres, bancs, cage Smith). Toutes les disciplines couvertes : biceps curl, chest press, seated row, squats…"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Le club propose-t-il du Cross Training ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, espace Cross Training en extérieur sur terrasse couverte (ouvert par tous les temps) : cage Crossfit, cordes à grimper, haltères, kettlebells, plateaux de squat. Coaching sur mesure avec Thomas, coach sportif professionnel."
+        }
+      }
+    ]
   }
   </script>
 
@@ -154,7 +333,7 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
   <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=4252153324"/>
   <link rel="stylesheet" type="text/css" href="css/master_a-gabarit.css?crc=289251700"/>
   <link rel="stylesheet" type="text/css" href="css/index.css?crc=85581246" id="pagesheet"/>
-  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=10"/>
+  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=11"/>
   <link rel="stylesheet" type="text/css" href="css/responsive.css?v=5"/>
 
  </head>
@@ -452,6 +631,63 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
          Nos coachs sportifs d'Agde sont des <strong>professionnels qualifiés et expérimentés</strong> pour vous accompagner dans vos objectifs de perte de poids, prise de masse musculaire ou remise en forme. Chez Infini&nbsp;Mouv, profitez d'un suivi personnalisé avec un <strong>programme d'entraînement sur mesure</strong> et un <strong>coaching alimentaire</strong>.
        </p>
        <a class="im-cta" href="#contact">Contacter notre centre de remise en forme</a>
+     </div>
+   </section>
+
+   <!-- ================================================================ -->
+   <!-- FAQ : section visible (cohérence avec FAQPage Schema.org)          -->
+   <!-- ================================================================ -->
+   <section class="im-section im-section--dark im-section--faq" aria-labelledby="faq-title">
+     <div class="im-container">
+       <h2 class="im-title" id="faq-title">Questions fréquentes</h2>
+       <div class="im-faq-list">
+
+         <details class="im-faq-item">
+           <summary>Quels sont les horaires d'ouverture d'Infini Mouv&nbsp;?</summary>
+           <p>Infini Mouv est ouverte <strong>7 jours sur 7, de 6h00 à 23h00</strong>. Vous accédez à la salle en autonomie, à votre rythme.</p>
+         </details>
+
+         <details class="im-faq-item">
+           <summary>Où se trouve la salle de sport Infini Mouv à Agde&nbsp;?</summary>
+           <p>Infini Mouv est située au <strong>4 avenue du 11 Novembre 1918, 34300 Agde</strong>, sur le parking du cinéma. Accès facile depuis Cap d'Agde, Vias, Marseillan, Florensac, Bessan et Pézenas.</p>
+         </details>
+
+         <details class="im-faq-item">
+           <summary>Combien coûte un abonnement chez Infini Mouv&nbsp;?</summary>
+           <p>L'abonnement 12 mois est à <strong>27,90 €/mois</strong>. Les formules 3 mois et sans engagement sont également disponibles. Options Confort (+5&nbsp;€) avec boisson Yanga et suivi coaching, ou Premium (+15&nbsp;€) avec coaching expert et suivi nutritionnel.</p>
+         </details>
+
+         <details class="im-faq-item">
+           <summary>Quels cours collectifs sont proposés&nbsp;?</summary>
+           <p>CAF (Cuisses Abdos Fessiers), Pilates, Stretching, Zumba (sous licence), BodyPump Les Mills, Yoga, Cross Training. Plus tous les <strong>cours en vidéo Les&nbsp;Mills</strong> disponibles selon votre planning&nbsp;: BodyCombat, BodyBalance, BodyAttack, RPM, Sh'Bam.</p>
+         </details>
+
+         <details class="im-faq-item">
+           <summary>Y a-t-il du coaching personnalisé&nbsp;?</summary>
+           <p>Oui. Nos coachs diplômés proposent un suivi sur mesure&nbsp;: <strong>1 à 2 entretiens individuels par mois</strong> pour établir un programme adapté à vos objectifs (perte de poids, prise de masse, remise en forme) et un <strong>test d'impédancemétrie mensuel</strong> pour analyser votre évolution.</p>
+         </details>
+
+         <details class="im-faq-item">
+           <summary>Comment réserver un cours collectif&nbsp;?</summary>
+           <p>Les cours collectifs sont accessibles sur réservation via l'application gratuite <strong>Xplor Active</strong>. Code centre&nbsp;: <strong>infinimouv</strong>. Utilisez la même adresse mail que celle de votre inscription à la salle.</p>
+         </details>
+
+         <details class="im-faq-item">
+           <summary>Y a-t-il un parking&nbsp;?</summary>
+           <p>Oui — la salle est située sur le <strong>parking du cinéma d'Agde</strong>, stationnement gratuit et facile.</p>
+         </details>
+
+         <details class="im-faq-item">
+           <summary>Quels équipements de musculation propose la salle&nbsp;?</summary>
+           <p>Plateau de musculation entièrement équipé d'appareils <strong>Matrix</strong>&nbsp;: machines guidées pour un travail sécurisé, poids libres (haltères, barres, bancs, cage Smith). Toutes les disciplines couvertes&nbsp;: biceps curl, chest press, seated row, squats…</p>
+         </details>
+
+         <details class="im-faq-item">
+           <summary>Le club propose-t-il du Cross Training&nbsp;?</summary>
+           <p>Oui — espace Cross Training en extérieur sur <strong>terrasse couverte</strong> (ouvert par tous les temps)&nbsp;: cage Crossfit, cordes à grimper, haltères, kettlebells, plateaux de squat. Coaching sur mesure avec <strong>Thomas</strong>, coach sportif professionnel.</p>
+         </details>
+
+       </div>
      </div>
    </section>
 

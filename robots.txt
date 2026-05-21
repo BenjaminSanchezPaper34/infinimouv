@@ -1,5 +1,43 @@
+# Infini Mouv — robots.txt
+# Salle de sport à Agde (Hérault, Occitanie)
+
 User-agent: *
 Allow: /
 Disallow: /fonts/
+Disallow: /scripts/museutils.js
+Disallow: /scripts/jquery.musepolyfill.bgsize.js
+Disallow: /scripts/jquery.museoverlay.js
+Disallow: /scripts/jquery.scrolleffects.js
 
+# Permettre l'indexation des images et CSS pour rich previews
+Allow: /images/
+Allow: /css/
+
+# Sitemap
 Sitemap: https://infini-mouv.fr/sitemap.xml
+
+# Politesse aux bots agressifs
+User-agent: AhrefsBot
+Crawl-delay: 5
+
+User-agent: SemrushBot
+Crawl-delay: 5
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+# Bloquer les bots IA qui scrape sans valeur retour (optionnel — à ajuster)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Hôte canonique
+Host: infini-mouv.fr
