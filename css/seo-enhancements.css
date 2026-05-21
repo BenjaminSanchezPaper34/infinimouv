@@ -297,6 +297,28 @@ a.seo-tel-link:hover {
   clip-path: polygon(0 0, 100% 50%, 0 100%, 30% 50%);
 }
 
+/* Liste flèches sur fond clair — couleur texte sombre */
+.im-section--light .im-list-arrows li {
+  color: #2c2c2c;
+}
+.im-section--light .im-list-arrows li strong {
+  color: #1D1D1F;
+  font-weight: 700;
+}
+
+/* Liste checks dans card verte */
+.im-card--green .im-list-checks li {
+  color: #ffffff;
+  font-size: 15.5px;
+}
+.im-card--green .im-list-checks li::before {
+  color: #ffffff;
+}
+.im-card--green .im-list-checks li strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
 /* Variante : liste alignée à gauche, plus dense */
 .im-list-left {
   grid-template-columns: 1fr;
@@ -386,19 +408,97 @@ a.seo-tel-link:hover {
 }
 .im-feature-card h3 {
   font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 19px;
-  font-weight: 800;
-  font-style: italic;
-  margin: 0 0 10px 0;
+  font-size: 17px;
+  font-weight: 700;
+  font-style: normal;
+  margin: 0 0 12px 0;
   color: #1D1D1F;
-  letter-spacing: -0.2px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
+  line-height: 1.25;
 }
 .im-feature-card p {
   font-size: 15px;
-  line-height: 1.6;
-  color: #555560;
+  line-height: 1.65;
+  color: #6a6a6a;
   margin: 0;
+}
+
+/* ===== Card verte style L'ABONNEMENT (centrée dans section blanche) ===== */
+.im-card--green {
+  background: linear-gradient(135deg, #9DD800 0%, #006935 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 56px 56px;
+  max-width: 1080px;
+  margin: 24px auto 0;
+  position: relative;
+  overflow: hidden;
+}
+.im-card--green::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.06;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  border-radius: 20px;
+}
+.im-card--green > * {
+  position: relative;
+  z-index: 1;
+}
+.im-card--green .im-card-title {
+  font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  margin: 0 0 18px 0;
+}
+.im-card--green .im-card-text {
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.94);
+  max-width: 760px;
+  margin: 0 0 24px 0;
+}
+.im-card--green .im-card-text strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ===== Card blanche style LES OPTIONS (pour Comment vous assurer) ===== */
+.im-card--white {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  padding: 44px 48px;
+  max-width: 1080px;
+  margin: 24px auto 0;
+}
+.im-card--white .im-card-title {
+  font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #006935;
+  margin: 0 0 18px 0;
+}
+
+@media (max-width: 768px) {
+  .im-card--green, .im-card--white {
+    padding: 32px 24px;
+    border-radius: 16px;
+  }
+  .im-card--green .im-card-title {
+    font-size: 22px;
+  }
 }
 
 /* ===== Story card (Notre histoire) ===== */
