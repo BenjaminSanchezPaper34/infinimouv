@@ -418,6 +418,17 @@ span.gradient-text {
   background: #000;
 }
 
+#im-promo-content a,
+#im-promo-link {
+  display: block;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+#im-promo-content a:hover,
+#im-promo-link:hover {
+  opacity: 0.92;
+}
+
 #im-promo-content img {
   display: block;
   width: 100%;

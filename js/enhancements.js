@@ -263,8 +263,11 @@ document.addEventListener('DOMContentLoaded', function () {
      - sessionStorage pour ne montrer qu'une fois par session
      ================================================================== */
 
-  /* Vérifier si déjà vu cette session */
-  if (sessionStorage.getItem('im_promo_seen')) return;
+  /* Vérifier si déjà vu cette session.
+     Clé versionnée : changer le suffixe (ex: 'v2', 'v3'...) à chaque
+     nouvelle promo pour forcer tous les visiteurs à revoir le popup. */
+  var PROMO_KEY = 'im_promo_seen_summer2026';
+  if (sessionStorage.getItem(PROMO_KEY)) return;
 
   /* Créer le popup */
   var overlay = document.createElement('div');
@@ -273,7 +276,9 @@ document.addEventListener('DOMContentLoaded', function () {
     '<div id="im-promo-modal">',
     '  <button id="im-promo-close" aria-label="Fermer la promotion">&times;</button>',
     '  <div id="im-promo-content">',
-    '    <img src="images/couverture-1250x462-infinimouv.jpg" alt="Promotion Infini Mouv Agde" loading="eager">',
+    '    <a href="#tarifs" id="im-promo-link" aria-label="Voir les tarifs Summer Body">',
+    '      <img src="images/couverture-1250x462-infinimouv.webp" alt="Offre Summer Body — 2 mois offerts jusqu\'au 23 mai chez Infini Mouv Agde" loading="eager" width="1250" height="462">',
+    '    </a>',
     '  </div>',
     '</div>'
   ].join('\n');
@@ -293,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function closePromo() {
     overlay.classList.remove('im-promo-visible');
     overlay.classList.add('im-promo-closing');
-    sessionStorage.setItem('im_promo_seen', '1');
+    sessionStorage.setItem(PROMO_KEY, '1');
 
     setTimeout(function () {
       if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
@@ -307,6 +312,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var closeBtn = document.querySelector('#im-promo-close');
   if (closeBtn) closeBtn.addEventListener('click', closePromo);
+
+  /* Clic sur l'image/lien → ferme le popup + ancre vers #tarifs */
+  var promoLink = document.querySelector('#im-promo-link');
+  if (promoLink) promoLink.addEventListener('click', function () {
+    closePromo();
+  });
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && overlay.classList.contains('im-promo-visible')) {
