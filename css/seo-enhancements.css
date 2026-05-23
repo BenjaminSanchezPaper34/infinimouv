@@ -1026,6 +1026,24 @@ span.gradient-text {
 .im-section--planning .im-container {
   text-align: center;
 }
+/* Reset des margins horizontales negatives Muse (hacks -10000px de collapse layout) */
+.im-section--planning #u1656,
+.im-section--planning #pu1635,
+.im-section--planning #u1635,
+.im-section--planning #u1651,
+.im-section--planning #pu1754,
+.im-section--planning #u1754,
+.im-section--planning #u1713,
+.im-section--planning #u1710-4,
+.im-section--planning #u1688-9,
+.im-section--planning #pu1670,
+.im-section--planning #u1670,
+.im-section--planning #u1681,
+.im-section--planning #u1723,
+.im-section--planning #u1719 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
 /* Planning image responsive */
 .im-section--planning #u1723 {
   float: none !important;
