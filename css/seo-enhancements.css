@@ -377,34 +377,34 @@ a.seo-tel-link:hover {
   color: #9DD800;
 }
 
-/* ===== Feature grid (Nos avantages) — style light, cohérent Muse ===== */
+/* ===== Feature grid (Nos avantages) — 6 colonnes compactes en 1 ligne ===== */
 .im-feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 28px;
-  margin-top: 24px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-top: 28px;
 }
 .im-feature-card {
   position: relative;
   background: #ffffff;
   border: 1px solid #ececec;
-  border-radius: 16px;
-  padding: 32px 28px;
+  border-radius: 14px;
+  padding: 22px 14px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  text-align: left;
+  text-align: center;
 }
 .im-feature-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   border-color: rgba(157, 216, 0, 0.4);
-  box-shadow: 0 20px 40px rgba(0, 105, 53, 0.12);
+  box-shadow: 0 16px 32px rgba(0, 105, 53, 0.12);
 }
 .im-feature-icon {
-  width: 64px;
-  height: 64px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 22px;
+  margin: 0 auto 14px;
 }
 .im-feature-icon svg {
   width: 100%;
@@ -412,21 +412,21 @@ a.seo-tel-link:hover {
 }
 .im-feature-card h3 {
   font-family: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 700;
   font-style: normal;
-  margin: 0 0 12px 0;
+  margin: 0 0 6px 0;
   color: #006935;
   letter-spacing: 0;
   text-transform: uppercase;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 .im-feature-card p {
   font-family: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 300;
-  line-height: 1.65;
-  color: #2c2c2c;
+  line-height: 1.45;
+  color: #6a6a6a;
   margin: 0;
 }
 
@@ -647,11 +647,11 @@ a.seo-tel-link:hover {
 }
 
 /* Mobile */
-/* ===== Tablette (≤900px) — feature grid en 2 colonnes ===== */
+/* ===== Tablette (≤900px) — feature grid en 3 colonnes ===== */
 @media (max-width: 900px) {
   .im-feature-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
   }
 }
 
