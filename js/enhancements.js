@@ -23,15 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  /* MOBILE : pas de GSAP du tout — provoque scroll laggy ("aimant"),
-     blocs invisibles si ScrollTrigger calcule mal, parallax video saccadée.
-     Le rendu mobile reste élégant sans animations scrub. */
-  if (isMobile) return;
-
-  /* Attendre que GSAP soit chargé */
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-  gsap.registerPlugin(ScrollTrigger);
+  /* GSAP COMPLÈTEMENT DÉSACTIVÉ pour l'instant.
+     Les `gsap.from()` initialisaient opacity:0 et certaines cards ne se
+     re-affichaient pas si ScrollTrigger calcule mal (transforms Muse).
+     Resultat : cards semi-transparentes ou invisibles.
+     A ré-activer plus tard quand le design est figé. */
+  return;
 
 
   /* ------------------------------------------------------------------
