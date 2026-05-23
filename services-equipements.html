@@ -334,6 +334,19 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
    <!-- ================================================================ -->
    <!-- NOUVELLES SECTIONS DE CONTENU (hors layout Muse, sémantique pure) -->
    <!-- ================================================================ -->
+   <section class="im-section im-section--light" aria-labelledby="equipe-title">
+     <div class="im-container">
+       <h2 class="im-title-muse" id="equipe-title"><span class="gradient-text">L'ÉQUIPE</span></h2>
+       <div class="im-card--green">
+         <h3 class="im-card-title">Des coachs sportifs professionnels</h3>
+         <p class="im-card-text">
+           Nos coachs sportifs d'Agde sont des <strong>professionnels qualifiés et expérimentés</strong> pour vous accompagner dans vos objectifs de perte de poids, prise de masse musculaire ou remise en forme. Chez Infini&nbsp;Mouv, profitez d'un suivi personnalisé avec un <strong>programme d'entraînement sur mesure</strong> et un <strong>coaching alimentaire</strong>.
+         </p>
+         <a class="im-cta" href="index.html#contact">Contacter notre centre de remise en forme</a>
+       </div>
+     </div>
+   </section>
+
    <section class="im-section im-section--light" aria-labelledby="benefices-title">
      <div class="im-container">
        <h2 class="im-title-muse" id="benefices-title"><span class="gradient-text">NOS ENGAGEMENTS</span></h2>
@@ -437,6 +450,25 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" integrity="sha384-TgZ1GoXcDnrw/czNfaiSZSFV1zgIRv8aQOevBA8ppS4SkNONmzYfjARpXsDfdnUE" crossorigin="anonymous" defer></script>
   <!-- Enhancements : animations scroll -->
   <script src="js/enhancements-services.js?v=2" defer></script>
+
+  <!-- im-section full-bleed offset compensation (mêmes règles que enhancements.js) -->
+  <script>
+  (function(){
+    function updateImParentOffsets(){
+      document.querySelectorAll('.im-section').forEach(function(sec){
+        var x = sec.parentElement.getBoundingClientRect().left;
+        sec.style.setProperty('--im-parent-x', x + 'px');
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateImParentOffsets);
+    } else {
+      updateImParentOffsets();
+    }
+    window.addEventListener('resize', updateImParentOffsets);
+    window.addEventListener('load', updateImParentOffsets);
+  })();
+  </script>
 
  </body>
 </html>
