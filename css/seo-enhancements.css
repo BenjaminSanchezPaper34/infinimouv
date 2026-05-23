@@ -5,16 +5,16 @@
                            gradient vert OU couleur sombre
    T2 — Card title large : __SF Pro Display_5        | 22px | 700 | normal  | uppercase
                            cards principales (L'ABONNEMENT, DES COACHS...)
-   T3 — Mini title       : __SF Pro Display_5        | 17px | 700 | normal  | uppercase
-                           items de liste, questions FAQ
-   T4 — Body             : __SF Pro Display_5        | 16px | 300 | normal
-                           paragraphes courants, descriptions, intros
-   T5 — Caption          : __SF Pro Display_5        | 13px | 300 | normal
+   T3 — Mini title       : __SF Pro Display_5        | 19px | 700 | normal  | uppercase (ou sentence case)
+                           items de liste, questions FAQ — mêmes proportions que body T4
+   T4 — Body             : __SF Pro Display_5        | 19px | 300 | normal | #7f7f7f | lh 25px
+                           paragraphes courants, descriptions, intros (modèle Muse cards Accès libre/Air/Coaching)
+   T5 — Caption          : __SF Pro Display_5        | 14px | 300 | normal
                            mentions, légales, petits prints
 
    Couleurs :
    - Texte principal sombre   : #1D1D1F
-   - Texte secondaire gris    : #6a6a6a
+   - Texte secondaire gris    : #7f7f7f  (matche Muse exactement)
    - Accent vert principal    : #006935
    - Accent vert clair        : #9DD800
    - Border subtile           : #e8e8e8
@@ -24,7 +24,7 @@
   --ff-body: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --text-dark: #1D1D1F;
-  --text-muted: #6a6a6a;
+  --text-muted: #7f7f7f;
   --accent-green: #006935;
   --accent-lime: #9DD800;
   --border-subtle: #e8e8e8;
@@ -279,13 +279,13 @@ a.seo-tel-link:hover {
   color: #ffffff;
 }
 
-/* T4 — Body / intro */
+/* T4 — Body / intro (modèle Muse cards) */
 .im-intro {
   font-family: var(--ff-body);
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 300;
   margin: 0 0 40px 0;
-  line-height: 1.65;
+  line-height: 25px;
   color: var(--text-muted);
   max-width: 760px;
 }
@@ -473,22 +473,22 @@ a.seo-tel-link:hover {
   height: 18px;
 }
 .im-adv-text h3 {
-  /* T3 — Mini title */
+  /* T3 — Mini title (proportionné au body 19px) */
   font-family: var(--ff-body);
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 700;
   margin: 0 0 6px 0;
   color: var(--text-dark);
   text-transform: uppercase;
   letter-spacing: 0;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 .im-adv-text p {
-  /* T4 — Body */
+  /* T4 — Body (modèle Muse cards) */
   font-family: var(--ff-body);
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 300;
-  line-height: 1.55;
+  line-height: 25px;
   color: var(--text-muted);
   margin: 0;
 }
@@ -711,7 +711,7 @@ a.seo-tel-link:hover {
   padding: 20px 24px 20px 60px;
   /* T3 — Mini title (sentence case pour lisibilité des questions) */
   font-family: var(--ff-body);
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--text-dark);
   list-style: none;
@@ -745,11 +745,11 @@ a.seo-tel-link:hover {
 .im-faq-item p {
   margin: 0;
   padding: 0 24px 22px 60px;
-  /* T4 — Body */
+  /* T4 — Body (modèle Muse cards) */
   font-family: var(--ff-body);
   font-weight: 300;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: 19px;
+  line-height: 25px;
   color: var(--text-muted);
   /* Animation : height/padding/opacity géré par JS via toggle event */
   overflow: hidden;
