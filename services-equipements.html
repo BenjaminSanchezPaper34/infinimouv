@@ -468,16 +468,20 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
       return wrapper;
     }
 
-    /* Étape 1 : photo musculation = hauteur exacte de la card Zone musculation */
+    /* Étape 1 : photo musculation = hauteur exacte de la card Zone musculation
+       Muse utilise content-box partout. Pour ne pas modifier la largeur
+       (sinon le bento se desaligne), on garde content-box et on soustrait
+       les 2 paddings (40+40 = 80) du target. */
     function alignCardPhotoPairs(){
       var card = document.getElementById('u1364-7');
       var photo = document.getElementById('u1376-3');
       if (!card || !photo) return;
-      var h = card.getBoundingClientRect().height;
-      if (h > 0) {
-        photo.style.boxSizing = 'border-box';
-        photo.style.height = h + 'px';
-        photo.style.minHeight = h + 'px';
+      var totalH = card.getBoundingClientRect().height;
+      if (totalH > 0) {
+        /* Conserve le box-sizing natif (content-box Muse) */
+        var contentH = totalH - 80;
+        photo.style.height = contentH + 'px';
+        photo.style.minHeight = contentH + 'px';
       }
     }
 
