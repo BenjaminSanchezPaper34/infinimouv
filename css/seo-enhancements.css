@@ -935,19 +935,91 @@ span.gradient-text {
   overflow: visible !important;
 }
 
-/* Emojis devant les 7 mots services (MUSCULATION, CARDIO, BIKE…)
+/* =========================================================================
+   SERVICES : liste verticale en quinconce avec emojis animés
+   ========================================================================= */
+
+/* Quinconce — alterner gauche / droite sur les 7 mots */
+#u728, #u740, #u682, #u694, #u647, #u627, #u560 {
+  text-align: left !important;
+  padding-left: 12% !important;
+  padding-right: 12% !important;
+  transition: padding 0.3s ease;
+}
+#u740, #u694, #u627 {
+  /* CARDIO, COACHING, CROSS TRAINING : alignés à droite */
+  text-align: right !important;
+}
+
+/* Mobile : tout centré pour rester lisible sur petite largeur */
+@media (max-width: 768px) {
+  #u728, #u740, #u682, #u694, #u647, #u627, #u560 {
+    text-align: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* Emojis devant les 7 mots services.
    Pas dans .gradient-text car sinon ils seraient invisibles
    (background-clip:text + text-fill-color:transparent). */
 .service-emoji {
   display: inline-block;
   margin-right: 0.35em;
-  font-size: 0.75em;       /* plus petit que le texte */
-  vertical-align: 0.1em;   /* aligne optiquement avec la baseline */
-  /* Force le rendu emoji en couleur (au cas où une font globale forcerait B&W) */
+  font-size: 0.75em;
+  vertical-align: 0.1em;
   font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
   -webkit-text-fill-color: initial;
   background: none;
   filter: drop-shadow(0 2px 4px rgba(0, 105, 53, 0.15));
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Animations — chaque emoji a son ambiance propre */
+#u728 .service-emoji { animation: emoji-flex 2.2s ease-in-out infinite; }
+#u740 .service-emoji { animation: emoji-run  1.4s ease-in-out infinite; }
+#u682 .service-emoji { animation: emoji-roll 2.5s linear         infinite; }
+#u694 .service-emoji { animation: emoji-pulse 1.8s ease-in-out   infinite; }
+#u647 .service-emoji { animation: emoji-float 3s ease-in-out     infinite; }
+#u627 .service-emoji { animation: emoji-lift 1.6s ease-in-out    infinite; }
+#u560 .service-emoji { animation: emoji-wiggle 2.4s ease-in-out  infinite; }
+
+@keyframes emoji-flex {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.18); }
+}
+@keyframes emoji-run {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(6px); }
+}
+@keyframes emoji-roll {
+  0%   { transform: rotate(-8deg); }
+  50%  { transform: rotate(8deg); }
+  100% { transform: rotate(-8deg); }
+}
+@keyframes emoji-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15) rotate(5deg); }
+}
+@keyframes emoji-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+@keyframes emoji-lift {
+  0%, 100% { transform: translateY(0); }
+  40%      { transform: translateY(-6px); }
+  60%      { transform: translateY(-6px); }
+}
+@keyframes emoji-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-10deg); }
+  75%      { transform: rotate(10deg); }
+}
+
+/* Respect reduced-motion (accessibilité) */
+@media (prefers-reduced-motion: reduce) {
+  .service-emoji { animation: none !important; }
 }
 
 
