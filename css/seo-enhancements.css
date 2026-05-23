@@ -531,10 +531,13 @@ a.seo-tel-link:hover {
 }
 
 /* Section FAQ — accordéon natif <details>/<summary> version light */
+.im-section--faq .im-container {
+  text-align: center;  /* centre le titre */
+}
 .im-section--faq .im-faq-list {
   max-width: 880px;
   margin: 24px auto 0;  /* centré dans .im-container */
-  text-align: left;
+  text-align: left;     /* mais les items restent à gauche */
 }
 .im-faq-item {
   background: #ffffff;

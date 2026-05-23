@@ -40,67 +40,79 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ------------------------------------------------------------------
-     FAQ : animation douce ouverture/fermeture
-     <details> natif force display:none sur le contenu → on intercepte
-     le clic et on anime height + padding + opacity à la main.
+     FAQ : animation douce ouverture/fermeture + comportement accordéon
+     (un seul bloc ouvert à la fois)
      ------------------------------------------------------------------ */
-  document.querySelectorAll('.im-faq-item').forEach(function (details) {
-    var summary = details.querySelector('summary');
+  function closeFaqItem(details, instant) {
     var content = details.querySelector('p');
-    if (!summary || !content) return;
-
-    /* Reset propre quand fermé au load */
-    if (!details.hasAttribute('open')) {
+    if (!content) return;
+    if (instant) {
+      details.removeAttribute('open');
       content.style.height = '0';
       content.style.opacity = '0';
       content.style.paddingTop = '0';
       content.style.paddingBottom = '0';
+      return;
     }
+    var currentHeight = content.scrollHeight;
+    content.style.height = currentHeight + 'px';
+    content.offsetHeight; // reflow
+    content.style.height = '0';
+    content.style.opacity = '0';
+    content.style.paddingTop = '0';
+    content.style.paddingBottom = '0';
+    var onClose = function (ev) {
+      if (ev.propertyName !== 'height') return;
+      details.removeAttribute('open');
+      content.removeEventListener('transitionend', onClose);
+    };
+    content.addEventListener('transitionend', onClose);
+  }
+
+  function openFaqItem(details) {
+    var content = details.querySelector('p');
+    if (!content) return;
+    details.setAttribute('open', '');
+    content.style.height = '0';
+    content.style.opacity = '0';
+    content.style.paddingTop = '0';
+    content.style.paddingBottom = '0';
+    requestAnimationFrame(function () {
+      content.style.height = content.scrollHeight + 'px';
+      content.style.opacity = '1';
+      content.style.paddingTop = '';
+      content.style.paddingBottom = '';
+    });
+    var onOpen = function (ev) {
+      if (ev.propertyName !== 'height') return;
+      content.style.height = ''; // libère pour reflow naturel
+      content.removeEventListener('transitionend', onOpen);
+    };
+    content.addEventListener('transitionend', onOpen);
+  }
+
+  var faqItems = document.querySelectorAll('.im-faq-item');
+  faqItems.forEach(function (details) {
+    var summary = details.querySelector('summary');
+    if (!summary) return;
+
+    /* Reset propre au load (fermé par défaut) */
+    closeFaqItem(details, true);
 
     summary.addEventListener('click', function (e) {
       e.preventDefault();
+      var isOpen = details.hasAttribute('open');
 
-      if (details.hasAttribute('open')) {
-        /* FERMETURE : on lit la height actuelle puis on l'anime vers 0 */
-        var currentHeight = content.scrollHeight;
-        content.style.height = currentHeight + 'px';
-        // force reflow pour que le navigateur prenne en compte la height fixe
-        content.offsetHeight;
-        content.style.height = '0';
-        content.style.opacity = '0';
-        content.style.paddingTop = '0';
-        content.style.paddingBottom = '0';
-
-        var onClose = function (ev) {
-          if (ev.propertyName !== 'height') return;
-          details.removeAttribute('open');
-          content.removeEventListener('transitionend', onClose);
-        };
-        content.addEventListener('transitionend', onClose);
+      if (isOpen) {
+        closeFaqItem(details);
       } else {
-        /* OUVERTURE : on ouvre puis on anime de 0 -> scrollHeight */
-        details.setAttribute('open', '');
-        content.style.height = '0';
-        content.style.opacity = '0';
-        content.style.paddingTop = '0';
-        content.style.paddingBottom = '0';
-
-        // Forcer reflow puis animer
-        requestAnimationFrame(function () {
-          content.style.height = content.scrollHeight + 'px';
-          content.style.opacity = '1';
-          content.style.paddingTop = '';
-          content.style.paddingBottom = '';
+        /* Fermer les autres avant d'ouvrir celui-ci (accordéon single) */
+        faqItems.forEach(function (other) {
+          if (other !== details && other.hasAttribute('open')) {
+            closeFaqItem(other);
+          }
         });
-
-        var onOpen = function (ev) {
-          if (ev.propertyName !== 'height') return;
-          /* Une fois ouvert, on retire la height fixe pour permettre
-             le reflow naturel (texte dynamique, resize, etc.) */
-          content.style.height = '';
-          content.removeEventListener('transitionend', onOpen);
-        };
-        content.addEventListener('transitionend', onOpen);
+        openFaqItem(details);
       }
     });
   });
