@@ -8,6 +8,22 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ------------------------------------------------------------------
+     -1. IM-SECTION FULL-BLEED — chaque section calcule sa propre
+     compensation x via CSS variable --im-parent-x.
+     Une section dans main-content (parent x=273.5) → comp -273.5
+     Une section dans body (parent x=0) → comp 0
+     ------------------------------------------------------------------ */
+  function updateImParentOffsets() {
+    document.querySelectorAll('.im-section').forEach(function (sec) {
+      var x = sec.parentElement.getBoundingClientRect().left;
+      sec.style.setProperty('--im-parent-x', x + 'px');
+    });
+  }
+  updateImParentOffsets();
+  window.addEventListener('resize', updateImParentOffsets);
+  window.addEventListener('load', updateImParentOffsets);
+
+  /* ------------------------------------------------------------------
      0. MOBILE : Déplacer la nav hors du conteneur Muse pour position:fixed
      ------------------------------------------------------------------ */
   var isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);

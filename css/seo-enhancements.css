@@ -81,10 +81,10 @@ a.seo-tel-link:hover {
    ========================================================================== */
 
 .im-section {
-  /* Full bleed indépendant du parent (qu'il soit page 1080px OU main-content collapsed 0px)
-     Technique : left:50% positionne le bord gauche au centre de la fenêtre,
-     puis margin-left:-50vw décale vers la gauche d'une demi-largeur viewport.
-     Résultat : la section est toujours alignée sur le viewport, peu importe le parent. */
+  /* Full bleed indépendant du parent.
+     --im-parent-x est mesuré par JS à chaque resize (cf. enhancements.js)
+     = la distance du parent.x par rapport au viewport. On la soustrait.
+     Fallback 0px pour quand le parent EST déjà aligné viewport. */
   width: 100vw;
   max-width: 100vw;
   padding: 96px 24px;
@@ -97,8 +97,7 @@ a.seo-tel-link:hover {
   clear: both !important;
   float: none !important;
   display: block !important;
-  left: 50%;
-  margin-left: -50vw !important;
+  margin-left: calc(-1 * var(--im-parent-x, 0px)) !important;
   margin-right: 0;
 }
 
