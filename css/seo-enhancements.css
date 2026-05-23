@@ -421,18 +421,29 @@ a.seo-tel-link:hover {
   -webkit-text-fill-color: #9DD800;
 }
 
-/* Variante : bouton plein gradient vert (pour sections fond clair) */
+/* Variante : bouton IDENTIQUE au CTA Muse "SERVICES & ÉQUIPEMENTS" de la landing
+   Specs : Gotham Italic 30px 500 uppercase blanc, padding 20px,
+   gradient vertical #9DD800 → #006935, border-radius 100px, shadow 4 4 20 #0001 */
 .im-cta.im-cta--green {
-  background: linear-gradient(135deg, #9DD800 0%, #006935 100%);
+  background: linear-gradient(to bottom, #9DD800 0%, #006935 100%) !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff;
-  box-shadow: 0 10px 28px rgba(0, 105, 53, 0.3);
+  padding: 20px 36px !important;
+  border-radius: 100px !important;
+  font-size: 30px !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+  font-family: var(--ff-display) !important;
+  text-transform: uppercase !important;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1) !important;
+  border: 0 !important;
 }
 .im-cta.im-cta--green:hover {
-  background: linear-gradient(135deg, #006935 0%, #9DD800 100%);
+  background: linear-gradient(to bottom, #006935 0%, #9DD800 100%) !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff;
-  box-shadow: 0 14px 36px rgba(0, 105, 53, 0.4);
+  box-shadow: 4px 6px 28px rgba(0, 105, 53, 0.25) !important;
+  transform: translateY(-2px);
 }
 
 /* Wrapper centre pour aligner un CTA seul sous une grille */
