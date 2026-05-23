@@ -238,9 +238,7 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
       <p id="u1425-2">Confort</p>
       <p id="u1425-4">&amp; bien-être</p>
       <p id="u1425-5">&nbsp;</p>
-      <p id="u1425-7">Salle chauffée et climatisée.</p>
-      <p id="u1425-9">Air purifié et renouvelé en continu. Vestiaires équipés et</p>
-      <p id="u1425-11">douches en libre accès.</p>
+      <p id="u1425-7">Salle <strong>chauffée et climatisée</strong> toute l'année pour votre confort. <strong>Air purifié et renouvelé en continu</strong> grâce à nos ioniseurs professionnels. Vestiaires modernes équipés et <strong>douches en libre accès</strong>. Un cadre propre, lumineux et entretenu quotidiennement pour votre bien-être.</p>
      </div>
     </div>
     <div class="colelem" id="u1555"><!-- simple frame --></div>
@@ -468,21 +466,30 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
       return wrapper;
     }
 
-    /* Étape 1 : photo musculation = hauteur exacte de la card Zone musculation
-       Muse utilise content-box partout. Pour ne pas modifier la largeur
-       (sinon le bento se desaligne), on garde content-box et on soustrait
-       les 2 paddings (40+40 = 80) du target. */
+    /* Muse utilise content-box partout. Pour ne pas modifier la largeur,
+       on garde content-box et on soustrait les 2 paddings (40+40 = 80). */
+    function syncH(target, sources){
+      var maxH = 0;
+      sources.forEach(function(id){
+        var el = document.getElementById(id);
+        if (el) maxH = Math.max(maxH, el.getBoundingClientRect().height);
+      });
+      if (maxH <= 0) return;
+      target.forEach(function(id){
+        var el = document.getElementById(id);
+        if (!el) return;
+        var contentH = maxH - 80;
+        el.style.height = contentH + 'px';
+        el.style.minHeight = contentH + 'px';
+      });
+    }
     function alignCardPhotoPairs(){
-      var card = document.getElementById('u1364-7');
-      var photo = document.getElementById('u1376-3');
-      if (!card || !photo) return;
-      var totalH = card.getBoundingClientRect().height;
-      if (totalH > 0) {
-        /* Conserve le box-sizing natif (content-box Muse) */
-        var contentH = totalH - 80;
-        photo.style.height = contentH + 'px';
-        photo.style.minHeight = contentH + 'px';
-      }
+      /* Étape 1 : photo musculation = hauteur de la card Zone musculation */
+      syncH(['u1376-3'], ['u1364-7']);
+
+      /* Étape 2 : Mills card + photo + Confort card → tous a la meme hauteur
+         (Confort enrichie pour matcher Mills naturellement) */
+      syncH(['u1440-9', 'u1476-3', 'u1425-13'], ['u1440-9', 'u1425-13']);
     }
 
     function setup(){
