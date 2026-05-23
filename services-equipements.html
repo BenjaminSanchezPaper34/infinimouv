@@ -129,7 +129,7 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
   <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=4252153324"/>
   <link rel="stylesheet" type="text/css" href="css/master_a-gabarit.css?crc=289251700"/>
   <link rel="stylesheet" type="text/css" href="css/services---equipements.css?crc=3989280417" id="pagesheet"/>
-  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=37"/>
+  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=38"/>
   <link rel="stylesheet" type="text/css" href="css/responsive.css?v=9"/>
 
  </head>
@@ -468,30 +468,9 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
       return wrapper;
     }
 
-    /* Aligne les hauteurs des paires card+photo cote-a-cote (pixel-perfect) */
-    function alignCardPhotoPairs(){
-      var pairs = [
-        ['u1364-7', 'u1376-3'],   // Zone musculation + photo
-        ['u1408-7', 'u1437-3'],   // Espace bike + photo
-        ['u1434-9', 'u1470-3'],   // Espace nutrition + photo
-        ['u1440-9', 'u1476-3'],   // Cours collectifs Les Mills + photo
-        ['u1425-13', 'u1479-3']   // Confort & bien-etre + photo
-      ];
-      pairs.forEach(function(p){
-        var card = document.getElementById(p[0]);
-        var photo = document.getElementById(p[1]);
-        if (!card || !photo) return;
-        /* getBoundingClientRect inclut le padding (box visible totale).
-           Force la photo en border-box pour qu une height de X donne la meme
-           hauteur visible (X), padding compris. */
-        var h = card.getBoundingClientRect().height;
-        if (h > 0) {
-          photo.style.boxSizing = 'border-box';
-          photo.style.height = h + 'px';
-          photo.style.minHeight = h + 'px';
-        }
-      });
-    }
+    /* Les hauteurs sont gerees par CSS Grid (stretch par defaut)
+       Plus besoin de JS pixel-perfect. Garde la fonction au cas ou. */
+    function alignCardPhotoPairs(){ /* no-op */ }
 
     function setup(){
       var sections = document.querySelectorAll('.im-section');
