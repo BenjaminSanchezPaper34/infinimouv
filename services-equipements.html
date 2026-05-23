@@ -468,28 +468,60 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
 
     /* Muse utilise content-box partout. Pour ne pas modifier la largeur,
        on garde content-box et on soustrait les 2 paddings (40+40 = 80). */
-    function syncH(target, sources){
-      var maxH = 0;
-      sources.forEach(function(id){
-        var el = document.getElementById(id);
-        if (el) maxH = Math.max(maxH, el.getBoundingClientRect().height);
-      });
-      if (maxH <= 0) return;
-      target.forEach(function(id){
-        var el = document.getElementById(id);
-        if (!el) return;
-        var contentH = maxH - 80;
-        el.style.height = contentH + 'px';
-        el.style.minHeight = contentH + 'px';
-      });
+    function setVisibleH(id, visibleH){
+      var el = document.getElementById(id);
+      if (!el || visibleH <= 0) return;
+      var contentH = visibleH - 80;
+      el.style.height = contentH + 'px';
+      el.style.minHeight = contentH + 'px';
+    }
+    function H(id){
+      var e = document.getElementById(id);
+      return e ? e.getBoundingClientRect().height : 0;
+    }
+    function bottomOf(id){
+      var e = document.getElementById(id);
+      if (!e) return 0;
+      var r = e.getBoundingClientRect();
+      return r.y + r.height;
+    }
+    function topOf(id){
+      var e = document.getElementById(id);
+      if (!e) return 0;
+      return e.getBoundingClientRect().y;
     }
     function alignCardPhotoPairs(){
       /* Étape 1 : photo musculation = hauteur de la card Zone musculation */
-      syncH(['u1376-3'], ['u1364-7']);
+      setVisibleH('u1376-3', H('u1364-7'));
 
-      /* Étape 2 : Mills card + photo + Confort card → tous a la meme hauteur
-         (Confort enrichie pour matcher Mills naturellement) */
-      syncH(['u1440-9', 'u1476-3', 'u1425-13'], ['u1440-9', 'u1425-13']);
+      /* Étape 2 : Row 2 (3 colonnes complexes) — comble le vide central
+         Col 1 = BIKE card + SERVICES photo (stack vertical)
+         Col 2 = BIKE photo (single tall)
+         Col 3 = NUTRI photo + NUTRITION card (stack vertical)
+         Target bottom = max des 3 cols. NUTRITION card est la plus longue.
+         On etire BIKE photo et SERVICES photo pour atteindre ce bottom. */
+      var col1Bot = bottomOf('u1479-3');  // services photo (deuxieme en col 1)
+      var col2Bot = bottomOf('u1437-3');  // bike photo (seul element col 2)
+      var col3Bot = bottomOf('u1434-9');  // nutrition card (deuxieme en col 3)
+      var targetBot = Math.max(col1Bot, col2Bot, col3Bot);
+
+      /* BIKE photo : top = 60, on etire jusqu au targetBot */
+      var bikePhotoNewH = targetBot - topOf('u1437-3');
+      setVisibleH('u1437-3', bikePhotoNewH);
+
+      /* SERVICES photo : top = 369, on etire jusqu au targetBot */
+      var servicesNewH = targetBot - topOf('u1479-3');
+      setVisibleH('u1479-3', servicesNewH);
+
+      /* NUTRI photo (col 3 haut) : on l etire pour matcher BIKE card hauteur
+         (sub-row du haut alignee) */
+      setVisibleH('u1470-3', H('u1408-7'));
+
+      /* Étape 3 : Mills card + photo + Confort card → tous a la meme hauteur */
+      var rowH = Math.max(H('u1440-9'), H('u1425-13'));
+      setVisibleH('u1440-9', rowH);
+      setVisibleH('u1425-13', rowH);
+      setVisibleH('u1476-3', rowH);
     }
 
     function setup(){
