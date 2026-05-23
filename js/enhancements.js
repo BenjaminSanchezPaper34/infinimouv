@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ------------------------------------------------------------------
      0. MOBILE : Déplacer la nav hors du conteneur Muse pour position:fixed
      ------------------------------------------------------------------ */
-  if (window.innerWidth <= 768) {
+  var isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (isMobile) {
     var navOriginal = document.querySelector('#u280-bw');
     if (navOriginal) {
       var navClone = navOriginal.cloneNode(true);
@@ -20,6 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
       navOriginal.classList.add('nav-moved');
     }
   }
+
+  /* MOBILE : pas de GSAP du tout — provoque scroll laggy ("aimant"),
+     blocs invisibles si ScrollTrigger calcule mal, parallax video saccadée.
+     Le rendu mobile reste élégant sans animations scrub. */
+  if (isMobile) return;
 
   /* Attendre que GSAP soit chargé */
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
