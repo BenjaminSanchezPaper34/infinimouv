@@ -481,8 +481,12 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
         var card = document.getElementById(p[0]);
         var photo = document.getElementById(p[1]);
         if (!card || !photo) return;
+        /* getBoundingClientRect inclut le padding (box visible totale).
+           Force la photo en border-box pour qu une height de X donne la meme
+           hauteur visible (X), padding compris. */
         var h = card.getBoundingClientRect().height;
         if (h > 0) {
+          photo.style.boxSizing = 'border-box';
           photo.style.height = h + 'px';
           photo.style.minHeight = h + 'px';
         }
