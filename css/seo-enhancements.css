@@ -1026,11 +1026,26 @@ span.gradient-text {
 .im-section--cours .im-container {
   text-align: center;
 }
+/* Annule les hacks Muse margin-right:-10000px qui font sortir du viewport */
+.im-section--cours #pu1549,
+.im-section--cours #u1549,
+.im-section--cours #u1549-bw,
+.im-section--cours #u1525,
+.im-section--cours #u1530-4,
+.im-section--cours #pu1615-21,
+.im-section--cours #u1615-21,
+.im-section--cours #u1627-16 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
 .im-section--cours #pu1549 {
   float: none !important;
   position: relative !important;
+  display: block !important;
   left: auto !important;
   width: 100% !important;
+  min-height: auto !important;
+  height: auto !important;
   margin: 0 auto 40px !important;
 }
 .im-section--cours #pu1549 > * {
@@ -1049,7 +1064,9 @@ span.gradient-text {
   position: relative !important;
   left: auto !important;
   top: auto !important;
-  margin: 0 auto 0 !important;
+  margin: 0 auto !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   text-align: center !important;
   width: 100% !important;
   display: block !important;
