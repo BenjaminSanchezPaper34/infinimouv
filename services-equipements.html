@@ -468,71 +468,8 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
       return wrapper;
     }
 
-    /* Bento pixel-perfect : cards = hauteur naturelle (texte), photos stretchent
-       pour aligner les bottoms de chaque rangee. */
-    function setHeight(el, h){
-      if (!el || !h || h<=0) return;
-      el.style.boxSizing = 'border-box';
-      el.style.height = h + 'px';
-      el.style.minHeight = h + 'px';
-    }
-    function naturalH(id){
-      var el = document.getElementById(id);
-      if (!el) return 0;
-      /* Reset any forced height pour lire la naturelle */
-      var savedH = el.style.height;
-      var savedMinH = el.style.minHeight;
-      el.style.height = '';
-      el.style.minHeight = '';
-      var h = el.getBoundingClientRect().height;
-      el.style.height = savedH;
-      el.style.minHeight = savedMinH;
-      return h;
-    }
-    function alignCardPhotoPairs(){
-      var gap = 38;
-
-      /* === ROW 1 : Zone musculation card + photo musculation ===
-         Photo s aligne sur la card */
-      var muscCardH = naturalH('u1364-7');
-      setHeight(document.getElementById('u1376-3'), muscCardH);
-
-      /* === ROW 2 : 3 colonnes complexes
-         Col 1 = BIKE card (haut) + SERVICES photo (bas)
-         Col 2 = BIKE photo (full height)
-         Col 3 = NUTRI photo (haut) + NUTRITION card (bas)
-
-         Cards gardent natural. Pour aligner les bottoms :
-         - Calc natural total par col (avec photos naturelles)
-         - Target = max
-         - Etire la PHOTO du col le plus court
-      */
-      var bikeCardH = naturalH('u1408-7');
-      var nutriCardH = naturalH('u1434-9');
-      var nutriPhotoNat = naturalH('u1470-3');
-      var servicesPhotoNat = naturalH('u1479-3');
-      var bikePhotoNat = naturalH('u1437-3');
-
-      var col1Nat = bikeCardH + gap + servicesPhotoNat;
-      var col2Nat = bikePhotoNat;
-      var col3Nat = nutriPhotoNat + gap + nutriCardH;
-      var target = Math.max(col1Nat, col2Nat, col3Nat);
-
-      /* Stretch photos uniquement pour atteindre le target */
-      setHeight(document.getElementById('u1479-3'), target - bikeCardH - gap); // SERVICES photo
-      setHeight(document.getElementById('u1437-3'), target);                    // BIKE photo
-      setHeight(document.getElementById('u1470-3'), target - nutriCardH - gap); // NUTRI photo
-
-      /* === ROW 3 : Mills card + Mills photo + Confort card
-         Cards (Mills et Confort) gardent leur natural, photo stretch */
-      var millsCardH = naturalH('u1440-9');
-      var confortCardH = naturalH('u1425-13');
-      var rowH = Math.max(millsCardH, confortCardH);
-      /* Cards : laisser naturelles, mais si elles different, aligner la plus courte */
-      setHeight(document.getElementById('u1440-9'), rowH);
-      setHeight(document.getElementById('u1425-13'), rowH);
-      setHeight(document.getElementById('u1476-3'), rowH);
-    }
+    /* Bento Muse natif : aucun override de hauteur sur les cards/photos */
+    function alignCardPhotoPairs(){ /* no-op */ }
 
     function setup(){
       var sections = document.querySelectorAll('.im-section');
