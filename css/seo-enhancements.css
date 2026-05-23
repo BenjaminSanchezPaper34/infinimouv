@@ -1102,9 +1102,14 @@ span.gradient-text {
   width: 100% !important;
   margin: 0 !important;
 }
-/* Reset des couleurs aléatoires Muse — passer en vert design system */
-.im-section--cours #u1615-21 p,
-.im-section--cours #u1627-16 p {
+/* Paragraphes descriptifs : T4 body design system (gris) */
+.im-section--cours #u1615-4,
+.im-section--cours #u1615-9,
+.im-section--cours #u1615-14,
+.im-section--cours #u1615-19,
+.im-section--cours #u1627-4,
+.im-section--cours #u1627-9,
+.im-section--cours #u1627-14 {
   font-family: var(--ff-body) !important;
   font-size: 19px !important;
   font-weight: 300 !important;
@@ -1112,7 +1117,8 @@ span.gradient-text {
   color: var(--text-muted) !important;
   margin: 0 0 8px 0 !important;
 }
-/* Titres de cours (CAF, YOGA, etc.) : en vert design system, bold */
+/* Titres de cours (CAF, YOGA, etc.) : on garde la typo Muse d origine
+   (Gotham bold italic + couleurs differenciantes). On ne reset PAS. */
 .im-section--cours #u1615-2,
 .im-section--cours #u1615-7,
 .im-section--cours #u1615-12,
@@ -1120,15 +1126,8 @@ span.gradient-text {
 .im-section--cours #u1627-2,
 .im-section--cours #u1627-7,
 .im-section--cours #u1627-12 {
-  font-weight: 700 !important;
-  color: var(--accent-green) !important;
-  -webkit-text-fill-color: var(--accent-green) !important;
-  font-size: 19px !important;
-  text-transform: uppercase !important;
   margin: 18px 0 6px 0 !important;
-  letter-spacing: 0 !important;
 }
-/* Le premier titre de chaque colonne sans margin-top */
 .im-section--cours #u1615-2,
 .im-section--cours #u1627-2 {
   margin-top: 0 !important;
