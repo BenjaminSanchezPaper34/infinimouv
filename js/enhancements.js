@@ -39,6 +39,72 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  /* ------------------------------------------------------------------
+     FAQ : animation douce ouverture/fermeture
+     <details> natif force display:none sur le contenu → on intercepte
+     le clic et on anime height + padding + opacity à la main.
+     ------------------------------------------------------------------ */
+  document.querySelectorAll('.im-faq-item').forEach(function (details) {
+    var summary = details.querySelector('summary');
+    var content = details.querySelector('p');
+    if (!summary || !content) return;
+
+    /* Reset propre quand fermé au load */
+    if (!details.hasAttribute('open')) {
+      content.style.height = '0';
+      content.style.opacity = '0';
+      content.style.paddingTop = '0';
+      content.style.paddingBottom = '0';
+    }
+
+    summary.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      if (details.hasAttribute('open')) {
+        /* FERMETURE : on lit la height actuelle puis on l'anime vers 0 */
+        var currentHeight = content.scrollHeight;
+        content.style.height = currentHeight + 'px';
+        // force reflow pour que le navigateur prenne en compte la height fixe
+        content.offsetHeight;
+        content.style.height = '0';
+        content.style.opacity = '0';
+        content.style.paddingTop = '0';
+        content.style.paddingBottom = '0';
+
+        var onClose = function (ev) {
+          if (ev.propertyName !== 'height') return;
+          details.removeAttribute('open');
+          content.removeEventListener('transitionend', onClose);
+        };
+        content.addEventListener('transitionend', onClose);
+      } else {
+        /* OUVERTURE : on ouvre puis on anime de 0 -> scrollHeight */
+        details.setAttribute('open', '');
+        content.style.height = '0';
+        content.style.opacity = '0';
+        content.style.paddingTop = '0';
+        content.style.paddingBottom = '0';
+
+        // Forcer reflow puis animer
+        requestAnimationFrame(function () {
+          content.style.height = content.scrollHeight + 'px';
+          content.style.opacity = '1';
+          content.style.paddingTop = '';
+          content.style.paddingBottom = '';
+        });
+
+        var onOpen = function (ev) {
+          if (ev.propertyName !== 'height') return;
+          /* Une fois ouvert, on retire la height fixe pour permettre
+             le reflow naturel (texte dynamique, resize, etc.) */
+          content.style.height = '';
+          content.removeEventListener('transitionend', onOpen);
+        };
+        content.addEventListener('transitionend', onOpen);
+      }
+    });
+  });
+
   /* GSAP COMPLÈTEMENT DÉSACTIVÉ pour l'instant.
      Les `gsap.from()` initialisaient opacity:0 et certaines cards ne se
      re-affichaient pas si ScrollTrigger calcule mal (transforms Muse).

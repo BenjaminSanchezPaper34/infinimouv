@@ -533,7 +533,7 @@ a.seo-tel-link:hover {
 /* Section FAQ — accordéon natif <details>/<summary> version light */
 .im-section--faq .im-faq-list {
   max-width: 880px;
-  margin-top: 24px;
+  margin: 24px auto 0;  /* centré dans .im-container */
   text-align: left;
 }
 .im-faq-item {
@@ -595,6 +595,16 @@ a.seo-tel-link:hover {
   font-size: 15px;
   line-height: 1.65;
   color: #2c2c2c;
+  /* Animation : height/padding/opacity géré par JS via toggle event */
+  overflow: hidden;
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease,
+              padding-top 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              padding-bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Icône +/- avec rotation douce */
+.im-faq-item summary::before {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), content 0.2s;
 }
 .im-faq-item p strong {
   color: #006935;
