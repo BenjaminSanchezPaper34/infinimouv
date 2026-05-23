@@ -939,25 +939,22 @@ span.gradient-text {
    SERVICES : liste verticale en quinconce avec emojis animés
    ========================================================================= */
 
-/* Quinconce — alterner gauche / droite sur les 7 mots */
+/* Quinconce : texte centré, emojis alternent côté gauche/droite du mot.
+   On utilise flexbox sur le conteneur + flex order sur l'emoji pour les
+   éléments "pairs" (CARDIO, COACHING, CROSS TRAINING) où l'emoji passe après. */
 #u728, #u740, #u682, #u694, #u647, #u627, #u560 {
-  text-align: left !important;
-  padding-left: 12% !important;
-  padding-right: 12% !important;
-  transition: padding 0.3s ease;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
 }
-#u740, #u694, #u627 {
-  /* CARDIO, COACHING, CROSS TRAINING : alignés à droite */
-  text-align: right !important;
-}
-
-/* Mobile : tout centré pour rester lisible sur petite largeur */
-@media (max-width: 768px) {
-  #u728, #u740, #u682, #u694, #u647, #u627, #u560 {
-    text-align: center !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+/* Items "pairs" : emoji à droite du texte */
+#u740 .service-emoji,
+#u694 .service-emoji,
+#u627 .service-emoji {
+  order: 2;
+  margin-right: 0;
+  margin-left: 0.35em;
 }
 
 /* Emojis devant les 7 mots services.
