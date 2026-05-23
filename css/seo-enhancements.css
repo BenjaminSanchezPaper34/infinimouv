@@ -1021,6 +1021,100 @@ span.gradient-text {
 
 
 /* =========================================================================
+   ÉQUIPE — Grid de 3 cards membres (Cyril, Magalie, Thomas)
+   ========================================================================= */
+.im-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.im-team-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 32px 28px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.im-team-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(157, 216, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 105, 53, 0.12);
+}
+.im-team-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto 22px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #9DD800 0%, #006935 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 28px rgba(0, 105, 53, 0.2);
+}
+.im-team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.im-team-photo-placeholder {
+  font-family: var(--ff-display);
+  font-size: 52px;
+  font-weight: 500;
+  font-style: italic;
+  color: #ffffff;
+  letter-spacing: -2px;
+}
+.im-team-name {
+  /* T2 card title large : 22px 700 uppercase */
+  font-family: var(--ff-body);
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.im-team-role {
+  font-family: var(--ff-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-green);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 18px 0;
+}
+.im-team-bio {
+  /* T4 body : 19px 300 #7f7f7f lh 25px */
+  font-family: var(--ff-body);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .im-team-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .im-team-card {
+    padding: 28px 24px;
+  }
+}
+
+
+/* =========================================================================
    IM-SECTION COURS COLLECTIFS — bloc Muse déplacé via JS
    ========================================================================= */
 .im-section--cours .im-container {
