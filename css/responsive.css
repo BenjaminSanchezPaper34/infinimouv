@@ -31,9 +31,12 @@
    ====================================================================== */
 @media screen and (max-width: 768px) {
 
-  /* Fond sombre global (le contenu Muse est prévu sur fond noir) */
+  /* Fond blanc global — cohérence avec le design Muse white-first */
   #page {
-    background: #1D1D1F !important;
+    background: #ffffff !important;
+  }
+  body {
+    background: #ffffff !important;
   }
 
   /* --- #ptarifs : ancres invisibles, ne doit pas occuper d'espace --- */
@@ -122,9 +125,9 @@
     display: none !important;
   }
 
-  /* Espace pour compenser la nav fixe */
+  /* Espace pour compenser la nav fixe — réduit grâce à la nav 2 rows compacte */
   #page {
-    padding-top: 130px !important;
+    padding-top: 110px !important;
   }
 
   /* --- Align-to-page wrappers --- */
@@ -382,7 +385,8 @@
 
   #ppu1306 {
     float: none !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     clear: both !important;
     width: 100% !important;
     padding: 0 16px !important;
@@ -391,6 +395,7 @@
     left: auto !important;
     height: auto !important;
     min-height: auto !important;
+    gap: 16px !important;
   }
 
   /* Enfants de #ppu1306 — neutraliser le positionnement Muse */
@@ -400,8 +405,8 @@
     top: auto !important;
     float: none !important;
     display: block !important;
-    clear: both !important;
-    margin-top: 16px !important;
+    clear: none !important;
+    margin-top: 0 !important;
     margin-left: 0 !important;
     width: 100% !important;
   }
@@ -409,7 +414,7 @@
   /* Card gradient décorative — masquer */
   #u1797 { display: none !important; }
 
-  /* Card abonnement — fond sombre car le gradient est masqué sur mobile */
+  /* Card L'ABONNEMENT — ordre 1 (flex order), gradient vert */
   #u1750-26 {
     float: none !important;
     display: block !important;
@@ -418,11 +423,12 @@
     position: relative !important;
     left: auto !important;
     top: auto !important;
-    padding: 24px 20px !important;
+    padding: 28px 24px !important;
     box-sizing: border-box !important;
     background: linear-gradient(135deg, #9DD800 0%, #006935 100%) !important;
     border-radius: 20px !important;
     color: #fff !important;
+    order: 1 !important;
   }
 
   #u1750-26 p {
@@ -430,13 +436,15 @@
     -webkit-text-fill-color: #fff !important;
   }
 
-  /* Card options */
+  /* Card LES OPTIONS — ordre 2, fond BLANC avec bordure (cohérence design Muse) */
   #pu1306 {
     float: none !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     width: 100% !important;
     position: relative !important;
     left: auto !important;
+    order: 2 !important;
   }
 
   #u1306 { width: 100% !important; }
@@ -448,13 +456,23 @@
     top: auto !important;
     height: auto !important;
     min-height: auto !important;
-    background: #1D1D1F !important;
+    background: #ffffff !important;
+    border: 1px solid #e8e8e8 !important;
     border-radius: 20px !important;
   }
 
+  /* Texte des options en COULEUR SOMBRE (sur fond blanc) */
+  #u1290-20, #u1296-16 {
+    color: #2c2c2c !important;
+  }
   #u1290-20 p, #u1296-16 p {
-    color: #fff !important;
-    -webkit-text-fill-color: #fff !important;
+    color: #2c2c2c !important;
+    -webkit-text-fill-color: #2c2c2c !important;
+  }
+  #u1290-20 p[id="u1290-2"], #u1296-16 p[id="u1296-2"] {
+    color: #006935 !important;
+    -webkit-text-fill-color: #006935 !important;
+    font-weight: 700 !important;
   }
 
   #u1290-20, #u1296-16 {

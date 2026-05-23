@@ -636,37 +636,74 @@ a.seo-tel-link:hover {
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+/* ===== Tablette (≤900px) — feature grid en 2 colonnes ===== */
+@media (max-width: 900px) {
+  .im-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+/* ===== Mobile (≤640px) — feature grid en 1 colonne ===== */
+@media (max-width: 640px) {
   .im-section {
-    padding: 60px 18px;
+    padding: 56px 16px;
   }
-  .im-eyebrow {
-    font-size: 11px;
-    padding: 5px 12px;
-    letter-spacing: 1.5px;
+  .im-title-muse {
+    font-size: clamp(26px, 8vw, 36px) !important;
+    letter-spacing: 0.5px !important;
+    margin: 0 0 24px 0 !important;
   }
-  .im-list-arrows {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .im-intro {
+    font-size: 15.5px;
+    margin: 0 0 28px 0;
   }
   .im-feature-grid {
     grid-template-columns: 1fr;
     gap: 14px;
   }
   .im-feature-card {
-    padding: 22px 20px;
+    padding: 24px 22px;
   }
-  .im-story-card {
-    padding: 28px 22px;
-  }
-  .im-story-card::before {
-    left: 22px;
-  }
-  .im-intro {
+  .im-feature-card h3 {
     font-size: 16px;
   }
-  .im-section--story .im-story-text {
-    font-size: 15.5px;
+  .im-feature-card p {
+    font-size: 14.5px;
+  }
+  .im-feature-icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 16px;
+  }
+  /* Card verte (L'ÉQUIPE / YANGA) */
+  .im-card--green, .im-card--white {
+    padding: 32px 24px;
+    border-radius: 18px;
+  }
+  .im-card--green .im-card-title {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+  .im-card--green .im-card-text {
+    font-size: 15px;
+  }
+  /* CTA mobile */
+  .im-cta {
+    padding: 14px 28px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  /* Liste arrows mobile */
+  .im-list-arrows {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .im-list-arrows li {
+    font-size: 15px;
+    padding-left: 28px;
   }
 }
 
