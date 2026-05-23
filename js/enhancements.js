@@ -117,12 +117,58 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* GSAP COMPLÈTEMENT DÉSACTIVÉ pour l'instant.
-     Les `gsap.from()` initialisaient opacity:0 et certaines cards ne se
-     re-affichaient pas si ScrollTrigger calcule mal (transforms Muse).
-     Resultat : cards semi-transparentes ou invisibles.
-     A ré-activer plus tard quand le design est figé. */
-  return;
+  /* ------------------------------------------------------------------
+     REVEAL AU SCROLL — IntersectionObserver léger, pas de GSAP
+     Plus fiable que les gsap.from() qui restaient bloqués à opacity:0
+     quand ScrollTrigger se calcule mal sur le layout Muse complexe.
+     ------------------------------------------------------------------ */
+  if (!('IntersectionObserver' in window) || isMobile) {
+    /* Pas de reveal sur mobile (privilégie scroll fluide) ni si IO non supporté */
+    return;
+  }
+
+  /* Marqueur de cibles : sections im-* + 7 mots services + cards Muse */
+  var revealTargets = document.querySelectorAll(
+    '.im-section, ' +
+    '#u728, #u740, #u682, #u694, #u647, #u627, #u560, ' +  // 7 services
+    '#u1750-26, ' +     // L'ABONNEMENT card verte
+    '#u1287-3, ' +      // LES OPTIONS card blanche
+    '#u429-9, #u478-9, #u484-7, ' +  // 3 avantages cards
+    '.im-feature-card, .im-faq-item, .im-adv-text'
+  );
+
+  revealTargets.forEach(function (el) {
+    el.classList.add('im-reveal', 'im-reveal-hidden');
+  });
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('im-reveal-hidden');
+        entry.target.classList.add('im-reveal-in');
+        io.unobserve(entry.target);  // one-shot, ne re-cache pas au scroll up
+      }
+    });
+  }, {
+    rootMargin: '0px 0px -8% 0px',
+    threshold: 0.05
+  });
+
+  revealTargets.forEach(function (el) { io.observe(el); });
+
+  /* Failsafe : si pour une raison X un élément reste hidden après 2s, on le révèle */
+  setTimeout(function () {
+    document.querySelectorAll('.im-reveal-hidden').forEach(function (el) {
+      el.classList.remove('im-reveal-hidden');
+      el.classList.add('im-reveal-in');
+    });
+  }, 2000);
+
+  /* Stagger pour les groupes d'items (services en cascade) */
+  var serviceItems = document.querySelectorAll('#u728, #u740, #u682, #u694, #u647, #u627, #u560');
+  serviceItems.forEach(function (el, i) {
+    el.style.setProperty('--reveal-delay', (i * 80) + 'ms');
+  });
 
 
   /* ------------------------------------------------------------------
