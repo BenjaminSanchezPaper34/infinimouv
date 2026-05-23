@@ -129,7 +129,7 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
   <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=4252153324"/>
   <link rel="stylesheet" type="text/css" href="css/master_a-gabarit.css?crc=289251700"/>
   <link rel="stylesheet" type="text/css" href="css/services---equipements.css?crc=3989280417" id="pagesheet"/>
-  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=38"/>
+  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=39"/>
   <link rel="stylesheet" type="text/css" href="css/responsive.css?v=9"/>
 
  </head>
@@ -468,9 +468,23 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
       return wrapper;
     }
 
-    /* Les hauteurs sont gerees par CSS Grid (stretch par defaut)
-       Plus besoin de JS pixel-perfect. Garde la fonction au cas ou. */
-    function alignCardPhotoPairs(){ /* no-op */ }
+    /* Aligne la hauteur de la photo sur celle de la card (pixel-perfect) */
+    function alignCardPhotoPairs(){
+      var pairs = [
+        ['u1364-7', 'u1376-3']   // Zone musculation + photo (validé)
+      ];
+      pairs.forEach(function(p){
+        var card = document.getElementById(p[0]);
+        var photo = document.getElementById(p[1]);
+        if (!card || !photo) return;
+        var h = card.getBoundingClientRect().height;
+        if (h > 0) {
+          photo.style.boxSizing = 'border-box';
+          photo.style.height = h + 'px';
+          photo.style.minHeight = h + 'px';
+        }
+      });
+    }
 
     function setup(){
       var sections = document.querySelectorAll('.im-section');
