@@ -1,4 +1,37 @@
 /* ==========================================================================
+   DESIGN SYSTEM — 5 tokens typographiques cohérents avec Muse
+   ==========================================================================
+   T1 — Section title    : __Gotham_5 (Ultra Italic) | 60px | 500 | italic | uppercase
+                           gradient vert OU couleur sombre
+   T2 — Card title large : __SF Pro Display_5        | 22px | 700 | normal  | uppercase
+                           cards principales (L'ABONNEMENT, DES COACHS...)
+   T3 — Mini title       : __SF Pro Display_5        | 17px | 700 | normal  | uppercase
+                           items de liste, questions FAQ
+   T4 — Body             : __SF Pro Display_5        | 16px | 300 | normal
+                           paragraphes courants, descriptions, intros
+   T5 — Caption          : __SF Pro Display_5        | 13px | 300 | normal
+                           mentions, légales, petits prints
+
+   Couleurs :
+   - Texte principal sombre   : #1D1D1F
+   - Texte secondaire gris    : #6a6a6a
+   - Accent vert principal    : #006935
+   - Accent vert clair        : #9DD800
+   - Border subtile           : #e8e8e8
+   ========================================================================== */
+:root {
+  --ff-display: '__Gotham_5', 'Gotham Ultra', sans-serif;
+  --ff-body: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --text-dark: #1D1D1F;
+  --text-muted: #6a6a6a;
+  --accent-green: #006935;
+  --accent-lime: #9DD800;
+  --border-subtle: #e8e8e8;
+}
+
+
+/* ==========================================================================
    SEO ENHANCEMENTS — Couche par-dessus le CSS Muse
    Ne modifie AUCUN rendu desktop, ajoute uniquement :
    - Reset des éléments sémantiques HTML5
@@ -170,12 +203,11 @@ a.seo-tel-link:hover {
   text-align: left;
 }
 
-/* Titre style Muse — reproduit "NOTRE OFFRE" IDENTIQUE
-   Utilise __Gotham_5 (Gotham Ultra Italic) déjà chargé par Muse via @font-face */
+/* T1 — Titre section (NOTRE OFFRE style) */
 .im-title-muse {
-  font-family: '__Gotham_5', 'Gotham Ultra', 'Gotham', sans-serif;
+  font-family: var(--ff-display);
   font-size: clamp(36px, 6vw, 60px);
-  font-weight: 500;  /* Le fichier woff est weight 500 dans Muse */
+  font-weight: 500;
   font-style: italic;
   text-transform: uppercase;
   letter-spacing: 0;
@@ -247,20 +279,22 @@ a.seo-tel-link:hover {
   color: #ffffff;
 }
 
-/* Intro */
+/* T4 — Body / intro */
 .im-intro {
-  font-size: 18px;
+  font-family: var(--ff-body);
+  font-size: 16px;
+  font-weight: 300;
   margin: 0 0 40px 0;
-  line-height: 1.55;
-  opacity: 0.92;
+  line-height: 1.65;
+  color: var(--text-muted);
   max-width: 760px;
 }
 .im-intro--dark {
-  color: #4a4a52;
-  opacity: 1;
+  color: var(--text-muted);
 }
 .im-intro--dark strong {
-  color: #1D1D1F;
+  color: var(--text-dark);
+  font-weight: 700;
 }
 
 .im-text-light {
@@ -283,8 +317,12 @@ a.seo-tel-link:hover {
 .im-list-arrows li {
   position: relative;
   padding-left: 32px;
+  /* T4 — Body */
+  font-family: var(--ff-body);
   font-size: 16px;
-  line-height: 1.5;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--text-muted);
 }
 
 .im-list-arrows li::before {
@@ -337,8 +375,11 @@ a.seo-tel-link:hover {
   position: relative;
   padding-left: 30px;
   margin-bottom: 10px;
+  /* T4 — Body */
+  font-family: var(--ff-body);
   font-size: 16px;
-  line-height: 1.5;
+  font-weight: 300;
+  line-height: 1.55;
 }
 
 .im-list-checks li::before {
@@ -355,16 +396,17 @@ a.seo-tel-link:hover {
 .im-cta {
   display: inline-block;
   background: #ffffff;
-  color: #006935;
+  color: var(--accent-green);
   padding: 16px 36px;
   border-radius: 999px;
-  font-family: '__Gotham_5', 'Gotham Ultra', 'Gotham', sans-serif;
+  /* CTA utilise Gotham Italic comme les boutons nav Muse */
+  font-family: var(--ff-display);
   font-weight: 500;
   font-style: italic;
   font-size: 15px;
   text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.5px;
+  letter-spacing: 0;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
   border: 2px solid transparent;
   box-shadow: 0 8px 24px rgba(0,0,0,0.22);
@@ -431,21 +473,23 @@ a.seo-tel-link:hover {
   height: 18px;
 }
 .im-adv-text h3 {
-  font-family: '__SF Pro Display_5', 'SF Pro Display', sans-serif;
-  font-size: 16px;
+  /* T3 — Mini title */
+  font-family: var(--ff-body);
+  font-size: 17px;
   font-weight: 700;
-  margin: 0 0 4px 0;
-  color: #1D1D1F;
+  margin: 0 0 6px 0;
+  color: var(--text-dark);
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0;
   line-height: 1.25;
 }
 .im-adv-text p {
-  font-family: '__SF Pro Display_5', 'SF Pro Display', sans-serif;
-  font-size: 14.5px;
+  /* T4 — Body */
+  font-family: var(--ff-body);
+  font-size: 16px;
   font-weight: 300;
-  line-height: 1.5;
-  color: #6a6a6a;
+  line-height: 1.55;
+  color: var(--text-muted);
   margin: 0;
 }
 
@@ -558,17 +602,20 @@ a.seo-tel-link:hover {
   z-index: 1;
 }
 .im-card--green .im-card-title {
-  font-family: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 26px;
+  /* T2 — Card title large */
+  font-family: var(--ff-body);
+  font-size: 22px;
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
   letter-spacing: 0;
   color: #ffffff;
   margin: 0 0 18px 0;
+  line-height: 1.2;
 }
 .im-card--green .im-card-text {
-  font-family: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* T4 — Body */
+  font-family: var(--ff-body);
   font-weight: 300;
   font-size: 16px;
   line-height: 1.65;
@@ -591,14 +638,16 @@ a.seo-tel-link:hover {
   margin: 24px auto 0;
 }
 .im-card--white .im-card-title {
-  font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* T2 — Card title large */
+  font-family: var(--ff-body);
   font-size: 22px;
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #006935;
+  letter-spacing: 0;
+  color: var(--accent-green);
   margin: 0 0 18px 0;
+  line-height: 1.2;
 }
 
 @media (max-width: 768px) {
@@ -660,10 +709,11 @@ a.seo-tel-link:hover {
 .im-faq-item summary {
   cursor: pointer;
   padding: 20px 24px 20px 60px;
-  font-family: '__SF Pro Display_5', 'SF Pro Display', sans-serif;
-  font-size: 16px;
+  /* T3 — Mini title (sentence case pour lisibilité des questions) */
+  font-family: var(--ff-body);
+  font-size: 17px;
   font-weight: 700;
-  color: #1D1D1F;
+  color: var(--text-dark);
   list-style: none;
   position: relative;
   user-select: none;
@@ -695,11 +745,12 @@ a.seo-tel-link:hover {
 .im-faq-item p {
   margin: 0;
   padding: 0 24px 22px 60px;
-  font-family: '__SF Pro Display_5', 'SF Pro Display', sans-serif;
+  /* T4 — Body */
+  font-family: var(--ff-body);
   font-weight: 300;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.65;
-  color: #2c2c2c;
+  color: var(--text-muted);
   /* Animation : height/padding/opacity géré par JS via toggle event */
   overflow: hidden;
   transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
@@ -712,7 +763,7 @@ a.seo-tel-link:hover {
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), content 0.2s;
 }
 .im-faq-item p strong {
-  color: #006935;
+  color: var(--text-dark);
   font-weight: 700;
 }
 
