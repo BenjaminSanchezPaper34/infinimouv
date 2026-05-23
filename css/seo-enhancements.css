@@ -1021,6 +1021,141 @@ span.gradient-text {
 
 
 /* =========================================================================
+   IM-SECTION COURS COLLECTIFS — bloc Muse déplacé via JS
+   ========================================================================= */
+.im-section--cours .im-container {
+  text-align: center;
+}
+.im-section--cours #pu1549 {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  width: 100% !important;
+  margin: 0 auto 40px !important;
+}
+.im-section--cours #pu1549 > * {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+}
+/* Masque l image de fond Muse qui ne sert plus dans ce contexte */
+.im-section--cours #u1549,
+.im-section--cours #u1549-bw {
+  display: none !important;
+}
+.im-section--cours #u1525 {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0 auto 0 !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+}
+.im-section--cours #u1525 .gradient-text {
+  font-size: clamp(36px, 6vw, 60px) !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+  text-transform: uppercase !important;
+  line-height: 1.15 !important;
+}
+.im-section--cours #u1530-4 {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  width: 100% !important;
+  max-width: 760px !important;
+  margin: 0 auto 40px !important;
+  text-align: center !important;
+}
+.im-section--cours #u1530-4 p {
+  font-family: var(--ff-body) !important;
+  font-size: 19px !important;
+  font-weight: 300 !important;
+  line-height: 25px !important;
+  color: var(--text-muted) !important;
+}
+.im-section--cours #u1530-4 p strong {
+  color: var(--text-dark) !important;
+  font-weight: 700 !important;
+}
+.im-section--cours #pu1615-21 {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 32px 48px !important;
+  width: 100% !important;
+  max-width: 1080px !important;
+  margin: 0 auto !important;
+  text-align: left !important;
+}
+.im-section--cours #u1615-21,
+.im-section--cours #u1627-16 {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+/* Reset des couleurs aléatoires Muse — passer en vert design system */
+.im-section--cours #u1615-21 p,
+.im-section--cours #u1627-16 p {
+  font-family: var(--ff-body) !important;
+  font-size: 19px !important;
+  font-weight: 300 !important;
+  line-height: 25px !important;
+  color: var(--text-muted) !important;
+  margin: 0 0 8px 0 !important;
+}
+/* Titres de cours (CAF, YOGA, etc.) : en vert design system, bold */
+.im-section--cours #u1615-2,
+.im-section--cours #u1615-7,
+.im-section--cours #u1615-12,
+.im-section--cours #u1615-17,
+.im-section--cours #u1627-2,
+.im-section--cours #u1627-7,
+.im-section--cours #u1627-12 {
+  font-weight: 700 !important;
+  color: var(--accent-green) !important;
+  -webkit-text-fill-color: var(--accent-green) !important;
+  font-size: 19px !important;
+  text-transform: uppercase !important;
+  margin: 18px 0 6px 0 !important;
+  letter-spacing: 0 !important;
+}
+/* Le premier titre de chaque colonne sans margin-top */
+.im-section--cours #u1615-2,
+.im-section--cours #u1627-2 {
+  margin-top: 0 !important;
+}
+/* Strong dans descriptions */
+.im-section--cours #u1615-21 strong,
+.im-section--cours #u1627-16 strong {
+  color: var(--text-dark) !important;
+  font-weight: 700 !important;
+}
+/* Espaces vides Muse (separateurs &nbsp;) — masquer */
+.im-section--cours #u1615-5,
+.im-section--cours #u1615-10,
+.im-section--cours #u1615-15,
+.im-section--cours #u1627-5,
+.im-section--cours #u1627-10 {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .im-section--cours #pu1615-21 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* =========================================================================
    IM-SECTION PLANNING + APP — bloc Muse déplacé via JS dans son propre container
    ========================================================================= */
 .im-section--planning .im-container {
@@ -1126,21 +1261,48 @@ span.gradient-text {
   margin: 18px 0 !important;
   position: relative !important;
   left: auto !important;
+  top: auto !important;
+  float: none !important;
+  clear: both !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: auto !important;
 }
-.im-section--planning #u1754,
 .im-section--planning #u1713 {
   position: relative !important;
   left: auto !important;
   top: auto !important;
   float: none !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+.im-section--planning #u1710-4 {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  float: none !important;
+  margin: 0 !important;
+  width: auto !important;
+}
+.im-section--planning #u1710-4 p {
+  font-family: var(--ff-body) !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--text-dark) !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
 }
 .im-section--planning #u1688-9 {
   position: relative !important;
   left: auto !important;
   top: auto !important;
-  width: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: auto !important;
   margin: 18px 0 !important;
   float: none !important;
+  clear: both !important;
 }
 .im-section--planning #u1688-9 p {
   font-family: var(--ff-body);

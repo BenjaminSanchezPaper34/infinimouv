@@ -129,7 +129,7 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
   <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=4252153324"/>
   <link rel="stylesheet" type="text/css" href="css/master_a-gabarit.css?crc=289251700"/>
   <link rel="stylesheet" type="text/css" href="css/services---equipements.css?crc=3989280417" id="pagesheet"/>
-  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=33"/>
+  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=34"/>
   <link rel="stylesheet" type="text/css" href="css/responsive.css?v=9"/>
 
  </head>
@@ -454,29 +454,42 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
   <!-- im-section full-bleed offset compensation + déplacement bloc planning/app -->
   <script>
   (function(){
-    function setup(){
-      /* 1. Déplacer le bloc Planning + App tout en bas, après les im-sections.
-         On le sort de main vers #page pour qu il flow après les sections. */
-      var planningIds = ['u1767', 'u1723', 'u1522', 'pu1656'];
-      var blocks = planningIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
-      if (blocks.length) {
-        var lastSection = document.querySelectorAll('.im-section');
-        var anchor = lastSection[lastSection.length - 1];
-        if (anchor) {
-          var wrapper = document.createElement('div');
-          wrapper.className = 'im-section im-section--light im-section--planning';
-          wrapper.setAttribute('aria-label', 'Planning et application mobile');
-          var inner = document.createElement('div');
-          inner.className = 'im-container';
-          wrapper.appendChild(inner);
-          /* On insère le wrapper après la dernière im-section */
-          anchor.parentNode.insertBefore(wrapper, anchor.nextSibling);
-          /* Puis on déplace les blocs Muse à l intérieur du container */
-          blocks.forEach(function(el){ inner.appendChild(el); });
-        }
-      }
+    function moveToWrapper(ids, sectionClass, ariaLabel, insertAfter){
+      var blocks = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+      if (!blocks.length || !insertAfter) return null;
+      var wrapper = document.createElement('div');
+      wrapper.className = 'im-section im-section--light ' + sectionClass;
+      if (ariaLabel) wrapper.setAttribute('aria-label', ariaLabel);
+      var inner = document.createElement('div');
+      inner.className = 'im-container';
+      wrapper.appendChild(inner);
+      insertAfter.parentNode.insertBefore(wrapper, insertAfter.nextSibling);
+      blocks.forEach(function(el){ inner.appendChild(el); });
+      return wrapper;
+    }
 
-      /* 2. Compensation de l offset parent pour le full-bleed des im-section */
+    function setup(){
+      var sections = document.querySelectorAll('.im-section');
+      var anchor = sections[sections.length - 1];
+      if (!anchor) return;
+
+      /* 1. Déplacer Cours Collectifs (titre + intro + 2 colonnes courses) après les im-sections */
+      var coursWrapper = moveToWrapper(
+        ['pu1549', 'u1530-4', 'pu1615-21'],
+        'im-section--cours',
+        'Cours collectifs',
+        anchor
+      );
+
+      /* 2. Déplacer Planning + App (tout en bas, après Cours Collectifs) */
+      var planningWrapper = moveToWrapper(
+        ['u1767', 'u1723', 'u1522', 'pu1656'],
+        'im-section--planning',
+        'Planning et application mobile',
+        coursWrapper || anchor
+      );
+
+      /* 3. Compensation de l offset parent pour le full-bleed des im-section */
       document.querySelectorAll('.im-section').forEach(function(sec){
         var x = sec.parentElement.getBoundingClientRect().left;
         sec.style.setProperty('--im-parent-x', x + 'px');
