@@ -468,6 +468,27 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
       return wrapper;
     }
 
+    /* Aligne les hauteurs des paires card+photo cote-a-cote (pixel-perfect) */
+    function alignCardPhotoPairs(){
+      var pairs = [
+        ['u1364-7', 'u1376-3'],   // Zone musculation + photo
+        ['u1408-7', 'u1437-3'],   // Espace bike + photo
+        ['u1434-9', 'u1470-3'],   // Espace nutrition + photo
+        ['u1440-9', 'u1476-3'],   // Cours collectifs Les Mills + photo
+        ['u1425-13', 'u1479-3']   // Confort & bien-etre + photo
+      ];
+      pairs.forEach(function(p){
+        var card = document.getElementById(p[0]);
+        var photo = document.getElementById(p[1]);
+        if (!card || !photo) return;
+        var h = card.getBoundingClientRect().height;
+        if (h > 0) {
+          photo.style.height = h + 'px';
+          photo.style.minHeight = h + 'px';
+        }
+      });
+    }
+
     function setup(){
       var sections = document.querySelectorAll('.im-section');
       var anchor = sections[sections.length - 1];
@@ -494,24 +515,24 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
         var x = sec.parentElement.getBoundingClientRect().left;
         sec.style.setProperty('--im-parent-x', x + 'px');
       });
+
+      /* 4. Pixel-perfect : photos = hauteur de leurs cards */
+      alignCardPhotoPairs();
+    }
+    function updateAll(){
+      document.querySelectorAll('.im-section').forEach(function(sec){
+        var x = sec.parentElement.getBoundingClientRect().left;
+        sec.style.setProperty('--im-parent-x', x + 'px');
+      });
+      alignCardPhotoPairs();
     }
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', setup);
     } else {
       setup();
     }
-    window.addEventListener('resize', function(){
-      document.querySelectorAll('.im-section').forEach(function(sec){
-        var x = sec.parentElement.getBoundingClientRect().left;
-        sec.style.setProperty('--im-parent-x', x + 'px');
-      });
-    });
-    window.addEventListener('load', function(){
-      document.querySelectorAll('.im-section').forEach(function(sec){
-        var x = sec.parentElement.getBoundingClientRect().left;
-        sec.style.setProperty('--im-parent-x', x + 'px');
-      });
-    });
+    window.addEventListener('resize', updateAll);
+    window.addEventListener('load', updateAll);
   })();
   </script>
 
