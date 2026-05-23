@@ -9,6 +9,21 @@
       "source": "/services---equipements",
       "destination": "/services-equipements.html",
       "statusCode": 301
+    },
+    {
+      "source": "/fr/inscription-salle-de-sport",
+      "destination": "/#tarifs",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/inscription-salle-de-sport/",
+      "destination": "/#tarifs",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/(.*)",
+      "destination": "/",
+      "statusCode": 301
     }
   ],
   "headers": [
