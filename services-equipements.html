@@ -468,8 +468,18 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
       return wrapper;
     }
 
-    /* Bento Muse natif : aucun override de hauteur sur les cards/photos */
-    function alignCardPhotoPairs(){ /* no-op */ }
+    /* Étape 1 : photo musculation = hauteur exacte de la card Zone musculation */
+    function alignCardPhotoPairs(){
+      var card = document.getElementById('u1364-7');
+      var photo = document.getElementById('u1376-3');
+      if (!card || !photo) return;
+      var h = card.getBoundingClientRect().height;
+      if (h > 0) {
+        photo.style.boxSizing = 'border-box';
+        photo.style.height = h + 'px';
+        photo.style.minHeight = h + 'px';
+      }
+    }
 
     function setup(){
       var sections = document.querySelectorAll('.im-section');
