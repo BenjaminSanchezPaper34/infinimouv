@@ -255,29 +255,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ==================================================================
-     7. POPUP PROMO MODERNE
-     Remplace le PamphletWidget Muse.
-     - Apparaît 1.5s après le chargement
-     - Backdrop blur + scale animation
-     - Fermeture : bouton X, clic sur backdrop, touche Escape
-     - sessionStorage pour ne montrer qu'une fois par session
+     7. POPUP PROMO — DÉSACTIVÉ (offre Summer Body expirée le 23/05/2026)
+     Pour réactiver une nouvelle promo :
+     1. Décommenter le bloc ci-dessous
+     2. Remplacer l'image src par la nouvelle créa
+     3. Changer le suffixe de PROMO_KEY pour forcer un nouvel affichage
      ================================================================== */
-
-  /* Vérifier si déjà vu cette session.
-     Clé versionnée : changer le suffixe (ex: 'v2', 'v3'...) à chaque
-     nouvelle promo pour forcer tous les visiteurs à revoir le popup. */
-  var PROMO_KEY = 'im_promo_seen_summer2026';
+  /*
+  var PROMO_KEY = 'im_promo_seen_NOUVELLE_PROMO';
   if (sessionStorage.getItem(PROMO_KEY)) return;
 
-  /* Créer le popup */
   var overlay = document.createElement('div');
   overlay.id = 'im-promo-overlay';
   overlay.innerHTML = [
     '<div id="im-promo-modal">',
     '  <button id="im-promo-close" aria-label="Fermer la promotion">&times;</button>',
     '  <div id="im-promo-content">',
-    '    <a href="#tarifs" id="im-promo-link" aria-label="Voir les tarifs Summer Body">',
-    '      <img src="images/couverture-1250x462-infinimouv.webp" alt="Offre Summer Body — 2 mois offerts jusqu\'au 23 mai chez Infini Mouv Agde" loading="eager" width="1250" height="462">',
+    '    <a href="#tarifs" id="im-promo-link">',
+    '      <img src="images/couverture-NOUVELLE.webp" alt="Nouvelle offre" loading="eager">',
     '    </a>',
     '  </div>',
     '</div>'
@@ -285,44 +280,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.body.appendChild(overlay);
 
-  /* Afficher après un délai */
   setTimeout(function () {
     overlay.classList.add('im-promo-visible');
-
-    /* Focus trap pour accessibilité */
     var closeBtn = document.querySelector('#im-promo-close');
     if (closeBtn) closeBtn.focus();
   }, 1500);
 
-  /* Fonctions de fermeture */
   function closePromo() {
     overlay.classList.remove('im-promo-visible');
     overlay.classList.add('im-promo-closing');
     sessionStorage.setItem(PROMO_KEY, '1');
-
     setTimeout(function () {
       if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
     }, 400);
   }
 
-  /* Event listeners */
-  overlay.addEventListener('click', function (e) {
-    if (e.target === overlay) closePromo();
-  });
-
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closePromo(); });
   var closeBtn = document.querySelector('#im-promo-close');
   if (closeBtn) closeBtn.addEventListener('click', closePromo);
-
-  /* Clic sur l'image/lien → ferme le popup + ancre vers #tarifs */
   var promoLink = document.querySelector('#im-promo-link');
-  if (promoLink) promoLink.addEventListener('click', function () {
-    closePromo();
-  });
-
+  if (promoLink) promoLink.addEventListener('click', function () { closePromo(); });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && overlay.classList.contains('im-promo-visible')) {
-      closePromo();
-    }
+    if (e.key === 'Escape' && overlay.classList.contains('im-promo-visible')) closePromo();
   });
+  */
 
 });
