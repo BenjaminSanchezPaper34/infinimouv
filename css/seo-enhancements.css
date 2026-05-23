@@ -1208,10 +1208,11 @@ span.gradient-text {
   margin: 0 !important;
   left: 0 !important;
 }
-/* Wrapper du titre sous l image — pas de gradient overlay
-   display:flow-root = clearfix moderne pour contenir les enfants floates Muse */
+/* Wrapper du titre sous l image — Muse positionne u1550 en absolute,
+   on le force en relative + flow-root pour qu il pousse le flow */
 .im-section--cours #u1550-bw,
 .im-section--cours #u1550 {
+  position: relative !important;
   display: flow-root !important;
   width: 100% !important;
   height: auto !important;
@@ -1220,6 +1221,8 @@ span.gradient-text {
   background: none !important;
   border: 0 !important;
   overflow: visible !important;
+  top: auto !important;
+  left: auto !important;
 }
 .im-section--cours #u1550_align_to_page {
   display: flow-root !important;
@@ -1249,11 +1252,13 @@ span.gradient-text {
 .im-section--cours #u1530-4 {
   float: none !important;
   position: relative !important;
+  display: block !important;
   left: auto !important;
   width: 100% !important;
   max-width: 760px !important;
   margin: 0 auto 40px !important;
   text-align: center !important;
+  clear: both !important;
 }
 .im-section--cours #u1530-4 p {
   font-family: var(--ff-body) !important;
