@@ -86,7 +86,7 @@ a.seo-tel-link:hover {
   max-width: 100vw;
   padding: 96px 24px;
   box-sizing: border-box;
-  font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   position: relative;
   z-index: 10;
   overflow: hidden;
@@ -170,15 +170,16 @@ a.seo-tel-link:hover {
   text-align: left;
 }
 
-/* Titre style Muse — reproduit "NOTRE OFFRE" : uppercase, italique, gradient vert */
+/* Titre style Muse — reproduit "NOTRE OFFRE" IDENTIQUE
+   Utilise __Gotham_5 (Gotham Ultra Italic) déjà chargé par Muse via @font-face */
 .im-title-muse {
-  font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(34px, 5vw, 56px);
-  font-weight: 800;
+  font-family: '__Gotham_5', 'Gotham Ultra', 'Gotham', sans-serif;
+  font-size: clamp(36px, 6vw, 60px);
+  font-weight: 500;  /* Le fichier woff est weight 500 dans Muse */
   font-style: italic;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  line-height: 1.05;
+  letter-spacing: 0;
+  line-height: 1.15;
   margin: 0 0 36px 0;
   display: inline-block;
 }
@@ -357,10 +358,13 @@ a.seo-tel-link:hover {
   color: #006935;
   padding: 16px 36px;
   border-radius: 999px;
-  font-weight: 700;
+  font-family: '__Gotham_5', 'Gotham Ultra', 'Gotham', sans-serif;
+  font-weight: 500;
   font-style: italic;
   font-size: 15px;
+  text-transform: uppercase;
   text-decoration: none;
+  letter-spacing: 0.5px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
   border: 2px solid transparent;
   box-shadow: 0 8px 24px rgba(0,0,0,0.22);
@@ -407,20 +411,22 @@ a.seo-tel-link:hover {
   height: 100%;
 }
 .im-feature-card h3 {
-  font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 17px;
+  font-family: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 18px;
   font-weight: 700;
   font-style: normal;
   margin: 0 0 12px 0;
-  color: #1D1D1F;
-  letter-spacing: 0.5px;
+  color: #006935;
+  letter-spacing: 0;
   text-transform: uppercase;
   line-height: 1.25;
 }
 .im-feature-card p {
+  font-family: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 15px;
+  font-weight: 300;
   line-height: 1.65;
-  color: #6a6a6a;
+  color: #2c2c2c;
   margin: 0;
 }
 
@@ -450,19 +456,21 @@ a.seo-tel-link:hover {
   z-index: 1;
 }
 .im-card--green .im-card-title {
-  font-family: 'Gotham', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 28px;
+  font-family: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 26px;
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0;
   color: #ffffff;
   margin: 0 0 18px 0;
 }
 .im-card--green .im-card-text {
+  font-family: '__SF Pro Display_5', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 300;
   font-size: 16px;
   line-height: 1.65;
-  color: rgba(255,255,255,0.94);
+  color: rgba(255,255,255,0.96);
   max-width: 760px;
   margin: 0 0 24px 0;
 }
@@ -547,6 +555,7 @@ a.seo-tel-link:hover {
 .im-faq-item summary {
   cursor: pointer;
   padding: 20px 24px 20px 60px;
+  font-family: '__SF Pro Display_5', 'SF Pro Display', sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #1D1D1F;
@@ -581,9 +590,11 @@ a.seo-tel-link:hover {
 .im-faq-item p {
   margin: 0;
   padding: 0 24px 22px 60px;
+  font-family: '__SF Pro Display_5', 'SF Pro Display', sans-serif;
+  font-weight: 300;
   font-size: 15px;
   line-height: 1.65;
-  color: #555560;
+  color: #2c2c2c;
 }
 .im-faq-item p strong {
   color: #006935;
