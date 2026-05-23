@@ -1208,18 +1208,21 @@ span.gradient-text {
   margin: 0 !important;
   left: 0 !important;
 }
-/* Wrapper du titre sous l image — pas de gradient overlay */
+/* Wrapper du titre sous l image — pas de gradient overlay
+   display:flow-root = clearfix moderne pour contenir les enfants floates Muse */
 .im-section--cours #u1550-bw,
 .im-section--cours #u1550 {
-  display: block !important;
+  display: flow-root !important;
   width: 100% !important;
   height: auto !important;
   min-height: auto !important;
   margin: 0 !important;
   background: none !important;
   border: 0 !important;
+  overflow: visible !important;
 }
 .im-section--cours #u1550_align_to_page {
+  display: flow-root !important;
   width: 100% !important;
   left: auto !important;
   margin: 0 !important;
