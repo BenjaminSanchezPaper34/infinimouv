@@ -457,20 +457,24 @@ a.seo-tel-link:hover {
   gap: 18px;
   align-items: flex-start;
 }
+/* Check vert sans cercle ni fond — pour ne pas évoquer un bouton cliquable */
 .im-adv-icon {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #9DD800 0%, #006935 100%);
+  width: 26px;
+  height: 26px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 105, 53, 0.25);
+  margin-top: 2px;  /* aligne optiquement avec la première ligne du titre */
 }
 .im-adv-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 100%;
+  height: 100%;
+}
+/* Override la couleur du stroke hardcodée en blanc dans le SVG */
+.im-adv-icon svg path {
+  stroke: var(--accent-green) !important;
+  stroke-width: 3 !important;
 }
 .im-adv-text h3 {
   /* T3 — Mini title (proportionné au body 19px) */
