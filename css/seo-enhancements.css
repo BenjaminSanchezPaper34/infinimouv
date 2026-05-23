@@ -935,6 +935,21 @@ span.gradient-text {
   overflow: visible !important;
 }
 
+/* Emojis devant les 7 mots services (MUSCULATION, CARDIO, BIKE…)
+   Pas dans .gradient-text car sinon ils seraient invisibles
+   (background-clip:text + text-fill-color:transparent). */
+.service-emoji {
+  display: inline-block;
+  margin-right: 0.35em;
+  font-size: 0.75em;       /* plus petit que le texte */
+  vertical-align: 0.1em;   /* aligne optiquement avec la baseline */
+  /* Force le rendu emoji en couleur (au cas où une font globale forcerait B&W) */
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+  -webkit-text-fill-color: initial;
+  background: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 105, 53, 0.15));
+}
+
 
 /* ==========================================================================
    POPUP PROMO MODERNE
