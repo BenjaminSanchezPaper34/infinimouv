@@ -129,7 +129,7 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
   <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=4252153324"/>
   <link rel="stylesheet" type="text/css" href="css/master_a-gabarit.css?crc=289251700"/>
   <link rel="stylesheet" type="text/css" href="css/services---equipements.css?crc=3989280417" id="pagesheet"/>
-  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=30"/>
+  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=31"/>
   <link rel="stylesheet" type="text/css" href="css/responsive.css?v=9"/>
 
  </head>
@@ -451,22 +451,54 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
   <!-- Enhancements : animations scroll -->
   <script src="js/enhancements-services.js?v=2" defer></script>
 
-  <!-- im-section full-bleed offset compensation (mêmes règles que enhancements.js) -->
+  <!-- im-section full-bleed offset compensation + déplacement bloc planning/app -->
   <script>
   (function(){
-    function updateImParentOffsets(){
+    function setup(){
+      /* 1. Déplacer le bloc Planning + App tout en bas, après les im-sections.
+         On le sort de main vers #page pour qu il flow après les sections. */
+      var planningIds = ['u1767', 'u1723', 'u1522', 'pu1656'];
+      var blocks = planningIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+      if (blocks.length) {
+        var lastSection = document.querySelectorAll('.im-section');
+        var anchor = lastSection[lastSection.length - 1];
+        if (anchor) {
+          var wrapper = document.createElement('div');
+          wrapper.className = 'im-section im-section--light im-section--planning';
+          wrapper.setAttribute('aria-label', 'Planning et application mobile');
+          var inner = document.createElement('div');
+          inner.className = 'im-container';
+          wrapper.appendChild(inner);
+          /* On insère le wrapper après la dernière im-section */
+          anchor.parentNode.insertBefore(wrapper, anchor.nextSibling);
+          /* Puis on déplace les blocs Muse à l intérieur du container */
+          blocks.forEach(function(el){ inner.appendChild(el); });
+        }
+      }
+
+      /* 2. Compensation de l offset parent pour le full-bleed des im-section */
       document.querySelectorAll('.im-section').forEach(function(sec){
         var x = sec.parentElement.getBoundingClientRect().left;
         sec.style.setProperty('--im-parent-x', x + 'px');
       });
     }
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', updateImParentOffsets);
+      document.addEventListener('DOMContentLoaded', setup);
     } else {
-      updateImParentOffsets();
+      setup();
     }
-    window.addEventListener('resize', updateImParentOffsets);
-    window.addEventListener('load', updateImParentOffsets);
+    window.addEventListener('resize', function(){
+      document.querySelectorAll('.im-section').forEach(function(sec){
+        var x = sec.parentElement.getBoundingClientRect().left;
+        sec.style.setProperty('--im-parent-x', x + 'px');
+      });
+    });
+    window.addEventListener('load', function(){
+      document.querySelectorAll('.im-section').forEach(function(sec){
+        var x = sec.parentElement.getBoundingClientRect().left;
+        sec.style.setProperty('--im-parent-x', x + 'px');
+      });
+    });
   })();
   </script>
 

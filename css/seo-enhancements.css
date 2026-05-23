@@ -1021,6 +1021,151 @@ span.gradient-text {
 
 
 /* =========================================================================
+   IM-SECTION PLANNING + APP — bloc Muse déplacé via JS dans son propre container
+   ========================================================================= */
+.im-section--planning .im-container {
+  text-align: center;
+}
+/* Planning image responsive */
+.im-section--planning #u1723 {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  margin: 0 auto 56px !important;
+  width: 100% !important;
+  max-width: 1040px !important;
+  display: block !important;
+}
+.im-section--planning #u1719 {
+  width: 100% !important;
+  max-width: 1040px !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+/* Separateurs Muse — masques */
+.im-section--planning #u1767,
+.im-section--planning #u1522 {
+  display: none !important;
+}
+/* App section — flex centré */
+.im-section--planning #pu1656 {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 64px !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+  max-width: 1080px !important;
+  margin: 0 auto !important;
+}
+.im-section--planning #u1656 {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
+  max-width: 280px;
+  flex-shrink: 0;
+}
+.im-section--planning #u1656_img {
+  width: 100% !important;
+  max-width: 280px !important;
+  height: auto !important;
+  display: block !important;
+}
+.im-section--planning #pu1635 {
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
+  max-width: 420px;
+  text-align: left;
+}
+.im-section--planning #u1635,
+.im-section--planning #u1651 {
+  text-align: left !important;
+  display: block !important;
+  margin: 0 0 8px 0 !important;
+  position: relative !important;
+  left: auto !important;
+}
+.im-section--planning #pu1754 {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 18px 0 !important;
+  position: relative !important;
+  left: auto !important;
+}
+.im-section--planning #u1754,
+.im-section--planning #u1713 {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  float: none !important;
+}
+.im-section--planning #u1688-9 {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
+  margin: 18px 0 !important;
+  float: none !important;
+}
+.im-section--planning #u1688-9 p {
+  font-family: var(--ff-body);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 4px 0;
+}
+.im-section--planning #u1688-7 {
+  margin-top: 12px !important;
+}
+.im-section--planning #u1688-5 {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.im-section--planning #pu1670 {
+  display: flex !important;
+  gap: 14px !important;
+  flex-wrap: wrap !important;
+  margin-top: 20px !important;
+  position: relative !important;
+  left: auto !important;
+}
+.im-section--planning #u1670,
+.im-section--planning #u1681 {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  float: none !important;
+  display: inline-block !important;
+}
+
+@media (max-width: 768px) {
+  .im-section--planning #pu1656 {
+    flex-direction: column;
+    gap: 32px !important;
+  }
+  .im-section--planning #pu1635 {
+    text-align: center;
+    max-width: 100%;
+  }
+  .im-section--planning #pu1754,
+  .im-section--planning #pu1670 {
+    justify-content: center !important;
+  }
+}
+
+
+/* =========================================================================
    REVEAL AU SCROLL — Apparition fade + translateY
    Géré par IntersectionObserver dans enhancements.js
    .im-reveal seul : prêt à transitionner (mais visible par défaut)
