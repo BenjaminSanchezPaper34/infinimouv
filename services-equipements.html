@@ -129,7 +129,7 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
   <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=4252153324"/>
   <link rel="stylesheet" type="text/css" href="css/master_a-gabarit.css?crc=289251700"/>
   <link rel="stylesheet" type="text/css" href="css/services---equipements.css?crc=3989280417" id="pagesheet"/>
-  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=43"/>
+  <link rel="stylesheet" type="text/css" href="css/seo-enhancements.css?v=44"/>
   <link rel="stylesheet" type="text/css" href="css/responsive.css?v=9"/>
 
  </head>
@@ -561,9 +561,10 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
       var anchor = sections[sections.length - 1];
       if (!anchor) return;
 
-      /* 1. Déplacer Cours Collectifs (titre + intro + 2 colonnes courses) après les im-sections */
+      /* 1. Déplacer Cours Collectifs (titre + intro + 2 colonnes courses) après les im-sections
+         L anchor #cours-collectifs est inclus pour que le lien nav "Cours" scroll au bon endroit */
       var coursWrapper = moveToWrapper(
-        ['pu1549', 'u1530-4', 'pu1615-21'],
+        ['cours-collectifs', 'pu1549', 'u1530-4', 'pu1615-21'],
         'im-section--cours',
         'Cours collectifs',
         anchor

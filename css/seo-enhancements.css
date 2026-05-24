@@ -1153,6 +1153,21 @@ span.gradient-text {
 .im-section--cours .im-container {
   text-align: center;
 }
+/* Anchor #cours-collectifs deplacee ici : neutraliser le Muse positioning,
+   garder visible:0 mais en haut de la section pour que le scroll-to fonctionne */
+.im-section--cours #cours-collectifs {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none;
+}
+.im-section--cours { scroll-margin-top: 100px; }
+.im-section--cours #cours-collectifs { scroll-margin-top: 100px; }
 /* Annule les hacks Muse margin-right:-10000px qui font sortir du viewport */
 .im-section--cours #pu1549,
 .im-section--cours #u1549,
