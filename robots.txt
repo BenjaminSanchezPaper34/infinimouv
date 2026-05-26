@@ -13,8 +13,10 @@ Disallow: /scripts/jquery.scrolleffects.js
 Allow: /images/
 Allow: /css/
 
-# Sitemap
+# Sitemap & LLMs manifest
 Sitemap: https://infini-mouv.fr/sitemap.xml
+# llms.txt — manifest pour agents IA (ChatGPT, Claude, Perplexity, Gemini)
+# Voir https://infini-mouv.fr/llms.txt
 
 # Politesse aux bots agressifs
 User-agent: AhrefsBot
@@ -26,9 +28,16 @@ Crawl-delay: 5
 User-agent: MJ12bot
 Crawl-delay: 10
 
-# Bloquer les bots IA qui scrape sans valeur retour (optionnel — à ajuster)
+# Agents IA — autorisés (cohérence avec llms.txt pour visibilité dans
+# ChatGPT, Claude, Perplexity, Gemini, Copilot)
 User-agent: GPTBot
-Disallow: /
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
 
 User-agent: Google-Extended
 Allow: /
@@ -38,6 +47,24 @@ Allow: /
 
 User-agent: ClaudeBot
 Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Disallow: /
 
 # Hôte canonique
 Host: infini-mouv.fr
