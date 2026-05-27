@@ -30,6 +30,13 @@
   --border-subtle: #e8e8e8;
 }
 
+/* Scroll-margin-top : décale la cible des anchors pour ne pas être cachée
+   par la nav fixe (mobile) ou la nav non-fixe (desktop). */
+[id], .im-section, a.anchor_item {
+  scroll-margin-top: 120px;
+}
+html { scroll-behavior: smooth; }
+
 
 /* ==========================================================================
    SEO ENHANCEMENTS — Couche par-dessus le CSS Muse
@@ -290,7 +297,7 @@ a.seo-tel-link:hover {
   font-family: var(--ff-body);
   font-size: 19px;
   font-weight: 300;
-  margin: 0 0 40px 0;
+  margin: 0 auto 40px auto;  /* centre + max-width 760 = meme rendu partout */
   line-height: 25px;
   color: var(--text-muted);
   max-width: 760px;
