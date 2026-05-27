@@ -39,6 +39,38 @@ html { scroll-behavior: smooth; }
 
 
 /* ==========================================================================
+   PARAGRAPHE STANDARD — applique sur TOUS les <p> de mes .im-section
+   Spec EXACTE du texte gris Muse "Accès libre" (modèle de référence) :
+   font-family : __SF Pro Display_5
+   font-size   : 19px
+   font-weight : 300
+   color       : #7f7f7f
+   line-height : 25px
+   ========================================================================== */
+.im-section p:not(.im-card-title):not(.im-team-name):not(.im-team-role):not(.im-card-text) {
+  font-family: var(--ff-body);
+  font-size: 19px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 25px;
+  color: var(--text-muted);
+}
+.im-section p strong {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* Override : paragraphes blancs dans cards vertes restent en blanc */
+.im-section .im-card--green p,
+.im-section .im-card--green p strong {
+  color: #ffffff;
+}
+.im-section .im-card--green p strong {
+  color: #ffffff;
+}
+
+
+/* ==========================================================================
    SEO ENHANCEMENTS — Couche par-dessus le CSS Muse
    Ne modifie AUCUN rendu desktop, ajoute uniquement :
    - Reset des éléments sémantiques HTML5
