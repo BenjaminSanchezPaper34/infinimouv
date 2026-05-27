@@ -203,17 +203,23 @@ a.seo-tel-link:hover {
   text-align: left;
 }
 
-/* T1 — Titre section (NOTRE OFFRE style) */
+/* T1 — Titre section (NOTRE OFFRE style) — Muse natif exact : 60px fixe */
 .im-title-muse {
   font-family: var(--ff-display);
-  font-size: clamp(36px, 6vw, 60px);
+  font-size: 60px;
   font-weight: 500;
   font-style: italic;
   text-transform: uppercase;
   letter-spacing: 0;
-  line-height: 1.15;
+  line-height: 60px;  /* Muse natif line-height = font-size */
   margin: 0 0 36px 0;
   display: inline-block;
+}
+@media (max-width: 768px) {
+  .im-title-muse {
+    font-size: 36px;
+    line-height: 1.05;
+  }
 }
 .im-title-muse .gradient-text {
   background: linear-gradient(180deg, #9DD800, #006935);
@@ -255,15 +261,15 @@ a.seo-tel-link:hover {
   border-color: rgba(255, 255, 255, 0.35);
 }
 
-/* Titres de section */
+/* Titres de section (LEGACY — non utilise, garde pour compat) */
 .im-title {
-  font-size: clamp(32px, 4.5vw, 52px);
-  font-weight: 800;
+  font-family: var(--ff-display);
+  font-size: 60px;
+  font-weight: 500;
   font-style: italic;
-  line-height: 1.05;
-  margin: 0 0 28px 0;
-  letter-spacing: -0.5px;
-  /* Gradient text vert (sur fond noir) */
+  line-height: 60px;
+  margin: 0 0 36px 0;
+  letter-spacing: 0;
   background: linear-gradient(180deg, #9DD800, #006935);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1237,12 +1243,19 @@ span.gradient-text {
   width: 100% !important;
   display: block !important;
 }
+/* Titre COURS COLLECTIFS — meme specs Muse natif que NOTRE OFFRE (60px fixe) */
 .im-section--cours #u1525 .gradient-text {
-  font-size: clamp(36px, 6vw, 60px) !important;
+  font-size: 60px !important;
   font-weight: 500 !important;
   font-style: italic !important;
   text-transform: uppercase !important;
-  line-height: 1.15 !important;
+  line-height: 60px !important;
+}
+@media (max-width: 768px) {
+  .im-section--cours #u1525 .gradient-text {
+    font-size: 36px !important;
+    line-height: 1.05 !important;
+  }
 }
 .im-section--cours #u1530-4 {
   float: none !important;
