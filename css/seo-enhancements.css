@@ -30,6 +30,18 @@
   --border-subtle: #e8e8e8;
 }
 
+/* Empêche tout débordement horizontal causé par les hacks Muse
+   `margin-right:-10000px` lors du flash initial avant que le JS déplace
+   les blocs. Sans ça, la page apparait décentrée par moments au load. */
+html {
+  overflow-x: clip;
+  overflow-x: hidden;  /* fallback browsers anciens */
+}
+body {
+  overflow-x: clip;
+  overflow-x: hidden;
+}
+
 /* Scroll-margin-top : décale la cible des anchors pour ne pas être cachée
    par la nav fixe (mobile) ou la nav non-fixe (desktop). */
 [id], .im-section, a.anchor_item {
