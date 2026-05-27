@@ -678,11 +678,11 @@ a.seo-tel-link:hover {
   line-height: 1.2;
 }
 .im-card--green .im-card-text {
-  /* T4 — Body */
+  /* T4 — Body Muse natif : 19px / 300 / lh 25px */
   font-family: var(--ff-body);
   font-weight: 300;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: 19px;
+  line-height: 25px;
   color: rgba(255,255,255,0.96);
   max-width: 760px;
   margin: 0 0 24px 0;
@@ -879,7 +879,8 @@ a.seo-tel-link:hover {
   }
   .im-faq-item p {
     padding: 0 18px 16px 44px;
-    font-size: 14px;
+    font-size: 17px;
+    line-height: 23px;
   }
 }
 
@@ -1188,11 +1189,11 @@ span.gradient-text {
   margin: 0 0 18px 0;
 }
 .im-team-bio {
-  /* T4 body : 19px 300 #7f7f7f lh 25px */
+  /* T4 body Muse natif : 19px / 300 / lh 25px */
   font-family: var(--ff-body);
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 300;
-  line-height: 1.55;
+  line-height: 25px;
   color: var(--text-muted);
   margin: 0;
 }
@@ -1585,12 +1586,19 @@ span.gradient-text {
   clear: both !important;
 }
 .im-section--planning #u1688-9 p {
-  font-family: var(--ff-body);
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin: 4px 0;
+  /* T4 body Muse natif : 19px / 300 / lh 25px */
+  font-family: var(--ff-body) !important;
+  font-size: 19px !important;
+  font-weight: 300 !important;
+  color: var(--text-muted) !important;
+  line-height: 25px !important;
+  margin: 4px 0 !important;
+}
+.im-section--planning #u1688-9 p strong,
+.im-section--planning #u1688-7,
+.im-section--planning #u1688-5 {
+  color: var(--text-dark) !important;
+  font-weight: 700 !important;
 }
 .im-section--planning #u1688-7 {
   margin-top: 12px !important;
