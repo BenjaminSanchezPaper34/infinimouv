@@ -1044,31 +1044,36 @@ span.gradient-text {
 }
 
 /* =========================================================================
-   SERVICES : liste verticale en quinconce avec emojis animés
+   SERVICES — Liste verticale, emojis en quinconce gauche/droite
+   Clean refactor (remplace les anciens divs Muse #u728 .. #u560)
    ========================================================================= */
-
-/* Quinconce : texte centré, emojis alternent côté gauche/droite du mot.
-   On utilise flexbox sur le conteneur + flex order sur l'emoji pour les
-   éléments "pairs" (CARDIO, COACHING, CROSS TRAINING) où l'emoji passe après. */
-#u728, #u740, #u682, #u694, #u647, #u627, #u560 {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center !important;
+.im-services {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 0;
 }
-/* Items "pairs" : emoji à droite du texte */
-#u740 .service-emoji,
-#u694 .service-emoji,
-#u627 .service-emoji {
-  order: 2;
-  margin-right: 0;
-  margin-left: 0.35em;
+.im-services-srtitle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
-
-/* Emojis devant les 7 mots services.
-   Pas dans .gradient-text car sinon ils seraient invisibles
-   (background-clip:text + text-fill-color:transparent). */
-.service-emoji {
+.im-services-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.im-services-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4px 0;
+}
+.im-services-emoji {
   display: inline-block;
   margin-right: 0.35em;
   font-size: 0.75em;
@@ -1080,15 +1085,33 @@ span.gradient-text {
   transform-origin: center;
   will-change: transform;
 }
+.im-services-item.is-right .im-services-emoji {
+  margin-right: 0;
+  margin-left: 0.35em;
+}
+.im-services-label {
+  font-family: var(--ff-display);
+  font-size: 70px;
+  font-weight: 500;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 1.15;
+  letter-spacing: 0;
+  /* gradient-text styling appliqué via classe .gradient-text aussi */
+}
 
-/* Animations — chaque emoji a son ambiance propre */
-#u728 .service-emoji { animation: emoji-flex 2.2s ease-in-out infinite; }
-#u740 .service-emoji { animation: emoji-run  1.4s ease-in-out infinite; }
-#u682 .service-emoji { animation: emoji-roll 2.5s linear         infinite; }
-#u694 .service-emoji { animation: emoji-pulse 1.8s ease-in-out   infinite; }
-#u647 .service-emoji { animation: emoji-float 3s ease-in-out     infinite; }
-#u627 .service-emoji { animation: emoji-lift 1.6s ease-in-out    infinite; }
-#u560 .service-emoji { animation: emoji-wiggle 2.4s ease-in-out  infinite; }
+/* Animations emojis — une par item */
+.im-services-emoji--flex   { animation: emoji-flex 2.2s ease-in-out infinite; }
+.im-services-emoji--run    { animation: emoji-run  1.4s ease-in-out infinite; }
+.im-services-emoji--roll   { animation: emoji-roll 2.5s linear         infinite; }
+.im-services-emoji--pulse  { animation: emoji-pulse 1.8s ease-in-out   infinite; }
+.im-services-emoji--float  { animation: emoji-float 3s ease-in-out     infinite; }
+.im-services-emoji--lift   { animation: emoji-lift 1.6s ease-in-out    infinite; }
+.im-services-emoji--wiggle { animation: emoji-wiggle 2.4s ease-in-out  infinite; }
+
+@media (max-width: 768px) {
+  .im-services-label { font-size: 28px; }
+}
 
 @keyframes emoji-flex {
   0%, 100% { transform: scale(1); }
