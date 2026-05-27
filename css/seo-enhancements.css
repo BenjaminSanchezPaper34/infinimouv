@@ -304,19 +304,27 @@ a.seo-tel-link:hover {
   max-width: 720px;
 }
 
-/* Liste avec chevrons verts (style flèches Regicom) */
-.im-list-arrows {
+/* ==========================================================================
+   PUCES UNIFIÉES — un seul check SVG vert (sur fond clair) ou blanc
+   (sur fond gradient vert). Pas de cercle, pas de chevron, pas de glyph.
+   ========================================================================== */
+
+.im-list-arrows,
+.im-list-checks {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+.im-list-arrows {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 14px 32px;
 }
-
+.im-list-checks li,
 .im-list-arrows li {
   position: relative;
   padding-left: 32px;
+  margin-bottom: 10px;
   /* T4 — Body */
   font-family: var(--ff-body);
   font-size: 16px;
@@ -324,72 +332,44 @@ a.seo-tel-link:hover {
   line-height: 1.55;
   color: var(--text-muted);
 }
-
-.im-list-arrows li::before {
+/* Check SVG inline — vert par defaut (fond clair) */
+.im-list-arrows li::before,
+.im-list-checks li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.55em;
-  width: 14px;
-  height: 14px;
-  background: linear-gradient(135deg, #9DD800, #006935);
-  clip-path: polygon(0 0, 100% 50%, 0 100%, 30% 50%);
+  top: 0.35em;
+  width: 18px;
+  height: 18px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M5 12l5 5L20 7' stroke='%23006935' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat;
 }
 
-/* Liste flèches sur fond clair — couleur texte sombre */
-.im-section--light .im-list-arrows li {
-  color: #2c2c2c;
-}
-.im-section--light .im-list-arrows li strong {
-  color: #1D1D1F;
+/* Strong en sombre sur fond clair */
+.im-section--light .im-list-arrows li strong,
+.im-section--light .im-list-checks li strong {
+  color: var(--text-dark);
   font-weight: 700;
 }
 
-/* Liste checks dans card verte */
-.im-card--green .im-list-checks li {
-  color: #ffffff;
-  font-size: 15.5px;
-}
-.im-card--green .im-list-checks li::before {
-  color: #ffffff;
-}
-.im-card--green .im-list-checks li strong {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-/* Variante : liste alignée à gauche, plus dense */
+/* Variante : liste alignée a gauche, 1 colonne */
 .im-list-left {
   grid-template-columns: 1fr;
   max-width: 760px;
 }
 
-/* Liste avec checks (Yanga) */
-.im-list-checks {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.im-list-checks li {
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 10px;
-  /* T4 — Body */
-  font-family: var(--ff-body);
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.55;
-}
-
-.im-list-checks li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  top: 0;
+/* Override : checks dans card verte → texte blanc + check blanc */
+.im-card--green .im-list-checks li,
+.im-card--green .im-list-arrows li {
   color: #ffffff;
-  font-weight: 900;
-  font-size: 18px;
+}
+.im-card--green .im-list-checks li::before,
+.im-card--green .im-list-arrows li::before {
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M5 12l5 5L20 7' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat;
+}
+.im-card--green .im-list-checks li strong,
+.im-card--green .im-list-arrows li strong {
+  color: #ffffff;
+  font-weight: 700;
 }
 
 /* CTA — fond blanc, texte vert foncé : contraste fort sur gradient vert */
