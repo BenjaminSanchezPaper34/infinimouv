@@ -5,6 +5,78 @@
    3. Popup promo moderne (remplace le PamphletWidget Muse)
    ========================================================================== */
 
+/* =====================================================================
+   NAV ANCHORS — scroll fiable local + cross-page
+   - Au clic sur un lien <a href="...#xxx"> :
+     * meme page : laisse le navigateur scroll (CSS smooth + scroll-margin-top)
+     * cross-page : enregistre l ancre dans sessionStorage avant navigation
+   - Au chargement de page : si une ancre est en attente, scroll dessus
+     avec plusieurs retry (les blocs deplaces par JS bougent au load).
+   ===================================================================== */
+(function(){
+  var STORAGE_KEY = 'im_pending_anchor';
+
+  function getCurrentFileName(){
+    var p = location.pathname.replace(/\/$/, '');  // "/services-equipements.html" ou ""
+    var f = p.substring(p.lastIndexOf('/') + 1);    // "services-equipements.html" ou ""
+    return f || 'index.html';
+  }
+
+  function scrollToHash(hash){
+    if (!hash || hash === '#') return false;
+    var target = document.querySelector(hash);
+    if (!target) return false;
+    target.scrollIntoView({behavior: 'smooth', block: 'start'});
+    return true;
+  }
+
+  /* Au load : check pending anchor */
+  function processPending(){
+    var pending = sessionStorage.getItem(STORAGE_KEY);
+    if (!pending) return;
+    sessionStorage.removeItem(STORAGE_KEY);
+    /* Plusieurs essais : le DOM peut changer apres le load
+       (ex: blocs deplaces par JS dans services-equipements.html) */
+    [200, 500, 1000].forEach(function(delay){
+      setTimeout(function(){ scrollToHash(pending); }, delay);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', processPending);
+  } else {
+    processPending();
+  }
+  window.addEventListener('load', processPending);
+
+  /* Intercept clicks sur tous les liens avec ancre */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href*="#"]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var hashIdx = href.indexOf('#');
+    if (hashIdx === -1) return;
+    var page = href.substring(0, hashIdx);
+    var hash = href.substring(hashIdx);
+    if (!hash || hash === '#' || hash === '#main-content') return;
+
+    var currentFile = getCurrentFileName();
+    var targetFile = page ? page.replace(/^\.?\//, '').split('?')[0] : currentFile;
+    /* Normalise : "index.html" vs "" vs "/" */
+    if (targetFile === '' || targetFile === '/' || targetFile === '.') targetFile = 'index.html';
+
+    var isSamePage = (targetFile === currentFile);
+
+    if (isSamePage) {
+      /* Meme page : laisse le navigateur (CSS smooth + scroll-margin-top OK) */
+      return;
+    }
+    /* Cross-page : sauve l ancre, laisse la navigation continuer */
+    sessionStorage.setItem(STORAGE_KEY, hash);
+  }, true);  /* capture phase pour intercepter avant les autres handlers */
+})();
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ------------------------------------------------------------------

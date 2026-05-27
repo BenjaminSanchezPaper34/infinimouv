@@ -482,6 +482,54 @@ Muse.Utils.transformMarkupToFixBrowserProblems();
   <script src="js/enhancements-services.js?v=2" defer></script>
 
   <!-- im-section full-bleed offset compensation + déplacement bloc planning/app -->
+  <!-- Nav anchors handler — fiabilise les liens locaux et cross-page -->
+  <script>
+  (function(){
+    var STORAGE_KEY = 'im_pending_anchor';
+    function getCurrentFileName(){
+      var p = location.pathname.replace(/\/$/, '');
+      var f = p.substring(p.lastIndexOf('/') + 1);
+      return f || 'index.html';
+    }
+    function scrollToHash(hash){
+      if (!hash || hash === '#') return false;
+      var target = document.querySelector(hash);
+      if (!target) return false;
+      target.scrollIntoView({behavior: 'smooth', block: 'start'});
+      return true;
+    }
+    function processPending(){
+      var pending = sessionStorage.getItem(STORAGE_KEY);
+      if (!pending) return;
+      sessionStorage.removeItem(STORAGE_KEY);
+      [200, 500, 1000].forEach(function(delay){
+        setTimeout(function(){ scrollToHash(pending); }, delay);
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', processPending);
+    } else {
+      processPending();
+    }
+    window.addEventListener('load', processPending);
+    document.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      var hashIdx = href.indexOf('#');
+      if (hashIdx === -1) return;
+      var page = href.substring(0, hashIdx);
+      var hash = href.substring(hashIdx);
+      if (!hash || hash === '#' || hash === '#main-content') return;
+      var currentFile = getCurrentFileName();
+      var targetFile = page ? page.replace(/^\.?\//, '').split('?')[0] : currentFile;
+      if (targetFile === '' || targetFile === '/' || targetFile === '.') targetFile = 'index.html';
+      if (targetFile === currentFile) return;
+      sessionStorage.setItem(STORAGE_KEY, hash);
+    }, true);
+  })();
+  </script>
+
   <script>
   (function(){
     function moveToWrapper(ids, sectionClass, ariaLabel, insertAfter){
