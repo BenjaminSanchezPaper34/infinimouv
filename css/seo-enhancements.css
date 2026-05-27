@@ -1175,8 +1175,15 @@ span.gradient-text {
 /* =========================================================================
    IM-SECTION COURS COLLECTIFS — bloc Muse déplacé via JS
    ========================================================================= */
-.im-section--cours .im-container {
+.im-section--cours .im-container,
+.im-section--planning .im-container {
   text-align: center;
+  /* Force la largeur max conteneur Muse = 1080px (cohérent avec page Muse) */
+  max-width: 1080px !important;
+  width: 100% !important;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
 }
 /* Anchor #cours-collectifs deplacee ici : neutraliser le Muse positioning,
    garder visible:0 mais en haut de la section pour que le scroll-to fonctionne */
