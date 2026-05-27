@@ -324,15 +324,17 @@ a.seo-tel-link:hover {
   color: #ffffff;
 }
 
-/* T4 — Body / intro (modèle Muse cards) */
+/* T4 — Body / intro (modèle Muse intro Services & Équipements)
+   Full container width, left-aligned, pas centre — IDENTIQUE a Muse #u1346-4 */
 .im-intro {
   font-family: var(--ff-body);
   font-size: 19px;
   font-weight: 300;
-  margin: 0 auto 40px auto;  /* centre + max-width 760 = meme rendu partout */
+  margin: 0 0 40px 0;
   line-height: 25px;
   color: var(--text-muted);
-  max-width: 760px;
+  max-width: 1040px;   /* meme largeur que Muse intro page services */
+  text-align: left;
 }
 .im-intro--dark {
   color: var(--text-muted);
