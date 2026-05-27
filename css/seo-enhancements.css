@@ -372,11 +372,11 @@ a.seo-tel-link:hover {
   position: relative;
   padding-left: 32px;
   margin-bottom: 10px;
-  /* T4 — Body */
+  /* T4 — Body Muse natif : 19px / 300 / #7f7f7f / lh 25px */
   font-family: var(--ff-body);
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 300;
-  line-height: 1.55;
+  line-height: 25px;
   color: var(--text-muted);
 }
 /* Check SVG inline — vert par defaut (fond clair) */
@@ -691,6 +691,41 @@ a.seo-tel-link:hover {
   color: #ffffff;
   font-weight: 700;
 }
+
+/* ===== Card verte SPLIT (texte + image cote a cote) ===== */
+.im-card--green.im-card--split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 48px;
+}
+.im-card--split__text {
+  position: relative;
+  z-index: 1;
+}
+.im-card--split__image {
+  position: relative;
+  z-index: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+}
+.im-card--split__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .im-card--green.im-card--split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 32px 24px;
+  }
+}
+
 
 /* ===== Card blanche style LES OPTIONS (pour Comment vous assurer) ===== */
 .im-card--white {
