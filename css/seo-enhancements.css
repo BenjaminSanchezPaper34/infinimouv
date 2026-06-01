@@ -1028,6 +1028,13 @@ a.seo-tel-link:hover {
    ========================================================================== */
 .gradient-text,
 span.gradient-text {
+  /* Degrade vert par defaut pour TOUT .gradient-text (ex: labels services
+     MUSCULATION/CARDIO/... qui s'appuient sur cette classe — cf .im-services-label).
+     Sans ca, le texte tombait en couleur pleine (noir) faute de degrade. */
+  background: linear-gradient(180deg, #9DD800, #006935);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   padding-right: 0.3em !important;
   padding-left: 0.18em !important;
   display: inline-block !important;
