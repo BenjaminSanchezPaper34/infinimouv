@@ -237,7 +237,9 @@ h1,h2,h3,p{margin:0;}
 /* ==========================================================================
    FOOTER
    ========================================================================== */
-.footer{position:relative;background:var(--ink);color:#fff;padding:110px 0 32px;margin-top:90px;overflow:visible;}
+.footer{position:relative;background:var(--ink);color:#fff;padding:110px 0 32px;margin-top:0;overflow:visible;}
+/* La section contact colle au footer (pas de bande blanche vide) */
+#contact{padding-bottom:0;}
 /* GRAND ruban ∞ qui traverse le bas : déborde vers le HAUT (sur la zone contact)
    et s'étend à droite, à cheval sur contact + footer (= rendu Muse "magnifique"). */
 .footer__symbol{position:absolute;right:0;bottom:0;width:min(820px,72%);height:auto;pointer-events:none;z-index:0;}  /* ancré en bas : le ruban touche le bas de page, déborde vers le haut */
