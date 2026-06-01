@@ -178,12 +178,13 @@ h1,h2,h3,p{margin:0;}
 .plan__price .lead{font-size:15px;font-style:italic;opacity:.92;}
 .plan__price .amount{font-family:var(--ff-display);font-style:italic;font-weight:700;font-size:50px;line-height:1;}
 .opts__title{font-family:var(--ff-body);font-weight:700;text-transform:uppercase;font-size:22px;color:var(--green);margin-bottom:22px;}
-.opts__grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.opts__grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;}
+.opts__grid .opt{display:flex;flex-direction:column;}                            /* pour aligner suppl/prix en bas */
 .opts__grid .opt + .opt{border-left:1px solid var(--line);padding-left:28px;}   /* séparateur vertical */
-.opt h4{font-family:var(--ff-body);font-weight:600;font-size:15px;color:var(--green);margin-bottom:8px;}
-.opt ul{font-size:15px;font-weight:700;color:var(--ink);display:flex;flex-direction:column;gap:4px;margin-bottom:14px;}
-.opt__plus{color:var(--muted);font-style:italic;font-size:14px;}
-.opt__price{font-family:var(--ff-display);font-style:italic;font-weight:700;font-size:34px;color:#5aad12;}
+.opt h4{font-family:var(--ff-body);font-weight:600;font-size:15px;color:#3f9e1f;margin-bottom:8px;}
+.opt ul{font-size:15px;font-weight:700;color:var(--ink);display:flex;flex-direction:column;gap:4px;margin-bottom:18px;}
+.opt__plus{margin-top:auto;color:#7cbe1c;font-style:italic;font-weight:600;font-size:15px;}   /* lime, poussé en bas */
+.opt__price{font-family:var(--ff-display);font-style:italic;font-weight:700;font-size:34px;color:#7cbe1c;margin-top:2px;}
 .pricing__note{margin-top:18px;font-size:13px;color:var(--muted);}
 
 /* ==========================================================================
