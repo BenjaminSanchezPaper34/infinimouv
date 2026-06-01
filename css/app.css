@@ -231,8 +231,16 @@ h1,h2,h3,p{margin:0;}
 /* ==========================================================================
    CONTACT + widgets Elfsight
    ========================================================================== */
-.contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.contact__grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px;align-items:start;}
+/* Carte Instagram : coins arrondis + ombre légère (= réf) */
+.contact__insta{border-radius:18px;overflow:hidden;box-shadow:0 12px 34px rgba(0,0,0,.10);align-self:start;min-height:120px;}
+/* Colonne droite : titre CONTACT au-dessus du formulaire */
+.contact__right{display:flex;flex-direction:column;}
+.contact__right .h-section{margin-bottom:26px;}
 .embed{min-height:120px;}
+@media(max-width:900px){
+  .contact__grid{grid-template-columns:1fr;}
+}
 
 /* ==========================================================================
    FOOTER
