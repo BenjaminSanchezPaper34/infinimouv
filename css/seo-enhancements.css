@@ -1034,9 +1034,15 @@ span.gradient-text {
   overflow: visible !important;
 }
 
-/* Pour h1/h2 wrappant un span.gradient-text */
+/* Pour h1/h2 wrappant un span.gradient-text (ex: NOTRE OFFRE, CONTACT).
+   Ces titres n'etaient couverts par AUCUNE regle posant le degrade -> ils
+   s'affichaient en NOIR. On applique le meme degrade vert que .im-title-muse. */
 .muse-seo-h1 > .gradient-text,
 .muse-seo-h2 > .gradient-text {
+  background: linear-gradient(180deg, #9DD800, #006935);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   padding-right: 0.3em !important;
   padding-left: 0.18em !important;
   display: inline-block !important;
