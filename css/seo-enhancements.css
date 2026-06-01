@@ -1109,11 +1109,15 @@ span.gradient-text {
   text-transform: uppercase;
   line-height: 1.15;
   letter-spacing: 0;
-  /* Vert UNI (pas de degrade clippe) : -webkit-background-clip:text rendait ces
-     labels INVISIBLES sur Safari. On force une couleur pleine (= milieu du degrade
-     #9DD800->#006935) qui s'affiche de maniere fiable sur tous les navigateurs.
-     !important pour battre la regle de base .gradient-text (fill transparent). */
+  /* Vert UNI + AUCUN clip. La regle de base .gradient-text pose
+     -webkit-background-clip:text ; sur Safari, clip:text SANS image de fond rend
+     le texte INVISIBLE meme avec une couleur. On annule donc explicitement le clip
+     ici (border-box) -> texte plein normal, fiable sur tous les navigateurs.
+     Couleur = milieu du degrade #9DD800->#006935. */
   background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
   -webkit-text-fill-color: #4EA01A !important;
   color: #4EA01A !important;
 }
