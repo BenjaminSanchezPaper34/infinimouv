@@ -3,6 +3,20 @@
    GSAP ScrollTrigger : reveal animations au scroll
    ========================================================================== */
 
+/* FAILSAFE VISIBILITÉ — anti runtime Adobe Muse obsolète (cf. enhancements.js).
+   Le body est masque (.js body{visibility:hidden}) jusqu'a body.initialized
+   ajoute par le vieux runtime Muse/jQuery 1.8.3. S'il echoue -> page blanche.
+   On force la visibilite apres un court delai, quoi qu'il arrive. */
+(function(){
+  function forceVisible(){
+    if (document.body && !document.body.classList.contains('initialized')) {
+      document.body.classList.add('initialized');
+    }
+  }
+  setTimeout(forceVisible, 1000);
+  window.addEventListener('load', function(){ setTimeout(forceVisible, 200); });
+})();
+
 document.addEventListener('DOMContentLoaded', function () {
 
   /* Mobile : Déplacer la nav hors du conteneur Muse pour position:fixed */

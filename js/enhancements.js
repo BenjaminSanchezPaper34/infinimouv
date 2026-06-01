@@ -5,6 +5,29 @@
    3. Popup promo moderne (remplace le PamphletWidget Muse)
    ========================================================================== */
 
+/* ==========================================================================
+   FAILSAFE VISIBILITÉ — anti runtime Adobe Muse obsolète
+   --------------------------------------------------------------------------
+   Le site repose sur le runtime Adobe Muse (logiciel ABANDONNÉ par Adobe en
+   2020) + jQuery 1.8.3 (2012). Tout le <body> est masqué par defaut via
+   `.js body { visibility:hidden }` et n'apparait QUE lorsque ce vieux code
+   ajoute la classe `initialized` (cf. muse_init / require.js dans index.html).
+   Si un de ces scripts tarde, est bloque (CDN, Safari, reseau) ou plante,
+   la page reste BLANCHE et "les changements semblent invisibles".
+   Filet de securite : on force la visibilite apres un court delai, que le
+   runtime Muse ait reussi ou non. (Muse garde sa chance en premier -> pas de
+   flash en cas normal ; on ne rattrape que les echecs.)
+   ========================================================================== */
+(function(){
+  function forceVisible(){
+    if (document.body && !document.body.classList.contains('initialized')) {
+      document.body.classList.add('initialized');
+    }
+  }
+  setTimeout(forceVisible, 1000);
+  window.addEventListener('load', function(){ setTimeout(forceVisible, 200); });
+})();
+
 /* =====================================================================
    NAV ANCHORS — scroll fiable local + cross-page
    - Au clic sur un lien <a href="...#xxx"> :
