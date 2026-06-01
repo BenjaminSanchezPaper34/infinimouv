@@ -1080,9 +1080,10 @@ span.gradient-text {
   padding: 0;
 }
 .im-services-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* PAS de display:flex : Safari rend -webkit-background-clip:text INVISIBLE
+     quand l'element clippe est un enfant flex. On centre en inline-block a la
+     place (meme rendu) pour que le degrade des labels marche aussi sur Safari. */
+  display: block;
   text-align: center;
   padding: 4px 0;
 }
@@ -1090,7 +1091,7 @@ span.gradient-text {
   display: inline-block;
   margin-right: 0.35em;
   font-size: 0.75em;
-  vertical-align: 0.1em;
+  vertical-align: middle;
   font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
   -webkit-text-fill-color: initial;
   background: none;
@@ -1109,6 +1110,7 @@ span.gradient-text {
   text-transform: uppercase;
   line-height: 1.15;
   letter-spacing: 0;
+  vertical-align: middle;  /* aligne le label avec l'emoji (centrage inline-block) */
   /* gradient-text styling appliqué via classe .gradient-text aussi */
 }
 
