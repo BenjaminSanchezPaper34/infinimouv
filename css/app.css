@@ -74,8 +74,8 @@ h1,h2,h3,p{margin:0;}
   font-size:15px;letter-spacing:.5px;padding:14px 30px;border-radius:100px;cursor:pointer;
   transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;
 }
-.btn--solid{background:linear-gradient(180deg,var(--lime),var(--green));color:#fff;box-shadow:0 10px 26px rgba(0,105,53,.28);}
-.btn--solid:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 16px 36px rgba(0,105,53,.38);}
+.btn--solid{background:linear-gradient(to bottom,var(--lime),var(--green));color:#fff;box-shadow:4px 4px 20px rgba(0,0,0,.1);}  /* = CTA Muse #u1050-4 */
+.btn--solid:hover{transform:translateY(-2px) scale(1.02);box-shadow:6px 8px 28px rgba(0,0,0,.16);}
 .btn--ghost{border:2px solid var(--lime);color:var(--green);background:transparent;}
 .btn--ghost:hover{background:var(--lime);color:#fff;}
 
@@ -97,10 +97,10 @@ h1,h2,h3,p{margin:0;}
 .nav__links{display:flex;align-items:center;gap:10px;}
 .nav__links a{
   font-family:var(--ff-display);font-style:italic;font-weight:700;text-transform:uppercase;
-  font-size:14px;color:var(--green);background:#fff;border:2px solid var(--lime);border-radius:100px;
-  padding:9px 18px;transition:background .2s ease,color .2s ease;
+  font-size:15px;color:var(--green);background:transparent;border:2px solid var(--lime);border-radius:100px;
+  padding:8px 20px;transition:color .2s ease,border-color .2s ease;
 }
-.nav__links a:hover{background:var(--lime);color:#fff;}
+.nav__links a:hover{color:var(--lime);}   /* hover = texte lime (= CTA Muse #u342-4) */
 .nav__social{display:flex;align-items:center;gap:14px;}
 .nav__social a{color:var(--green);transition:opacity .2s;}
 .nav__social a:hover{opacity:.6;}
@@ -191,7 +191,7 @@ h1,h2,h3,p{margin:0;}
    BANDEAU services
    ========================================================================== */
 .cta-band{display:flex;justify-content:center;padding:60px 0;}
-.cta-band .btn{font-size:20px;padding:18px 44px;}
+.cta-band .btn{font-size:clamp(20px,3vw,28px);padding:18px 52px;}   /* gros CTA (= Muse ~30px) */
 
 /* ==========================================================================
    NOS AVANTAGES (split image + liste)
