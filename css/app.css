@@ -162,29 +162,29 @@ h1,h2,h3,p{margin:0;}
 .pricing__grid{display:grid;grid-template-columns:1fr 1.25fr;gap:26px;align-items:stretch;}
 .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow);}
 .plan{background:linear-gradient(160deg,var(--lime),var(--green));color:#fff;border:0;display:flex;flex-direction:column;}
-.plan__name{font-family:var(--ff-display);font-style:italic;font-weight:700;text-transform:uppercase;font-size:26px;margin-bottom:18px;}
-.plan ul{display:flex;flex-direction:column;gap:8px;font-size:16px;margin-bottom:auto;}
-.plan ul li{padding-left:22px;position:relative;}
-.plan ul li::before{content:"✓";position:absolute;left:0;font-weight:700;}
+.plan__name{font-family:var(--ff-body);font-weight:700;text-transform:uppercase;font-size:22px;margin-bottom:16px;}
+.plan__intro{font-size:14px;opacity:.92;margin-bottom:4px;}
+.plan ul{display:flex;flex-direction:column;gap:4px;font-size:16px;font-weight:700;margin-bottom:auto;}
 .plan__price{margin-top:26px;}
-.plan__price .lead{font-size:15px;opacity:.9;}
-.plan__price .amount{font-family:var(--ff-display);font-style:italic;font-weight:700;font-size:52px;line-height:1;}
-.opts__title{font-family:var(--ff-display);font-style:italic;font-weight:700;text-transform:uppercase;font-size:26px;color:var(--green);margin-bottom:20px;}
-.opts__grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.opt h4{font-family:var(--ff-body);font-weight:700;text-transform:uppercase;font-size:16px;color:var(--ink);margin-bottom:8px;}
-.opt ul{font-size:15px;color:var(--muted);display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
-.opt__plus{color:var(--green-solid);font-weight:700;font-size:14px;}
-.opt__price{font-family:var(--ff-display);font-style:italic;font-weight:700;font-size:34px;color:var(--green);}
+.plan__price .lead{font-size:15px;font-style:italic;opacity:.92;}
+.plan__price .amount{font-family:var(--ff-display);font-style:italic;font-weight:700;font-size:50px;line-height:1;}
+.opts__title{font-family:var(--ff-body);font-weight:700;text-transform:uppercase;font-size:22px;color:var(--green);margin-bottom:22px;}
+.opts__grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.opts__grid .opt + .opt{border-left:1px solid var(--line);padding-left:28px;}   /* séparateur vertical */
+.opt h4{font-family:var(--ff-body);font-weight:600;font-size:15px;color:var(--green);margin-bottom:8px;}
+.opt ul{font-size:15px;font-weight:700;color:var(--ink);display:flex;flex-direction:column;gap:4px;margin-bottom:14px;}
+.opt__plus{color:var(--muted);font-style:italic;font-size:14px;}
+.opt__price{font-family:var(--ff-display);font-style:italic;font-weight:700;font-size:34px;color:#5aad12;}
 .pricing__note{margin-top:18px;font-size:13px;color:var(--muted);}
 
 /* ==========================================================================
    AVANTAGES (3 cartes)
    ========================================================================== */
-.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.feat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);transition:transform .3s ease,box-shadow .3s ease;}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px;}
+.feat{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:46px 32px 32px;box-shadow:var(--shadow);transition:transform .3s ease,box-shadow .3s ease;}
 .feat:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(0,0,0,.14);}
-.feat__icon{width:56px;height:50px;margin-bottom:16px;}
-.feat h3{font-family:var(--ff-body);font-weight:700;text-transform:uppercase;font-size:18px;color:var(--green);margin-bottom:10px;}
+.feat__icon{position:absolute;top:-26px;left:32px;width:auto;height:56px;}  /* icône qui chevauche le haut de la carte */
+.feat h3{font-family:var(--ff-body);font-weight:700;text-transform:uppercase;font-size:17px;color:var(--green);margin-bottom:10px;}
 .feat p{font-size:15px;color:var(--muted);}
 
 /* ==========================================================================
