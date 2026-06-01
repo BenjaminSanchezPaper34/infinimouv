@@ -56,7 +56,16 @@ h1,h2,h3,p{margin:0;}
   color:var(--green-solid);                 /* repli */
   margin-bottom:36px;
 }
-.grad{color:var(--green-solid);}            /* repli */
+.grad{
+  color:var(--green-solid);                 /* repli vert plein */
+  /* Anti-coupe : la police est ITALIQUE ; background-clip:text a une boîte
+     rectangulaire qui tronque le haut-gauche de la 1ère lettre et le bas-droite
+     de la dernière. On étend la boîte avec un padding + inline-block. */
+  display:inline-block;
+  padding:.1em .34em .1em .2em;
+  margin-left:-.2em;   /* compense le padding gauche -> titre reste aligné à gauche */
+  overflow:visible;
+}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   @media screen{
     .grad{
