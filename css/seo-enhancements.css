@@ -34,13 +34,13 @@
    `margin-right:-10000px` lors du flash initial avant que le JS déplace
    les blocs. Sans ça, la page apparait décentrée par moments au load. */
 html {
-  overflow-x: clip;
-  overflow-x: hidden;  /* fallback browsers anciens */
+  overflow-x: hidden;  /* html = seul conteneur de scroll ; clippe tout debordement lateral des descendants */
 }
-body {
-  overflow-x: clip;
-  overflow-x: hidden;
-}
+/* body : AUCUN overflow-x volontairement. Mettre overflow-x:hidden sur body
+   forcerait overflow-y a 'auto' (regle CSS : si un axe != visible, l'autre passe
+   auto) -> body deviendrait un 2e conteneur de scroll en plus de html -> "il faut
+   parfois 2 coups de scroll pour demarrer". On laisse donc body en overflow:visible :
+   le clip horizontal de html suffit a contenir le debordement. Un seul scroller. */
 
 /* Scroll-margin-top : décale la cible des anchors pour ne pas être cachée
    par la nav fixe (mobile) ou la nav non-fixe (desktop). */
@@ -1083,7 +1083,6 @@ span.gradient-text {
   background: none;
   filter: drop-shadow(0 2px 4px rgba(0, 105, 53, 0.15));
   transform-origin: center;
-  will-change: transform;
 }
 .im-services-item.is-right .im-services-emoji {
   margin-right: 0;
@@ -1718,7 +1717,9 @@ span.gradient-text {
 .im-reveal {
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
   transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
+  /* will-change retire : laisse en permanence sur des dizaines d'elements, il
+     forcait autant de couches GPU (micro-saccades) ET pouvait casser le clip
+     des titres degrades. */
 }
 .im-reveal.im-reveal-hidden {
   opacity: 0;
@@ -1726,7 +1727,11 @@ span.gradient-text {
 }
 .im-reveal.im-reveal-in {
   opacity: 1;
-  transform: translateY(0);
+  /* transform:none (pas translateY(0)) : translateY(0) reste une transform ->
+     couche composite permanente -> casse -webkit-background-clip:text des titres
+     degrades (peints en NOIR). none de-promeut la couche. La translation s'anime
+     quand meme (none = matrice identite interpolable). */
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

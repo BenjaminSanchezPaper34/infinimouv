@@ -293,6 +293,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
+  /* clearProps:transform en defaut GLOBAL a partir d'ici (apres la parallaxe
+     hero en scrub, qu'il ne faut PAS toucher). Chaque reveal one-shot ci-dessous
+     efface ainsi sa transform residuelle (translate(0,0)) en fin d'anim : une
+     transform residuelle garde l'element sur une couche composite et casse
+     -webkit-background-clip:text -> titres degrades peints en NOIR. */
+  if (typeof gsap !== 'undefined') {
+    gsap.defaults({ clearProps: 'transform' });
+  }
+
+
   /* ------------------------------------------------------------------
      2. SERVICES LIST — Apparition staggerée (MUSCULATION, CARDIO, etc.)
      ------------------------------------------------------------------ */

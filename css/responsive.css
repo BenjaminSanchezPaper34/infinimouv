@@ -15,7 +15,9 @@
   body {
     min-width: 0 !important;
     width: 100% !important;
-    overflow-x: hidden !important;
+    /* PAS d'overflow-x sur body : hidden forcerait overflow-y:auto -> body devient
+       un 2e conteneur de scroll -> double-scroll ("2 coups pour demarrer").
+       html (ci-dessus) clippe deja tout debordement lateral. */
   }
   #page {
     width: 100% !important;
