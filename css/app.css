@@ -240,10 +240,10 @@ h1,h2,h3,p{margin:0;}
 .footer{position:relative;background:var(--ink);color:#fff;padding:110px 0 32px;margin-top:90px;overflow:visible;}
 /* GRAND ruban ∞ qui traverse le bas : déborde vers le HAUT (sur la zone contact)
    et s'étend à droite, à cheval sur contact + footer (= rendu Muse "magnifique"). */
-.footer__symbol{position:absolute;right:0;top:-130px;width:min(1040px,90%);height:auto;pointer-events:none;z-index:0;}
+.footer__symbol{position:absolute;right:0;bottom:0;width:min(1040px,90%);height:auto;pointer-events:none;z-index:0;}  /* ancré en bas : le ruban touche le bas de page, déborde vers le haut */
 .footer__in{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;}
 @media(max-width:700px){
-  .footer__symbol{top:-60px;width:120%;right:-10%;}
+  .footer__symbol{bottom:0;width:130%;right:-15%;}
 }
 .footer__info address{font-style:normal;font-family:var(--ff-display);font-weight:500;font-style:italic;font-size:19px;line-height:1.5;color:#fff;}
 .footer__muted{opacity:.7;font-size:.8em;}
