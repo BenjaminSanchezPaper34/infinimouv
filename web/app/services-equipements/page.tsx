@@ -28,8 +28,7 @@ const BENTO: Tile[] = [
   { type: "img", src: "salle-infinimouv.webp", alt: "Salle de cours Les Mills" },
   { type: "card", title: "Confort & bien-être", text: "Salle chauffée et climatisée toute l'année. Air purifié et renouvelé en continu grâce à nos ioniseurs professionnels. Vestiaires modernes et douches en libre accès. Un cadre propre, lumineux et entretenu quotidiennement." },
   { type: "img", src: "salle2-infinimouv.webp", alt: "Salle lumineuse" },
-  { type: "card", title: "Cross Training", text: "Espace Cross Training extérieur couvert, ouvert par tous les temps. Cage Crossfit + accessoires (cordes à grimper, haltères, kettlebells, plateaux de squat…). Créez votre parcours : force athlétique, haltérophilie, gymnastique, endurance." },
-  { type: "img", src: "services2-infinimouv.webp", alt: "Espace cross training" },
+  { type: "card", title: "Cross Training", text: "Espace Cross Training extérieur couvert, ouvert par tous les temps. Cage Crossfit + accessoires (cordes à grimper, haltères, kettlebells, plateaux de squat…). Créez votre parcours : force athlétique, gymnastique, endurance." },
 ];
 
 const TEAM = [
@@ -121,13 +120,13 @@ export default function ServicesEquipements() {
             <div className="bento">
               {BENTO.map((t, i) =>
                 t.type === "card" ? (
-                  <article className="bento__card" data-reveal data-reveal-delay={`${(i % 3) * 80}`} key={t.title}>
+                  <article className={`bento__cell bento__card bento__c${i + 1}`} data-reveal data-reveal-delay={`${(i % 3) * 80}`} key={t.title}>
                     <h2 className="bento__title">{t.title}</h2>
                     <p className="bento__text">{t.text}</p>
                   </article>
                 ) : (
-                  <div className="bento__img" data-reveal data-reveal-delay={`${(i % 3) * 80}`} key={`${t.src}-${i}`}>
-                    <Image src={`/images/${t.src}`} alt={t.alt} width={640} height={780} sizes="(min-width:900px) 33vw, (min-width:600px) 50vw, 100vw" />
+                  <div className={`bento__cell bento__img bento__c${i + 1}`} data-reveal data-reveal-delay={`${(i % 3) * 80}`} key={`${t.src}-${i}`}>
+                    <Image src={`/images/${t.src}`} alt={t.alt} fill sizes="(min-width:980px) 33vw, (min-width:600px) 50vw, 100vw" style={{ objectFit: "cover" }} />
                   </div>
                 )
               )}
