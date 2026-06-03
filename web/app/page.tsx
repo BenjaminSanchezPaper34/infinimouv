@@ -18,18 +18,18 @@ const ACTS: { label: string; emoji: string; emojiFirst: boolean }[] = [
 const FEATS = [
   {
     icon: "time-infinimouv.svg",
-    title: "Accès libre de 6h00 à 23h00, 7j/7",
-    text: "Profitez d'une liberté totale pour vous entraîner à votre rythme. Que vous soyez matinal, entre midi et deux, ou adepte des séances tardives, vous avez toujours un créneau pour vous entraîner dans un espace complet, propre et parfaitement équipé.",
+    title: "Accès libre 7j/7, de 6h à 23h",
+    text: "Entraînez-vous à votre rythme, en accès libre toute la semaine. Matin, pause déjeuner ou soirée : il y a toujours un créneau, dans un espace complet, propre et parfaitement équipé.",
   },
   {
     icon: "air-infinimouv.svg",
     title: "Un air purifié et renouvelé",
-    text: "Pour votre confort et votre santé, notre salle est équipée d'un système de renouvellement et de purification de l'air. L'air du club est filtré et régulièrement renouvelé afin de garantir un environnement plus sain, plus agréable et parfaitement adapté à la pratique sportive.",
+    text: "Un système professionnel renouvelle et purifie l'air en continu. Le club reste filtré et oxygéné, pour un environnement plus sain, plus agréable et idéal pour la pratique sportive.",
   },
   {
     icon: "objectif-infinimouv.svg",
-    title: "Coaching personnalisé et accompagnement pro",
-    text: "Nos coachs diplômés vous proposent un suivi personnalisé : 1 à 2 entretiens individuels par mois pour établir un programme adapté et un réel accompagnement mensuel pour analyser votre évolution. Perte de poids, prise de masse, retour au sport : un accompagnement sur mesure dans un cadre unique.",
+    title: "Coaching personnalisé",
+    text: "Nos coachs diplômés assurent un suivi sur mesure : 1 à 2 entretiens par mois pour bâtir votre programme et suivre vos progrès — perte de poids, prise de masse ou retour au sport.",
   },
 ];
 
@@ -198,27 +198,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ============ AVANTAGES (3 cartes) ============ */}
+        {/* ============ AVANTAGES (3 cartes) + CTA ============ */}
         <section className="section" aria-label="Avantages">
           <div className="wrap">
             <div className="feats">
               {FEATS.map((f, i) => (
                 <article className="feat" data-reveal data-reveal-delay={`${i * 100}`} key={f.title}>
-                  <img className="feat__icon" src={`/images/${f.icon}`} alt="" height={56} />
+                  <span className="feat__badge">
+                    <img className="feat__icon" src={`/images/${f.icon}`} alt="" />
+                  </span>
                   <h3>{f.title}</h3>
                   <p>{f.text}</p>
                 </article>
               ))}
             </div>
+            <div className="cta-band">
+              <a className="btn btn--solid" href="/services-equipements">
+                Voir tous les services
+              </a>
+            </div>
           </div>
         </section>
-
-        {/* ============ BANDEAU services ============ */}
-        <div className="cta-band">
-          <a className="btn btn--solid" href="/services-equipements">
-            Services &amp; équipements
-          </a>
-        </div>
 
         {/* ============ AVIS Google ============ */}
         <section className="section section--soft" aria-label="Avis Google">

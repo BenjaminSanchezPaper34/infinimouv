@@ -314,19 +314,20 @@ body {
 .opt__price { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 45px; color: var(--im-lime); line-height: 1.15; margin-top: 2px; }
 .pricing__note { margin-top: 20px; font-size: 16px; color: var(--im-muted); }
 
-/* AVANTAGES (3 cartes) */
-.feats { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 34px; }
-@media (min-width: 901px) { .feats { grid-template-columns: repeat(3,1fr); gap: 24px; } }
-.feat { position: relative; background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg); padding: 46px 28px 28px; box-shadow: var(--shadow); transition: transform .3s var(--ease-out), box-shadow .3s ease; }
+/* AVANTAGES (3 cartes) — contenu centré, badge icône, hauteur homogène */
+.feats { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 34px; }
+@media (min-width: 901px) { .feats { grid-template-columns: repeat(3,1fr); } }
+.feat { background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg); padding: 34px 28px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  transition: transform .3s var(--ease-out), box-shadow .3s ease; }
 .feat:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(0,0,0,.14); }
-.feat__icon { position: absolute; top: -26px; left: 28px; width: auto; height: 56px; }
+.feat__badge { width: 76px; height: 76px; border-radius: 50%; background: var(--im-green-50); display: grid; place-items: center; margin-bottom: 18px; }
+.feat__icon { width: auto; height: 38px; }
 .feat h3 { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; font-size: 17px; color: var(--im-green-700); margin-bottom: 10px; }
-.feat p { font-size: 15px; color: var(--im-muted); }
+.feat p { font-size: 15px; color: var(--im-muted); line-height: 1.6; }
 
-/* BANDEAU services */
-.cta-band { display: flex; justify-content: center; padding: 50px 0; }
-.cta-band .btn { font-size: clamp(18px, 5vw, 28px); padding: 16px 40px; text-align: center; }
-@media (min-width: 561px) { .cta-band { padding: 60px 0; } .cta-band .btn { padding: 18px 52px; } }
+/* CTA Services — simple, rapproché des cartes */
+.cta-band { display: flex; justify-content: center; margin-top: 34px; }
 
 /* AVIS Google (statique fidèle) */
 .reviews { max-width: 720px; margin-inline: auto; text-align: center; }
