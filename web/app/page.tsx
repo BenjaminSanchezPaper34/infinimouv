@@ -357,7 +357,7 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <button className="form__submit" type="submit">Envoyer</button>
+                  <button className="btn btn--solid form__submit" type="submit">Envoyer</button>
                 </form>
               </div>
             </div>
