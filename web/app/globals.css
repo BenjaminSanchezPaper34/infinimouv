@@ -377,8 +377,10 @@ body {
 .footer__info { flex: 0 1 auto; }
 /* ∞ : remplit l'espace vide entre les coordonnées et la signature, ancré en bas */
 .footer__deco { flex: 1 1 200px; min-width: 0; display: flex; align-items: flex-end; justify-content: center; }
-.footer__deco img { width: 100%; max-width: 480px; max-height: 150px; height: auto; object-fit: contain; display: block; }
-@media (max-width: 700px) { .footer__deco { flex-basis: 100%; } .footer__deco img { max-height: 110px; margin-inline: auto; } }
+/* translateY pousse le ∞ jusqu'au bas du footer (= padding bas), sans décaler le texte */
+.footer__deco img { width: 100%; max-width: 480px; max-height: 150px; height: auto; object-fit: contain; display: block; transform: translateY(26px); }
+@media (min-width: 561px) { .footer__deco img { transform: translateY(30px); } }
+@media (max-width: 700px) { .footer__deco { flex-basis: 100%; } .footer__deco img { max-height: 110px; margin-inline: auto; transform: translateY(26px); } }
 .footer__info address { font-style: italic; font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.5; color: #fff; }
 .footer__muted { opacity: .7; font-size: .8em; }
 .footer__row { display: flex; align-items: center; gap: 22px; margin-top: 20px; }
