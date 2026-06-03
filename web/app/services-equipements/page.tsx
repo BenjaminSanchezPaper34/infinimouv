@@ -16,19 +16,27 @@ type Tile =
   | { type: "card"; title: string; text: string }
   | { type: "img"; src: string; alt: string };
 
-const BENTO: Tile[] = [
-  { type: "card", title: "Zone musculation", text: "Plateau de musculation équipé d'appareils performants Matrix : machines guidées pour un travail sécurisé et poids libres (haltères, barres, bancs, cage Smith). Renforcement musculaire ou prise de masse, vous travaillez chaque groupe musculaire selon votre niveau." },
-  { type: "img", src: "musculation-infinimouv.webp", alt: "Zone musculation Matrix" },
-  { type: "img", src: "salle3-infinimouv.webp", alt: "Espace bike interactif" },
-  { type: "card", title: "Espace bike interactif (Spivi®)", text: "Idéal pour sculpter jambes, mollets et fessiers, le biking favorise la perte de poids. Pratiquez librement sur vélo fixe ou en séances de groupe. Grâce à notre partenaire Spivi®, profitez de cours de biking interactifs immersifs." },
-  { type: "img", src: "bike-infinimouv.webp", alt: "Vélos Infini Mouv" },
-  { type: "card", title: "Espace nutrition & boutique", text: "Accompagnement par un coach certifié en nutrition : bilan de départ + 7 suivis annuels, scan 3D d'impédancemétrie et plan alimentaire sur mesure. Boutique sur place : barres, whey, compléments et boissons (Éric Favre, Nutripure)." },
-  { type: "img", src: "services-infinimouv.webp", alt: "Espace services" },
-  { type: "card", title: "Cours collectifs Les Mills®", text: "Salle dédiée aux cours Les Mills® en vidéo immersive : BodyPump, BodyCombat, BodyBalance, BodyAttack, RPM, Sh'Bam… Séances guidées accessibles selon votre planning, sans inscription préalable." },
-  { type: "img", src: "salle-infinimouv.webp", alt: "Salle de cours Les Mills" },
-  { type: "card", title: "Confort & bien-être", text: "Salle chauffée et climatisée toute l'année. Air purifié et renouvelé en continu grâce à nos ioniseurs professionnels. Vestiaires modernes et douches en libre accès. Un cadre propre, lumineux et entretenu quotidiennement." },
-  { type: "img", src: "salle2-infinimouv.webp", alt: "Salle lumineuse" },
-  { type: "card", title: "Cross Training", text: "Espace Cross Training extérieur couvert, ouvert par tous les temps. Cage Crossfit + accessoires (cordes à grimper, haltères, kettlebells, plateaux de squat…). Créez votre parcours : force athlétique, gymnastique, endurance." },
+/* 3 colonnes : cartes = hauteur du texte, photos = flex-grow pour combler
+   → toutes les colonnes se terminent à la même ligne (rectangle). */
+const BENTO_COLS: Tile[][] = [
+  [
+    { type: "card", title: "Zone musculation", text: "Plateau de musculation équipé d'appareils performants Matrix : machines guidées pour un travail sécurisé et poids libres (haltères, barres, bancs, cage Smith). Renforcement musculaire ou prise de masse, vous travaillez chaque groupe musculaire selon votre niveau." },
+    { type: "img", src: "musculation-infinimouv.webp", alt: "Zone musculation Matrix" },
+    { type: "card", title: "Cours collectifs Les Mills®", text: "Salle dédiée aux cours Les Mills® en vidéo immersive : BodyPump, BodyCombat, BodyBalance, BodyAttack, RPM, Sh'Bam… Séances guidées selon votre planning, sans inscription préalable." },
+    { type: "img", src: "salle-infinimouv.webp", alt: "Salle de cours Les Mills" },
+  ],
+  [
+    { type: "img", src: "salle3-infinimouv.webp", alt: "Espace bike interactif" },
+    { type: "card", title: "Espace bike interactif (Spivi®)", text: "Idéal pour sculpter jambes, mollets et fessiers, le biking favorise la perte de poids. Pratiquez librement sur vélo fixe ou en séances de groupe. Grâce à notre partenaire Spivi®, profitez de cours de biking interactifs immersifs." },
+    { type: "img", src: "bike-infinimouv.webp", alt: "Vélos Infini Mouv" },
+    { type: "card", title: "Confort & bien-être", text: "Salle chauffée et climatisée toute l'année. Air purifié et renouvelé en continu grâce à nos ioniseurs professionnels. Vestiaires modernes et douches en libre accès." },
+  ],
+  [
+    { type: "card", title: "Espace nutrition & boutique", text: "Accompagnement par un coach certifié en nutrition : bilan de départ + 7 suivis annuels, scan 3D d'impédancemétrie et plan alimentaire sur mesure. Boutique sur place : barres, whey, compléments et boissons (Éric Favre, Nutripure)." },
+    { type: "img", src: "services-infinimouv.webp", alt: "Espace services" },
+    { type: "card", title: "Cross Training", text: "Espace Cross Training extérieur couvert, ouvert par tous les temps. Cage Crossfit + accessoires (cordes, haltères, kettlebells, plateaux de squat…). Créez votre parcours : force, gymnastique, endurance." },
+    { type: "img", src: "salle2-infinimouv.webp", alt: "Salle lumineuse" },
+  ],
 ];
 
 const TEAM = [
@@ -118,18 +126,22 @@ export default function ServicesEquipements() {
         <section className="section">
           <div className="wrap">
             <div className="bento">
-              {BENTO.map((t, i) =>
-                t.type === "card" ? (
-                  <article className={`bento__cell bento__card bento__c${i + 1}`} data-reveal data-reveal-delay={`${(i % 3) * 80}`} key={t.title}>
-                    <h2 className="bento__title">{t.title}</h2>
-                    <p className="bento__text">{t.text}</p>
-                  </article>
-                ) : (
-                  <div className={`bento__cell bento__img bento__c${i + 1}`} data-reveal data-reveal-delay={`${(i % 3) * 80}`} key={`${t.src}-${i}`}>
-                    <Image src={`/images/${t.src}`} alt={t.alt} fill sizes="(min-width:980px) 33vw, (min-width:600px) 50vw, 100vw" style={{ objectFit: "cover" }} />
-                  </div>
-                )
-              )}
+              {BENTO_COLS.map((col, ci) => (
+                <div className="bento-col" key={ci}>
+                  {col.map((t, i) =>
+                    t.type === "card" ? (
+                      <article className="bento__card" data-reveal data-reveal-delay={`${ci * 80}`} key={t.title}>
+                        <h2 className="bento__title">{t.title}</h2>
+                        <p className="bento__text">{t.text}</p>
+                      </article>
+                    ) : (
+                      <div className="bento__img" data-reveal data-reveal-delay={`${ci * 80}`} key={`${t.src}-${i}`}>
+                        <Image src={`/images/${t.src}`} alt={t.alt} fill sizes="(min-width:900px) 33vw, 100vw" style={{ objectFit: "cover" }} />
+                      </div>
+                    )
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </section>
