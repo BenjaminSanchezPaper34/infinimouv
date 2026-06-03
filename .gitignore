@@ -1,13 +1,53 @@
-# macOS
+# ============================================================
+# Repo Infini Mouv — ne versionne QUE la nouvelle app web/
+# ============================================================
+
+# Système / éditeurs
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Editor
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Vercel
-.vercel
+# Outils locaux
+.claude/
+*.lock
+
+# Fichiers sources print / design (restent en local, hors repo)
+# NB: ancrés à la racine (/) pour ne PAS toucher web/ (core.ignorecase macOS)
+*.indd
+*.idml
+*.muse
+/EXPORT/
+/IMAGES/
+/IMAGESWEB/
+/AFFICHE-*
+/COUVERTURE-*
+/GOURDE-*
+/POSTS-*
+/STORIES-*
+/TAPIS-*
+
+# Ancien site (hors repo, conservé en local + historique git)
+/index.html
+/services-equipements.html
+/css/
+/js/
+/assets/
+/fonts/
+/images/
+/scripts/
+/site/
+/sitemap.xml
+/robots.txt
+/llms.txt
+/manifest.json
+/vercel.json
+/favicon.ico
+
+# Dépendances / build de l'app (web/.gitignore gère aussi)
+web/node_modules/
+web/.next/
+web/.vercel/
