@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const SITE_URL = "https://infinimouv.vercel.app";
+const SITE_URL = "https://infini-mouv.fr";
+
+export const viewport: Viewport = {
+  themeColor: "#006935",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
