@@ -1,12 +1,6 @@
 export default function Footer() {
   return (
     <footer className="footer">
-      <img
-        className="footer__symbol"
-        src="/images/symbole-infinimouv-crop-u355.webp"
-        alt=""
-        aria-hidden="true"
-      />
       <div className="wrap footer__in">
         <div className="footer__info">
           <address>
@@ -32,6 +26,9 @@ export default function Footer() {
             <a className="footer__phone" href="tel:+33986673838">09 86 67 38 38</a>
           </div>
           <p className="footer__copy">INFINIMOUV © 2026 Tous droits réservés</p>
+        </div>
+        <div className="footer__deco" aria-hidden="true">
+          <img src="/images/symbole-infinimouv-crop-u355.webp" alt="" />
         </div>
         <a className="footer__credit" href="http://paper34.fr" target="_blank" rel="noopener">
           Réalisé par <img src="/images/logoblanc-paper34.svg" alt="Paper34" />
