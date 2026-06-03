@@ -440,4 +440,4 @@ body {
 .app-badges { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; }
 .app-badges img { height: 46px; width: auto; }
 .app-band__img { display: flex; justify-content: center; }
-.app-band__img img { width: 100%; max-width: 380px; height: auto; }
+.app-band__img img { width: 100%; max-width: 300px; height: auto; border-radius: 24px; }

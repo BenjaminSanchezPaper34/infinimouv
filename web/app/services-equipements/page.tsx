@@ -290,11 +290,11 @@ export default function ServicesEquipements() {
               </div>
               <div className="app-band__img" data-reveal data-reveal-delay="120">
                 <Image
-                  src="/images/appxplor-infinimouv.webp"
-                  alt="Application Xplor Active"
-                  width={900}
-                  height={900}
-                  sizes="(min-width:901px) 40vw, 80vw"
+                  src="/images/app-infinimouv.webp"
+                  alt="Application Xplor Active — planning des cours Infini Mouv"
+                  width={600}
+                  height={1200}
+                  sizes="(min-width:901px) 320px, 70vw"
                 />
               </div>
             </div>
