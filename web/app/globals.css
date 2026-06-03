@@ -387,3 +387,57 @@ body {
 .footer__credit { display: flex; align-items: center; gap: 8px; font-size: 10px; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: 1px; }
 .footer__credit img { width: 54px; }
 @media (min-width: 701px) { .footer__credit { writing-mode: vertical-rl; transform: rotate(180deg); } .footer__credit img { transform: rotate(90deg); } }
+
+/* ============================================================
+   PAGE SERVICES & ÉQUIPEMENTS
+   ============================================================ */
+.svc-hero { position: relative; min-height: 56vh; background: var(--im-ink); overflow: hidden; }
+@media (min-width: 768px) { .svc-hero { min-height: 64vh; } }
+.svc-hero__img { object-fit: cover; }
+.svc-hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.25) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.15) 100%); }
+
+.svc-intro { font-size: clamp(16px, 2.2vw, 19px); color: var(--im-muted); max-width: 920px; line-height: 1.6; }
+
+/* Rangées services alternées */
+.svc-rows { display: flex; flex-direction: column; gap: 56px; }
+@media (min-width: 901px) { .svc-rows { gap: 80px; } }
+.svc-row { align-items: center; }
+@media (min-width: 901px) {
+  .svc-row--rev .split__img { order: 2; }
+}
+.svc-row__title { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; font-size: clamp(20px, 3vw, 26px); color: var(--im-green-700); margin-bottom: 14px; }
+.svc-row__text { font-size: 17px; color: var(--im-muted); line-height: 1.6; }
+
+/* Équipe */
+.team { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 36px; }
+@media (min-width: 768px) { .team { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.team-card { background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg); padding: 32px 26px; text-align: center; box-shadow: var(--shadow); transition: transform .3s var(--ease-out), box-shadow .3s ease; }
+.team-card:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(0,0,0,.14); }
+.team-card__avatar { width: 96px; height: 96px; margin: 0 auto 16px; border-radius: 50%; display: grid; place-items: center;
+  background: linear-gradient(160deg, var(--im-lime), var(--im-green-700)); color: #fff;
+  font-family: var(--font-display); font-style: italic; font-weight: 900; font-size: 34px; box-shadow: 0 12px 28px rgba(0,105,53,.3); }
+.team-card__name { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; font-size: 20px; }
+.team-card__role { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: .5px; color: var(--im-green-600); margin-bottom: 12px; }
+.team-card__text { font-size: 15px; color: var(--im-muted); line-height: 1.55; }
+
+/* Engagements : 2 colonnes possibles */
+@media (min-width: 768px) { .svc-eng { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 40px; } }
+
+/* Cours collectifs */
+.cours-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 32px; }
+@media (min-width: 600px) { .cours-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 980px) { .cours-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
+.cours-card { background: #fff; border: 1px solid var(--im-line); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); transition: transform .3s var(--ease-out), box-shadow .3s ease; }
+.cours-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.cours-card__title { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; font-size: 16px; color: var(--im-green-700); margin-bottom: 8px; }
+.cours-card__text { font-size: 14px; color: var(--im-muted); line-height: 1.55; }
+
+/* App */
+.app-band { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+@media (min-width: 901px) { .app-band { grid-template-columns: 1.1fr .9fr; gap: 48px; } }
+.app-code { margin-top: 14px; font-size: 17px; }
+.app-code strong { color: var(--im-green-700); }
+.app-badges { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; }
+.app-badges img { height: 46px; width: auto; }
+.app-band__img { display: flex; justify-content: center; }
+.app-band__img img { width: 100%; max-width: 380px; height: auto; }

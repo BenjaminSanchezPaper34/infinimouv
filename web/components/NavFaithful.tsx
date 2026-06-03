@@ -4,10 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 
 const LINKS = [
-  ["#nos-avantages", "La salle"],
-  ["#activites", "Cours"],
-  ["#tarifs", "Tarifs"],
-  ["#contact", "Contact"],
+  ["/#nos-avantages", "La salle"],
+  ["/services-equipements#cours", "Cours"],
+  ["/#tarifs", "Tarifs"],
+  ["/#contact", "Contact"],
 ];
 
 export default function NavFaithful() {
@@ -16,7 +16,7 @@ export default function NavFaithful() {
   return (
     <header className="nav">
       <div className="wrap nav__in">
-        <a className="nav__logo" href="#top" aria-label="Accueil Infini Mouv">
+        <a className="nav__logo" href="/" aria-label="Accueil Infini Mouv">
           <Image
             src="/images/logo-infinimouv.webp"
             alt="Infini Mouv"
