@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Script from "next/script";
 import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 
@@ -65,6 +66,13 @@ export default function Home() {
     <div className="site" id="top">
       <Motion />
       <NavFaithful />
+
+      {/* Plateforme Elfsight (flux Instagram) */}
+      <Script
+        src="https://static.elfsight.com/platform/platform.js"
+        strategy="afterInteractive"
+      />
+
 
       <main>
         {/* ============ HERO ============ */}
@@ -289,38 +297,12 @@ export default function Home() {
         <section className="section" id="contact" aria-labelledby="t-contact">
           <div className="wrap">
             <div className="contact__grid">
-              {/* Carte Instagram (statique) */}
-              <div className="insta-card" data-reveal>
-                <div className="insta-card__head">
-                  <div className="insta-card__ring">
-                    <Image src="/images/symbole-infinimouv-crop-u355.webp" alt="" width={46} height={46} />
-                  </div>
-                  <div>
-                    <div className="insta-card__name">Infini Mouv Agde</div>
-                    <a
-                      className="insta-card__handle"
-                      href="https://www.instagram.com/infinimouv_agde/"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      @infinimouv_agde
-                    </a>
-                  </div>
-                </div>
-                <div className="insta-card__stats">
-                  <div><b>122</b><span>publications</span></div>
-                  <div><b>656</b><span>abonnés</span></div>
-                  <div><b>351</b><span>abonnements</span></div>
-                </div>
-                <div className="insta-card__photo">
-                  <Image
-                    src="/images/salle2-infinimouv.webp"
-                    alt="Intérieur de la salle Infini Mouv"
-                    fill
-                    sizes="(min-width:901px) 40vw, 100vw"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
+              {/* Flux Instagram — widget Elfsight (@infinimouv_agde) */}
+              <div className="insta-embed" data-reveal>
+                <div
+                  className="elfsight-app-f78ecb2d-dd4e-45f8-b790-65080821565e"
+                  data-elfsight-app-lazy
+                />
               </div>
 
               {/* Formulaire contact (natif) */}
