@@ -373,8 +373,9 @@ body {
 /* FOOTER */
 .footer { position: relative; background: var(--im-ink); color: #fff; padding: 90px 0 28px; overflow: hidden; }
 @media (min-width: 561px) { .footer { padding: 110px 0 32px; } }
-.footer__symbol { position: absolute; right: -10%; bottom: 0; width: 130%; max-width: 820px; height: auto; pointer-events: none; z-index: 0; opacity: .9; }
-@media (min-width: 701px) { .footer__symbol { right: 0; width: 72%; } }
+/* ∞ décoratif : réduit, calé en bas entre les coordonnées (gauche) et la signature (droite) */
+.footer__symbol { position: absolute; right: 5%; bottom: 16px; width: 56%; max-width: 220px; height: auto; pointer-events: none; z-index: 0; opacity: .7; }
+@media (min-width: 701px) { .footer__symbol { right: 13%; bottom: 20px; width: 300px; max-width: 300px; opacity: .8; } }
 .footer__in { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; flex-wrap: wrap; }
 .footer__info address { font-style: italic; font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.5; color: #fff; }
 .footer__muted { opacity: .7; font-size: .8em; }
