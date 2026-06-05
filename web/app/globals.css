@@ -321,8 +321,8 @@ body {
   display: flex; flex-direction: column; align-items: center; text-align: center;
   transition: transform .3s var(--ease-out), box-shadow .3s ease; }
 .feat:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(0,0,0,.14); }
-.feat__badge { width: 76px; height: 76px; border-radius: 50%; background: var(--im-green-50); display: grid; place-items: center; margin-bottom: 18px; }
-.feat__icon { width: auto; height: 38px; }
+.feat__badge { display: grid; place-items: center; margin-bottom: 16px; }
+.feat__icon { width: auto; height: 48px; }
 .feat h3 { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; font-size: 17px; color: var(--im-green-700); margin-bottom: 10px; }
 .feat p { font-size: 15px; color: var(--im-muted); line-height: 1.6; }
 
@@ -399,9 +399,8 @@ body {
 /* ∞ : remplit l'espace vide entre les coordonnées et la signature, ancré en bas */
 .footer__deco { flex: 1 1 200px; min-width: 0; display: flex; align-items: flex-end; justify-content: center; }
 /* translateY pousse le ∞ jusqu'au bas du footer (= padding bas), sans décaler le texte */
-.footer__deco img { width: 100%; max-width: 480px; max-height: 150px; height: auto; object-fit: contain; display: block; transform: translateY(26px); }
-@media (min-width: 561px) { .footer__deco img { transform: translateY(30px); } }
-@media (max-width: 700px) { .footer__deco { flex-basis: 100%; } .footer__deco img { max-height: 110px; margin-inline: auto; transform: translateY(26px); } }
+.footer__deco img { width: 100%; max-width: 580px; max-height: 188px; height: auto; object-fit: contain; display: block; transform: translateY(30px); }
+@media (max-width: 700px) { .footer__deco { flex-basis: 100%; } .footer__deco img { max-height: 130px; margin-inline: auto; transform: translateY(26px); } }
 .footer__info address { font-style: italic; font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.5; color: #fff; }
 .footer__muted { opacity: .7; font-size: .8em; }
 .footer__row { display: flex; align-items: center; gap: 22px; margin-top: 20px; }
@@ -410,9 +409,10 @@ body {
 .footer__social a:hover { color: var(--im-lime); }
 .footer__phone { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 28px; color: var(--im-lime); letter-spacing: .5px; }
 .footer__copy { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .5px; }
-.footer__credit { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; font-size: 10px; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: 1px; }
-.footer__credit img { width: 54px; }
-@media (min-width: 701px) { .footer__credit { writing-mode: vertical-rl; transform: rotate(180deg); } .footer__credit img { transform: rotate(90deg); } }
+/* Signature Paper34 — horizontale, propre, alignée (plus de rotation) */
+.footer__credit { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 9px; font-size: 11px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; transition: color .25s ease; }
+.footer__credit:hover { color: rgba(255,255,255,.92); }
+.footer__credit img { width: 66px; height: auto; display: block; }
 
 /* ============================================================
    PAGE SERVICES & ÉQUIPEMENTS
