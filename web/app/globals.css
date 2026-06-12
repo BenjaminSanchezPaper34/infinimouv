@@ -390,6 +390,13 @@ body {
 .form__legend { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
 /* Bouton Envoyer = bouton primaire unifié (voir .btn--solid) ; on ne gère ici que l'alignement */
 .form__submit { align-self: flex-start; margin-top: 6px; }
+.form__submit:disabled { opacity: .6; cursor: progress; transform: none; }
+.form__error { color: #b3261e; background: #fdecea; border: 1px solid #f3c2bc; border-radius: 12px; padding: 11px 15px; font-size: 14px; }
+/* Confirmation d'envoi */
+.form-success { text-align: center; padding: 40px 26px; border: 1px solid var(--im-green-200); border-radius: var(--radius-lg); background: var(--im-green-50); }
+.form-success__check { display: inline-grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: var(--im-green-700); color: #fff; font-size: 28px; margin-bottom: 16px; box-shadow: 0 10px 24px -8px rgba(0,105,53,.5); }
+.form-success h3 { font-family: var(--font-body); font-weight: 700; font-size: 21px; color: var(--im-green-700); margin-bottom: 8px; }
+.form-success p { color: var(--im-muted); margin: 0 auto 20px; max-width: 360px; line-height: 1.55; }
 
 /* FOOTER — hauteur compacte */
 .footer { position: relative; background: var(--im-ink); color: #fff; padding: 36px 0 26px; overflow: hidden; }

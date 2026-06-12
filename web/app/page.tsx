@@ -3,6 +3,7 @@ import Script from "next/script";
 import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 
 /* Activités : emoji parfois à gauche, parfois à droite (= référence) */
 const ACTS: { label: string; emoji: string; emojiFirst: boolean }[] = [
@@ -52,14 +53,6 @@ const FAQ = [
   ["Y a-t-il un parking ?", "Oui, le parking du cinéma se trouve juste à côté de la salle."],
   ["Quels équipements de musculation propose la salle ?", "Un plateau complet de machines Matrix, poids libres et zone cardio, dans un espace climatisé et purifié."],
   ["Le club propose-t-il du Cross Training ?", "Oui, un espace et des cours dédiés au cross-training sont disponibles."],
-];
-
-const OBJECTIFS = [
-  "Mincir", "Gérer votre stress",
-  "S'entretenir", "Tonifier et sculpter votre corps",
-  "Prise de masse", "Préparation sportive",
-  "Améliorer sa condition physique", "Augmenter sa force",
-  "Autre",
 ];
 
 export default function Home() {
@@ -311,54 +304,7 @@ export default function Home() {
                 <h2 className="h-section" id="t-contact">
                   <span className="grad">Contact</span>
                 </h2>
-                <form
-                  className="form"
-                  action="https://formsubmit.co/agde@infini-mouv.fr"
-                  method="POST"
-                >
-                  <div className="field">
-                    <label htmlFor="nom">Prénom &amp; Nom *</label>
-                    <input id="nom" name="nom" required />
-                  </div>
-                  <div className="form__row">
-                    <div className="field">
-                      <label htmlFor="tel">Numéro de téléphone *</label>
-                      <input id="tel" name="telephone" type="tel" required />
-                    </div>
-                    <div className="field">
-                      <label htmlFor="email">Email *</label>
-                      <input id="email" name="email" type="email" required />
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="form__legend">Vos objectifs sont :</p>
-                    <div className="checks">
-                      {OBJECTIFS.map((o) => (
-                        <label key={o}>
-                          <input type="checkbox" name="objectifs" value={o} />
-                          {o}
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="field">
-                    <label htmlFor="msg">Votre message *</label>
-                    <textarea id="msg" name="message" rows={4} required />
-                  </div>
-
-                  <div>
-                    <p className="form__legend">La période qui vous intéresse</p>
-                    <div className="checks">
-                      <label><input type="radio" name="periode" value="Sans engagement" /> Sans engagement</label>
-                      <label><input type="radio" name="periode" value="3 mois" /> 3 mois</label>
-                      <label><input type="radio" name="periode" value="12 mois" /> 12 mois</label>
-                    </div>
-                  </div>
-
-                  <button className="btn btn--solid form__submit" type="submit">Envoyer</button>
-                </form>
+                <ContactForm />
               </div>
             </div>
           </div>
