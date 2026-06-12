@@ -506,9 +506,12 @@ body {
 .cours-item__text { font-size: 15px; color: var(--im-muted); line-height: 1.55; }
 
 /* Planning (image SVG plein largeur) */
-.planning { background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--shadow); overflow-x: auto; -webkit-overflow-scrolling: touch; }
-@media (min-width: 561px) { .planning { padding: 28px; } }
-.planning__img { width: 100%; min-width: 620px; height: auto; display: block; margin-inline: auto; }
+.planning { max-width: 920px; margin-inline: auto; background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg); padding: 14px; box-shadow: var(--shadow); }
+@media (min-width: 561px) { .planning { padding: 22px; } }
+/* image complète, tient toujours dans le bloc (plus de min-width qui rognait sur mobile) */
+.planning__img { width: 100%; height: auto; display: block; margin-inline: auto; }
+/* section planning : moins d'espace en bas */
+.section--planning { padding-bottom: 40px; }
 
 /* App */
 .app-band { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }

@@ -235,7 +235,7 @@ export default function ServicesEquipements() {
         </section>
 
         {/* ============ PLANNING ============ */}
-        <section className="section section--soft" aria-labelledby="planning-title">
+        <section className="section section--soft section--planning" aria-labelledby="planning-title">
           <div className="wrap">
             <h2 className="h-section" id="planning-title" style={{ textAlign: "center" }}><span className="grad">Planning des cours</span></h2>
             <div className="planning" data-reveal>
