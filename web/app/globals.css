@@ -413,7 +413,7 @@ body {
   .footer__in { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
   .footer__info { order: 1; }
   .footer__credit { order: 2; position: static; inset: auto; justify-content: flex-start; }
-  .footer__deco { order: 3; position: static; inset: auto; align-self: stretch; justify-content: center; margin-top: 8px; }
+  .footer__deco { order: 3; position: static; inset: auto; align-self: stretch; justify-content: center; margin-top: -6px; }
   .footer__deco img { width: 100%; max-width: 360px; max-height: 130px; margin-inline: auto; transform: none; }
 }
 .footer__info address { font-style: italic; font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.5; color: #fff; }
@@ -467,7 +467,8 @@ body {
 
 /* Équipe */
 .team { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 36px; }
-@media (min-width: 768px) { .team { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+@media (min-width: 600px) { .team { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+@media (min-width: 980px) { .team { grid-template-columns: repeat(4, 1fr); } }
 .team-card { background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg); padding: 32px 26px; text-align: center; box-shadow: var(--shadow); transition: transform .3s var(--ease-out), box-shadow .3s ease; }
 .team-card:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(0,0,0,.14); }
 .team-card__avatar { width: 96px; height: 96px; margin: 0 auto 16px; border-radius: 50%; display: grid; place-items: center;

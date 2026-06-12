@@ -43,6 +43,7 @@ const TEAM = [
   { initials: "CD", name: "Cyril", role: "Fondateur & gérant", text: "Créateur du concept Infini Mouv, passionné de bien-être et de nutrition. Issu du cursus Seva Formation, il a pensé chaque détail de la salle pour votre confort et vos résultats." },
   { initials: "M", name: "Magalie", role: "Coach & accueil", text: "Présente au quotidien pour vous accompagner et vous conseiller. Spécialisée dans les cours collectifs énergiques (Zumba, CAF, BodyPump) et le suivi personnalisé." },
   { initials: "T", name: "Thomas", role: "Coach sportif", text: "Coach diplômé spécialisé en Cross Training, force athlétique et préparation physique. Anime les séances Yoga et accompagne sur mesure les objectifs ambitieux." },
+  { initials: "R", name: "Roséanna", role: "Coach", text: "À l'écoute et pleine d'énergie, elle vous accompagne avec bienveillance pour progresser à votre rythme et garder la motivation." },
 ];
 
 const ENGAGEMENTS = [
