@@ -407,13 +407,14 @@ body {
 .footer__deco { flex: 1 1 200px; min-width: 0; display: flex; align-items: flex-end; justify-content: center; }
 /* translateY pousse le ∞ jusqu'au bas du footer (= padding bas), sans décaler le texte */
 .footer__deco img { width: 100%; max-width: 580px; max-height: 188px; height: auto; object-fit: contain; display: block; transform: translateY(30px); }
-/* Mobile : ∞ collé au bas, signature superposée par-dessus, sans espace vide */
+/* Mobile : colonne — coordonnées → signature (sous le copyright) → ∞ collé au bas */
 @media (max-width: 700px) {
-  .footer { position: relative; padding: 36px 0 132px; }
-  .footer__in { display: block; }
-  .footer__deco { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; z-index: 0; }
-  .footer__deco img { width: 100%; max-width: 420px; max-height: 132px; margin-inline: auto; transform: none; }
-  .footer__credit { position: absolute; left: 0; right: 0; bottom: 26px; display: flex; justify-content: center; z-index: 2; }
+  .footer { position: relative; padding: 36px 0 0; }
+  .footer__in { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+  .footer__info { order: 1; }
+  .footer__credit { order: 2; position: static; inset: auto; justify-content: flex-start; }
+  .footer__deco { order: 3; position: static; inset: auto; align-self: stretch; justify-content: center; margin-top: 8px; }
+  .footer__deco img { width: 100%; max-width: 360px; max-height: 130px; margin-inline: auto; transform: none; }
 }
 .footer__info address { font-style: italic; font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.5; color: #fff; }
 .footer__muted { opacity: .7; font-size: .8em; }
