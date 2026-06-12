@@ -3,7 +3,6 @@ import Script from "next/script";
 import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
-import ContactForm from "@/components/ContactForm";
 
 /* Activités : emoji parfois à gauche, parfois à droite (= référence) */
 const ACTS: { label: string; emoji: string; emojiFirst: boolean }[] = [
@@ -304,7 +303,11 @@ export default function Home() {
                 <h2 className="h-section" id="t-contact">
                   <span className="grad">Contact</span>
                 </h2>
-                <ContactForm />
+                {/* Formulaire de contact — widget Elfsight (compte client) */}
+                <div
+                  className="elfsight-app-45ac13a6-3fc2-4728-88e6-e203a8b1018a"
+                  data-elfsight-app-lazy
+                />
               </div>
             </div>
           </div>
