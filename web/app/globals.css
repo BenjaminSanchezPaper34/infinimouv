@@ -407,7 +407,12 @@ body {
 .footer__deco { flex: 1 1 200px; min-width: 0; display: flex; align-items: flex-end; justify-content: center; }
 /* translateY pousse le ∞ jusqu'au bas du footer (= padding bas), sans décaler le texte */
 .footer__deco img { width: 100%; max-width: 580px; max-height: 188px; height: auto; object-fit: contain; display: block; transform: translateY(30px); }
-@media (max-width: 700px) { .footer__deco { flex-basis: 100%; } .footer__deco img { max-height: 130px; margin-inline: auto; transform: translateY(26px); } }
+/* Mobile : footer en colonne propre (coordonnées → ∞ → signature), sans translate ni chevauchement */
+@media (max-width: 700px) {
+  .footer__in { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .footer__deco { width: 100%; flex: none; justify-content: center; }
+  .footer__deco img { max-width: 360px; max-height: 120px; margin-inline: auto; transform: none; }
+}
 .footer__info address { font-style: italic; font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.5; color: #fff; }
 .footer__muted { opacity: .7; font-size: .8em; }
 .footer__row { display: flex; align-items: center; gap: 22px; margin-top: 20px; }
