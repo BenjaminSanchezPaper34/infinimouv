@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
    Ne réapparaît pas une fois fermée (mémorisé en localStorage). */
 const END = new Date("2026-08-01T00:00:00"); // borne : après le 31/07, plus de popup
 const STORAGE_KEY = "im-offer-happysummer";
-const IMG = "/images/offre-happysummer.jpg";
 
 export default function OfferPopup() {
   const [open, setOpen] = useState(false);
@@ -50,11 +49,14 @@ export default function OfferPopup() {
           ×
         </button>
         <a href="/#contact" className="offer__link" onClick={close}>
-          {/* Visuel fourni par le client */}
-          <img
-            src={IMG}
-            alt="Jusqu'au 31 juillet : 1 abonnement acheté = 1 abonnement offert avec le code HAPPYSUMMER"
-          />
+          {/* Portrait sur mobile, paysage sur desktop (WebP optimisés) */}
+          <picture>
+            <source media="(max-width: 640px)" srcSet="/images/offre-happysummer-mobile.webp" />
+            <img
+              src="/images/offre-happysummer.webp"
+              alt="Jusqu'au 31 juillet : 1 abonnement acheté = 1 abonnement offert avec le code HAPPYSUMMER"
+            />
+          </picture>
         </a>
       </div>
     </div>
