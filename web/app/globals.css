@@ -247,9 +247,10 @@ body {
 @media (min-width: 561px) { .nav__logo img { height: 40px; } }
 .nav__links { display: flex; align-items: center; gap: 10px; }
 /* Onglets nav = mêmes codes que les boutons (pill Gotham italique), se remplissent au survol */
+/* Onglets : pill fine et discrète (bordure 1.5px, padding réduit) */
 .nav__links a { font-family: var(--font-display); font-style: italic; font-weight: 700; text-transform: uppercase;
-  font-size: 14px; letter-spacing: .5px; color: var(--im-green-700); background: transparent; border: 2px solid var(--im-lime); border-radius: 100px;
-  padding: 9px 20px; transition: color .25s ease, background .25s ease, border-color .25s ease, transform .25s var(--ease-out); }
+  font-size: 12.5px; letter-spacing: .4px; color: var(--im-green-700); background: transparent; border: 1.5px solid var(--im-lime); border-radius: 100px;
+  padding: 6px 15px; transition: color .25s ease, background .25s ease, border-color .25s ease, transform .25s var(--ease-out); }
 .nav__links a:hover { color: var(--im-green-900); background: var(--im-lime); transform: translateY(-1px); }
 .nav__links a:focus-visible { outline: 3px solid var(--im-lime); outline-offset: 3px; }
 .nav__social { display: flex; align-items: center; gap: 14px; }
