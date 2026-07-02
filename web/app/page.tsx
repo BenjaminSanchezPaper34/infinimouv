@@ -54,6 +54,10 @@ const FAQ = [
   ["Le club propose-t-il du Cross Training ?", "Oui, un espace et des cours dédiés au cross-training sont disponibles."],
 ];
 
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
 export default function Home() {
   return (
     <div className="site" id="top">
@@ -76,8 +80,8 @@ export default function Home() {
             loop
             muted
             playsInline
-            preload="auto"
-            poster="/images/salle-infinimouv.jpg"
+            preload="metadata"
+            poster="/images/hero-poster.webp"
           >
             <source src="/video/horizontal.webm" type="video/webm" />
             <source src="/video/horizontal.mp4" type="video/mp4" />
@@ -187,6 +191,11 @@ export default function Home() {
                 </p>
               </div>
             </div>
+            <div className="cta-band">
+              <a className="btn btn--solid" href="/#contact">
+                Je m&apos;inscris
+              </a>
+            </div>
           </div>
         </section>
 
@@ -212,28 +221,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ============ AVIS Google ============ */}
+        {/* ============ AVIS Google — widget Elfsight (avis réels, à jour) ============ */}
         <section className="section section--soft" aria-label="Avis Google">
           <div className="wrap">
-            <div className="reviews" data-reveal>
-              <a className="btn btn--solid reviews__cta" href="https://g.page/r/infini-mouv/review" target="_blank" rel="noopener">
-                Rédiger un avis
-              </a>
-              <div className="reviews__stars" aria-label="5 étoiles sur 5">★★★★★</div>
-              <p className="reviews__text">
-                « Très bon accueil, très bien reçu. Coach très sympa, salle très
-                propre, je recommande. »
-              </p>
-              <div className="reviews__who">
-                <div className="reviews__avatar">C</div>
-                <div className="reviews__name">Claude Diaz</div>
-                <div className="reviews__meta">il y a 22 jours · via Google</div>
-              </div>
-              <div className="reviews__dots" aria-hidden="true">
-                <span className="is-on" />
-                <span />
-                <span />
-              </div>
+            <div className="reviews-embed" data-reveal>
+              <div
+                className="elfsight-app-3b256931-09f1-4343-b758-dc63e25ed835"
+                data-elfsight-app-lazy
+              />
             </div>
           </div>
         </section>
