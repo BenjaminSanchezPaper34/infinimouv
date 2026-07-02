@@ -182,29 +182,49 @@ export default function DesignSystemPage() {
           </div>
         </Section>
 
-        {/* BOUTONS */}
-        <Section id="boutons" n="03" title="Boutons & liens">
+        {/* BOUTONS — système réel du site (classes globales .btn) */}
+        <Section id="boutons" n="03" title="Boutons & onglets">
           <div className="flex flex-wrap items-center gap-4">
-            <button className="rounded-full bg-green-700 px-7 py-3 font-semibold text-white shadow-[var(--shadow)] transition hover:scale-[1.02] hover:bg-green-600">
-              S’inscrire
-            </button>
-            <button className="rounded-full border-2 border-green-700 px-7 py-3 font-semibold text-green-700 transition hover:bg-green-50">
-              Découvrir
-            </button>
-            <button className="rounded-full bg-ink px-7 py-3 font-semibold text-white transition hover:bg-ink-2">
-              Nous contacter
-            </button>
-            <a
-              href="#"
-              className="font-semibold text-green-700 underline-offset-4 hover:underline"
-            >
-              Lien texte →
-            </a>
+            <button className="btn btn--solid">Primaire — .btn--solid</button>
+            <button className="btn btn--ghost">Secondaire — .btn--ghost</button>
           </div>
-          <p className="mt-4 text-sm text-muted">
-            Rayon plein (pill), padding généreux (≥ 44px de hauteur tactile),
-            hover : légère élévation + variation de teinte.
-          </p>
+          <div className="mt-4 inline-flex items-center gap-4 rounded-lg bg-green-900 p-5">
+            <button className="btn btn--light">Sur fond sombre — .btn--light</button>
+          </div>
+
+          <h3 className="mb-3 mt-8 text-lg font-semibold">Onglets de navigation</h3>
+          <nav
+            className="nav__links"
+            /* démo : on neutralise le comportement "menu mobile replié" de la nav réelle */
+            style={{
+              position: "static",
+              maxHeight: "none",
+              overflow: "visible",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 10,
+              background: "transparent",
+              border: 0,
+            }}
+          >
+            <a href="#boutons">La salle</a>
+            <a href="#boutons">Cours</a>
+            <a href="#boutons">Tarifs</a>
+            <a href="#boutons">Contact</a>
+          </nav>
+
+          <div className="mt-6 rounded-lg border border-line bg-paper-2 p-5 text-sm text-muted">
+            <p className="mb-2 font-semibold text-ink">Règles du système :</p>
+            <ul className="list-disc space-y-1 pl-5">
+              <li><strong>Un seul composant</strong> : classe <code>.btn</code> + variante. Aucun bouton stylé à la main.</li>
+              <li><code>.btn--solid</code> (vert #006935 plein) = action principale — une seule par section.</li>
+              <li><code>.btn--ghost</code> (contour lime) = action secondaire, se remplit au survol.</li>
+              <li><code>.btn--light</code> (blanc) = réservé aux fonds sombres/verts.</li>
+              <li>Onglets nav = pill fine (bordure lime 1.5px, texte 12.5px) — hover : remplissage lime.</li>
+              <li>Commun : pill (radius 100px), Gotham italique uppercase, hover translateY(-3px), focus visible lime.</li>
+              <li>Boutons des widgets Elfsight : couleur #006935 + arrondi max, à régler dans le dashboard Elfsight.</li>
+            </ul>
+          </div>
         </Section>
 
         {/* CARTES */}
