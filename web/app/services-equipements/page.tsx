@@ -110,6 +110,8 @@ export default function ServicesEquipements() {
           <div className="wrap">
             <h1 className="h-section">
               <span className="grad">Services &amp; équipements</span>
+              {/* intention locale pour les moteurs, invisible à l'écran */}
+              <span className="sr-only"> de votre salle de sport à Agde</span>
             </h1>
             <p className="svc-intro">
               Parcourez les services de notre salle de sport située à Agde pour

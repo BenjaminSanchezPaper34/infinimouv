@@ -10,7 +10,11 @@ const JSON_LD = {
   "@id": "https://infini-mouv.fr/#gym",
   name: "Infini Mouv",
   url: "https://infini-mouv.fr",
-  image: "https://infini-mouv.fr/images/og-image.jpg",
+  image: [
+    "https://infini-mouv.fr/images/og-image.jpg",
+    "https://infini-mouv.fr/images/salle-infinimouv.webp",
+    "https://infini-mouv.fr/images/musculation-infinimouv.webp",
+  ],
   description:
     "Salle de sport à Agde : musculation, cardio, cross-training, cours collectifs Les Mills, bike Spivi, coaching. Ouverte 7j/7 de 6h à 23h.",
   telephone: "+33986673838",
@@ -23,7 +27,35 @@ const JSON_LD = {
     addressRegion: "Occitanie",
     addressCountry: "FR",
   },
-  geo: { "@type": "GeoCoordinates", latitude: 43.3107, longitude: 3.4753 },
+  geo: { "@type": "GeoCoordinates", latitude: 43.31070, longitude: 3.47530 },
+  hasMap:
+    "https://www.google.com/maps/search/?api=1&query=Infini+Mouv+4+avenue+du+11+Novembre+1918+34300+Agde",
+  slogan: "Trouvez votre vraie nature",
+  currenciesAccepted: "EUR",
+  makesOffer: [
+    {
+      "@type": "Offer",
+      name: "Abonnement salle de sport",
+      description:
+        "Musculation, cross-training, cardio-training, cours virtuels Les Mills, bike interactif Spivi, douches.",
+      price: "27.90",
+      priceCurrency: "EUR",
+    },
+    {
+      "@type": "Offer",
+      name: "Option Confort",
+      description: "Boisson hydratante Yanga, suivi coaching mensuel, cours avec le coach.",
+      price: "5.00",
+      priceCurrency: "EUR",
+    },
+    {
+      "@type": "Offer",
+      name: "Option Premium",
+      description: "Suivi coaching expert et suivi nutritionnel.",
+      price: "15.00",
+      priceCurrency: "EUR",
+    },
+  ],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -40,7 +72,7 @@ const JSON_LD = {
       closes: "23:00",
     },
   ],
-  priceRange: "€",
+  priceRange: "27,90 € - 42,90 € par mois",
   sameAs: [
     "https://www.facebook.com/infinimouvagde/",
     "https://www.instagram.com/infinimouv_agde/",
@@ -88,6 +120,13 @@ export const metadata: Metadata = {
     ],
   },
   robots: { index: true, follow: true },
+  // Meta géolocalisation (référencement local)
+  other: {
+    "geo.region": "FR-34",
+    "geo.placename": "Agde",
+    "geo.position": "43.31070;3.47530",
+    ICBM: "43.31070, 3.47530",
+  },
 };
 
 export default function RootLayout({

@@ -70,6 +70,22 @@ export default function Home() {
         strategy="afterInteractive"
       />
 
+      {/* Schema FAQ — généré depuis la FAQ affichée plus bas (toujours synchrone) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQ.map(([q, a]) => ({
+              "@type": "Question",
+              name: q,
+              acceptedAnswer: { "@type": "Answer", text: a },
+            })),
+          }),
+        }}
+      />
+
 
       <main>
         {/* ============ HERO ============ */}
@@ -93,6 +109,8 @@ export default function Home() {
               votre vraie
               <br />
               nature
+              {/* intention locale pour les moteurs, invisible à l'écran */}
+              <span className="sr-only"> — Infini Mouv, salle de sport à Agde</span>
             </h1>
             <div className="hero__price">
               <span className="lead">Votre abonnement à partir de</span>
@@ -304,6 +322,17 @@ export default function Home() {
                   data-elfsight-app-lazy
                 />
               </div>
+            </div>
+
+            {/* Carte Google — signal géographique local (chargée en différé) */}
+            <div className="contact-map" data-reveal>
+              <iframe
+                title="Infini Mouv — 4 avenue du 11 Novembre 1918, 34300 Agde (parking du cinéma)"
+                src="https://www.google.com/maps?q=Infini+Mouv,+4+avenue+du+11+Novembre+1918,+34300+Agde&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </div>
           </div>
         </section>
