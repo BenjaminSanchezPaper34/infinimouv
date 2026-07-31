@@ -242,6 +242,11 @@ export default function Home() {
         {/* ============ AVIS Google — widget Elfsight (avis réels, à jour) ============ */}
         <section className="section section--soft" aria-label="Avis Google">
           <div className="wrap">
+            {/* Ligne statique (HTML serveur) : lisible par Google/IA même sans JS */}
+            <p className="reviews-proof">
+              <strong>4,6/5</strong> sur Google — nos adhérents recommandent
+              Infini Mouv, salle de sport à Agde.
+            </p>
             <div className="reviews-embed" data-reveal>
               <div
                 className="elfsight-app-3b256931-09f1-4343-b758-dc63e25ed835"
