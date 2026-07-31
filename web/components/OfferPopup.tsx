@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-/* Offre estivale — popup au chargement.
-   S'affiche jusqu'au 31 juillet inclus, puis disparaît automatiquement.
-   Ne réapparaît pas une fois fermée (mémorisé en localStorage). */
-const END = new Date("2026-08-01T00:00:00"); // borne : après le 31/07, plus de popup
-const STORAGE_KEY = "im-offer-happysummer";
+/* Offre estivale (prolongée en août) — popup au chargement.
+   S'affiche jusqu'au 31 août inclus, puis disparaît automatiquement.
+   Ne réapparaît pas une fois fermée (mémorisé en localStorage).
+   Clé « -aout » : ceux qui avaient fermé la version juillet revoient la prolongation. */
+const END = new Date("2026-09-01T00:00:00"); // borne : après le 31/08, plus de popup
+const STORAGE_KEY = "im-offer-happysummer-aout";
 
 export default function OfferPopup() {
   const [open, setOpen] = useState(false);
@@ -51,10 +52,10 @@ export default function OfferPopup() {
         <a href="/#contact" className="offer__link" onClick={close}>
           {/* Portrait sur mobile, paysage sur desktop (WebP optimisés) */}
           <picture>
-            <source media="(max-width: 640px)" srcSet="/images/offre-happysummer-mobile.webp" />
+            <source media="(max-width: 640px)" srcSet="/images/offre-happysummer-aout-mobile.webp" />
             <img
-              src="/images/offre-happysummer.webp"
-              alt="Jusqu'au 31 juillet : 1 abonnement acheté = 1 abonnement offert avec le code HAPPYSUMMER"
+              src="/images/offre-happysummer-aout.webp"
+              alt="Prolongation tout le mois d'août : 1 abonnement acheté = 1 abonnement offert avec le code HAPPYSUMMER"
             />
           </picture>
         </a>
