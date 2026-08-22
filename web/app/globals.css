@@ -327,6 +327,9 @@ body {
 .feat:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(0,0,0,.14); }
 .feat__badge { display: grid; place-items: center; margin-bottom: 16px; }
 .feat__icon { width: auto; height: 48px; }
+/* Icônes de cartes en SVG trait fin (même style que la liste des activités) */
+.feat__badge--svg { width: 52px; height: 52px; color: var(--im-green-700); }
+.feat__badge--svg svg { width: 100%; height: 100%; }
 .feat h3 { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; font-size: 17px; color: var(--im-green-700); margin-bottom: 10px; }
 .feat p { font-size: 15px; color: var(--im-muted); line-height: 1.6; }
 

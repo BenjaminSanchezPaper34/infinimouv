@@ -16,19 +16,19 @@ const ACTS: { label: string; icone: CleIcone }[] = [
   { label: "Plan alimentaire", icone: "nutrition" },
 ];
 
-const FEATS = [
+const FEATS: { icone: CleIcone; title: string; text: string }[] = [
   {
-    icon: "time-infinimouv.svg",
+    icone: "horaires",
     title: "Accès libre 7j/7, de 6h à 23h",
     text: "Entraînez-vous à votre rythme, en accès libre toute la semaine. Matin, pause déjeuner ou soirée : il y a toujours un créneau, dans un espace complet, propre et parfaitement équipé.",
   },
   {
-    icon: "air-infinimouv.svg",
+    icone: "air",
     title: "Un air purifié et renouvelé",
     text: "Un système professionnel renouvelle et purifie l'air en continu. Le club reste filtré et oxygéné, pour un environnement plus sain, plus agréable et idéal pour la pratique sportive.",
   },
   {
-    icon: "objectif-infinimouv.svg",
+    icone: "coaching",
     title: "Coaching personnalisé",
     text: "Nos coachs diplômés assurent un suivi sur mesure : 1 à 2 entretiens par mois pour bâtir votre programme et suivre vos progrès — perte de poids, prise de masse ou retour au sport.",
   },
@@ -213,8 +213,8 @@ export default function Home() {
             <div className="feats">
               {FEATS.map((f, i) => (
                 <article className="feat" data-reveal data-reveal-delay={`${i * 100}`} key={f.title}>
-                  <span className="feat__badge">
-                    <img className="feat__icon" src={`/images/${f.icon}`} alt="" />
+                  <span className="feat__badge feat__badge--svg" aria-hidden="true">
+                    {ICONES[f.icone]}
                   </span>
                   <h3>{f.title}</h3>
                   <p>{f.text}</p>
