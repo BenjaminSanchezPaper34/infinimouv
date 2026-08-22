@@ -70,7 +70,9 @@ const COURS: { title: string; text: string; color: string }[] = [
   { title: "Yoga", color: "#5aad12", text: "Le mercredi de 18h15 à 19h avec Thomas. Postures pour mieux connaître votre corps et vous détendre. Accessible à tous, quel que soit l'âge." },
   { title: "Stretching", color: "#e0392b", text: "Des étirements doux pour assouplir le corps, améliorer la mobilité, récupérer et libérer les tensions." },
   { title: "Zumba", color: "#d6275e", text: "Cardio, fun et énergie ! Une séance dansée mêlant salsa, reggaeton, samba… parfaite pour brûler des calories en s'amusant." },
-  { title: "Body Pump", color: "#2b7fd4", text: "Un travail complet en musique pour renforcer tous les groupes musculaires avec charges légères à modérées." },
+  { title: "Body Pump", color: "#2b7fd4", text: "Renforcement musculaire sur l'ensemble du corps, en musique et avec charges légères à modérées." },
+  { title: "Body Sculpt", color: "#0f8a7e", text: "Nouveau au planning : un renforcement musculaire qui tonifie le corps de manière équilibrée. Le lundi de 12h15 à 13h." },
+  { title: "Cross Training", color: "#0070a7", text: "Enchaînement d'exercices cardio et musculaires avec différents matériels, dans notre espace extérieur couvert." },
 ];
 
 export default function ServicesEquipements() {

@@ -623,6 +623,13 @@ body {
 .pl-cours--pilate     { background: linear-gradient(100deg, #63526d, #977ca7 60%, #b090c3); }
 .pl-cours--stretching { background: linear-gradient(100deg, #d20a11, #e14915 45%, #f38f1a); }
 .pl-cours--yoga       { background: linear-gradient(100deg, #8b0c6d, #ff0084); }
+.pl-cours--sculpt     { background: linear-gradient(100deg, #0f8a7e, #2eb086 55%, #57c9a5); }
+
+/* Badge "Nouveau" (cours ajouté au planning) */
+.pl-cours__new { display: inline-block; background: rgba(255,255,255,.92); color: #0f8a7e;
+  font-family: var(--font-body); font-weight: 800; text-transform: uppercase;
+  font-size: 9.5px; letter-spacing: .6px; line-height: 1; padding: 3px 7px; border-radius: 100px;
+  vertical-align: middle; }
 
 .pl-note { font-size: 14px; color: var(--im-muted); line-height: 1.55; text-align: center;
   max-width: 620px; margin-inline: auto; }

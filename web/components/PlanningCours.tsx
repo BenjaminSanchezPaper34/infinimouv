@@ -7,18 +7,16 @@ type Cours = {
   nom: string;
   debut: string; // format 24h "12:15" (attribut datetime)
   fin: string;
-  type: "caf" | "zumba" | "pump" | "cross" | "pilate" | "stretching" | "yoga";
+  type: "caf" | "zumba" | "pump" | "cross" | "pilate" | "stretching" | "yoga" | "sculpt";
+  nouveau?: boolean;
 };
 
 const JOURS = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] as const;
 
 const MIDI: Record<string, Cours[]> = {
-  Lundi: [
-    { nom: "C.A.F.", debut: "12:15", fin: "12:45", type: "caf" },
-    { nom: "Zumba", debut: "12:45", fin: "13:15", type: "zumba" },
-  ],
+  Lundi: [{ nom: "Body Sculpt", debut: "12:15", fin: "13:00", type: "sculpt", nouveau: true }],
   Mardi: [{ nom: "Body Pump", debut: "12:15", fin: "13:00", type: "pump" }],
-  Mercredi: [{ nom: "Cross Training", debut: "12:15", fin: "13:00", type: "cross" }],
+  Mercredi: [{ nom: "C.A.F.", debut: "12:15", fin: "13:00", type: "caf" }],
   Jeudi: [{ nom: "Pilate", debut: "12:15", fin: "13:00", type: "pilate" }],
   Vendredi: [{ nom: "Stretching", debut: "12:15", fin: "13:00", type: "stretching" }],
 };
@@ -27,14 +25,14 @@ const SOIR: Record<string, Cours[]> = {
   Lundi: [{ nom: "Cross Training", debut: "18:00", fin: "19:00", type: "cross" }],
   Mardi: [
     { nom: "C.A.F.", debut: "18:00", fin: "18:30", type: "caf" },
-    { nom: "Zumba", debut: "18:30", fin: "19:00", type: "zumba" },
-    { nom: "Body Pump", debut: "19:00", fin: "19:30", type: "pump" },
+    { nom: "Body Pump", debut: "18:30", fin: "19:00", type: "pump" },
+    { nom: "Stretching", debut: "19:00", fin: "19:30", type: "stretching" },
   ],
   Mercredi: [{ nom: "Yoga", debut: "18:15", fin: "19:00", type: "yoga" }],
   Jeudi: [
     { nom: "Body Pump", debut: "18:00", fin: "18:30", type: "pump" },
-    { nom: "Zumba", debut: "18:30", fin: "19:00", type: "zumba" },
-    { nom: "Pilate", debut: "19:00", fin: "19:30", type: "pilate" },
+    { nom: "Zumba", debut: "18:30", fin: "19:15", type: "zumba" },
+    { nom: "Pilate", debut: "19:15", fin: "19:45", type: "pilate" },
   ],
   Vendredi: [{ nom: "Cross Training", debut: "18:00", fin: "19:00", type: "cross" }],
 };
@@ -45,7 +43,8 @@ const fr = (h: string) => h.replace(":", "h");
 function Creneau({ cours }: { cours: Cours }) {
   return (
     <li className={`pl-cours pl-cours--${cours.type}`}>
-      <span className="pl-cours__nom">{cours.nom}</span>{" "}
+      <span className="pl-cours__nom">{cours.nom}</span>
+      {cours.nouveau && <span className="pl-cours__new">Nouveau</span>}{" "}
       <span className="pl-cours__h">
         <time dateTime={cours.debut}>{fr(cours.debut)}</time>
         {"–"}
@@ -93,7 +92,7 @@ export default function PlanningCours() {
   return (
     <div className="planning-natif">
       <Bande titre="Midi" plage="12h – 13h15" data={MIDI} />
-      <Bande titre="Soir" plage="18h – 19h30" data={SOIR} />
+      <Bande titre="Soir" plage="18h – 19h45" data={SOIR} />
       <p className="pl-note">
         Réservation via l&apos;application Xplor Active (code centre&nbsp;:{" "}
         <strong>infinimouv</strong>) ou directement à l&apos;accueil du club.
