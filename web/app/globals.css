@@ -467,10 +467,13 @@ body {
 }
 
 /* Équipe */
-/* marge haute = place pour l'avatar qui déborde au-dessus des cartes */
-.team { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 100px; }
-@media (min-width: 600px) { .team { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
-@media (min-width: 980px) { .team { grid-template-columns: repeat(4, 1fr); } }
+/* marge haute = place pour l'avatar qui déborde au-dessus des cartes.
+   L'avatar dépasse de 68px : quand les cartes s'empilent (mobile/tablette),
+   l'écart vertical doit être plus grand que ce débordement, sinon l'avatar
+   recouvre la carte du dessus. */
+.team { display: grid; grid-template-columns: 1fr; gap: 92px 22px; margin-top: 100px; }
+@media (min-width: 600px) { .team { grid-template-columns: repeat(2, 1fr); gap: 92px 24px; } }
+@media (min-width: 980px) { .team { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
 .team-card { background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg); padding: 0 20px 24px; text-align: center; box-shadow: var(--shadow); transition: transform .3s var(--ease-out), box-shadow .3s ease; }
 .team-card:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(0,0,0,.14); }
 /* Avatar équipe : photo détourée, liseré vert de la charte */
@@ -495,7 +498,14 @@ body {
 .yanga-card__text > p { font-size: 16px; opacity: .95; line-height: 1.6; }
 .yanga-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
 .yanga-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; font-weight: 600; }
-.ck--white { background: rgba(255,255,255,.22); color: #fff; }
+/* Coche simple (sans bloc de fond) dans la carte Yanga */
+.yanga-check { flex: 0 0 auto; color: #fff; font-weight: 700; font-size: 15px; line-height: 1.55; opacity: .9; }
+
+/* Étiquette « option » à côté du titre Yanga */
+.yanga-tag { display: inline-block; margin-left: 10px; vertical-align: middle;
+  background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.4); color: #fff;
+  font-family: var(--font-body); font-weight: 700; text-transform: none; letter-spacing: .2px;
+  font-size: 12px; padding: 4px 10px; border-radius: 100px; white-space: nowrap; }
 .yanga-card__img { position: relative; min-height: 260px; }
 .yanga-card__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 

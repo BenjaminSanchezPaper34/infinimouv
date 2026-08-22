@@ -208,10 +208,24 @@ export default function ServicesEquipements() {
             <h2 className="h-section" id="yanga-title"><span className="grad">L'hydratation Yanga</span></h2>
             <div className="yanga-card" data-reveal>
               <div className="yanga-card__text">
-                <h3>Option Confort — fontaine Yanga® Sports Water</h3>
-                <p>Pour une hydratation optimale pendant vos séances, profitez de la fontaine Yanga® Sports Water en accès illimité avec l'option Confort.</p>
+                <h3>
+                  Fontaine Yanga® Sports Water
+                  <span className="yanga-tag">Option Confort · +5&nbsp;€/mois</span>
+                </h3>
+                <p>
+                  Pour une hydratation optimale pendant vos séances, profitez de
+                  la fontaine Yanga® Sports Water en accès illimité. Ce service
+                  n&apos;est pas compris dans l&apos;abonnement de base&nbsp;: il
+                  s&apos;ajoute en <strong>option Confort</strong>, pour 5&nbsp;€
+                  par mois.
+                </p>
                 <ul className="yanga-list">
-                  {YANGA.map((y) => (<li key={y}><span className="ck ck--white">✓</span>{y}</li>))}
+                  {YANGA.map((y) => (
+                    <li key={y}>
+                      <span className="yanga-check" aria-hidden="true">✓</span>
+                      {y}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className="yanga-card__img">
