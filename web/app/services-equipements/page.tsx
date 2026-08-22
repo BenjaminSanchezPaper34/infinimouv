@@ -286,7 +286,7 @@ export default function ServicesEquipements() {
           <div className="wrap">
             <div className="app-band">
               <div className="app-band__img" data-reveal>
-                <Image src="/images/app-infinimouv.webp" alt="Application Xplor Active — planning des cours" width={600} height={1200} sizes="(min-width:901px) 300px, 70vw" />
+                <Image src="/images/app-infinimouv.webp" alt="Application Xplor Active — planning des cours" width={600} height={1215} sizes="(min-width:901px) 300px, 70vw" />
               </div>
               <div data-reveal data-reveal-delay="120">
                 <h2 className="h-section" id="app-title"><span className="grad">Votre app, votre sport</span></h2>
