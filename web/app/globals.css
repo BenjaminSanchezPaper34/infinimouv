@@ -505,7 +505,7 @@ body {
 .yanga-check { flex: 0 0 auto; color: #fff; font-weight: 700; font-size: 15px; line-height: 1.55; opacity: .9; }
 
 /* Étiquette « option » à côté du titre Yanga */
-.yanga-tag { display: inline-block; margin-left: 10px; vertical-align: middle;
+.yanga-tag { display: block; width: fit-content; margin: 10px 0 0;
   background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.4); color: #fff;
   font-family: var(--font-body); font-weight: 700; text-transform: none; letter-spacing: .2px;
   font-size: 12px; padding: 4px 10px; border-radius: 100px; white-space: nowrap; }
@@ -640,6 +640,8 @@ body {
 .pl-cours--sculpt     { background: linear-gradient(100deg, #0f8a7e, #2eb086 55%, #57c9a5); }
 
 /* Badge "Nouveau" (cours ajouté au planning) */
+/* Ligne dédiée : force la pastille sur sa propre ligne, centrée au-dessus du nom */
+.pl-cours__newrow { flex: 0 0 100%; display: flex; justify-content: center; margin-bottom: 4px; }
 .pl-cours__new { display: inline-block; background: rgba(255,255,255,.92); color: #0f8a7e;
   font-family: var(--font-body); font-weight: 800; text-transform: uppercase;
   font-size: 9.5px; letter-spacing: .6px; line-height: 1; padding: 3px 7px; border-radius: 100px;

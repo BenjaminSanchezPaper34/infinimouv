@@ -43,8 +43,13 @@ const fr = (h: string) => h.replace(":", "h");
 function Creneau({ cours }: { cours: Cours }) {
   return (
     <li className={`pl-cours pl-cours--${cours.type}`}>
-      <span className="pl-cours__nom">{cours.nom}</span>
-      {cours.nouveau && <span className="pl-cours__new">Nouveau</span>}{" "}
+      {/* Pastille « Nouveau » sur sa propre ligne, au-dessus du nom du cours */}
+      {cours.nouveau && (
+        <span className="pl-cours__newrow">
+          <span className="pl-cours__new">Nouveau</span>
+        </span>
+      )}
+      <span className="pl-cours__nom">{cours.nom}</span>{" "}
       <span className="pl-cours__h">
         <time dateTime={cours.debut}>{fr(cours.debut)}</time>
         {"–"}
