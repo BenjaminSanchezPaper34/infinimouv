@@ -580,3 +580,48 @@ body {
 /* Preuve sociale statique (SSR) au-dessus du widget avis — lisible par les IA */
 .reviews-proof { text-align: center; font-size: 17px; color: var(--im-muted); margin-bottom: 22px; }
 .reviews-proof strong { font-family: var(--font-display); font-style: italic; font-weight: 900; font-size: 22px; color: var(--im-green-700); }
+
+/* ============================================================
+   PLANNING DES COURS — version native (remplace l'image SVG)
+   Couleurs reprises des dégradés du visuel d'origine.
+   ============================================================ */
+.planning-natif { display: flex; flex-direction: column; gap: 30px; }
+
+.pl-bande__titre { font-family: var(--font-display); font-style: italic; font-weight: 900;
+  text-transform: uppercase; font-size: 15px; letter-spacing: .5px; color: var(--im-green-700);
+  margin-bottom: 12px; }
+.pl-bande__plage { font-family: var(--font-body); font-style: normal; font-weight: 400;
+  text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--im-muted); }
+
+/* Grille : 5 colonnes en desktop, empilée en mobile */
+.pl-grille { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 700px) { .pl-grille { grid-template-columns: repeat(5, 1fr); gap: 12px; } }
+
+.pl-jour { background: #f2f4f2; border-radius: 14px; padding: 12px 12px 14px; }
+.pl-jour__nom { font-family: var(--font-display); font-style: italic; font-weight: 900;
+  text-transform: uppercase; font-size: 14px; letter-spacing: .5px; color: #005442;
+  text-align: center; margin-bottom: 10px; }
+.pl-jour__liste { display: flex; flex-direction: column; gap: 7px; }
+.pl-jour__vide { text-align: center; color: var(--im-muted); font-size: 14px; padding: 6px 0; }
+
+/* Pastille de cours */
+.pl-cours { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center;
+  gap: 0 6px; padding: 9px 12px; border-radius: 9px; color: #fff; text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,.12); }
+.pl-cours__nom { font-family: var(--font-display); font-style: italic; font-weight: 900;
+  text-transform: uppercase; font-size: 13.5px; letter-spacing: .3px; }
+.pl-cours__h { font-family: var(--font-body); font-weight: 600; font-size: 12.5px; opacity: .95;
+  font-variant-numeric: tabular-nums; }
+
+/* Couleurs = dégradés exacts du visuel d'origine */
+.pl-cours--caf        { background: linear-gradient(100deg, #bea025, #c4a326 35%, #fcc138); }
+.pl-cours--zumba      { background: linear-gradient(100deg, #26944f, #a6c236); }
+.pl-cours--pump       { background: linear-gradient(100deg, #0084b5, #1ca1d2 60%, #38beef); }
+.pl-cours--cross      { background: linear-gradient(100deg, #004a69, #0070a7 55%, #008bd2); }
+.pl-cours--pilate     { background: linear-gradient(100deg, #63526d, #977ca7 60%, #b090c3); }
+.pl-cours--stretching { background: linear-gradient(100deg, #d20a11, #e14915 45%, #f38f1a); }
+.pl-cours--yoga       { background: linear-gradient(100deg, #8b0c6d, #ff0084); }
+
+.pl-note { font-size: 14px; color: var(--im-muted); line-height: 1.55; text-align: center;
+  max-width: 620px; margin-inline: auto; }
+.pl-note strong { color: var(--im-green-700); }

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
+import PlanningCours from "@/components/PlanningCours";
 
 export const metadata: Metadata = {
   title: "Services & équipements — Musculation, cours collectifs, planning",
@@ -241,8 +242,8 @@ export default function ServicesEquipements() {
           <div className="wrap">
             <h2 className="h-section" id="planning-title" style={{ textAlign: "center" }}><span className="grad">Planning des cours</span></h2>
             <div className="planning" data-reveal>
-              {/* SVG servi tel quel (image vectorielle nette) */}
-              <img src="/images/planning-infinimouv.svg" alt="Planning hebdomadaire des cours collectifs Infini Mouv" className="planning__img" />
+              {/* Planning natif : texte réel, lisible par Google/IA et responsive */}
+              <PlanningCours />
             </div>
           </div>
         </section>
