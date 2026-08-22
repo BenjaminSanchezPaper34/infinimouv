@@ -45,7 +45,7 @@ const ADV = [
 const FAQ = [
   ["Quels sont les horaires d'ouverture d'Infini Mouv ?", "La salle est en accès libre 7j/7, de 6h00 à 23h00."],
   ["Où se trouve la salle de sport Infini Mouv à Agde ?", "Au 4 avenue du 11 Novembre 1918, 34300 Agde (parking du cinéma)."],
-  ["Combien coûte un abonnement chez Infini Mouv ?", "L'abonnement démarre à 27,90€/mois (engagement 12 mois). Options Confort (+5€) et Premium (+15€) disponibles. Variantes 3 mois et sans engagement au club."],
+  ["Combien coûte un abonnement chez Infini Mouv ?", "Trois formules : 27,90€/mois avec engagement 12 mois, 34,90€/mois avec engagement 3 mois, et 39,90€/mois sans engagement. Options Confort (+5€) et Premium (+15€) disponibles."],
   ["Quels cours collectifs sont proposés ?", "Cours Les Mills (BodyPump, BodyCombat, RPM…), CAF, Yoga, Pilates, Stretching, Zumba, Cross Training et bike interactif Spivi."],
   ["Y a-t-il du coaching personnalisé ?", "Oui, nos coachs diplômés proposent un suivi personnalisé avec 1 à 2 entretiens individuels par mois."],
   ["Comment réserver un cours collectif ?", "Via l'application Xplor Active (code centre « infinimouv ») ou directement à l'accueil du club."],
@@ -203,9 +203,10 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="pricing__note">
-                  *Tarif pour un engagement de 12 mois sans option. Variantes
-                  d&apos;abonnements possibles pour 3 mois et sans engagement, voir
-                  conditions au club.
+                  *Tarif pour un engagement de 12 mois sans option. Formules
+                  3&nbsp;mois (34,90&nbsp;€) et sans engagement (39,90&nbsp;€)
+                  également disponibles —{" "}
+                  <a href="/tarifs">voir tous les tarifs et conditions</a>.
                 </p>
               </div>
             </div>
