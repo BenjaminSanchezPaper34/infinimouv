@@ -3,6 +3,7 @@ import Image from "next/image";
 import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
+import ServicesCarrousel from "@/components/ServicesCarrousel";
 import PlanningCours from "@/components/PlanningCours";
 
 export const metadata: Metadata = {
@@ -146,37 +147,18 @@ export default function ServicesEquipements() {
           </div>
         </section>
 
-        {/* ============ SERVICES (lignes alternées) ============ */}
-        <section className="section" aria-label="Nos services et équipements">
-          <div className="wrap svc-liste">
-            {SERVICES.map((sv, i) => (
-              <article
-                className={`svc-ligne${i % 2 ? " svc-ligne--inverse" : ""}`}
-                data-reveal
-                key={sv.titre}
-              >
-                <div className="svc-ligne__media">
-                  <Image
-                    src={`/images/${sv.photo}`}
-                    alt={sv.titre}
-                    width={900}
-                    height={640}
-                    sizes="(min-width: 900px) 50vw, 100vw"
-                  />
-                </div>
-                <div className="svc-ligne__texte">
-                  <span className="svc-ligne__num">{String(i + 1).padStart(2, "0")}</span>
-                  <h2 className="svc-ligne__titre">{sv.titre}</h2>
-                  <p className="svc-ligne__desc">{sv.texte}</p>
-                  <ul className="svc-ligne__points">
-                    {sv.points.map((pt) => (
-                      <li key={pt}>{pt}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
+        {/* ============ SERVICES (linéaire horizontal) ============ */}
+        <section className="section svc-section" aria-labelledby="services-title">
+          <div className="wrap">
+            <h2 className="h-section" id="services-title">
+              <span className="grad">Nos espaces</span>
+            </h2>
+            <p className="svc-intro">
+              Six espaces pensés pour couvrir tous vos objectifs. Faites défiler
+              pour les parcourir.
+            </p>
           </div>
+          <ServicesCarrousel services={SERVICES} />
         </section>
 
         {/* ============ L'ÉQUIPE ============ */}

@@ -765,35 +765,57 @@ body {
 .bloque__texte { font-size: 14.5px; color: var(--im-muted); line-height: 1.6; max-width: 420px; }
 .bloque__btn { margin-top: 6px; font-size: 13px; padding: 11px 24px; }
 
+
 /* ============================================================
-   SERVICES — présentation linéaire (lignes alternées)
-   Remplace l'ancien bento jugé trop chargé.
+   SERVICES — linéaire horizontal (cartes défilantes)
+   La bande dépasse volontairement à droite : elle signale
+   qu'il reste des espaces à découvrir.
    ============================================================ */
-.svc-liste { display: flex; flex-direction: column; gap: 56px; }
-@media (min-width: 900px) { .svc-liste { gap: 90px; } }
+.svc-section { position: relative; }
 
-.svc-ligne { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+/* gouttière = aligne la 1re carte sur le contenu, laisse filer à droite */
+.svc-carrousel { position: relative; margin-top: 34px; --gouttiere: max(20px, calc((100vw - var(--maxw)) / 2 + 24px)); }
+
+.svc-piste { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 6px var(--gouttiere) 26px; scroll-padding-inline-start: var(--gouttiere);
+  -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+  scrollbar-color: var(--im-green-200) transparent; }
+.svc-piste:focus-visible { outline: 3px solid var(--im-lime); outline-offset: 4px; border-radius: 8px; }
+.svc-piste::-webkit-scrollbar { height: 6px; }
+.svc-piste::-webkit-scrollbar-track { background: var(--im-line); border-radius: 100px; }
+.svc-piste::-webkit-scrollbar-thumb { background: var(--im-green-300); border-radius: 100px; }
+.svc-piste::-webkit-scrollbar-thumb:hover { background: var(--im-green-500); }
+
+/* Carte */
+.svc-carte { flex: 0 0 clamp(258px, 76vw, 366px); scroll-snap-align: start;
+  background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column;
+  transition: transform .3s var(--ease-out), box-shadow .3s ease; }
+.svc-carte:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(0,0,0,.14); }
+
+.svc-carte__media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.svc-carte__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.svc-carte__num { position: absolute; top: 12px; left: 12px; background: rgba(0,105,53,.92);
+  color: #fff; font-family: var(--font-display); font-style: italic; font-weight: 900;
+  font-size: 13px; letter-spacing: .5px; padding: 5px 11px; border-radius: 100px; }
+
+.svc-carte__corps { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1 1 auto; }
+.svc-carte__titre { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
+  font-size: 17px; color: var(--im-green-700); line-height: 1.2; margin-bottom: 9px; }
+.svc-carte__desc { font-size: 14.5px; color: var(--im-muted); line-height: 1.6; flex: 1 1 auto; }
+.svc-carte__points { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+.svc-carte__points li { background: var(--im-green-50); color: var(--im-green-700);
+  border: 1px solid var(--im-green-100); border-radius: 100px; padding: 5px 12px;
+  font-size: 12.5px; font-weight: 600; }
+
+/* Flèches (desktop) */
+.svc-nav { display: none; }
 @media (min-width: 900px) {
-  .svc-ligne { grid-template-columns: 1fr 1fr; gap: 56px; }
-  /* une ligne sur deux : photo à droite */
-  .svc-ligne--inverse .svc-ligne__media { order: 2; }
+  .svc-nav { display: flex; gap: 10px; justify-content: flex-end;
+    padding-inline: var(--gouttiere); margin-top: 4px; }
+  .svc-nav__btn { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--im-green-700);
+    background: #fff; color: var(--im-green-700); font-size: 26px; line-height: 1; cursor: pointer;
+    display: grid; place-items: center; transition: background .2s, color .2s, opacity .2s, transform .2s; }
+  .svc-nav__btn:hover:not(:disabled) { background: var(--im-green-700); color: #fff; transform: scale(1.05); }
+  .svc-nav__btn:disabled { opacity: .3; cursor: default; }
 }
-
-.svc-ligne__media { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow);
-  aspect-ratio: 4 / 3; }
-.svc-ligne__media img { width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform .6s var(--ease-out); }
-.svc-ligne:hover .svc-ligne__media img { transform: scale(1.03); }
-
-/* Numéro d'index — repère visuel discret */
-.svc-ligne__num { display: block; font-family: var(--font-display); font-style: italic; font-weight: 900;
-  font-size: 15px; letter-spacing: 1px; color: var(--im-lime); margin-bottom: 6px; }
-.svc-ligne__titre { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
-  font-size: clamp(21px, 3vw, 29px); color: var(--im-green-700); line-height: 1.15; margin-bottom: 12px; }
-.svc-ligne__desc { font-size: 16px; color: var(--im-muted); line-height: 1.65; }
-
-/* Points clés : lisibles d'un coup d'œil */
-.svc-ligne__points { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.svc-ligne__points li { background: var(--im-green-50); color: var(--im-green-700);
-  border: 1px solid var(--im-green-100); border-radius: 100px; padding: 6px 14px;
-  font-size: 13.5px; font-weight: 600; }
