@@ -813,9 +813,10 @@ body {
 @media (min-width: 900px) {
   .svc-nav { display: flex; gap: 10px; justify-content: flex-end;
     padding-inline: var(--gouttiere); margin-top: 4px; }
-  .svc-nav__btn { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--im-green-700);
-    background: #fff; color: var(--im-green-700); font-size: 26px; line-height: 1; cursor: pointer;
+  .svc-nav__btn { width: 46px; height: 46px; padding: 0; border-radius: 50%; border: 2px solid var(--im-green-700);
+    background: #fff; color: var(--im-green-700); cursor: pointer;
     display: grid; place-items: center; transition: background .2s, color .2s, opacity .2s, transform .2s; }
+  .svc-nav__btn svg { width: 20px; height: 20px; display: block; }
   .svc-nav__btn:hover:not(:disabled) { background: var(--im-green-700); color: #fff; transform: scale(1.05); }
   .svc-nav__btn:disabled { opacity: .3; cursor: default; }
 }

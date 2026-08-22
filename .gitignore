@@ -51,3 +51,9 @@
 web/node_modules/
 web/.next/
 web/.vercel/
+
+# Interne Paper34 / sources client — JAMAIS versionné (dépôt public)
+/APP/
+/REÇU/
+/SUIVI-FACTURATION-*.md
+/LOCAL-SEO-ANALYSIS-*.md

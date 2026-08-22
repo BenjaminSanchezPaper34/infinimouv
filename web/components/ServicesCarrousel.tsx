@@ -106,7 +106,7 @@ export default function ServicesCarrousel({ services }: { services: Service[] })
           disabled={debut}
           aria-label="Services précédents"
         >
-          ‹
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
         </button>
         <button
           className="svc-nav__btn"
@@ -114,7 +114,7 @@ export default function ServicesCarrousel({ services }: { services: Service[] })
           disabled={fin}
           aria-label="Services suivants"
         >
-          ›
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
         </button>
       </div>
     </div>

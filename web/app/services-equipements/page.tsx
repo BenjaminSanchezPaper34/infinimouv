@@ -60,10 +60,10 @@ const SERVICES = [
 ];
 
 const TEAM = [
-  { photo: "equipe-cyril.webp", name: "Cyril", role: "Fondateur & gérant", text: "Créateur du concept Infini Mouv, passionné de bien-être et de nutrition. Issu du cursus Seva Formation, il a pensé chaque détail de la salle pour votre confort et vos résultats." },
-  { photo: "equipe-magalie.webp", name: "Magalie", role: "Coach & accueil", text: "Présente au quotidien pour vous accompagner et vous conseiller. Spécialisée dans les cours collectifs énergiques (Zumba, CAF, BodyPump) et le suivi personnalisé." },
-  { photo: "equipe-thomas.webp", name: "Thomas", role: "Coach sportif", text: "Coach diplômé spécialisé en Cross Training, force athlétique et préparation physique. Anime les séances Yoga et accompagne sur mesure les objectifs ambitieux." },
-  { photo: "equipe-roseanna.webp", name: "Ruh Roséanna", role: "Coach", text: "À l'écoute et pleine d'énergie, elle vous accompagne avec bienveillance pour progresser à votre rythme et garder la motivation." },
+  { photo: "equipe-cyril.webp", name: "Cyril", role: "Fondateur & gérant", text: "Créateur du concept Infini Mouv, passionné de sport, de bien-être et de nutrition. Issu du cursus Seva Formation, il a pensé chaque détail de la salle pour votre confort et vos résultats." },
+  { photo: "equipe-magalie.webp", name: "Magalie", role: "Coach sportif", text: "Spécialisée en Pilates et stretching adaptés à tous. Suivez-la aussi dans les cours de Zumba, CAF et BodyPump. Elle vous propose également des programmes de musculation adaptés à vos besoins." },
+  { photo: "equipe-thomas.webp", name: "Thomas", role: "Coach sportif", text: "Coach diplômé spécialisé pour avoir une expertise en préparation mentale et physique. Anime les séances de Yoga et accompagne sur mesure les objectifs ambitieux." },
+  { photo: "equipe-roseanna.webp", name: "Roséanna", role: "Conseillère en nutrition", text: "À l'écoute et pleine d'énergie, elle vous accompagne avec bienveillance dans la mise en place d'un programme alimentaire personnalisé, adapté à vos besoins." },
 ];
 
 const ENGAGEMENTS = [
