@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 const LINKS = [
-  ["/#nos-avantages", "La salle"],
+  ["/services-equipements", "La salle"],
   ["/services-equipements#cours", "Cours"],
   ["/tarifs", "Tarifs"],
   ["/#contact", "Contact"],
