@@ -764,3 +764,36 @@ body {
   font-size: 15px; color: var(--im-green-700); }
 .bloque__texte { font-size: 14.5px; color: var(--im-muted); line-height: 1.6; max-width: 420px; }
 .bloque__btn { margin-top: 6px; font-size: 13px; padding: 11px 24px; }
+
+/* ============================================================
+   SERVICES — présentation linéaire (lignes alternées)
+   Remplace l'ancien bento jugé trop chargé.
+   ============================================================ */
+.svc-liste { display: flex; flex-direction: column; gap: 56px; }
+@media (min-width: 900px) { .svc-liste { gap: 90px; } }
+
+.svc-ligne { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+@media (min-width: 900px) {
+  .svc-ligne { grid-template-columns: 1fr 1fr; gap: 56px; }
+  /* une ligne sur deux : photo à droite */
+  .svc-ligne--inverse .svc-ligne__media { order: 2; }
+}
+
+.svc-ligne__media { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow);
+  aspect-ratio: 4 / 3; }
+.svc-ligne__media img { width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .6s var(--ease-out); }
+.svc-ligne:hover .svc-ligne__media img { transform: scale(1.03); }
+
+/* Numéro d'index — repère visuel discret */
+.svc-ligne__num { display: block; font-family: var(--font-display); font-style: italic; font-weight: 900;
+  font-size: 15px; letter-spacing: 1px; color: var(--im-lime); margin-bottom: 6px; }
+.svc-ligne__titre { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(21px, 3vw, 29px); color: var(--im-green-700); line-height: 1.15; margin-bottom: 12px; }
+.svc-ligne__desc { font-size: 16px; color: var(--im-muted); line-height: 1.65; }
+
+/* Points clés : lisibles d'un coup d'œil */
+.svc-ligne__points { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.svc-ligne__points li { background: var(--im-green-50); color: var(--im-green-700);
+  border: 1px solid var(--im-green-100); border-radius: 100px; padding: 6px 14px;
+  font-size: 13.5px; font-weight: 600; }
