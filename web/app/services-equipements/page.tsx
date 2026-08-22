@@ -41,10 +41,10 @@ const BENTO_COLS: Tile[][] = [
 ];
 
 const TEAM = [
-  { initials: "CD", name: "Cyril", role: "Fondateur & gérant", text: "Créateur du concept Infini Mouv, passionné de bien-être et de nutrition. Issu du cursus Seva Formation, il a pensé chaque détail de la salle pour votre confort et vos résultats." },
-  { initials: "M", name: "Magalie", role: "Coach & accueil", text: "Présente au quotidien pour vous accompagner et vous conseiller. Spécialisée dans les cours collectifs énergiques (Zumba, CAF, BodyPump) et le suivi personnalisé." },
-  { initials: "T", name: "Thomas", role: "Coach sportif", text: "Coach diplômé spécialisé en Cross Training, force athlétique et préparation physique. Anime les séances Yoga et accompagne sur mesure les objectifs ambitieux." },
-  { initials: "RR", name: "Ruh Roséanna", role: "Coach", text: "À l'écoute et pleine d'énergie, elle vous accompagne avec bienveillance pour progresser à votre rythme et garder la motivation." },
+  { photo: "equipe-cyril.webp", name: "Cyril", role: "Fondateur & gérant", text: "Créateur du concept Infini Mouv, passionné de bien-être et de nutrition. Issu du cursus Seva Formation, il a pensé chaque détail de la salle pour votre confort et vos résultats." },
+  { photo: "equipe-magalie.webp", name: "Magalie", role: "Coach & accueil", text: "Présente au quotidien pour vous accompagner et vous conseiller. Spécialisée dans les cours collectifs énergiques (Zumba, CAF, BodyPump) et le suivi personnalisé." },
+  { photo: "equipe-thomas.webp", name: "Thomas", role: "Coach sportif", text: "Coach diplômé spécialisé en Cross Training, force athlétique et préparation physique. Anime les séances Yoga et accompagne sur mesure les objectifs ambitieux." },
+  { photo: "equipe-roseanna.webp", name: "Ruh Roséanna", role: "Coach", text: "À l'écoute et pleine d'énergie, elle vous accompagne avec bienveillance pour progresser à votre rythme et garder la motivation." },
 ];
 
 const ENGAGEMENTS = [
@@ -163,7 +163,15 @@ export default function ServicesEquipements() {
             <div className="team">
               {TEAM.map((m, i) => (
                 <article className="team-card" data-reveal data-reveal-delay={`${i * 100}`} key={m.name}>
-                  <div className="team-card__avatar">{m.initials}</div>
+                  <div className="team-card__avatar">
+                    <Image
+                      src={`/images/${m.photo}`}
+                      alt={`${m.name}, ${m.role.toLowerCase()} chez Infini Mouv à Agde`}
+                      width={150}
+                      height={150}
+                      sizes="110px"
+                    />
+                  </div>
                   <h3 className="team-card__name">{m.name}</h3>
                   <div className="team-card__role">{m.role}</div>
                   <p className="team-card__text">{m.text}</p>
