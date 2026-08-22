@@ -758,6 +758,18 @@ body {
 .consent__actions { display: flex; gap: 10px; flex-shrink: 0; }
 .consent__btn { font-size: 13px; padding: 11px 22px; }
 
+/* Mobile : bandeau cookies compact — il ne doit pas manger l'écran d'accueil.
+   Les deux boutons gardent EXACTEMENT la même taille (CNIL : refuser doit
+   être aussi simple qu'accepter). */
+@media (max-width: 759px) {
+  .consent { left: 8px; right: 8px; bottom: 8px; padding: 12px 14px; gap: 10px; border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(0,0,0,.24); }
+  .consent__texte strong { font-size: 12px; margin-bottom: 2px; letter-spacing: .2px; }
+  .consent__texte p { font-size: 12.5px; line-height: 1.4; }
+  .consent__actions { gap: 8px; }
+  .consent__btn { flex: 1 1 0; font-size: 12.5px; padding: 10px 12px; }
+}
+
 /* Encadré affiché à la place d'un contenu tiers bloqué */
 .bloque { display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; gap: 10px; min-height: 240px; padding: 30px 24px;

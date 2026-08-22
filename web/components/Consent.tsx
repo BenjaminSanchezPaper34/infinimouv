@@ -13,8 +13,9 @@ const KEY = "im-consent-tiers"; // "granted" | "denied"
 
 type Etat = "inconnu" | "granted" | "denied";
 
-const ConsentContext = createContext<{ etat: Etat; accepter: () => void; refuser: () => void }>({
+const ConsentContext = createContext<{ etat: Etat; pret: boolean; accepter: () => void; refuser: () => void }>({
   etat: "inconnu",
+  pret: false,
   accepter: () => {},
   refuser: () => {},
 });
@@ -42,7 +43,7 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ConsentContext.Provider
-      value={{ etat, accepter: () => enregistrer("granted"), refuser: () => enregistrer("denied") }}
+      value={{ etat, pret, accepter: () => enregistrer("granted"), refuser: () => enregistrer("denied") }}
     >
       {children}
       {pret && etat === "inconnu" && (
