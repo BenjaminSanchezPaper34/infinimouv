@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Script from "next/script";
+import { ElfsightPlatform, ElfsightWidget, CarteGoogle } from "@/components/TiersConsentis";
 import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
@@ -64,11 +64,8 @@ export default function Home() {
       <Motion />
       <NavFaithful />
 
-      {/* Plateforme Elfsight (flux Instagram) */}
-      <Script
-        src="https://static.elfsight.com/platform/platform.js"
-        strategy="afterInteractive"
-      />
+      {/* Plateforme Elfsight — chargée uniquement après consentement (RGPD) */}
+      <ElfsightPlatform />
 
       {/* Schema FAQ — généré depuis la FAQ affichée plus bas (toujours synchrone) */}
       <script
@@ -249,9 +246,10 @@ export default function Home() {
               Infini Mouv, salle de sport à Agde.
             </p>
             <div className="reviews-embed" data-reveal>
-              <div
-                className="elfsight-app-3b256931-09f1-4343-b758-dc63e25ed835"
-                data-elfsight-app-lazy
+              <ElfsightWidget
+                appId="3b256931-09f1-4343-b758-dc63e25ed835"
+                titre="Avis Google"
+                description="Nos avis Google sont affichés via un service externe qui dépose des cookies. Note actuelle : 4,6/5."
               />
             </div>
           </div>
@@ -311,9 +309,10 @@ export default function Home() {
             <div className="contact__grid">
               {/* Flux Instagram — widget Elfsight (@infinimouv_agde) */}
               <div className="insta-embed" data-reveal>
-                <div
-                  className="elfsight-app-f78ecb2d-dd4e-45f8-b790-65080821565e"
-                  data-elfsight-app-lazy
+                <ElfsightWidget
+                  appId="f78ecb2d-dd4e-45f8-b790-65080821565e"
+                  titre="Flux Instagram"
+                  description="Notre fil Instagram @infinimouv_agde est affiché via un service externe qui dépose des cookies."
                 />
               </div>
 
@@ -323,22 +322,17 @@ export default function Home() {
                   <span className="grad">Contact</span>
                 </h2>
                 {/* Formulaire de contact — widget Elfsight (compte client) */}
-                <div
-                  className="elfsight-app-45ac13a6-3fc2-4728-88e6-e203a8b1018a"
-                  data-elfsight-app-lazy
+                <ElfsightWidget
+                  appId="45ac13a6-3fc2-4728-88e6-e203a8b1018a"
+                  titre="Formulaire de contact"
+                  description="Notre formulaire est fourni par un service externe qui dépose des cookies. Vous pouvez sinon nous appeler au 09 86 67 38 38."
                 />
               </div>
             </div>
 
             {/* Carte Google — signal géographique local (chargée en différé) */}
             <div className="contact-map" data-reveal>
-              <iframe
-                title="Infini Mouv — 4 avenue du 11 Novembre 1918, 34300 Agde (parking du cinéma)"
-                src="https://www.google.com/maps?q=Infini+Mouv,+4+avenue+du+11+Novembre+1918,+34300+Agde&output=embed"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
+              <CarteGoogle />
             </div>
           </div>
         </section>

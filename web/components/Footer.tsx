@@ -26,6 +26,13 @@ export default function Footer() {
             <a className="footer__phone" href="tel:+33986673838">09 86 67 38 38</a>
           </div>
           <p className="footer__copy">INFINIMOUV © 2026 Tous droits réservés</p>
+          <nav className="footer__legal" aria-label="Informations légales">
+            <a href="/mentions-legales">Mentions légales</a>
+            <span aria-hidden="true">·</span>
+            <a href="/confidentialite">Confidentialité &amp; cookies</a>
+            <span aria-hidden="true">·</span>
+            <a href="/tarifs">Tarifs</a>
+          </nav>
         </div>
         <div className="footer__deco" aria-hidden="true">
           <img src="/images/symbole-infinimouv-crop-u355.webp" alt="" />

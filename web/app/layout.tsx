@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import OfferPopup from "@/components/OfferPopup";
 import OfferBanner from "@/components/OfferBanner";
+import { ConsentProvider } from "@/components/Consent";
 
 /* Données structurées — référencement local (Google Maps / rich results) */
 const JSON_LD = {
@@ -139,9 +140,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
-        {children}
-        <OfferPopup />
-        <OfferBanner />
+        <ConsentProvider>
+          {children}
+          <OfferPopup />
+          <OfferBanner />
+        </ConsentProvider>
       </body>
     </html>
   );
