@@ -1,18 +1,19 @@
 import Image from "next/image";
 import { ElfsightPlatform, ElfsightWidget, CarteGoogle } from "@/components/TiersConsentis";
+import { ICONES, type CleIcone } from "@/components/IconesActivites";
 import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
 
-/* Activités : emoji parfois à gauche, parfois à droite (= référence) */
-const ACTS: { label: string; emoji: string; emojiFirst: boolean }[] = [
-  { label: "Musculation", emoji: "💪", emojiFirst: true },
-  { label: "Cardio", emoji: "🏃", emojiFirst: false },
-  { label: "Bike", emoji: "🚴", emojiFirst: true },
-  { label: "Coaching", emoji: "🎯", emojiFirst: false },
-  { label: "Cours collectifs", emoji: "🧘", emojiFirst: true },
-  { label: "Cross training", emoji: "🏋️", emojiFirst: false },
-  { label: "Plan alimentaire", emoji: "🥗", emojiFirst: true },
+/* Activités : icônes SVG (charte) alignées à gauche, une par ligne */
+const ACTS: { label: string; icone: CleIcone }[] = [
+  { label: "Musculation", icone: "musculation" },
+  { label: "Cardio", icone: "cardio" },
+  { label: "Bike", icone: "bike" },
+  { label: "Coaching", icone: "coaching" },
+  { label: "Cours collectifs", icone: "collectifs" },
+  { label: "Cross training", icone: "cross" },
+  { label: "Plan alimentaire", icone: "nutrition" },
 ];
 
 const FEATS = [
@@ -129,17 +130,8 @@ export default function Home() {
             <ul className="acts__list">
               {ACTS.map((a) => (
                 <li className="act" data-reveal key={a.label}>
-                  {a.emojiFirst ? (
-                    <>
-                      <span className="act__emoji">{a.emoji}</span>
-                      <span className="act__label">{a.label}</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="act__label">{a.label}</span>
-                      <span className="act__emoji">{a.emoji}</span>
-                    </>
-                  )}
+                  <span className="act__icone" aria-hidden="true">{ICONES[a.icone]}</span>
+                  <span className="act__label">{a.label}</span>
                 </li>
               ))}
             </ul>
