@@ -82,8 +82,6 @@ const OPTIONS = [
 const CONDITIONS = [
   ["Durée et reconduction", "L'abonnement est souscrit pour la durée choisie (1, 3 ou 12 mois), puis se renouvelle par tacite reconduction."],
   ["Résiliation", "Possible à tout moment après la période d'engagement, par lettre recommandée avec accusé de réception, avec un préavis d'un mois."],
-  ["Certificat médical", "Une attestation d'aptitude à la pratique sportive vous est demandée à l'inscription."],
-  ["Suspension", "En cas d'empêchement de plus d'un mois (hors congés), vos prélèvements peuvent être gelés et la durée reportée en fin d'engagement."],
   ["Accès au club", "Un badge ou un QR code personnel vous est remis : il est nominatif et ne peut être prêté."],
   ["Paiement", "Au comptant pour la période choisie, ou mensuellement par prélèvement bancaire."],
 ];
@@ -94,7 +92,6 @@ const FAQ_TARIFS: [string, string][] = [
   ["Les cours collectifs sont-ils compris dans l'abonnement ?", "Les cours vidéo Les Mills® sont compris dans l'abonnement de base. Les cours collectifs encadrés par un coach (C.A.F., Zumba, Pilate, Body Pump, Body Sculpt, Yoga, Stretching, Cross Training) font partie de l'option Confort, à 5 € par mois."],
   ["Que comprend l'abonnement de base ?", "L'accès libre 7j/7 de 6h à 23h, la musculation guidée et les poids libres, le cardio-training, le cross-training en accès libre, les cours vidéo Les Mills®, le bike Spivi® et l'accès aux douches."],
   ["Comment résilier mon abonnement ?", "Par lettre recommandée avec accusé de réception adressée au club, en respectant un préavis d'un mois. La résiliation devient définitive après restitution de votre badge d'accès."],
-  ["Peut-on suspendre son abonnement ?", "Oui, en cas d'empêchement de plus d'un mois (hors congés annuels) et sur justificatif : les prélèvements sont gelés et la durée est reportée en fin d'engagement."],
 ];
 
 export default function Tarifs() {
