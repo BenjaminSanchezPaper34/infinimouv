@@ -16,30 +16,25 @@ export const DUREES = [
   { id: "12m", label: "12 mois", mois: 12, mensuel: 2790, engagement: "Engagement 12 mois", phare: true },
 ] as const;
 
-/* Chaque option est choisie pour ce qu'elle contient : la liste complète
-   des prestations est affichée, le prix reste secondaire. */
-export const OPTIONS_SIM = [
-  {
-    id: "confort",
-    nom: "Option Confort",
-    mensuel: 500,
-    items: [
-      "Boisson hydratante Yanga® en accès illimité",
-      "Suivi coaching mensuel",
-      "Cours collectifs encadrés par un coach",
-    ],
-  },
-  {
-    id: "premium",
-    nom: "Option Premium",
-    mensuel: 1500,
-    items: ["Suivi coaching expert", "Suivi nutritionnel personnalisé"],
-  },
+/* Les prestations se choisissent UNE PAR UNE : chaque option Confort
+   coûte 5 €/mois, chaque option Premium 15 €/mois. Le prix n'est pas
+   un forfait par gamme. */
+export const PRESTATIONS = [
+  { id: "yanga", famille: "Confort", nom: "Boisson hydratante Yanga® en accès illimité", mensuel: 500 },
+  { id: "coaching", famille: "Confort", nom: "Suivi coaching mensuel", mensuel: 500 },
+  { id: "cours", famille: "Confort", nom: "Cours collectifs encadrés par un coach", mensuel: 500 },
+  { id: "expert", famille: "Premium", nom: "Suivi coaching expert", mensuel: 1500 },
+  { id: "nutrition", famille: "Premium", nom: "Suivi nutritionnel personnalisé", mensuel: 1500 },
+] as const;
+
+const FAMILLES = [
+  { nom: "Confort", tarif: "5 €/mois par option" },
+  { nom: "Premium", tarif: "15 €/mois par option" },
 ] as const;
 
 /* Accès au club : QR code offert, badge physique en option. */
 export const ACCES = [
-  { id: "qr", nom: "QR code dans l'app", prix: 0, note: "Offert" },
+  { id: "qr", nom: "QR code", prix: 0, note: "Offert" },
   { id: "badge", nom: "Badge physique", prix: 1000, note: "10,00 €" },
 ] as const;
 
@@ -56,11 +51,11 @@ const eur = (cts: number) =>
 
 export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: string }) {
   const [dureeId, setDureeId] = useState<(typeof DUREES)[number]["id"]>("12m");
-  const [optIds, setOptIds] = useState<Set<string>>(new Set());
+  const [prestaIds, setPrestaIds] = useState<Set<string>>(new Set());
   const [accesId, setAccesId] = useState<(typeof ACCES)[number]["id"]>("qr");
 
   const basculer = (id: string) =>
-    setOptIds((prev) => {
+    setPrestaIds((prev) => {
       const s = new Set(prev);
       if (s.has(id)) s.delete(id);
       else s.add(id);
@@ -70,17 +65,20 @@ export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: st
   const calc = useMemo(() => {
     const duree = DUREES.find((d) => d.id === dureeId)!;
     const acces = ACCES.find((a) => a.id === accesId)!;
-    const options = OPTIONS_SIM.filter((o) => optIds.has(o.id));
-    const mensualite = duree.mensuel + options.reduce((t, o) => t + o.mensuel, 0);
+    const prestations = PRESTATIONS.filter((p) => prestaIds.has(p.id));
+    const nbConfort = prestations.filter((p) => p.famille === "Confort").length;
+    const nbPremium = prestations.filter((p) => p.famille === "Premium").length;
+    const mensualite = duree.mensuel + prestations.reduce((t, p) => t + p.mensuel, 0);
     return {
       duree,
       acces,
-      options,
+      nbConfort,
+      nbPremium,
       mensualite,
       // Premier règlement : 1re mensualité + frais + accès choisi + dépôt (restitué)
       premierJour: mensualite + FRAIS.inscription + acces.prix + FRAIS.depot,
     };
-  }, [dureeId, optIds, accesId]);
+  }, [dureeId, prestaIds, accesId]);
 
   return (
     <div className="sim" data-reveal>
@@ -107,28 +105,30 @@ export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: st
         </fieldset>
 
         <fieldset className="sim__bloc">
-          <legend className="sim__legende">2. Vos options <span className="sim__facultatif">(facultatives, cumulables)</span></legend>
-          <div className="sim__options">
-            {OPTIONS_SIM.map((o) => (
-              <label key={o.id} className={`sim-option${optIds.has(o.id) ? " est-choisi" : ""}`}>
-                <input
-                  type="checkbox"
-                  checked={optIds.has(o.id)}
-                  onChange={() => basculer(o.id)}
-                />
-                <span className="sim-option__coche" aria-hidden="true">✓</span>
-                <span className="sim-option__corps">
-                  <span className="sim-option__nom">{o.nom}</span>
-                  <ul className="sim-option__items">
-                    {o.items.map((it) => (
-                      <li key={it}>{it}</li>
-                    ))}
-                  </ul>
-                </span>
-                <span className="sim-option__prix">+{eur(o.mensuel)}<small>/mois</small></span>
-              </label>
-            ))}
-          </div>
+          <legend className="sim__legende">2. Vos options <span className="sim__facultatif">(à la carte — cochez celles qui vous intéressent)</span></legend>
+          {FAMILLES.map((f) => (
+            <div className="sim__famille" key={f.nom}>
+              <h4 className="sim__famille-titre">
+                {f.nom} <span className="sim__famille-tarif">{f.tarif}</span>
+              </h4>
+              <div className="sim__options">
+                {PRESTATIONS.filter((p) => p.famille === f.nom).map((p) => (
+                  <label key={p.id} className={`sim-option${prestaIds.has(p.id) ? " est-choisi" : ""}`}>
+                    <input
+                      type="checkbox"
+                      checked={prestaIds.has(p.id)}
+                      onChange={() => basculer(p.id)}
+                    />
+                    <span className="sim-option__coche" aria-hidden="true">✓</span>
+                    <span className="sim-option__corps">
+                      <span className="sim-option__nom">{p.nom}</span>
+                    </span>
+                    <span className="sim-option__prix">+{eur(p.mensuel)}<small>/mois</small></span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
         </fieldset>
 
         <fieldset className="sim__bloc">
@@ -163,7 +163,8 @@ export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: st
         </div>
         <p className="sim__mensualite-detail">
           {calc.duree.label} · {eur(calc.duree.mensuel)}
-          {calc.options.map((o) => ` + ${o.nom.replace("Option ", "")} ${eur(o.mensuel)}`).join("")}
+          {calc.nbConfort > 0 && ` + ${calc.nbConfort} option${calc.nbConfort > 1 ? "s" : ""} Confort ${eur(calc.nbConfort * 500)}`}
+          {calc.nbPremium > 0 && ` + ${calc.nbPremium} option${calc.nbPremium > 1 ? "s" : ""} Premium ${eur(calc.nbPremium * 1500)}`}
         </p>
 
         <dl className="sim__lignes">
