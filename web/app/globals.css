@@ -891,6 +891,18 @@ body {
 .sim-option__resume { font-size: 13px; color: var(--im-muted); line-height: 1.4; }
 .sim-option__prix { margin-left: auto; flex: 0 0 auto; font-weight: 700; font-size: 15px; color: var(--im-green-700); }
 .sim-option__prix small { font-weight: 600; font-size: 11.5px; color: var(--im-muted); }
+/* Prestations détaillées à l'intérieur d'une option */
+.sim-option__items { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
+.sim-option__items li { font-size: 13px; color: var(--im-muted); line-height: 1.45; padding-left: 14px; position: relative; }
+.sim-option__items li::before { content: "•"; position: absolute; left: 2px; color: var(--im-green-600); }
+.sim-option { align-items: flex-start; }
+.sim-option__coche { margin-top: 2px; }
+.sim-option__prix { align-self: center; }
+
+/* Accès au club : deux cartes radio côte à côte */
+.sim__acces { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media (max-width: 480px) { .sim__acces { grid-template-columns: 1fr; } }
+.sim__apropos { font-size: 12.5px; color: var(--im-muted); margin-top: 9px; }
 
 /* Récapitulatif */
 .sim__recap { background: var(--im-green-700); color: #fff; border-radius: var(--radius-lg);

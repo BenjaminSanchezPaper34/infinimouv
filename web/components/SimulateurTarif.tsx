@@ -16,16 +16,38 @@ export const DUREES = [
   { id: "12m", label: "12 mois", mois: 12, mensuel: 2790, engagement: "Engagement 12 mois", phare: true },
 ] as const;
 
+/* Chaque option est choisie pour ce qu'elle contient : la liste complète
+   des prestations est affichée, le prix reste secondaire. */
 export const OPTIONS_SIM = [
-  { id: "confort", nom: "Option Confort", mensuel: 500, resume: "Yanga® illimité, coaching mensuel, cours avec coach" },
-  { id: "premium", nom: "Option Premium", mensuel: 1500, resume: "Coaching expert, suivi nutritionnel personnalisé" },
+  {
+    id: "confort",
+    nom: "Option Confort",
+    mensuel: 500,
+    items: [
+      "Boisson hydratante Yanga® en accès illimité",
+      "Suivi coaching mensuel",
+      "Cours collectifs encadrés par un coach",
+    ],
+  },
+  {
+    id: "premium",
+    nom: "Option Premium",
+    mensuel: 1500,
+    items: ["Suivi coaching expert", "Suivi nutritionnel personnalisé"],
+  },
+] as const;
+
+/* Accès au club : QR code offert, badge physique en option. */
+export const ACCES = [
+  { id: "qr", nom: "QR code dans l'app", prix: 0, note: "Offert" },
+  { id: "badge", nom: "Badge physique", prix: 1000, note: "10,00 €" },
 ] as const;
 
 /* Frais fixes à la souscription (contrat) */
 export const FRAIS = {
-  inscription: 1490, // frais d'inscription TTC
-  badge: 1000,       // badge ou QR code d'accès
-  depot: 4000,       // dépôt de garantie — restitué en fin de contrat
+  inscription: 1490,       // frais d'inscription TTC
+  depot: 4000,             // dépôt de garantie — restitué en fin de contrat
+  remplacementAcces: 1000, // badge ou QR code perdu : remplacement
 } as const;
 
 /** 3990 -> "39,90 €" */
@@ -35,6 +57,7 @@ const eur = (cts: number) =>
 export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: string }) {
   const [dureeId, setDureeId] = useState<(typeof DUREES)[number]["id"]>("12m");
   const [optIds, setOptIds] = useState<Set<string>>(new Set());
+  const [accesId, setAccesId] = useState<(typeof ACCES)[number]["id"]>("qr");
 
   const basculer = (id: string) =>
     setOptIds((prev) => {
@@ -46,20 +69,18 @@ export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: st
 
   const calc = useMemo(() => {
     const duree = DUREES.find((d) => d.id === dureeId)!;
+    const acces = ACCES.find((a) => a.id === accesId)!;
     const options = OPTIONS_SIM.filter((o) => optIds.has(o.id));
-    const optionsMensuel = options.reduce((t, o) => t + o.mensuel, 0);
-    const mensualite = duree.mensuel + optionsMensuel;
-    const fraisFixes = FRAIS.inscription + FRAIS.badge;
+    const mensualite = duree.mensuel + options.reduce((t, o) => t + o.mensuel, 0);
     return {
       duree,
+      acces,
       options,
       mensualite,
-      // Premier règlement : 1re mensualité + frais fixes + dépôt (restitué)
-      premierJour: mensualite + fraisFixes + FRAIS.depot,
-      // Coût réel de la période : mensualités + frais fixes, dépôt exclu puisqu'il revient
-      totalPeriode: mensualite * duree.mois + fraisFixes,
+      // Premier règlement : 1re mensualité + frais + accès choisi + dépôt (restitué)
+      premierJour: mensualite + FRAIS.inscription + acces.prix + FRAIS.depot,
     };
-  }, [dureeId, optIds]);
+  }, [dureeId, optIds, accesId]);
 
   return (
     <div className="sim" data-reveal>
@@ -98,12 +119,37 @@ export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: st
                 <span className="sim-option__coche" aria-hidden="true">✓</span>
                 <span className="sim-option__corps">
                   <span className="sim-option__nom">{o.nom}</span>
-                  <span className="sim-option__resume">{o.resume}</span>
+                  <ul className="sim-option__items">
+                    {o.items.map((it) => (
+                      <li key={it}>{it}</li>
+                    ))}
+                  </ul>
                 </span>
                 <span className="sim-option__prix">+{eur(o.mensuel)}<small>/mois</small></span>
               </label>
             ))}
           </div>
+        </fieldset>
+
+        <fieldset className="sim__bloc">
+          <legend className="sim__legende">3. Votre accès au club</legend>
+          <div className="sim__acces" role="radiogroup" aria-label="Moyen d'accès au club">
+            {ACCES.map((a) => (
+              <label key={a.id} className={`sim-duree${accesId === a.id ? " est-choisi" : ""}`}>
+                <input
+                  type="radio"
+                  name="sim-acces"
+                  value={a.id}
+                  checked={accesId === a.id}
+                  onChange={() => setAccesId(a.id)}
+                />
+                <span className="sim-duree__label">{a.nom}</span>
+                <span className="sim-duree__prix">{a.prix === 0 ? "Offert" : eur(a.prix)}</span>
+                <span className="sim-duree__engagement">Nominatif, remis à l&apos;inscription</span>
+              </label>
+            ))}
+          </div>
+          <p className="sim__apropos">En cas de perte, le remplacement du badge ou du QR code est facturé {eur(FRAIS.remplacementAcces)}.</p>
         </fieldset>
       </div>
 
@@ -126,8 +172,8 @@ export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: st
             <dd>{eur(FRAIS.inscription)}</dd>
           </div>
           <div className="sim__ligne">
-            <dt>Badge ou QR code d&apos;accès <small>(une fois)</small></dt>
-            <dd>{eur(FRAIS.badge)}</dd>
+            <dt>{calc.acces.nom} <small>(une fois)</small></dt>
+            <dd>{calc.acces.prix === 0 ? "Offert" : eur(calc.acces.prix)}</dd>
           </div>
           <div className="sim__ligne sim__ligne--depot">
             <dt>Dépôt de garantie <small>(restitué en fin de contrat)</small></dt>
@@ -136,10 +182,6 @@ export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: st
           <div className="sim__ligne sim__ligne--fort">
             <dt>À régler le jour de l&apos;inscription</dt>
             <dd>{eur(calc.premierJour)}</dd>
-          </div>
-          <div className="sim__ligne">
-            <dt>Coût réel sur {calc.duree.label} <small>(dépôt restitué déduit)</small></dt>
-            <dd>{eur(calc.totalPeriode)}</dd>
           </div>
         </dl>
 
