@@ -79,7 +79,7 @@ export default function ServicesCarrousel({ services }: { services: Service[] })
             <div className="svc-carte__media">
               <Image
                 src={`/images/${sv.photo}`}
-                alt={sv.titre}
+                alt={`${sv.titre} — salle de sport Infini Mouv à Agde`}
                 width={720}
                 height={520}
                 sizes="(min-width: 900px) 380px, 80vw"
