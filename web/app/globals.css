@@ -850,7 +850,7 @@ body {
    SIMULATEUR DE TARIF (page Tarifs)
    ============================================================ */
 .sim-intro { text-align: center; margin-inline: auto; max-width: 640px; }
-.sim { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 38px; align-items: start; }
+.sim { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 38px; align-items: stretch; }
 @media (min-width: 900px) { .sim { grid-template-columns: 1fr 380px; gap: 28px; } }
 
 .sim__bloc { border: 0; padding: 0; margin: 0 0 26px; }
@@ -905,8 +905,10 @@ body {
 
 /* Récapitulatif */
 .sim__recap { background: var(--im-green-700); color: #fff; border-radius: var(--radius-lg);
-  padding: 26px 26px 24px; box-shadow: 0 20px 46px rgba(0,105,53,.3); }
-@media (min-width: 900px) { .sim__recap { position: sticky; top: calc(var(--nav-h) + 16px); } }
+  padding: 26px 26px 24px; box-shadow: 0 20px 46px rgba(0,105,53,.3);
+  /* Même hauteur que la colonne des choix : le bloc s'étire, le CTA et la
+     note sont poussés en bas. */
+  display: flex; flex-direction: column; }
 .sim__recap-titre { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
   font-size: 14px; letter-spacing: .4px; color: #b6e240; margin-bottom: 14px; }
 .sim__mensualite { display: flex; align-items: baseline; gap: 8px; }
@@ -914,7 +916,7 @@ body {
   font-size: clamp(38px, 5vw, 48px); line-height: 1; }
 .sim__mensualite-unite { font-weight: 600; font-size: 15px; opacity: .85; }
 .sim__mensualite-detail { font-size: 13px; opacity: .85; margin-top: 6px; }
-.sim__lignes { margin-top: 18px; border-top: 1px solid rgba(255,255,255,.25); }
+.sim__lignes { margin-top: 18px; margin-bottom: 18px; border-top: 1px solid rgba(255,255,255,.25); }
 .sim__ligne { display: flex; justify-content: space-between; align-items: baseline; gap: 14px;
   padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.14); font-size: 14px; }
 .sim__ligne dt { opacity: .92; }
@@ -923,7 +925,11 @@ body {
 .sim__ligne--depot dt, .sim__ligne--depot dd { opacity: .75; font-weight: 600; }
 .sim__ligne--fort { font-size: 15.5px; }
 .sim__ligne--fort dd { color: #b6e240; font-size: 17px; }
-.sim__cta { width: 100%; justify-content: center; margin-top: 18px;
+.sim__cta { width: 100%; justify-content: center; margin-top: auto; padding-top: 12px;
   background: #fff; color: var(--im-green-700); }
 .sim__cta:hover { background: #b6e240; color: var(--im-ink); }
 .sim__note { font-size: 12px; opacity: .85; line-height: 1.5; margin-top: 12px; }
+
+/* Le © du footer est un lien discret (prévisualisation inscription en ligne) :
+   même couleur que le texte, aucun soulignement — invisible au visiteur. */
+.footer__copy-lien { color: inherit; text-decoration: none; cursor: default; }

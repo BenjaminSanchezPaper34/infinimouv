@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Motion from "@/components/Motion";
-import SimulateurTarif from "@/components/SimulateurTarif";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
 
@@ -83,7 +82,7 @@ const OPTIONS = [
 const CONDITIONS = [
   ["Durée et reconduction", "L'abonnement est souscrit pour la durée choisie (1, 3 ou 12 mois), puis se renouvelle par tacite reconduction."],
   ["Résiliation", "Possible à tout moment après la période d'engagement, par lettre recommandée avec accusé de réception, avec un préavis d'un mois."],
-  ["Accès au club", "Un QR code personnel vous est remis gratuitement dans l'app (badge physique disponible en option, 10 €) : il est nominatif et ne peut être prêté. Remplacement en cas de perte : 10 €."],
+  ["Accès au club", "Un badge ou un QR code personnel vous est remis : il est nominatif et ne peut être prêté."],
   ["Paiement", "Au comptant pour la période choisie, ou mensuellement par prélèvement bancaire."],
 ];
 
@@ -220,20 +219,6 @@ export default function Tarifs() {
           </div>
         </section>
 
-        {/* ---------- SIMULATEUR ---------- */}
-        <section className="section section--soft" aria-labelledby="sim-title">
-          <div className="wrap">
-            <h2 className="h-section" id="sim-title" style={{ textAlign: "center" }}>
-              <span className="grad">Estimez votre abonnement</span>
-            </h2>
-            <p className="svc-intro sim-intro">
-              Composez votre formule et découvrez, sans surprise, ce que vous
-              réglerez le premier jour puis chaque mois.
-            </p>
-            <SimulateurTarif inscriptionUrl={INSCRIPTION_URL} />
-          </div>
-        </section>
-
         {/* ---------- CONDITIONS ---------- */}
         <section className="section section--soft" aria-labelledby="conditions-title">
           <div className="wrap">
@@ -250,9 +235,9 @@ export default function Tarifs() {
             </dl>
             <p className="conditions__note">
               Conditions générales de vente complètes remises et signées lors de
-              l&apos;inscription au club. Des frais d&apos;inscription et un
-              dépôt de garantie sont à prévoir à la souscription&nbsp;— le
-              simulateur ci-dessus vous en donne le détail exact.
+              l&apos;inscription au club. Des frais d&apos;inscription, un badge
+              d&apos;accès et un dépôt de garantie sont à prévoir à la
+              souscription&nbsp;: les montants vous sont communiqués au club.
             </p>
           </div>
         </section>

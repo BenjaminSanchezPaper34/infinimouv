@@ -25,7 +25,13 @@ export default function Footer() {
             </div>
             <a className="footer__phone" href="tel:+33986673838">09 86 67 38 38</a>
           </div>
-          <p className="footer__copy">INFINIMOUV © 2026 Tous droits réservés</p>
+          <p className="footer__copy">
+            INFINIMOUV{" "}
+            {/* Bouton caché : le © mène à la prévisualisation de l'inscription
+                en ligne (page noindex, hors nav et sitemap). */}
+            <a className="footer__copy-lien" href="/inscription-en-ligne">©</a>{" "}
+            2026 Tous droits réservés
+          </p>
           <nav className="footer__legal" aria-label="Informations légales">
             <a href="/mentions-legales">Mentions légales</a>
             <span aria-hidden="true">·</span>
