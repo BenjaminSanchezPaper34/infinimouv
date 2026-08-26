@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Motion from "@/components/Motion";
+import SimulateurTarif from "@/components/SimulateurTarif";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
 
@@ -216,6 +217,20 @@ export default function Tarifs() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ---------- SIMULATEUR ---------- */}
+        <section className="section section--soft" aria-labelledby="sim-title">
+          <div className="wrap">
+            <h2 className="h-section" id="sim-title" style={{ textAlign: "center" }}>
+              <span className="grad">Estimez votre abonnement</span>
+            </h2>
+            <p className="svc-intro sim-intro">
+              Composez votre formule et découvrez, sans surprise, ce que vous
+              réglerez le premier jour puis chaque mois.
+            </p>
+            <SimulateurTarif inscriptionUrl={INSCRIPTION_URL} />
           </div>
         </section>
 
