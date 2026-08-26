@@ -812,22 +812,19 @@ body {
    ============================================================ */
 .svc-section { position: relative; }
 
-/* gouttière = aligne la 1re carte sur le contenu, laisse filer à droite */
-.svc-carrousel { position: relative; margin-top: 34px; --gouttiere: max(20px, calc((100vw - var(--maxw)) / 2 + 24px)); }
-
-.svc-piste { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
-  padding: 6px var(--gouttiere) 26px; scroll-padding-inline-start: var(--gouttiere);
-  -webkit-overflow-scrolling: touch; scrollbar-width: thin;
-  scrollbar-color: var(--im-green-200) transparent; }
-.svc-piste:focus-visible { outline: 3px solid var(--im-lime); outline-offset: 4px; border-radius: 8px; }
-.svc-piste::-webkit-scrollbar { height: 6px; }
-.svc-piste::-webkit-scrollbar-track { background: var(--im-line); border-radius: 100px; }
-.svc-piste::-webkit-scrollbar-thumb { background: var(--im-green-300); border-radius: 100px; }
-.svc-piste::-webkit-scrollbar-thumb:hover { background: var(--im-green-500); }
+/* Grille des espaces : 3 colonnes, deux rangées, calée dans le tronc du site.
+   Plus de défilement latéral — tout est visible d'un coup d'œil. */
+.svc-grille { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 34px; align-items: stretch; }
+@media (min-width: 620px) { .svc-grille { grid-template-columns: repeat(2, 1fr); gap: 22px; } }
+/* À deux colonnes seulement, une carte avec photo peut voisiner une carte sans.
+   On laisse alors chacune à sa hauteur naturelle : les étirer creusait ~230 px
+   de vide dans la plus courte. À trois colonnes les rangées sont homogènes,
+   l'étirement reste donc actif et les cartes s'alignent parfaitement. */
+@media (min-width: 620px) and (max-width: 939px) { .svc-grille { align-items: start; } }
+@media (min-width: 940px) { .svc-grille { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
 
 /* Carte */
-.svc-carte { flex: 0 0 clamp(258px, 76vw, 366px); scroll-snap-align: start;
-  background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg);
+.svc-carte { background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg);
   overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column;
   transition: transform .3s var(--ease-out), box-shadow .3s ease; }
 .svc-carte:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(0,0,0,.14); }
@@ -837,6 +834,8 @@ body {
 .svc-carte__num { position: absolute; top: 12px; left: 12px; background: rgba(0,105,53,.92);
   color: #fff; font-family: var(--font-display); font-style: italic; font-weight: 900;
   font-size: 13px; letter-spacing: .5px; padding: 5px 11px; border-radius: 100px; }
+/* Cartes sans photo : le numéro revient dans le flux, en tête du texte. */
+.svc-carte__num--inline { position: static; align-self: flex-start; margin-bottom: 12px; }
 
 .svc-carte__corps { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1 1 auto; }
 .svc-carte__titre { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
@@ -846,16 +845,3 @@ body {
 .svc-carte__points li { background: var(--im-green-50); color: var(--im-green-700);
   border: 1px solid var(--im-green-100); border-radius: 100px; padding: 5px 12px;
   font-size: 12.5px; font-weight: 600; }
-
-/* Flèches (desktop) */
-.svc-nav { display: none; }
-@media (min-width: 900px) {
-  .svc-nav { display: flex; gap: 10px; justify-content: flex-end;
-    padding-inline: var(--gouttiere); margin-top: 4px; }
-  .svc-nav__btn { width: 46px; height: 46px; padding: 0; border-radius: 50%; border: 2px solid var(--im-green-700);
-    background: #fff; color: var(--im-green-700); cursor: pointer;
-    display: grid; place-items: center; transition: background .2s, color .2s, opacity .2s, transform .2s; }
-  .svc-nav__btn svg { width: 20px; height: 20px; display: block; }
-  .svc-nav__btn:hover:not(:disabled) { background: var(--im-green-700); color: #fff; transform: scale(1.05); }
-  .svc-nav__btn:disabled { opacity: .3; cursor: default; }
-}

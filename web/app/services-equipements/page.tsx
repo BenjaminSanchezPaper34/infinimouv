@@ -3,7 +3,7 @@ import Image from "next/image";
 import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
-import ServicesCarrousel from "@/components/ServicesCarrousel";
+import ServicesGrille from "@/components/ServicesGrille";
 import PlanningCours from "@/components/PlanningCours";
 
 export const metadata: Metadata = {
@@ -157,11 +157,12 @@ export default function ServicesEquipements() {
               <span className="grad">Nos espaces</span>
             </h2>
             <p className="svc-intro">
-              Six espaces pensés pour couvrir tous vos objectifs. Faites défiler
-              pour les parcourir.
+              Six espaces pensés pour couvrir tous vos objectifs.
             </p>
           </div>
-          <ServicesCarrousel services={SERVICES} />
+          <div className="wrap">
+            <ServicesGrille services={SERVICES} />
+          </div>
         </section>
 
         {/* ============ L'ÉQUIPE ============ */}
