@@ -187,14 +187,14 @@ body {
 }
 [data-reveal].is-in { opacity: 1; transform: none; }
 
-/* Les lignes d'activités arrivent depuis la gauche, dans le sens de lecture. */
-.act[data-reveal] { transform: translateX(-46px) scale(.96); }
+/* Les lignes d'activités montent sur place : cohérent avec un axe centré. */
+.act[data-reveal] { transform: translateY(44px) scale(.90); }
 .act[data-reveal].is-in { transform: none; }
 
 /* Mobile : course réduite, l'effet reste net sans secouer la page. */
 @media (max-width: 560px) {
   [data-reveal] { transform: translateY(34px) scale(.96); }
-  .act[data-reveal] { transform: translateX(-28px) scale(.97); }
+  .act[data-reveal] { transform: translateY(30px) scale(.93); }
 }
 
 /* Accessibilité : aucun mouvement si l'utilisateur l'a demandé. */
@@ -302,9 +302,9 @@ body {
 /* ACTIVITÉS */
 .acts { padding: 56px 0; }
 @media (min-width: 561px) { .acts { padding: 70px 0; } }
-/* Liste justifiée à gauche, comme le reste du contenu de la page */
-.acts__list { display: flex; flex-direction: column; gap: 4px; }
-.act { display: flex; align-items: center; }
+/* Sans picto, les mots n'ont plus d'ancrage à gauche : ils sont centrés. */
+.acts__list { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.act { display: flex; align-items: center; justify-content: center; text-align: center; }
 .act__label { font-family: var(--font-display); font-weight: 900; font-style: italic; text-transform: uppercase;
   font-size: clamp(26px, 7.2vw, 68px); line-height: 1.12; color: #5aad12; }
 
