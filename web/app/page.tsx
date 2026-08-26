@@ -255,10 +255,10 @@ export default function Home() {
             <div className="split">
               <div className="split__img" data-reveal>
                 <Image
-                  src="/images/salle-infinimouv.webp"
-                  alt="Salle de musculation Infini Mouv à Agde"
-                  width={1000}
-                  height={750}
+                  src="/images/avantages-infinimouv.webp"
+                  alt="Plateau de musculation Matrix de la salle Infini Mouv à Agde"
+                  width={1200}
+                  height={900}
                   sizes="(min-width:901px) 50vw, 100vw"
                 />
               </div>

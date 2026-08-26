@@ -251,7 +251,7 @@ export default function ServicesEquipements() {
         {/* ============ COURS COLLECTIFS ============ */}
         <section id="cours" aria-labelledby="cours-title">
           <div className="cours-hero">
-            <Image src="/images/musculation-infinimouv.webp" alt="Cours collectifs Infini Mouv" fill sizes="100vw" className="cours-hero__img" />
+            <Image src="/images/courscollectifs-infinimouv.webp" alt="Cours collectif animé par un coach chez Infini Mouv à Agde" fill sizes="100vw" className="cours-hero__img" />
           </div>
           <div className="section">
             <div className="wrap">

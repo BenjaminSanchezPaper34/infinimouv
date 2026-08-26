@@ -548,7 +548,7 @@ body {
 .cours-item__text { font-size: 15px; color: var(--im-muted); line-height: 1.55; }
 
 /* Planning (image SVG plein largeur) */
-.planning { max-width: 920px; margin-inline: auto; background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg); padding: 14px; box-shadow: var(--shadow); }
+.planning { margin-inline: auto;  /* pleine largeur du tronc (1200px), plus de plafond 920px */ background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg); padding: 14px; box-shadow: var(--shadow); }
 @media (min-width: 561px) { .planning { padding: 22px; } }
 /* image complète, tient toujours dans le bloc (plus de min-width qui rognait sur mobile) */
 .planning__img { width: 100%; height: auto; display: block; margin-inline: auto; }
