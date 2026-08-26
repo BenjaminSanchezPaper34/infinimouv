@@ -31,7 +31,7 @@ const SERVICES = [
   },
   {
     titre: "Cours collectifs Les Mills®",
-    photo: "salle-infinimouv.webp",
+    photo: "courscollectifs-infinimouv.webp",
     texte:
       "Salle dédiée aux cours Les Mills® en vidéo immersive : BodyPump, BodyCombat, BodyBalance, BodyAttack, RPM, Sh'Bam… Séances accessibles selon votre planning, sans inscription préalable.",
     points: ["Vidéo immersive Les Mills®", "Sans réservation", "Cours avec coach en option Confort"],
