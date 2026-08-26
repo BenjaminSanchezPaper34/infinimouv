@@ -1,19 +1,18 @@
 import Image from "next/image";
 import { ElfsightPlatform, ElfsightWidget, CarteGoogle } from "@/components/TiersConsentis";
-import { ICONES, type CleIcone } from "@/components/IconesActivites";
 import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
 
-/* Activités : icônes SVG (charte) alignées à gauche, une par ligne */
-const ACTS: { label: string; icone: CleIcone }[] = [
-  { label: "Musculation", icone: "musculation" },
-  { label: "Cardio", icone: "cardio" },
-  { label: "Bike", icone: "bike" },
-  { label: "Coaching", icone: "coaching" },
-  { label: "Cours collectifs", icone: "collectifs" },
-  { label: "Cross training", icone: "cross" },
-  { label: "Plan alimentaire", icone: "nutrition" },
+/* Activités : titres seuls, alignés à gauche, une par ligne (sans picto) */
+const ACTS = [
+  "Musculation",
+  "Cardio",
+  "Bike",
+  "Coaching",
+  "Cours collectifs",
+  "Cross training",
+  "Plan alimentaire",
 ];
 
 const FEATS = [
@@ -128,10 +127,10 @@ export default function Home() {
         <section className="acts" id="activites" aria-label="Nos activités">
           <div className="wrap">
             <ul className="acts__list">
-              {ACTS.map((a) => (
-                <li className="act" data-reveal key={a.label}>
-                  <span className="act__icone" aria-hidden="true">{ICONES[a.icone]}</span>
-                  <span className="act__label">{a.label}</span>
+              {ACTS.map((label, i) => (
+                /* Apparition en cascade : chaque ligne suit la précédente de 90 ms */
+                <li className="act" data-reveal data-reveal-delay={`${i * 90}`} key={label}>
+                  <span className="act__label">{label}</span>
                 </li>
               ))}
             </ul>

@@ -180,16 +180,32 @@ body {
 /* Reveal scroll (piloté par data-reveal en JS) */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
+  /* Course plus longue + léger retrait d'échelle : l'arrivée se remarque. */
+  transform: translateY(52px) scale(.94);
+  transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
   will-change: opacity, transform;
 }
 [data-reveal].is-in { opacity: 1; transform: none; }
 
+/* Les lignes d'activités arrivent depuis la gauche, dans le sens de lecture. */
+.act[data-reveal] { transform: translateX(-46px) scale(.96); }
+.act[data-reveal].is-in { transform: none; }
+
+/* Mobile : course réduite, l'effet reste net sans secouer la page. */
+@media (max-width: 560px) {
+  [data-reveal] { transform: translateY(34px) scale(.96); }
+  .act[data-reveal] { transform: translateX(-28px) scale(.97); }
+}
+
+/* Accessibilité : aucun mouvement si l'utilisateur l'a demandé. */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], .act[data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
 /* ============================================================
    COPIE FIDÈLE — site de référence (DA validée) — mobile-first
    ============================================================ */
-.site { --nav-h: 72px; --maxw: 1120px; color: var(--im-ink); font-size: 17px; }
+.site { --nav-h: 72px; --maxw: 1200px; color: var(--im-ink); font-size: 17px; }
 @media (min-width: 861px) { .site { --nav-h: 84px; } }
 
 .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 20px; }
@@ -487,6 +503,18 @@ body {
 .team-card__name { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; font-size: 20px; }
 .team-card__role { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: .5px; color: var(--im-green-600); margin-bottom: 12px; }
 .team-card__text { font-size: 15px; color: var(--im-muted); line-height: 1.55; }
+
+/* Carte du fondateur : inversée en vert, pour la détacher de l'équipe. */
+.team-card--fondateur { background: var(--im-green-700); border-color: var(--im-green-700);
+  box-shadow: 0 20px 46px rgba(0,105,53,.34); }
+.team-card--fondateur:hover { box-shadow: 0 30px 66px rgba(0,105,53,.42); }
+.team-card--fondateur .team-card__name { color: #fff; }
+.team-card--fondateur .team-card__role { color: #b6e240; }  /* lime éclairci : le
+  lime de charte (#9dd800) ne donne que 3.99:1 sur ce vert, insuffisant pour du 12px */
+.team-card--fondateur .team-card__text { color: rgba(255,255,255,.92); }
+/* Le liseré vert de l'avatar disparaîtrait sur fond vert : on l'éclaircit. */
+.team-card--fondateur .team-card__avatar { outline-color: #b6e240;
+  box-shadow: 0 14px 30px rgba(0,0,0,.28); }
 
 /* Engagements : 2 colonnes possibles */
 @media (min-width: 768px) { .svc-eng { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 40px; } }
