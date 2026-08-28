@@ -25,8 +25,8 @@ const SOIR: Record<string, Cours[]> = {
   Lundi: [{ nom: "Cross Training", debut: "18:00", fin: "19:00", type: "cross" }],
   Mardi: [
     { nom: "C.A.F.", debut: "18:00", fin: "18:30", type: "caf" },
-    { nom: "Body Pump", debut: "18:30", fin: "19:00", type: "pump" },
-    { nom: "Stretching", debut: "19:00", fin: "19:30", type: "stretching" },
+    { nom: "Zumba", debut: "18:30", fin: "19:00", type: "zumba" },
+    { nom: "Stretching", debut: "19:00", fin: "19:45", type: "stretching" },
   ],
   Mercredi: [{ nom: "Yoga", debut: "18:15", fin: "19:00", type: "yoga" }],
   Jeudi: [
