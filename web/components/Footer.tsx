@@ -1,10 +1,12 @@
+import PaperSignature from "@/components/PaperSignature";
+
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="wrap footer__in">
         <div className="footer__info">
           <address>
-            4 avenue du 11 novembre 1918,
+            4 avenue du 11 Novembre 1918,
             <br />
             34300 AGDE <span className="footer__muted">(parking du cinéma)</span>
           </address>
@@ -43,9 +45,10 @@ export default function Footer() {
         <div className="footer__deco" aria-hidden="true">
           <img src="/images/symbole-infinimouv-crop-u355.webp" alt="" />
         </div>
-        <a className="footer__credit" href="http://paper34.fr" target="_blank" rel="noopener">
-          Réalisé par <img src="/images/logoblanc-paper34.svg" alt="Paper34" />
-        </a>
+        {/* Signature officielle Paper34 (kit) — fumée fluide au survol du logo */}
+        <div className="footer__credit-zone">
+          <PaperSignature />
+        </div>
       </div>
     </footer>
   );

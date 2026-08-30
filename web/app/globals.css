@@ -429,7 +429,7 @@ body {
   .footer { position: relative; padding: 36px 0 0; }
   .footer__in { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
   .footer__info { order: 1; }
-  .footer__credit { order: 2; position: static; inset: auto; justify-content: flex-start; }
+  .footer__credit-zone { order: 2; }
   .footer__deco { order: 3; position: static; inset: auto; align-self: stretch; justify-content: center; margin-top: -6px; }
   .footer__deco img { width: 100%; max-width: 360px; max-height: 130px; margin-inline: auto; transform: none; }
 }
@@ -442,9 +442,10 @@ body {
 .footer__phone { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 28px; color: var(--im-lime); letter-spacing: .5px; }
 .footer__copy { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .5px; }
 /* Signature Paper34 — horizontale, propre, alignée (plus de rotation) */
-.footer__credit { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 9px; font-size: 11px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; transition: color .25s ease; }
-.footer__credit:hover { color: rgba(255,255,255,.92); }
-.footer__credit img { width: 66px; height: auto; display: block; }
+/* Zone signature Paper34 : habillage typographique local du kit (le composant
+   lui-même n'est jamais modifié au-delà de ses 2 classes de couleur). */
+.footer__credit-zone { flex: 0 0 auto; font-size: 11px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; }
+.footer__credit-zone a { color: inherit; text-decoration: none; }
 
 /* ============================================================
    PAGE SERVICES & ÉQUIPEMENTS

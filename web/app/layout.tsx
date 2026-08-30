@@ -73,7 +73,7 @@ const JSON_LD = {
       closes: "23:00",
     },
   ],
-  priceRange: "27,90 € - 42,90 € par mois",
+  priceRange: "27,90 € - 39,90 € par mois",
   sameAs: [
     "https://www.facebook.com/infinimouvagde/",
     "https://www.instagram.com/infinimouv_agde/",
