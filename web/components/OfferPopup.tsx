@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 import { useConsent } from "@/components/Consent";
 
-/* Offre estivale (prolongée en août) — popup au chargement.
-   S'affiche jusqu'au 31 août inclus, puis disparaît automatiquement.
+/* Offre de rentrée — 8 semaines offertes sur l'abonnement 12 mois.
    Ne réapparaît pas une fois fermée (mémorisé en localStorage).
-   Clé « -aout » : ceux qui avaient fermé la version juillet revoient la prolongation. */
-const END = new Date("2026-09-01T00:00:00"); // borne : après le 31/08, plus de popup
-const STORAGE_KEY = "im-offer-happysummer-aout";
+   Nouvelle clé : ceux qui avaient fermé l'offre d'été voient bien celle-ci. */
+const END = new Date("2026-11-01T00:00:00"); // borne PROVISOIRE (fin 31/10) — à confirmer avec Cyril
+const STORAGE_KEY = "im-offer-rentree-2026";
 export const EVENT_FERME = "im-offer-popup-closed";
 
 /* Délais avant apparition, une fois le bandeau cookies traité.
@@ -64,14 +63,11 @@ export default function OfferPopup() {
           ×
         </button>
         <a href="/#contact" className="offer__link" onClick={close}>
-          {/* Portrait sur mobile, paysage sur desktop (WebP optimisés) */}
-          <picture>
-            <source media="(max-width: 640px)" srcSet="/images/offre-happysummer-aout-mobile.webp" />
-            <img
-              src="/images/offre-happysummer-aout.webp"
-              alt="Prolongation tout le mois d'août : 1 abonnement acheté = 1 abonnement offert avec le code HAPPYSUMMER"
-            />
-          </picture>
+          {/* Un seul visuel paysage pour l'instant (pas de déclinaison portrait reçue) */}
+          <img
+            src="/images/offre-rentree.webp"
+            alt="Offre de rentrée : 8 semaines offertes sur l'abonnement 12 mois à 27,90 €. Voir conditions au club."
+          />
         </a>
       </div>
     </div>

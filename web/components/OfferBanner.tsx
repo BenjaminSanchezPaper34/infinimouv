@@ -6,9 +6,9 @@ import { EVENT_FERME } from "@/components/OfferPopup";
 
 /* Bandeau de rappel de l'offre estivale (prolongée) — fixé en bas, fermable,
    disparaît automatiquement après le 31 août. */
-const END = new Date("2026-09-01T00:00:00");
-const STORAGE_KEY = "im-offer-banner-happysummer-aout";
-const POPUP_KEY = "im-offer-happysummer-aout"; // clé du popup : a-t-il déjà été traité ?
+const END = new Date("2026-11-01T00:00:00"); // borne PROVISOIRE (fin 31/10) — à confirmer avec Cyril
+const STORAGE_KEY = "im-offer-banner-rentree-2026";
+const POPUP_KEY = "im-offer-rentree-2026"; // clé du popup : a-t-il déjà été traité ?
 
 export default function OfferBanner() {
   const [show, setShow] = useState(false);
@@ -43,9 +43,9 @@ export default function OfferBanner() {
 
   return (
     <div className="offer-banner" role="region" aria-label="Offre en cours">
-      <a href="/#contact" className="offer-banner__text">
-        ☀️ Prolongation — jusqu&apos;au 31/08&nbsp;: <strong>1 abonnement acheté = 1 offert</strong>
-        <span className="offer-banner__code">code HAPPYSUMMER</span>
+      <a href="/tarifs" className="offer-banner__text">
+        Offre de rentrée&nbsp;: <strong>8 semaines offertes</strong>{" "}sur l&apos;abonnement 12&nbsp;mois
+        <span className="offer-banner__code">27,90&nbsp;€/mois</span>
       </a>
       <button className="offer-banner__close" onClick={close} aria-label="Fermer le bandeau">
         ×
