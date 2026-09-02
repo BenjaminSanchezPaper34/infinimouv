@@ -63,11 +63,14 @@ export default function OfferPopup() {
           ×
         </button>
         <a href="/#contact" className="offer__link" onClick={close}>
-          {/* Un seul visuel paysage pour l'instant (pas de déclinaison portrait reçue) */}
-          <img
-            src="/images/offre-rentree.webp"
-            alt="Offre de rentrée : 8 semaines offertes sur l'abonnement 12 mois à 27,90 €. Voir conditions au club."
-          />
+          {/* Portrait sur mobile, paysage sur desktop (WebP optimisés) */}
+          <picture>
+            <source media="(max-width: 640px)" srcSet="/images/offre-rentree-mobile.webp" />
+            <img
+              src="/images/offre-rentree.webp"
+              alt="Offre de rentrée : 8 semaines offertes sur l'abonnement 12 mois à 27,90 €. Voir conditions au club."
+            />
+          </picture>
         </a>
       </div>
     </div>
