@@ -1,5 +1,14 @@
 import PaperSignature from "@/components/PaperSignature";
 
+/* Fumée de la signature aux verts Infini Mouv (la fumée est additive sur le
+   fond sombre du footer : on part des teintes les plus lumineuses de la DA). */
+const FUMEE_INFINIMOUV = [
+  { r: 0.62, g: 0.85, b: 0.0 },  // lime #9dd800 — l'accent de la charte
+  { r: 0.18, g: 0.62, b: 0.26 }, // vert médian #2e9e42
+  { r: 0.0, g: 0.55, b: 0.28 },  // vert signature #006935, poussé pour lire sur le noir
+  { r: 0.78, g: 0.94, b: 0.38 }, // lime clair #c6ef62 — les pointes de lumière
+];
+
 import { LienPreferences } from "@/components/Consent";
 
 export default function Footer() {
@@ -51,7 +60,7 @@ export default function Footer() {
         </div>
         {/* Signature officielle Paper34 (kit) — fumée fluide au survol du logo */}
         <div className="footer__credit-zone">
-          <PaperSignature />
+          <PaperSignature smoke={FUMEE_INFINIMOUV} />
         </div>
       </div>
     </footer>

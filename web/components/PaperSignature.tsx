@@ -11,15 +11,19 @@ import SplashCursor from "./SplashCursor";
  * canvas est démonté 3 s après la sortie (zéro coût GPU au repos).
  */
 
-// Les bleus Paper34 — la DA du studio, pas celle du client
-const SMOKE = [
+type Teinte = { r: number; g: number; b: number };
+
+// Palette par défaut du kit : les bleus Paper34. Un site peut passer la sienne
+// via la prop `smoke` pour que la fumée épouse sa DA (fond sombre conseillé).
+export const SMOKE_PAPER34: Teinte[] = [
   { r: 0, g: 0.45, b: 0.9 },
   { r: 0.1, g: 0.6, b: 1.0 },
   { r: 0.6, g: 0.4, b: 1.0 },
   { r: 0.0, g: 0.3, b: 0.7 },
 ];
 
-export default function PaperSignature() {
+export default function PaperSignature({ smoke = SMOKE_PAPER34 }: { smoke?: Teinte[] }) {
+  const SMOKE = smoke;
   const [active, setActive] = useState(false);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const emitRef = useRef(true);
