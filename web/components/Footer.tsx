@@ -1,5 +1,7 @@
 import PaperSignature from "@/components/PaperSignature";
 
+import { LienPreferences } from "@/components/Consent";
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -38,6 +40,8 @@ export default function Footer() {
             <a href="/mentions-legales">Mentions légales</a>
             <span aria-hidden="true">·</span>
             <a href="/confidentialite">Confidentialité &amp; cookies</a>
+            <span aria-hidden="true">·</span>
+            <LienPreferences />
             <span aria-hidden="true">·</span>
             <a href="/tarifs">Tarifs</a>
           </nav>

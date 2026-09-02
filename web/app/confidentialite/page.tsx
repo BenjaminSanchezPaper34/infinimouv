@@ -93,10 +93,15 @@ export default function Confidentialite() {
               <li><strong>Google Maps</strong> — carte de localisation du club</li>
             </ul>
             <p>
-              Ces services <strong>ne sont chargés qu&apos;après votre accord</strong>.
-              Tant que vous n&apos;avez pas accepté, ils restent bloqués et un encadré
-              vous propose de les activer. Vous pouvez modifier votre choix à tout
-              moment en effaçant les données du site dans votre navigateur.
+              Ces services d&apos;affichage sont <strong>actifs par défaut</strong> afin
+              que le site fonctionne sans étape préalable. Vous pouvez les
+              <strong> désactiver à tout moment</strong>, service par service, depuis
+              le lien « Préférences de confidentialité » en pied de page (ou{" "}
+              <a href="/#preferences">directement ici</a>). Votre refus est mémorisé
+              dans votre navigateur et respecté à chaque visite ; l&apos;information
+              utile (par exemple notre adresse à la place de la carte) reste
+              affichée, avec un bouton pour réactiver le service si vous changez
+              d&apos;avis.
             </p>
 
             <h2>8. Vidéosurveillance du club</h2>

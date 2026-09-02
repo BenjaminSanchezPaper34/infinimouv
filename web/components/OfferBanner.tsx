@@ -12,12 +12,12 @@ const POPUP_KEY = "im-offer-rentree-2026"; // clé du popup : a-t-il déjà ét�
 
 export default function OfferBanner() {
   const [show, setShow] = useState(false);
-  const { etat, pret } = useConsent();
+  const { pret } = useConsent();
 
   useEffect(() => {
     if (new Date() >= END) return;
-    // Une sollicitation à la fois : on attend que le bandeau cookies soit traité…
-    if (!pret || etat === "inconnu") return;
+    // Une sollicitation à la fois…
+    if (!pret) return;
     try {
       if (localStorage.getItem(STORAGE_KEY) === "closed") return; // bandeau déjà fermé
       // …puis que le popup de l'offre ait été vu et fermé. Le bandeau ne joue
@@ -30,7 +30,7 @@ export default function OfferBanner() {
     const onFerme = () => setShow(true);
     window.addEventListener(EVENT_FERME, onFerme);
     return () => window.removeEventListener(EVENT_FERME, onFerme);
-  }, [pret, etat]);
+  }, [pret]);
 
   if (!show) return null;
 

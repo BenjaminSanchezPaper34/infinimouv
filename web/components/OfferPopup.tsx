@@ -17,20 +17,18 @@ const DELAI_DESKTOP = 900;
 
 export default function OfferPopup() {
   const [open, setOpen] = useState(false);
-  const { etat, pret } = useConsent();
+  const { pret } = useConsent();
 
   useEffect(() => {
     if (new Date() >= END) return; // offre terminée
-    // Jamais deux sollicitations en même temps : on attend que le choix
-    // cookies soit fait (le bandeau n'est plus à l'écran) avant de proposer l'offre.
-    if (!pret || etat === "inconnu") return;
+    if (!pret) return;
     try {
       if (localStorage.getItem(STORAGE_KEY) === "closed") return; // déjà fermée
     } catch {}
     const mobile = window.matchMedia("(max-width: 640px)").matches;
     const t = setTimeout(() => setOpen(true), mobile ? DELAI_MOBILE : DELAI_DESKTOP);
     return () => clearTimeout(t);
-  }, [pret, etat]);
+  }, [pret]);
 
   function close() {
     setOpen(false);

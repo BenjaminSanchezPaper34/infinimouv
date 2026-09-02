@@ -1,12 +1,16 @@
 "use client";
 
 import Script from "next/script";
-import { useConsent, ContenuBloque } from "./Consent";
+import { useConsent, ContenuCoupe } from "./Consent";
 
-/** Charge la plateforme Elfsight uniquement après consentement. */
+/* Services d'affichage : actifs par défaut, coupés seulement si le visiteur
+   l'a demandé dans ses préférences (modèle opt-out Paper34). Rien n'est
+   monté avant relecture du localStorage, pour honorer un refus mémorisé. */
+
+/** Plateforme Elfsight (avis, Instagram, formulaire). */
 export function ElfsightPlatform() {
-  const { etat } = useConsent();
-  if (etat !== "granted") return null;
+  const { actif } = useConsent();
+  if (!actif("elfsight")) return null;
   return (
     <Script
       src="https://static.elfsight.com/platform/platform.js"
@@ -15,7 +19,7 @@ export function ElfsightPlatform() {
   );
 }
 
-/** Widget Elfsight : monté seulement après consentement. */
+/** Widget Elfsight, ou son encadré de repli si le service est coupé. */
 export function ElfsightWidget({
   appId,
   titre,
@@ -25,23 +29,22 @@ export function ElfsightWidget({
   titre: string;
   description?: string;
 }) {
-  const { etat } = useConsent();
-  if (etat !== "granted") {
-    return <ContenuBloque titre={titre}>{description}</ContenuBloque>;
+  const { actif } = useConsent();
+  if (!actif("elfsight")) {
+    return <ContenuCoupe service="elfsight" titre={titre}>{description}</ContenuCoupe>;
   }
   return <div className={`elfsight-app-${appId}`} data-elfsight-app-lazy />;
 }
 
-/** Carte Google Maps : chargée seulement après consentement. */
+/** Carte Google Maps, ou l'adresse en clair si le service est coupé. */
 export function CarteGoogle() {
-  const { etat } = useConsent();
-  if (etat !== "granted") {
+  const { actif } = useConsent();
+  if (!actif("maps")) {
     return (
-      <ContenuBloque titre="Carte Google Maps">
-        La carte est fournie par Google, qui dépose des cookies. Vous pouvez
-        aussi nous trouver au 4 avenue du 11 Novembre 1918, 34300 Agde
-        (parking du cinéma).
-      </ContenuBloque>
+      <ContenuCoupe service="maps" titre="Carte Google Maps">
+        Vous avez désactivé la carte. Retrouvez-nous au 4 avenue du 11 Novembre
+        1918, 34300 Agde (parking du cinéma).
+      </ContenuCoupe>
     );
   }
   return (

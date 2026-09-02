@@ -772,31 +772,39 @@ body {
 /* ============================================================
    BANDEAU DE CONSENTEMENT + CONTENUS BLOQUÉS
    ============================================================ */
-.consent { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 2500;
-  background: #fff; border: 1px solid var(--im-line); border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(0,0,0,.28); padding: 18px 20px;
-  display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin-inline: auto; }
-@media (min-width: 760px) { .consent { flex-direction: row; align-items: center; justify-content: space-between; gap: 22px; padding: 20px 24px; } }
-.consent__texte strong { display: block; font-family: var(--font-body); font-weight: 700;
-  text-transform: uppercase; font-size: 14px; color: var(--im-green-700); margin-bottom: 5px; }
-.consent__texte p { font-size: 14px; color: var(--im-muted); line-height: 1.55; }
-.consent__texte a { color: var(--im-green-700); text-decoration: underline; text-underline-offset: 2px; }
-.consent__actions { display: flex; gap: 10px; flex-shrink: 0; }
-.consent__btn { font-size: 13px; padding: 11px 22px; }
+/* Panneau « Préférences de confidentialité » — ouvert à la demande depuis le
+   footer, jamais à l'arrivée. Un interrupteur par service externe. */
+.prefs { position: fixed; right: 16px; bottom: 16px; z-index: 2500;
+  width: min(360px, calc(100vw - 32px)); background: #fff; border: 1px solid var(--im-line);
+  border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,.28); padding: 20px 22px 16px; }
+.prefs__titre { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
+  font-size: 14px; color: var(--im-green-700); margin-bottom: 6px; }
+.prefs__texte { font-size: 13.5px; color: var(--im-muted); line-height: 1.5; margin-bottom: 14px; }
+.prefs__texte a { color: var(--im-green-700); text-decoration: underline; text-underline-offset: 2px; }
+.prefs__liste { display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px; }
+.prefs__ligne { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; }
+.prefs__nom small { color: var(--im-muted); font-size: 12px; }
+.prefs__actions { display: flex; justify-content: flex-end; }
+.prefs__fermer { background: none; border: 0; color: var(--im-muted); font-size: 13.5px; font-weight: 600;
+  padding: 8px 12px; cursor: pointer; border-radius: 100px; }
+.prefs__fermer:hover { color: var(--im-ink); background: var(--im-paper-2); }
 
-/* Mobile : bandeau cookies compact — il ne doit pas manger l'écran d'accueil.
-   Les deux boutons gardent EXACTEMENT la même taille (CNIL : refuser doit
-   être aussi simple qu'accepter). */
-@media (max-width: 759px) {
-  .consent { left: 8px; right: 8px; bottom: 8px; padding: 12px 14px; gap: 10px; border-radius: 14px;
-    box-shadow: 0 12px 32px rgba(0,0,0,.24); }
-  .consent__texte strong { font-size: 12px; margin-bottom: 2px; letter-spacing: .2px; }
-  .consent__texte p { font-size: 12.5px; line-height: 1.4; }
-  .consent__actions { gap: 8px; }
-  .consent__btn { flex: 1 1 0; font-size: 12.5px; padding: 10px 12px; }
-}
+/* Interrupteur : peint d'après l'état réel (aria-checked) */
+.switch { flex: 0 0 auto; position: relative; width: 44px; height: 24px; border-radius: 100px;
+  border: 1px solid var(--im-line); background: var(--im-paper-2); cursor: pointer; padding: 0;
+  transition: background .25s, border-color .25s; }
+.switch__pion { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .25s var(--ease-out); }
+.switch.est-actif { background: var(--im-green-700); border-color: var(--im-green-700); }
+.switch.est-actif .switch__pion { transform: translateX(20px); }
+.switch:focus-visible { outline: 3px solid var(--im-lime); outline-offset: 2px; }
 
-/* Encadré affiché à la place d'un contenu tiers bloqué */
+/* Lien du footer rendu par un bouton (ouvre le panneau) */
+.footer__lien-bouton { background: none; border: 0; padding: 0; font: inherit; color: inherit;
+  cursor: pointer; text-decoration: inherit; }
+.footer__lien-bouton:hover { text-decoration: underline; }
+
+/* Encadré de repli quand un service est coupé */
 .bloque { display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; gap: 10px; min-height: 240px; padding: 30px 24px;
   background: var(--im-paper-2); border: 1px dashed var(--im-line); border-radius: var(--radius-lg); }
