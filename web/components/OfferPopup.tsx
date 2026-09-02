@@ -6,7 +6,7 @@ import { useConsent } from "@/components/Consent";
 /* Offre de rentrée — 8 semaines offertes sur l'abonnement 12 mois.
    Ne réapparaît pas une fois fermée (mémorisé en localStorage).
    Nouvelle clé : ceux qui avaient fermé l'offre d'été voient bien celle-ci. */
-const END = new Date("2026-11-01T00:00:00"); // borne PROVISOIRE (fin 31/10) — à confirmer avec Cyril
+const END = new Date("2026-09-26T00:00:00"); // l'offre court jusqu'au 25/09 inclus (confirmé)
 const STORAGE_KEY = "im-offer-rentree-2026";
 export const EVENT_FERME = "im-offer-popup-closed";
 
