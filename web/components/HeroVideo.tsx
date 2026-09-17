@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Vidéo de fond du hero.
@@ -28,6 +28,7 @@ import { useEffect, useRef } from "react";
  */
 export default function HeroVideo() {
   const ref = useRef<HTMLVideoElement>(null);
+  const [prete, setPrete] = useState(false);
 
   useEffect(() => {
     const v = ref.current;
@@ -41,6 +42,12 @@ export default function HeroVideo() {
 
     v.muted = true; // sans ça, le navigateur refuse de démarrer
     let fini = false;
+
+    /* La vidéo ne se dévoile qu'au moment où elle joue réellement : d'ici là
+       c'est la photo qui tient le hero. Si l'autoplay est refusé ou que le
+       mouvement réduit est actif, la photo reste — jamais de fond noir. */
+    const devoiler = () => setPrete(true);
+    v.addEventListener("playing", devoiler);
 
     const essayer = () => {
       if (fini || !v.isConnected) return;
@@ -77,6 +84,7 @@ export default function HeroVideo() {
 
     return () => {
       fini = true;
+      v.removeEventListener("playing", devoiler);
       minuteurs.forEach(clearTimeout);
       io.disconnect();
       document.removeEventListener("visibilitychange", essayer);
@@ -90,20 +98,32 @@ export default function HeroVideo() {
   }, []);
 
   return (
-    <video
-      ref={ref}
-      className="hero__video"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="auto"
-      poster="/images/hero-poster.webp"
-      aria-hidden="true"
-      tabIndex={-1}
-    >
-      <source src="/video/horizontal.webm" type="video/webm" />
-      <source src="/video/horizontal.mp4" type="video/mp4" />
-    </video>
+    <div className="hero__media">
+      {/* Photo de garde : chargée en priorité, elle occupe le hero tant que la
+          vidéo n'a pas démarré. Sans elle, le visiteur voit le fond sombre. */}
+      <img
+        className="hero__photo"
+        src="/images/hero-poster.webp"
+        alt=""
+        aria-hidden="true"
+        fetchPriority="high"
+        decoding="async"
+      />
+      <video
+        ref={ref}
+        className={`hero__video${prete ? " est-prete" : ""}`}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        poster="/images/hero-poster.webp"
+        aria-hidden="true"
+        tabIndex={-1}
+      >
+        <source src="/video/horizontal.webm" type="video/webm" />
+        <source src="/video/horizontal.mp4" type="video/mp4" />
+      </video>
+    </div>
   );
 }
