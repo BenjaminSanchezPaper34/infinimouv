@@ -59,45 +59,64 @@ function Creneau({ cours }: { cours: Cours }) {
   );
 }
 
-function Bande({
-  titre,
-  plage,
-  data,
+/* Une journée, pour un moment donné (midi ou soir).
+   `ordre` pilote l'empilement mobile : les deux cartes d'un même jour se
+   suivent, ce qui les fait lire comme une seule carte par journée. */
+function Jour({
+  jour,
+  moment,
+  cours,
+  ordre,
 }: {
-  titre: string;
-  plage: string;
-  data: Record<string, Cours[]>;
+  jour: string;
+  moment: "midi" | "soir";
+  cours: Cours[] | undefined;
+  ordre: number;
 }) {
   return (
-    <section className="pl-bande" aria-label={`Cours du ${titre.toLowerCase()}`}>
-      <p className="pl-bande__titre">
-        {titre} <span className="pl-bande__plage">{plage}</span>
-      </p>
-      <div className="pl-grille">
-        {JOURS.map((jour) => (
-          <div className="pl-jour" key={jour}>
-            <h3 className="pl-jour__nom">{jour}</h3>
-            {data[jour]?.length ? (
-              <ul className="pl-jour__liste">
-                {data[jour].map((c) => (
-                  <Creneau cours={c} key={`${jour}-${c.nom}-${c.debut}`} />
-                ))}
-              </ul>
-            ) : (
-              <p className="pl-jour__vide">—</p>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
+    <div
+      className={`pl-jour pl-jour--${moment}`}
+      style={{ "--ordre": ordre } as Record<string, number>}
+    >
+      <h3 className="pl-jour__nom">{jour}</h3>
+      {/* Repère visible uniquement en mobile, où les bandeaux disparaissent */}
+      <p className="pl-jour__moment">{moment === "midi" ? "Midi" : "Soir"}</p>
+      {cours?.length ? (
+        <ul className="pl-jour__liste">
+          {cours.map((c) => (
+            <Creneau cours={c} key={`${jour}-${c.nom}-${c.debut}`} />
+          ))}
+        </ul>
+      ) : (
+        <p className="pl-jour__vide">—</p>
+      )}
+    </div>
   );
 }
 
 export default function PlanningCours() {
   return (
     <div className="planning-natif">
-      <Bande titre="Midi" plage="12h – 13h15" data={MIDI} />
-      <Bande titre="Soir" plage="18h – 19h45" data={SOIR} />
+      {/* Un seul balisage pour les deux mises en page : en desktop une grille
+          de 5 colonnes avec les bandeaux Midi puis Soir ; en mobile une colonne
+          où l'ordre CSS regroupe midi et soir de la même journée. Pas de
+          duplication du planning dans le HTML. */}
+      <div className="pl-planning">
+        <p className="pl-bande__titre">
+          Midi <span className="pl-bande__plage">12h – 13h15</span>
+        </p>
+        {JOURS.map((jour, i) => (
+          <Jour jour={jour} moment="midi" cours={MIDI[jour]} ordre={i * 2} key={`m-${jour}`} />
+        ))}
+
+        <p className="pl-bande__titre pl-bande__titre--soir">
+          Soir <span className="pl-bande__plage">18h – 19h45</span>
+        </p>
+        {JOURS.map((jour, i) => (
+          <Jour jour={jour} moment="soir" cours={SOIR[jour]} ordre={i * 2 + 1} key={`s-${jour}`} />
+        ))}
+      </div>
+
       <p className="pl-note">
         Réservation via l&apos;application Xplor Active (code centre&nbsp;:{" "}
         <strong>infinimouv</strong>) ou directement à l&apos;accueil du club.

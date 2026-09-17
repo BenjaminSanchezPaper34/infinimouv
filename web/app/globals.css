@@ -636,9 +636,32 @@ body {
 .pl-bande__plage { font-family: var(--font-body); font-style: normal; font-weight: 400;
   text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--im-muted); }
 
-/* Grille : 5 colonnes en desktop, empilée en mobile */
-.pl-grille { display: grid; grid-template-columns: 1fr; gap: 10px; }
-@media (min-width: 700px) { .pl-grille { grid-template-columns: repeat(5, 1fr); gap: 12px; } }
+/* Un seul balisage, deux mises en page.
+   Desktop : grille de 5 colonnes, les bandeaux Midi/Soir occupent toute la
+   largeur — rendu inchangé. Mobile : une colonne, et l'ordre CSS regroupe le
+   midi et le soir d'une même journée pour qu'ils se lisent comme une seule
+   carte (les bandeaux n'auraient plus de sens, un repère les remplace). */
+.pl-planning { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 700px) {
+  .pl-planning { grid-template-columns: repeat(5, 1fr); gap: 12px; align-items: start; }
+  .pl-bande__titre { grid-column: 1 / -1; margin-bottom: 0; }
+  .pl-bande__titre--soir { margin-top: 18px; }
+  .pl-jour__moment { display: none; }
+}
+
+@media (max-width: 699px) {
+  .pl-planning { display: flex; flex-direction: column; gap: 0; }
+  .pl-planning > * { order: var(--ordre, 0); }
+  .pl-bande__titre { display: none; }
+  /* Les deux moitiés se rejoignent en une carte unique par journée */
+  .pl-jour--midi { border-radius: 14px 14px 0 0; padding-bottom: 12px; }
+  .pl-jour--soir { border-radius: 0 0 14px 14px; padding-top: 12px; margin-bottom: 10px;
+    border-top: 1px solid #e2e7e2; }
+  .pl-jour--soir .pl-jour__nom { display: none; }
+  .pl-jour__moment { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
+    font-size: 11px; letter-spacing: .6px; color: var(--im-muted); text-align: center;
+    margin-bottom: 8px; }
+}
 
 .pl-jour { background: #f2f4f2; border-radius: 14px; padding: 12px 12px 14px; }
 .pl-jour__nom { font-family: var(--font-display); font-style: italic; font-weight: 900;
