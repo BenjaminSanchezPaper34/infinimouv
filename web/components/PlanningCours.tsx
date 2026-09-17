@@ -79,8 +79,6 @@ function Jour({
       style={{ "--ordre": ordre } as Record<string, number>}
     >
       <h3 className="pl-jour__nom">{jour}</h3>
-      {/* Repère visible uniquement en mobile, où les bandeaux disparaissent */}
-      <p className="pl-jour__moment">{moment === "midi" ? "Midi" : "Soir"}</p>
       {cours?.length ? (
         <ul className="pl-jour__liste">
           {cours.map((c) => (

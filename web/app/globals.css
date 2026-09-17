@@ -646,21 +646,6 @@ body {
   .pl-planning { grid-template-columns: repeat(5, 1fr); gap: 12px; align-items: start; }
   .pl-bande__titre { grid-column: 1 / -1; margin-bottom: 0; }
   .pl-bande__titre--soir { margin-top: 18px; }
-  .pl-jour__moment { display: none; }
-}
-
-@media (max-width: 699px) {
-  .pl-planning { display: flex; flex-direction: column; gap: 0; }
-  .pl-planning > * { order: var(--ordre, 0); }
-  .pl-bande__titre { display: none; }
-  /* Les deux moitiés se rejoignent en une carte unique par journée */
-  .pl-jour--midi { border-radius: 14px 14px 0 0; padding-bottom: 12px; }
-  .pl-jour--soir { border-radius: 0 0 14px 14px; padding-top: 12px; margin-bottom: 10px;
-    border-top: 1px solid #e2e7e2; }
-  .pl-jour--soir .pl-jour__nom { display: none; }
-  .pl-jour__moment { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
-    font-size: 11px; letter-spacing: .6px; color: var(--im-muted); text-align: center;
-    margin-bottom: 8px; }
 }
 
 .pl-jour { background: #f2f4f2; border-radius: 14px; padding: 12px 12px 14px; }
@@ -669,6 +654,21 @@ body {
   text-align: center; margin-bottom: 10px; }
 .pl-jour__liste { display: flex; flex-direction: column; gap: 7px; }
 .pl-jour__vide { text-align: center; color: var(--im-muted); font-size: 14px; padding: 6px 0; }
+
+@media (max-width: 699px) {
+  .pl-planning { display: flex; flex-direction: column; gap: 0; }
+  .pl-planning > * { order: var(--ordre, 0); }
+  .pl-bande__titre { display: none; }
+
+  /* Un seul grand cadre par journée : les deux moitiés se rejoignent sans
+     séparation ni libellé — les horaires des pastilles suffisent à distinguer
+     le midi du soir. Le blanc entre les cadres sépare les jours. */
+  .pl-jour--midi { border-radius: 18px 18px 0 0; padding: 16px 14px 8px; }
+  .pl-jour--soir { border-radius: 0 0 18px 18px; padding: 0 14px 16px; margin-bottom: 14px; }
+  .pl-jour--soir .pl-jour__nom { display: none; }
+  .pl-jour__nom { font-size: 16px; margin-bottom: 12px; }
+}
+
 
 /* Pastille de cours */
 .pl-cours { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center;
