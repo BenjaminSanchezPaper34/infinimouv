@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ElfsightPlatform, ElfsightWidget, CarteGoogle } from "@/components/TiersConsentis";
 import Motion from "@/components/Motion";
+import HeroVideo from "@/components/HeroVideo";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
 
@@ -44,7 +45,8 @@ const ADV = [
 
 const FAQ = [
   ["Quels sont les horaires d'ouverture d'Infini Mouv ?", "La salle est en accès libre 7j/7, de 6h00 à 23h00."],
-  ["Où se trouve la salle de sport Infini Mouv à Agde ?", "Au 4 avenue du 11 Novembre 1918, 34300 Agde (parking du cinéma)."],
+  ["Où se trouve la salle de sport Infini Mouv à Agde ?", "Au 4 avenue du 11 Novembre 1918, 34300 Agde (parking du cinéma), à quelques minutes du Cap d'Agde, du Grau d'Agde, de Vias et de Marseillan."],
+  ["Y a-t-il des cours de Pilates à Agde ?", "Oui, deux séances de Pilates par semaine le jeudi (12h15 et 19h15), encadrées par un coach, ainsi que du Yoga le mercredi et du Stretching. Voir le planning des cours."],
   ["Combien coûte un abonnement chez Infini Mouv ?", "Trois formules : 27,90€/mois avec engagement 12 mois, 34,90€/mois avec engagement 3 mois, et 39,90€/mois sans engagement. Options Confort (+5€) et Premium (+15€) disponibles."],
   ["Quels cours collectifs sont proposés ?", "Cours Les Mills (BodyPump, BodyCombat, RPM…), CAF, Yoga, Pilates, Stretching, Zumba, Cross Training et bike interactif Spivi."],
   ["Y a-t-il du coaching personnalisé ?", "Oui, nos coachs diplômés proposent un suivi personnalisé avec 1 à 2 entretiens individuels par mois."],
@@ -87,18 +89,7 @@ export default function Home() {
       <main>
         {/* ============ HERO ============ */}
         <section className="hero">
-          <video
-            className="hero__video"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster="/images/hero-poster.webp"
-          >
-            <source src="/video/horizontal.webm" type="video/webm" />
-            <source src="/video/horizontal.mp4" type="video/mp4" />
-          </video>
+          <HeroVideo />
           <div className="wrap hero__in">
             <h1 className="hero__title">
               Trouvez
@@ -325,6 +316,10 @@ export default function Home() {
             <div className="contact-map" data-reveal>
               <CarteGoogle />
             </div>
+            <p className="contact__zone">
+              Salle de sport à Agde, parking du cinéma — à quelques minutes du
+              Cap d&apos;Agde, du Grau d&apos;Agde, de Vias et de Marseillan.
+            </p>
           </div>
         </section>
       </main>

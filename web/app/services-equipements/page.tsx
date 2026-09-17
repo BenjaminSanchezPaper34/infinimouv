@@ -7,9 +7,9 @@ import ServicesGrille from "@/components/ServicesGrille";
 import PlanningCours from "@/components/PlanningCours";
 
 export const metadata: Metadata = {
-  title: "Services & équipements — Musculation, cours collectifs, planning",
+  title: "Musculation, cours collectifs & planning — Salle de sport à Agde",
   description:
-    "Découvrez les services d'Infini Mouv à Agde : zone musculation Matrix, bike Spivi®, cours collectifs Les Mills®, cross-training, nutrition, hydratation Yanga®, planning des cours et app Xplor Active.",
+    "Zone musculation Matrix, bike Spivi®, cours collectifs (Pilates, Yoga, Zumba, Body Pump), cross-training, nutrition et planning des cours. Salle de sport à Agde, proche du Cap d'Agde, de Vias et de Marseillan.",
   alternates: { canonical: "/services-equipements" },
 };
 

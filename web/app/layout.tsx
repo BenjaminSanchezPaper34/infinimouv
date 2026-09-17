@@ -29,6 +29,9 @@ const JSON_LD = {
     addressCountry: "FR",
   },
   geo: { "@type": "GeoCoordinates", latitude: 43.31070, longitude: 3.47530 },
+  areaServed: [
+    "Agde", "Cap d'Agde", "Le Grau d'Agde", "Vias", "Marseillan", "Florensac", "Bessan",
+  ].map((name) => ({ "@type": "City", name })),
   hasMap:
     "https://www.google.com/maps/search/?api=1&query=Infini+Mouv+4+avenue+du+11+Novembre+1918+34300+Agde",
   slogan: "Trouvez votre vraie nature",
@@ -93,7 +96,7 @@ export const metadata: Metadata = {
     template: "%s | Infini Mouv Agde",
   },
   description:
-    "Salle de sport saine et lumineuse à Agde : air purifié, équipements Matrix, cours collectifs Les Mills®, coaching personnalisé. Ouvert 7j/7 de 6h à 23h. Dès 27,90 €/mois.",
+    "Salle de sport à Agde, proche du Cap d'Agde, de Vias et de Marseillan : Matrix, cours collectifs, Pilates, coaching. 7j/7 de 6h à 23h. Dès 27,90 €/mois.",
   keywords: [
     "salle de sport Agde",
     "musculation Agde",
