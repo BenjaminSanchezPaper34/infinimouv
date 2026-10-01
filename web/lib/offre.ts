@@ -26,7 +26,7 @@ export const OFFRE = {
       jamais d'image cassée en production. Mobile = écrans ≤ 640 px. */
   popup: {
     mobilePret: true,
-    desktopPret: false,
+    desktopPret: true,
     visuel: "/images/offre-anniversaire.webp",
     visuelMobile: "/images/offre-anniversaire-mobile.webp",
     alt: "Offre anniversaire Infini Mouv, du 1er au 31 octobre : 1 mois d'abonnement offert. Offre valable sur l'abonnement 12 mois à 27,90 €, voir conditions au club. 4 avenue du 11 novembre 1918, 34300 Agde.",
