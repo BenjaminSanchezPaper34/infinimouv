@@ -60,3 +60,6 @@ web/.vercel/
 
 # Instantanés Search Console du client — dépôt public, ne pas publier
 /data/
+
+# Verrous InDesign (fichier ouvert)
+*.idlk
