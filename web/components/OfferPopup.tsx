@@ -2,16 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useConsent } from "@/components/Consent";
+import { OFFRE, CLE_POPUP, offreEnCours } from "@/lib/offre";
 
-/* Offre de rentrée — 8 semaines offertes sur l'abonnement 12 mois.
-   Ne réapparaît pas une fois fermée (mémorisé en localStorage).
-   Nouvelle clé : ceux qui avaient fermé l'offre d'été voient bien celle-ci. */
-const END = new Date("2026-09-26T00:00:00"); // l'offre court jusqu'au 25/09 inclus (confirmé)
-const STORAGE_KEY = "im-offer-rentree-2026";
+/* Popup de la promotion en cours (configuration : lib/offre.ts).
+   Ne réapparaît pas une fois fermé (mémorisé en localStorage).
+   Coupé tant que le visuel n'est pas déposé (`OFFRE.popup.visuelPret`). */
 export const EVENT_FERME = "im-offer-popup-closed";
 
-/* Délais avant apparition, une fois le bandeau cookies traité.
-   Sur mobile l'écran est petit : on laisse le visiteur voir la page d'abord. */
+/* Délai avant apparition. Sur mobile l'écran est petit : on laisse le
+   visiteur voir la page d'abord. */
 const DELAI_MOBILE = 2600;
 const DELAI_DESKTOP = 900;
 
@@ -20,10 +19,10 @@ export default function OfferPopup() {
   const { pret } = useConsent();
 
   useEffect(() => {
-    if (new Date() >= END) return; // offre terminée
+    if (!OFFRE.popup.visuelPret || !offreEnCours()) return;
     if (!pret) return;
     try {
-      if (localStorage.getItem(STORAGE_KEY) === "closed") return; // déjà fermée
+      if (localStorage.getItem(CLE_POPUP) === "closed") return; // déjà fermé
     } catch {}
     const mobile = window.matchMedia("(max-width: 640px)").matches;
     const t = setTimeout(() => setOpen(true), mobile ? DELAI_MOBILE : DELAI_DESKTOP);
@@ -33,7 +32,7 @@ export default function OfferPopup() {
   function close() {
     setOpen(false);
     try {
-      localStorage.setItem(STORAGE_KEY, "closed");
+      localStorage.setItem(CLE_POPUP, "closed");
     } catch {}
     // Prévient le bandeau de rappel qu'il peut prendre le relais.
     window.dispatchEvent(new Event(EVENT_FERME));
@@ -53,7 +52,7 @@ export default function OfferPopup() {
       className="offer"
       role="dialog"
       aria-modal="true"
-      aria-label="Offre spéciale été"
+      aria-label={`Offre en cours : ${OFFRE.bandeau.accroche}`}
       onClick={close}
     >
       <div className="offer__box" onClick={(e) => e.stopPropagation()}>
@@ -63,11 +62,8 @@ export default function OfferPopup() {
         <a href="/#contact" className="offer__link" onClick={close}>
           {/* Portrait sur mobile, paysage sur desktop (WebP optimisés) */}
           <picture>
-            <source media="(max-width: 640px)" srcSet="/images/offre-rentree-mobile.webp" />
-            <img
-              src="/images/offre-rentree.webp"
-              alt="Offre de rentrée : 8 semaines offertes sur l'abonnement 12 mois à 27,90 €. Voir conditions au club."
-            />
+            <source media="(max-width: 640px)" srcSet={OFFRE.popup.visuelMobile} />
+            <img src={OFFRE.popup.visuel} alt={OFFRE.popup.alt} />
           </picture>
         </a>
       </div>
