@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useConsent } from "@/components/Consent";
-import { OFFRE, CLE_POPUP, offreEnCours } from "@/lib/offre";
+import { OFFRE, CLE_POPUP, offreEnCours, popupDisponible } from "@/lib/offre";
 
 /* Popup de la promotion en cours (configuration : lib/offre.ts).
    Ne réapparaît pas une fois fermé (mémorisé en localStorage).
-   Coupé tant que le visuel n'est pas déposé (`OFFRE.popup.visuelPret`). */
+   Coupé sur un format tant que son visuel n'est pas déposé. */
 export const EVENT_FERME = "im-offer-popup-closed";
 
 /* Délai avant apparition. Sur mobile l'écran est petit : on laisse le
@@ -19,7 +19,7 @@ export default function OfferPopup() {
   const { pret } = useConsent();
 
   useEffect(() => {
-    if (!OFFRE.popup.visuelPret || !offreEnCours()) return;
+    if (!offreEnCours() || !popupDisponible()) return;
     if (!pret) return;
     try {
       if (localStorage.getItem(CLE_POPUP) === "closed") return; // déjà fermé

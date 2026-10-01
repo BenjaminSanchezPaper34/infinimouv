@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useConsent } from "@/components/Consent";
 import { EVENT_FERME } from "@/components/OfferPopup";
-import { OFFRE, CLE_POPUP, CLE_BANDEAU, offreEnCours, joursRestants } from "@/lib/offre";
+import { OFFRE, CLE_POPUP, CLE_BANDEAU, offreEnCours, joursRestants, popupDisponible } from "@/lib/offre";
 
 /* Bandeau de rappel de la promotion en cours (configuration : lib/offre.ts) —
    fixé en bas, fermable, s'éteint seul à la fin de l'offre.
@@ -17,7 +17,7 @@ export default function OfferBanner() {
     if (!offreEnCours() || !pret) return;
     try {
       if (localStorage.getItem(CLE_BANDEAU) === "closed") return; // déjà fermé
-      if (!OFFRE.popup.visuelPret || localStorage.getItem(CLE_POPUP) === "closed") {
+      if (!popupDisponible() || localStorage.getItem(CLE_POPUP) === "closed") {
         setShow(true);
         return;
       }
