@@ -96,7 +96,7 @@ export const metadata: Metadata = {
     template: "%s | Infini Mouv Agde",
   },
   description:
-    "Salle de sport à Agde, proche du Cap d'Agde, de Vias et de Marseillan : Matrix, cours collectifs, Pilates, coaching. 7j/7 de 6h à 23h. Dès 27,90 €/mois.",
+    "Salle de sport à Agde dès 27,90 €/mois, ou sans engagement à 39,90 €. Accès libre 7j/7 de 6h à 23h, machines Matrix, coachs et cours collectifs.",
   keywords: [
     "salle de sport Agde",
     "musculation Agde",
