@@ -561,6 +561,17 @@ body {
 .cours-item { padding: 22px 0; border-bottom: 1px solid var(--im-line); }
 .cours-item__title { font-family: var(--font-display); font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(20px, 3vw, 27px); line-height: 1.05; margin-bottom: 8px; }
 .cours-item__text { font-size: 15px; color: var(--im-muted); line-height: 1.55; }
+/* Page Cours collectifs : créneaux tirés du planning, encadré « L'essentiel », CTA */
+.cours-item__creneaux { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; padding: 0; }
+.cours-item__creneaux li { font-size: 14px; font-weight: 600; color: var(--im-green-800); background: var(--im-green-50); border: 1px solid var(--im-green-100); border-radius: 999px; padding: 5px 12px; }
+.essentiel { margin-top: 28px; max-width: 920px; background: #fff; border: 1px solid var(--im-line); border-left: 4px solid var(--im-lime); border-radius: var(--radius-lg); padding: 20px 24px; box-shadow: var(--shadow); }
+.essentiel__titre { font-family: var(--font-display); font-style: italic; font-weight: 900; text-transform: uppercase; color: var(--im-green-700); font-size: 18px; margin-bottom: 10px; }
+.essentiel ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.essentiel li { font-size: 16px; color: var(--im-ink-2); line-height: 1.5; }
+.cours-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
+/* Renvoi vers la page Cours depuis la page Services */
+.cours-renvoi { text-align: center; }
+.cours-renvoi .svc-intro { margin: 0 auto 24px; }
 
 /* Planning (image SVG plein largeur) */
 .planning { margin-inline: auto;  /* pleine largeur du tronc (1200px), plus de plafond 920px */ background: #fff; border: 1px solid var(--im-line); border-radius: var(--radius-lg); padding: 14px; box-shadow: var(--shadow); }

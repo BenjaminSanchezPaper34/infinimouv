@@ -19,7 +19,8 @@
 ## Pages principales
 
 - [Accueil](https://infini-mouv.fr/) : présentation, tarifs, avantages, FAQ, contact
-- [Services & équipements](https://infini-mouv.fr/services-equipements) : zone musculation Matrix, bike Spivi, cours collectifs, espace nutrition, cross-training, équipe, planning des cours, application Xplor Active
+- [Services & équipements](https://infini-mouv.fr/services-equipements) : zone musculation Matrix, poids libres, cardio, bike Spivi, espace nutrition, cross-training, équipe
+- [Cours collectifs](https://infini-mouv.fr/cours-collectifs) : Pilates, Yoga, Body Pump, Body Sculpt, C.A.F., Stretching, Zumba, Cross Training — descriptions, créneaux, planning complet, réservation sur l'app Xplor Active, FAQ
 - [Tarifs & conditions](https://infini-mouv.fr/tarifs) : les 3 formules (1/3/12 mois), options Confort et Premium, conditions d'abonnement, FAQ tarifs
 - [Mentions légales](https://infini-mouv.fr/mentions-legales) · [Confidentialité & cookies](https://infini-mouv.fr/confidentialite)
 
@@ -54,8 +55,8 @@
 ## Planning des cours collectifs (rentrée 2026)
 
 - **Midi (12h15-13h00)** : lundi Body Sculpt (nouveau) · mardi Body Pump · mercredi C.A.F. · jeudi Pilates · vendredi Stretching
-- **Soir** : lundi Cross Training 18h-19h · mardi C.A.F. 18h-18h30 + Zumba 18h30-19h + Stretching 19h-19h45 · mercredi Yoga 18h15-19h · jeudi Body Pump 18h-18h30 + Zumba 18h30-19h15 + Pilates 19h15-19h45 · vendredi Cross Training 18h-19h
+- **Soir** : lundi Cross Training 18h-19h · mardi C.A.F. 18h-18h30 + Body Pump 18h30-19h + Stretching 19h-19h45 · mercredi Yoga 18h15-19h · jeudi Body Pump 18h-18h30 + Zumba 18h30-19h15 + Pilates 19h15-19h45 · vendredi Cross Training 18h-19h
 - Minimum 3 personnes (sinon annulé), maximum 12 · réservation via l'app Xplor Active, annulation 24h à l'avance
 
 ---
-Dernière mise à jour : 30 août 2026
+Dernière mise à jour : 6 octobre 2026

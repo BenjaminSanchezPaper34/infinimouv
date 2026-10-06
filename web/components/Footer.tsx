@@ -53,6 +53,8 @@ export default function Footer() {
             <LienPreferences />
             <span aria-hidden="true">·</span>
             <a href="/tarifs">Tarifs</a>
+            <span aria-hidden="true">·</span>
+            <a href="/cours-collectifs">Cours collectifs</a>
           </nav>
         </div>
         <div className="footer__deco" aria-hidden="true">

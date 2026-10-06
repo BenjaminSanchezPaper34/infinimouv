@@ -89,7 +89,7 @@ const CONDITIONS = [
 const FAQ_TARIFS: [string, string][] = [
   ["Combien coûte un abonnement à la salle de sport Infini Mouv ?", "Trois formules : 39,90 €/mois sans engagement (1 mois), 34,90 €/mois avec un engagement de 3 mois, et 27,90 €/mois avec un engagement de 12 mois. Les options Confort (+5 €) et Premium (+15 €) s'ajoutent librement."],
   ["Y a-t-il un abonnement sans engagement ?", "Oui, la formule 1 mois à 39,90 €/mois est sans engagement de durée : elle se renouvelle de mois en mois et peut être résiliée avec un préavis d'un mois."],
-  ["Les cours collectifs sont-ils compris dans l'abonnement ?", "Les cours vidéo Les Mills® sont compris dans l'abonnement de base. Les cours collectifs encadrés par un coach (C.A.F., Zumba, Pilate, Body Pump, Body Sculpt, Yoga, Stretching, Cross Training) font partie de l'option Confort, à 5 € par mois."],
+  ["Les cours collectifs sont-ils compris dans l'abonnement ?", "Les cours vidéo Les Mills® sont compris dans l'abonnement de base. Les cours collectifs encadrés par un coach (C.A.F., Zumba, Pilates, Body Pump, Body Sculpt, Yoga, Stretching, Cross Training) font partie de l'option Confort, à 5 € par mois."],
   ["Que comprend l'abonnement de base ?", "L'accès libre 7j/7 de 6h à 23h, la musculation guidée et les poids libres, le cardio-training, le cross-training en accès libre, les cours vidéo Les Mills®, le bike Spivi® et l'accès aux douches."],
   ["Comment résilier mon abonnement ?", "Par lettre recommandée avec accusé de réception adressée au club, en respectant un préavis d'un mois. La résiliation devient définitive après restitution de votre badge d'accès."],
 ];

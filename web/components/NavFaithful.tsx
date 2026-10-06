@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const LINKS = [
   ["/services-equipements", "La salle"],
-  ["/services-equipements#cours", "Cours"],
+  ["/cours-collectifs", "Cours"],
   ["/tarifs", "Tarifs"],
   ["/#contact", "Contact"],
 ];

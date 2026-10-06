@@ -4,12 +4,11 @@ import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
 import ServicesGrille from "@/components/ServicesGrille";
-import PlanningCours from "@/components/PlanningCours";
 
 export const metadata: Metadata = {
-  title: "Musculation, cours collectifs & planning — Salle de sport à Agde",
+  title: "Musculation, cardio & équipements Matrix — Salle de sport à Agde",
   description:
-    "Zone musculation Matrix, bike Spivi®, cours collectifs (Pilates, Yoga, Zumba, Body Pump), cross-training, nutrition et planning des cours. Salle de sport à Agde, proche du Cap d'Agde, de Vias et de Marseillan.",
+    "Zone musculation Matrix, poids libres, cardio, bike Spivi®, cross-training, nutrition et coachs diplômés. Salle de sport à Agde en accès libre 6h-23h, proche du Cap d'Agde, de Vias et de Marseillan.",
   alternates: { canonical: "/services-equipements" },
 };
 
@@ -83,18 +82,6 @@ const YANGA = [
   "Boisson fraîche, sans sucre, vitamines essentielles",
   "4 goûts : Ananas-Coco, Cassis, Citron, eau nature",
   "Parfaite avant, pendant et après l'entraînement",
-];
-
-/* Cours collectifs : titres colorés (= référence) */
-const COURS: { title: string; text: string; color: string }[] = [
-  { title: "C.A.F. — Cuisses Abdos Fessiers", color: "#e8821e", text: "Un renforcement complet du bas du corps et de la sangle abdominale. Idéal pour tonifier, sculpter et améliorer la stabilité." },
-  { title: "Pilates", color: "#8a3fc0", text: "Renforcement profond, posture, contrôle et respiration : un travail centré sur les muscles stabilisateurs." },
-  { title: "Yoga", color: "#5aad12", text: "Le mercredi de 18h15 à 19h avec Thomas. Postures pour mieux connaître votre corps et vous détendre. Accessible à tous, quel que soit l'âge." },
-  { title: "Stretching", color: "#e0392b", text: "Des étirements doux pour assouplir le corps, améliorer la mobilité, récupérer et libérer les tensions." },
-  { title: "Zumba", color: "#d6275e", text: "Cardio, fun et énergie ! Une séance dansée mêlant salsa, reggaeton, samba… parfaite pour brûler des calories en s'amusant." },
-  { title: "Body Pump", color: "#2b7fd4", text: "Renforcement musculaire sur l'ensemble du corps, en musique et avec charges légères à modérées." },
-  { title: "Body Sculpt", color: "#0f8a7e", text: "Nouveau au planning : un renforcement musculaire qui tonifie le corps de manière équilibrée. Le lundi de 12h15 à 13h." },
-  { title: "Cross Training", color: "#0070a7", text: "Enchaînement d'exercices cardio et musculaires avec différents matériels, dans notre espace extérieur couvert." },
 ];
 
 export default function ServicesEquipements() {
@@ -248,71 +235,22 @@ export default function ServicesEquipements() {
           </div>
         </section>
 
-        {/* ============ COURS COLLECTIFS ============ */}
+        {/* ============ RENVOI COURS COLLECTIFS ============
+            Le détail des cours, le planning et l'app vivent sur /cours-collectifs :
+            une seule page par intention de recherche (pas de doublon SEO). */}
         <section id="cours" aria-labelledby="cours-title">
           <div className="cours-hero">
             <Image src="/images/courscollectifs-infinimouv.webp" alt="Cours collectif animé par un coach chez Infini Mouv à Agde" fill sizes="100vw" className="cours-hero__img" />
           </div>
           <div className="section">
-            <div className="wrap">
-              <h2 className="h-section" id="cours-title" style={{ textAlign: "center" }}><span className="grad">Cours collectifs</span></h2>
-              <p className="svc-intro cours-intro">
-                Nos coachs sportifs professionnels animent plusieurs cours
-                collectifs. Choisissez selon vos objectifs et profitez de
-                conseils personnalisés. Réservation via l'app Xplor Active
-                (code centre : <strong>infinimouv</strong>).
+            <div className="wrap cours-renvoi">
+              <h2 className="h-section" id="cours-title"><span className="grad">Cours collectifs</span></h2>
+              <p className="svc-intro">
+                Pilates, Yoga, Body Pump, Body Sculpt, C.A.F., Stretching, Zumba et
+                Cross Training : nos coachs animent des cours le midi et le soir,
+                du lundi au vendredi. Réservation sur l&apos;app Xplor Active.
               </p>
-              <div className="cours-grid">
-                {COURS.map((c, i) => (
-                  <article className="cours-item" data-reveal data-reveal-delay={`${(i % 2) * 80}`} key={c.title}>
-                    <h3 className="cours-item__title" style={{ color: c.color }}>{c.title}</h3>
-                    <p className="cours-item__text">{c.text}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============ PLANNING ============ */}
-        <section className="section section--soft section--planning" aria-labelledby="planning-title">
-          <div className="wrap">
-            <h2 className="h-section" id="planning-title" style={{ textAlign: "center" }}><span className="grad">Planning des cours</span></h2>
-            <div className="planning" data-reveal>
-              {/* Planning natif : texte réel, lisible par Google/IA et responsive */}
-              <PlanningCours />
-            </div>
-          </div>
-        </section>
-
-        {/* ============ VOTRE APP ============ */}
-        <section className="section" aria-labelledby="app-title">
-          <div className="wrap">
-            <div className="app-band">
-              <div className="app-band__img" data-reveal>
-                <Image src="/images/app-infinimouv.webp" alt="Application Xplor Active — planning des cours" width={600} height={1215} sizes="(min-width:901px) 300px, 70vw" />
-              </div>
-              <div data-reveal data-reveal-delay="120">
-                <h2 className="h-section" id="app-title"><span className="grad">Votre app, votre sport</span></h2>
-                <div className="app-xplor">
-                  <Image src="/images/appxplor-infinimouv.webp" alt="" width={48} height={48} />
-                  <span>Xplor Active</span>
-                </div>
-                <p className="svc-row__text">
-                  Réservez vos cours et gérez votre abonnement depuis
-                  l'application Xplor Active. Veillez à utiliser la même adresse
-                  mail sur l'app que lors de votre inscription à la salle.
-                </p>
-                <p className="app-code">Code centre : <strong>infinimouv</strong></p>
-                <div className="app-badges">
-                  <a href="https://apps.apple.com/app/xplor-active/id1547282323" target="_blank" rel="noopener" aria-label="Télécharger sur l'App Store">
-                    <img src="/images/appstore-infinimouv.svg" alt="App Store" height={46} />
-                  </a>
-                  <a href="https://play.google.com/store/apps/details?id=com.xplor.active" target="_blank" rel="noopener" aria-label="Disponible sur Google Play">
-                    <img src="/images/googleplay-infinimouv.svg" alt="Google Play" height={46} />
-                  </a>
-                </div>
-              </div>
+              <a className="btn btn--solid" href="/cours-collectifs">Voir les cours et le planning</a>
             </div>
           </div>
         </section>
