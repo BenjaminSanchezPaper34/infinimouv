@@ -33,6 +33,66 @@ export const OFFRE = {
   },
 } as const;
 
+/* ------------------------------------------------------------------
+   Temps forts — prennent la main sur le BANDEAU (et la section d'accueil)
+   pendant leur plage, puis la promo du mois reprend seule.
+   Chaque temps fort a sa propre clé de mémorisation : un visiteur qui avait
+   fermé le bandeau du mois voit quand même l'annonce de la soirée.
+   Dates en heure de Paris (le site vise des visiteurs locaux).
+   ------------------------------------------------------------------ */
+export type TempsFort = {
+  id: string;
+  debut: Date;
+  fin: Date;
+  accroche: string;
+  offre: string;
+  condition: string;
+  pastille: string;
+  lien: string;
+};
+
+/** Soirée des 10 ans, jeudi 16 octobre 2026 à 18h30.
+    Textes repris MOT POUR MOT de la bannière officielle : on ne précise pas
+    qui reçoit les 2 mois (adhérent seul ou adhérent + invité) tant que Cyril
+    ne l'a pas confirmé. */
+export const SOIREE = {
+  debut: new Date("2026-10-16T18:30:00+02:00"),
+  dateLibelle: "jeudi 16 octobre à 18h30",
+};
+
+export const TEMPS_FORTS: TempsFort[] = [
+  {
+    id: "soiree-10-ans-annonce",
+    debut: new Date("2026-10-09T00:00:00+02:00"),
+    fin: new Date("2026-10-16T00:00:00+02:00"),
+    accroche: "Soirée des 10 ans, jeudi 16/10 à 18h30",
+    offre: "2 mois offerts si vous invitez un proche",
+    condition: "+ frais d'inscription à 0 € pour votre invité",
+    pastille: "En savoir plus",
+    lien: "/#soiree",
+  },
+  {
+    id: "soiree-10-ans-jour-j",
+    debut: new Date("2026-10-16T00:00:00+02:00"),
+    fin: new Date("2026-10-17T00:00:00+02:00"),
+    accroche: "C'est ce soir à 18h30 : soirée des 10 ans",
+    offre: "2 mois offerts si vous invitez un proche",
+    condition: "+ frais d'inscription à 0 € pour votre invité",
+    pastille: "Ce soir · 18h30",
+    lien: "/#soiree",
+  },
+];
+
+/** Le temps fort en cours, s'il y en a un. */
+export function tempsFortEnCours(maintenant = new Date()) {
+  return TEMPS_FORTS.find((t) => maintenant >= t.debut && maintenant < t.fin) ?? null;
+}
+
+/** La section Soirée de l'accueil s'affiche jusqu'au lendemain de la soirée. */
+export function soireeAVenir(maintenant = new Date()) {
+  return maintenant < TEMPS_FORTS[TEMPS_FORTS.length - 1].fin;
+}
+
 export const CLE_POPUP = `im-offer-${OFFRE.id}`;
 export const CLE_BANDEAU = `im-offer-banner-${OFFRE.id}`;
 

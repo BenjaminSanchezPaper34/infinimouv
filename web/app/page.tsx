@@ -1,3 +1,4 @@
+import SoireeAnniversaire from "@/components/SoireeAnniversaire";
 import Image from "next/image";
 import { ElfsightPlatform, ElfsightWidget, CarteGoogle } from "@/components/TiersConsentis";
 import Motion from "@/components/Motion";
@@ -60,6 +61,10 @@ export const metadata = {
   alternates: { canonical: "/" },
 };
 
+/* Régénérée toutes les heures : les sections datées (soirée des 10 ans)
+   apparaissent et disparaissent seules, sans redéploiement. */
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <div className="site" id="top">
@@ -113,6 +118,9 @@ export default function Home() {
             </svg>
           </a>
         </section>
+
+        {/* ============ SOIRÉE DES 10 ANS (temporaire, s'éteint seule le 17/10) ============ */}
+        <SoireeAnniversaire />
 
         {/* ============ ACTIVITÉS ============ */}
         <section className="acts" id="activites" aria-label="Nos activités">

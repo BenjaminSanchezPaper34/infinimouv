@@ -630,6 +630,17 @@ body {
 .offer-banner__close:hover { background: rgba(255,255,255,.28); }
 @media (max-width: 560px) { .offer-banner { font-size: 13px; } .offer-banner__code { margin-left: 6px; } }
 
+/* Soirée des 10 ans (section temporaire de l'accueil) : fond noir du visuel officiel */
+.soiree { background: var(--im-ink); color: #fff; text-align: center; }
+.soiree__kicker { font-family: var(--font-display); font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--im-lime); font-size: 16px; margin-bottom: 6px; }
+.soiree__date { font-size: clamp(18px, 2.6vw, 24px); font-weight: 700; margin-top: 8px; }
+.soiree__visuel { margin: 28px auto 0; border-radius: var(--radius-lg); overflow: hidden; }
+.soiree__visuel img { width: 100%; height: auto; display: block; }
+.soiree__texte { max-width: 760px; margin: 28px auto 0; display: grid; gap: 12px; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,.88); }
+.soiree__texte strong { color: var(--im-lime); }
+.soiree__mention { font-size: 14px; color: rgba(255,255,255,.6); }
+.soiree__cta { margin-top: 8px; }
+
 /* ============================================================
    PAGE 404
    ============================================================ */

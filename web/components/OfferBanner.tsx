@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useConsent } from "@/components/Consent";
 import { EVENT_FERME } from "@/components/OfferPopup";
-import { OFFRE, CLE_POPUP, CLE_BANDEAU, offreEnCours, joursRestants, popupDisponible } from "@/lib/offre";
+import { OFFRE, CLE_POPUP, CLE_BANDEAU, offreEnCours, joursRestants, popupDisponible, tempsFortEnCours } from "@/lib/offre";
 
 /* Bandeau de rappel de la promotion en cours (configuration : lib/offre.ts) —
    fixé en bas, fermable, s'éteint seul à la fin de l'offre.
@@ -13,10 +13,14 @@ export default function OfferBanner() {
   const [show, setShow] = useState(false);
   const { pret } = useConsent();
 
+  // Un temps fort (soirée…) remplace le texte du mois, avec sa propre clé.
+  const temps = typeof window === "undefined" ? null : tempsFortEnCours();
+  const cle = temps ? `im-offer-banner-${temps.id}` : CLE_BANDEAU;
+
   useEffect(() => {
     if (!offreEnCours() || !pret) return;
     try {
-      if (localStorage.getItem(CLE_BANDEAU) === "closed") return; // déjà fermé
+      if (localStorage.getItem(cle) === "closed") return; // déjà fermé
       if (!popupDisponible() || localStorage.getItem(CLE_POPUP) === "closed") {
         setShow(true);
         return;
@@ -28,7 +32,7 @@ export default function OfferBanner() {
     const onFerme = () => setShow(true);
     window.addEventListener(EVENT_FERME, onFerme);
     return () => window.removeEventListener(EVENT_FERME, onFerme);
-  }, [pret]);
+  }, [pret, cle]);
 
   if (!show) return null;
 
@@ -39,19 +43,26 @@ export default function OfferBanner() {
   function close() {
     setShow(false);
     try {
-      localStorage.setItem(CLE_BANDEAU, "closed");
+      localStorage.setItem(cle, "closed");
     } catch {}
   }
 
   return (
     <div className="offer-banner" role="region" aria-label="Offre en cours">
-      <a href="/tarifs" className="offer-banner__text">
-        {OFFRE.bandeau.accroche}&nbsp;: <strong>{OFFRE.bandeau.offre}</strong>{" "}
-        {OFFRE.bandeau.condition}
-        <span className="offer-banner__code">
-          {compteur} · jusqu&apos;au {OFFRE.finLibelle}
-        </span>
-      </a>
+      {temps ? (
+        <a href={temps.lien} className="offer-banner__text">
+          {temps.accroche}&nbsp;: <strong>{temps.offre}</strong> {temps.condition}
+          <span className="offer-banner__code">{temps.pastille}</span>
+        </a>
+      ) : (
+        <a href="/tarifs" className="offer-banner__text">
+          {OFFRE.bandeau.accroche}&nbsp;: <strong>{OFFRE.bandeau.offre}</strong>{" "}
+          {OFFRE.bandeau.condition}
+          <span className="offer-banner__code">
+            {compteur} · jusqu&apos;au {OFFRE.finLibelle}
+          </span>
+        </a>
+      )}
       <button className="offer-banner__close" onClick={close} aria-label="Fermer le bandeau">
         ×
       </button>
