@@ -18,7 +18,7 @@ export default function SoireeAnniversaire() {
     startDate: "2026-10-16T18:30:00+02:00",
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    image: "https://infini-mouv.fr/images/soiree-10-ans.webp",
+    image: ["https://infini-mouv.fr/images/soiree-10-ans-affiche.webp", "https://infini-mouv.fr/images/soiree-10-ans.webp"],
     location: {
       "@type": "Place",
       name: "Infini Mouv",
@@ -45,30 +45,26 @@ export default function SoireeAnniversaire() {
           <time dateTime={SOIREE.debut.toISOString()}>{SOIREE.dateLibelle}</time> · au club
         </p>
 
-        <div className="soiree__visuel" data-reveal>
-          <Image
-            src="/images/soiree-10-ans.webp"
-            alt="Soirée anniversaire Infini Mouv le 16 octobre à 18h30 : 2 mois offerts si vous invitez un proche, frais d'inscription à 0 € pour votre invité. Promotion pour l'adhérent et son invité suite à une inscription sur 12 mois."
-            width={2000}
-            height={664}
-            sizes="(min-width:1240px) 1200px, 100vw"
-          />
-        </div>
+        <div className="soiree__grille">
+          <div className="soiree__visuel" data-reveal>
+            <Image src={SOIREE.affiche} alt={SOIREE.alt} width={1500} height={2000} sizes="(min-width:900px) 440px, 90vw" />
+          </div>
 
-        <div className="soiree__texte" data-reveal>
-          <p>
-            Pendant la soirée uniquement&nbsp;: <strong>2 mois offerts si vous invitez un
-            proche</strong>, et <strong>frais d&apos;inscription à 0&nbsp;€</strong> pour votre invité.
-          </p>
-          <p>Ambiance musicale avec un DJ et apéro dînatoire offert.</p>
-          <p className="soiree__mention">
-            Promotion pour l&apos;adhérent et son invité suite à une inscription sur 12 mois,
-            valable uniquement pendant la soirée. Tout le reste d&apos;octobre&nbsp;: {OFFRE.bandeau.offre}{" "}
-            {OFFRE.bandeau.condition}.
-          </p>
-          <p className="soiree__cta">
-            <a className="btn btn--light" href="tel:+33986673838">Appeler le club</a>
-          </p>
+          <div className="soiree__texte" data-reveal>
+            <p>
+              Pendant la soirée uniquement&nbsp;: <strong>2 mois offerts si vous invitez un
+              proche</strong>, et <strong>frais d&apos;inscription à 0&nbsp;€</strong> pour votre invité.
+            </p>
+            <p>Ambiance musicale avec un DJ et apéro dînatoire offert.</p>
+            <p className="soiree__mention">
+              Promotion pour l&apos;adhérent et son invité suite à une inscription sur 12 mois,
+              valable uniquement pendant la soirée. Tout le reste d&apos;octobre&nbsp;: {OFFRE.bandeau.offre}{" "}
+              {OFFRE.bandeau.condition}.
+            </p>
+            <p className="soiree__cta">
+              <a className="btn btn--light" href="tel:+33986673838">Appeler le club</a>
+            </p>
+          </div>
         </div>
       </div>
     </section>

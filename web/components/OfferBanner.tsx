@@ -21,7 +21,10 @@ export default function OfferBanner() {
     if (!offreEnCours() || !pret) return;
     try {
       if (localStorage.getItem(cle) === "closed") return; // déjà fermé
-      if (!popupDisponible() || localStorage.getItem(CLE_POPUP) === "closed") {
+      // Le bandeau attend la fermeture du popup en cours (soirée ou mois).
+      const clePopup = temps?.popup?.cle ?? CLE_POPUP;
+      const popupPossible = temps?.popup ? true : popupDisponible();
+      if (!popupPossible || localStorage.getItem(clePopup) === "closed") {
         setShow(true);
         return;
       }

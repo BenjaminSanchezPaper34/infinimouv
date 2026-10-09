@@ -49,6 +49,8 @@ export type TempsFort = {
   condition: string;
   pastille: string;
   lien: string;
+  /** Visuel portrait qui remplace le popup du mois (mobile ET desktop). */
+  popup?: { cle: string; visuel: string; alt: string };
 };
 
 /** Soirée des 10 ans, jeudi 16 octobre 2026 à 18h30.
@@ -58,7 +60,13 @@ export type TempsFort = {
 export const SOIREE = {
   debut: new Date("2026-10-16T18:30:00+02:00"),
   dateLibelle: "jeudi 16 octobre à 18h30",
+  affiche: "/images/soiree-10-ans-affiche.webp",
+  alt: "10e anniversaire d'Infini Mouv, le 16 octobre à 18h30 : ambiance musicale avec DJ et apéro dînatoire offert.",
 };
+
+/* Une seule clé pour toute la période : le popup de la soirée ne s'affiche
+   qu'une fois, même quand le bandeau passe en « C'est ce soir ». */
+const POPUP_SOIREE = { cle: "im-offer-soiree-10-ans", visuel: SOIREE.affiche, alt: SOIREE.alt };
 
 export const TEMPS_FORTS: TempsFort[] = [
   {
@@ -70,6 +78,7 @@ export const TEMPS_FORTS: TempsFort[] = [
     condition: "+ frais d'inscription à 0 € pour votre invité",
     pastille: "En savoir plus",
     lien: "/#soiree",
+    popup: POPUP_SOIREE,
   },
   {
     id: "soiree-10-ans-jour-j",
@@ -80,6 +89,7 @@ export const TEMPS_FORTS: TempsFort[] = [
     condition: "+ frais d'inscription à 0 € pour votre invité",
     pastille: "Ce soir · 18h30",
     lien: "/#soiree",
+    popup: POPUP_SOIREE,
   },
 ];
 
