@@ -6,30 +6,30 @@
 
 export const OFFRE = {
   /** Sert de clé de mémorisation (popup / bandeau fermés). */
-  id: "anniversaire-2026",
+  id: "black-november-2026",
 
-  /** Du 1er au 31 octobre inclus : la borne de fin est le 1er novembre à 0 h. */
-  debut: new Date("2026-10-01T00:00:00"),
-  fin: new Date("2026-11-01T00:00:00"),
+  /** Du 1er au 30 novembre inclus : la borne de fin est le 1er décembre à 0 h. */
+  debut: new Date("2026-11-01T00:00:00"),
+  fin: new Date("2026-12-01T00:00:00"),
   /** Libellé de la date de fin, affiché dans le bandeau. */
-  finLibelle: "31/10",
+  finLibelle: "30/11",
 
-  /** Bandeau de rappel (texte, toujours disponible). */
+  /** Bandeau de rappel (texte, toujours disponible). Repris de la bannière officielle. */
   bandeau: {
-    accroche: "Anniversaire Infini Mouv",
-    offre: "1 mois offert",
-    condition: "pour toute inscription sur 12 mois",
+    accroche: "Black November",
+    offre: "2 mois d'abonnement offerts",
+    condition: "sur l'abonnement 14 mois à 27,90 €",
   },
 
   /** Popup visuel, activable format par format : tant qu'un visuel n'est pas
-      prêt, le popup reste coupé sur ce format et le bandeau s'affiche seul —
+      prêt, le popup reste coupé sur ce format et le bandeau s'affiche seul,
       jamais d'image cassée en production. Mobile = écrans ≤ 640 px. */
   popup: {
     mobilePret: true,
     desktopPret: true,
-    visuel: "/images/offre-anniversaire.webp",
-    visuelMobile: "/images/offre-anniversaire-mobile.webp",
-    alt: "Offre anniversaire Infini Mouv, du 1er au 31 octobre : 1 mois d'abonnement offert. Offre valable sur l'abonnement 12 mois à 27,90 €, voir conditions au club. 4 avenue du 11 novembre 1918, 34300 Agde.",
+    visuel: "/images/offre-black-november.webp",
+    visuelMobile: "/images/offre-black-november-mobile.webp",
+    alt: "Black November chez Infini Mouv : ne payez qu'en 2027, 2 mois d'abonnement offerts. Offre valable sur l'abonnement 14 mois à 27,90 €, voir conditions au club. Accès libre 6h-23h, 7j/7.",
   },
 } as const;
 
