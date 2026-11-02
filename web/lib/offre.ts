@@ -121,3 +121,9 @@ export function popupDisponible() {
   const mobile = window.matchMedia("(max-width: 640px)").matches;
   return mobile ? OFFRE.popup.mobilePret : OFFRE.popup.desktopPret;
 }
+
+/** Pages où ni popup ni bandeau ne s'affichent : le tunnel d'inscription
+    reprend déjà l'offre et ne doit pas être interrompu. */
+export function pageSansOffre(chemin: string | null) {
+  return !!chemin?.startsWith("/inscription-en-ligne/adhesion");
+}

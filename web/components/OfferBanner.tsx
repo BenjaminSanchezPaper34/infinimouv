@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useConsent } from "@/components/Consent";
 import { EVENT_FERME } from "@/components/OfferPopup";
-import { OFFRE, CLE_POPUP, CLE_BANDEAU, offreEnCours, joursRestants, popupDisponible, tempsFortEnCours } from "@/lib/offre";
+import { OFFRE, CLE_POPUP, CLE_BANDEAU, offreEnCours, joursRestants, popupDisponible, tempsFortEnCours, pageSansOffre } from "@/lib/offre";
 
 /* Bandeau de rappel de la promotion en cours (configuration : lib/offre.ts) —
    fixé en bas, fermable, s'éteint seul à la fin de l'offre.
@@ -12,13 +13,14 @@ import { OFFRE, CLE_POPUP, CLE_BANDEAU, offreEnCours, joursRestants, popupDispon
 export default function OfferBanner() {
   const [show, setShow] = useState(false);
   const { pret } = useConsent();
+  const chemin = usePathname();
 
   // Un temps fort (soirée…) remplace le texte du mois, avec sa propre clé.
   const temps = typeof window === "undefined" ? null : tempsFortEnCours();
   const cle = temps ? `im-offer-banner-${temps.id}` : CLE_BANDEAU;
 
   useEffect(() => {
-    if (!offreEnCours() || !pret) return;
+    if (!offreEnCours() || !pret || pageSansOffre(chemin)) return;
     try {
       if (localStorage.getItem(cle) === "closed") return; // déjà fermé
       // Le bandeau attend la fermeture du popup en cours (soirée ou mois).
@@ -35,7 +37,7 @@ export default function OfferBanner() {
     const onFerme = () => setShow(true);
     window.addEventListener(EVENT_FERME, onFerme);
     return () => window.removeEventListener(EVENT_FERME, onFerme);
-  }, [pret, cle]);
+  }, [pret, cle, chemin]);
 
   if (!show) return null;
 

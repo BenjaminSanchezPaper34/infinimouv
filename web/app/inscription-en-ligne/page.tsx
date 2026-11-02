@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false }, // page cachée : non indexée
 };
 
-/* Le CTA reste sur le formulaire de contact tant que le tunnel n'existe pas. */
-const INSCRIPTION_URL = "/#contact";
+/* Le CTA mène au tunnel d'inscription (démonstration, sans paiement réel). */
+const INSCRIPTION_URL = "/inscription-en-ligne/adhesion";
 
 export default function InscriptionEnLigne() {
   return (

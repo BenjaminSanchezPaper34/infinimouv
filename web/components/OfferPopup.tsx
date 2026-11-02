@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useConsent } from "@/components/Consent";
-import { OFFRE, CLE_POPUP, offreEnCours, popupDisponible, tempsFortEnCours } from "@/lib/offre";
+import { OFFRE, CLE_POPUP, offreEnCours, popupDisponible, tempsFortEnCours, pageSansOffre } from "@/lib/offre";
 
 /* Popup de la promotion en cours (configuration : lib/offre.ts).
    Ne réapparaît pas une fois fermé (mémorisé en localStorage).
@@ -17,6 +18,7 @@ const DELAI_DESKTOP = 900;
 export default function OfferPopup() {
   const [open, setOpen] = useState(false);
   const { pret } = useConsent();
+  const chemin = usePathname();
 
   // Un temps fort avec visuel (soirée des 10 ans) remplace le popup du mois,
   // sur tous les formats et avec sa propre clé de mémorisation.
@@ -24,7 +26,7 @@ export default function OfferPopup() {
   const cle = special ? special.cle : CLE_POPUP;
 
   useEffect(() => {
-    if (!offreEnCours() || !pret) return;
+    if (!offreEnCours() || !pret || pageSansOffre(chemin)) return;
     if (!special && !popupDisponible()) return;
     try {
       if (localStorage.getItem(cle) === "closed") return; // déjà fermé
@@ -32,7 +34,7 @@ export default function OfferPopup() {
     const mobile = window.matchMedia("(max-width: 640px)").matches;
     const t = setTimeout(() => setOpen(true), mobile ? DELAI_MOBILE : DELAI_DESKTOP);
     return () => clearTimeout(t);
-  }, [pret, cle, special]);
+  }, [pret, cle, special, chemin]);
 
   function close() {
     setOpen(false);

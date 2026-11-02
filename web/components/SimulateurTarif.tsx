@@ -2,57 +2,12 @@
 
 import { useMemo, useState } from "react";
 
-/* ------------------------------------------------------------------
-   Simulateur de tarif — la grille tarifaire vit ici, en centimes.
-   Cette même grille servira de source de vérité au futur tunnel
-   d'inscription en ligne : ne pas dupliquer les montants ailleurs.
-   Montants issus du contrat d'abonnement (à confirmer par le club
-   avant toute vente en ligne).
-   ------------------------------------------------------------------ */
-
-export const DUREES = [
-  { id: "1m", label: "1 mois", mois: 1, mensuel: 3990, engagement: "Sans engagement" },
-  { id: "3m", label: "3 mois", mois: 3, mensuel: 3490, engagement: "Engagement 3 mois" },
-  { id: "12m", label: "12 mois", mois: 12, mensuel: 2790, engagement: "Engagement 12 mois", phare: true },
-] as const;
-
-/* Les prestations se choisissent UNE PAR UNE : chaque option Confort
-   coûte 5 €/mois, chaque option Premium 15 €/mois. Le prix n'est pas
-   un forfait par gamme. */
-export const PRESTATIONS = [
-  { id: "yanga", famille: "Confort", nom: "Boisson hydratante Yanga® en accès illimité", mensuel: 500 },
-  { id: "coaching", famille: "Confort", nom: "Suivi coaching mensuel", mensuel: 500 },
-  { id: "cours", famille: "Confort", nom: "Cours collectifs encadrés par un coach", mensuel: 500 },
-  { id: "expert", famille: "Premium", nom: "Suivi coaching expert", mensuel: 1500 },
-  { id: "nutrition", famille: "Premium", nom: "Suivi nutritionnel personnalisé", mensuel: 1500 },
-] as const;
-
-const FAMILLES = [
-  { nom: "Confort", tarif: "5 €/mois par option" },
-  { nom: "Premium", tarif: "15 €/mois par option" },
-] as const;
-
-/* Accès au club : QR code offert, badge physique en option. */
-export const ACCES = [
-  { id: "qr", nom: "QR code", prix: 0, note: "Offert" },
-  { id: "badge", nom: "Badge physique", prix: 1000, note: "10,00 €" },
-] as const;
-
-/* Frais fixes à la souscription (contrat) */
-export const FRAIS = {
-  inscription: 1490,       // frais d'inscription TTC
-  depot: 4000,             // dépôt de garantie — restitué en fin de contrat
-  remplacementAcces: 1000, // badge ou QR code perdu : remplacement
-} as const;
-
-/** 3990 -> "39,90 €" */
-const eur = (cts: number) =>
-  (cts / 100).toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+import { ACCES, DUREES, FAMILLES, FRAIS, PRESTATIONS, calculer, eur, type AccesId, type DureeId } from "@/lib/grille";
 
 export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: string }) {
-  const [dureeId, setDureeId] = useState<(typeof DUREES)[number]["id"]>("12m");
+  const [dureeId, setDureeId] = useState<DureeId>("12m");
   const [prestaIds, setPrestaIds] = useState<Set<string>>(new Set());
-  const [accesId, setAccesId] = useState<(typeof ACCES)[number]["id"]>("qr");
+  const [accesId, setAccesId] = useState<AccesId>("qr");
 
   const basculer = (id: string) =>
     setPrestaIds((prev) => {
@@ -62,23 +17,13 @@ export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: st
       return s;
     });
 
-  const calc = useMemo(() => {
-    const duree = DUREES.find((d) => d.id === dureeId)!;
-    const acces = ACCES.find((a) => a.id === accesId)!;
-    const prestations = PRESTATIONS.filter((p) => prestaIds.has(p.id));
-    const nbConfort = prestations.filter((p) => p.famille === "Confort").length;
-    const nbPremium = prestations.filter((p) => p.famille === "Premium").length;
-    const mensualite = duree.mensuel + prestations.reduce((t, p) => t + p.mensuel, 0);
-    return {
-      duree,
-      acces,
-      nbConfort,
-      nbPremium,
-      mensualite,
-      // Premier règlement : 1re mensualité + frais + accès choisi + dépôt (restitué)
-      premierJour: mensualite + FRAIS.inscription + acces.prix + FRAIS.depot,
-    };
-  }, [dureeId, prestaIds, accesId]);
+  const calc = useMemo(() => calculer(dureeId, prestaIds, accesId), [dureeId, prestaIds, accesId]);
+
+  /* La formule composée suit le visiteur dans le tunnel d'inscription. */
+  const lienInscription = inscriptionUrl.startsWith("/")
+    && !inscriptionUrl.includes("#")
+    ? `${inscriptionUrl}?duree=${dureeId}&acces=${accesId}${prestaIds.size ? `&options=${[...prestaIds].join(",")}` : ""}`
+    : inscriptionUrl;
 
   return (
     <div className="sim" data-reveal>
@@ -186,7 +131,7 @@ export default function SimulateurTarif({ inscriptionUrl }: { inscriptionUrl: st
           </div>
         </dl>
 
-        <a className="btn btn--solid sim__cta" href={inscriptionUrl}>Je m&apos;inscris</a>
+        <a className="btn btn--solid sim__cta" href={lienInscription}>Je m&apos;inscris</a>
         <p className="sim__note">
           Estimation indicative sur la base de la grille en vigueur — le montant
           exact figure sur votre contrat signé au club.

@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* Contrat papier du club (CGV du tunnel d'inscription) : consultable, jamais indexé. */
+  async headers() {
+    return [{ source: "/documents/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex" }] }];
+  },
   async redirects() {
     return [
       /* NB : la redirection www → apex n'est PAS ici. Elle est posée au niveau
