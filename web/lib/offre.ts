@@ -8,11 +8,11 @@ export const OFFRE = {
   /** Sert de clé de mémorisation (popup / bandeau fermés). */
   id: "black-november-2026",
 
-  /** Du 1er au 30 novembre inclus : la borne de fin est le 1er décembre à 0 h. */
+  /** Du 1er au 22 novembre inclus (confirmé par Cyril) : la borne de fin est le 23 novembre à 0 h. */
   debut: new Date("2026-11-01T00:00:00"),
-  fin: new Date("2026-12-01T00:00:00"),
+  fin: new Date("2026-11-23T00:00:00"),
   /** Libellé de la date de fin, affiché dans le bandeau. */
-  finLibelle: "30/11",
+  finLibelle: "22/11",
 
   /** Bandeau de rappel (texte, toujours disponible). Repris de la bannière officielle. */
   bandeau: {
