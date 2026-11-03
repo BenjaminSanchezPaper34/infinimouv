@@ -2,23 +2,19 @@ import type { Metadata } from "next";
 import Motion from "@/components/Motion";
 import NavFaithful from "@/components/NavFaithful";
 import Footer from "@/components/Footer";
-import SimulateurTarif from "@/components/SimulateurTarif";
+import Inscription from "@/components/inscription/Inscription";
 
 /* ------------------------------------------------------------------
-   PAGE DE PRÉVISUALISATION — non publique.
-   Le simulateur de tarif vit ici tant que la grille (frais, badge,
-   options) n'est pas validée par le club. Pas de lien dans la nav ni
-   le sitemap ; seul le « © » du footer y mène (bouton caché).
-   Le jour du lancement : rebasculer la section sur /tarifs.
+   PAGE NON PUBLIQUE : inscription en ligne (démonstration).
+   Le visiteur compose sa formule, remplit le contrat et signe, sur une
+   seule page. Pas de lien dans la nav ni le sitemap ; seul le « © » du
+   footer y mène (bouton caché) tant que le club n'a pas tranché.
    ------------------------------------------------------------------ */
 
 export const metadata: Metadata = {
-  title: "Inscription en ligne — prévisualisation",
+  title: "Inscription en ligne",
   robots: { index: false, follow: false }, // page cachée : non indexée
 };
-
-/* Le CTA mène au tunnel d'inscription (démonstration, sans paiement réel). */
-const INSCRIPTION_URL = "/inscription-en-ligne/adhesion";
 
 export default function InscriptionEnLigne() {
   return (
@@ -26,16 +22,16 @@ export default function InscriptionEnLigne() {
       <Motion />
       <NavFaithful />
       <main>
-        <section className="section section--soft" aria-labelledby="sim-title">
+        <section className="section section--soft sim-page" aria-labelledby="sim-title">
           <div className="wrap">
             <h1 className="h-section" id="sim-title" style={{ textAlign: "center" }}>
-              <span className="grad">Estimez votre abonnement</span>
+              <span className="grad">Inscrivez-vous en ligne</span>
             </h1>
             <p className="svc-intro sim-intro">
-              Composez votre formule et découvrez, sans surprise, ce que vous
-              réglerez le premier jour puis chaque mois.
+              Composez votre formule, voyez ce que vous réglez aujourd&apos;hui puis
+              chaque mois, et signez votre contrat depuis votre téléphone.
             </p>
-            <SimulateurTarif inscriptionUrl={INSCRIPTION_URL} />
+            <Inscription />
           </div>
         </section>
       </main>

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* Contrat papier du club (CGV du tunnel d'inscription) : consultable, jamais indexé. */
+  /* Contrat papier du club (CGV de l'inscription en ligne) : consultable, jamais indexé. */
   async headers() {
     return [{ source: "/documents/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex" }] }];
   },
@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
       { source: "/services-equipements.html", destination: "/services-equipements", permanent: true },
       /* Ancienne boutique en ligne (/fr/catalog-1/…) : vers l'espace nutrition & boutique */
       { source: "/fr/:path*", destination: "/services-equipements", permanent: true },
+      /* Ancien tunnel séparé : l'inscription se fait maintenant sur la page du simulateur */
+      { source: "/inscription-en-ligne/adhesion", destination: "/inscription-en-ligne", permanent: false },
     ];
   },
 };

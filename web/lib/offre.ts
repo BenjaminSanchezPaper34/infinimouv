@@ -122,8 +122,8 @@ export function popupDisponible() {
   return mobile ? OFFRE.popup.mobilePret : OFFRE.popup.desktopPret;
 }
 
-/** Pages où ni popup ni bandeau ne s'affichent : le tunnel d'inscription
+/** Pages où ni popup ni bandeau ne s'affichent : l'inscription en ligne
     reprend déjà l'offre et ne doit pas être interrompu. */
 export function pageSansOffre(chemin: string | null) {
-  return !!chemin?.startsWith("/inscription-en-ligne/adhesion");
+  return !!chemin?.startsWith("/inscription-en-ligne");
 }

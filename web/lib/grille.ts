@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------------
-   Grille tarifaire, en centimes : SOURCE UNIQUE du simulateur et du
-   tunnel d'inscription en ligne.
+   Grille tarifaire, en centimes : SOURCE UNIQUE de l'inscription en
+   ligne (/inscription-en-ligne).
    Ne jamais dupliquer les montants ailleurs.
    Montants issus du contrat d'abonnement (à confirmer par le club
    avant toute vente en ligne).
@@ -29,16 +29,17 @@ export const FAMILLES = [
 ] as const;
 
 /* Accès au club : QR code offert, badge physique en option. */
+/* Remplacement en cas de perte, détérioration ou vol (article 3 du contrat) :
+   carte de membre 10 €, QR code 15 €. */
 export const ACCES = [
-  { id: "qr", nom: "QR code", prix: 0, note: "Offert" },
-  { id: "badge", nom: "Badge physique", prix: 1000, note: "10,00 €" },
+  { id: "qr", nom: "QR code", prix: 0, note: "Offert", remplacement: 1500 },
+  { id: "badge", nom: "Badge physique", prix: 1000, note: "10,00 €", remplacement: 1000 },
 ] as const;
 
 /* Frais fixes à la souscription (contrat) */
 export const FRAIS = {
   inscription: 1490,       // frais d'inscription TTC
   depot: 4000,             // dépôt de garantie — restitué en fin de contrat
-  remplacementAcces: 1000, // badge ou QR code perdu : remplacement
 } as const;
 
 /** 3990 -> "39,90 €" */
