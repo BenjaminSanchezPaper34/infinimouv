@@ -16,9 +16,9 @@ export const OFFRE = {
 
   /** Bandeau de rappel (texte, toujours disponible). Repris de la bannière officielle. */
   bandeau: {
-    accroche: "Black November",
+    accroche: "Exclu web Black November",
     offre: "2 mois d'abonnement offerts",
-    condition: "sur l'abonnement 14 mois à 27,90 €",
+    condition: "avec le code BLACKNOVEMBER à l'accueil (abonnement 14 mois à 27,90 €)",
   },
 
   /** Popup visuel, activable format par format : tant qu'un visuel n'est pas
@@ -29,7 +29,7 @@ export const OFFRE = {
     desktopPret: true,
     visuel: "/images/offre-black-november.webp",
     visuelMobile: "/images/offre-black-november-mobile.webp",
-    alt: "Black November chez Infini Mouv : ne payez qu'en 2027, 2 mois d'abonnement offerts. Offre valable sur l'abonnement 14 mois à 27,90 €, voir conditions au club. Accès libre 6h-23h, 7j/7.",
+    alt: "Black November chez Infini Mouv : ne payez qu'en 2027, 2 mois d'abonnement offerts, exclusivité web avec le code BLACKNOVEMBER à présenter à l'accueil. Offre valable sur l'abonnement 14 mois à 27,90 €, voir conditions au club. Accès libre 6h-23h, 7j/7.",
   },
 } as const;
 
