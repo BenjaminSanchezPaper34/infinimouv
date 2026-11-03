@@ -85,8 +85,13 @@ export default function Confidentialite() {
             <h2>7. Cookies et services tiers</h2>
             <p>
               Le site ne dépose <strong>aucun cookie publicitaire ni de mesure
-              d&apos;audience</strong>. En revanche, certains contenus proviennent de
-              services externes susceptibles de déposer des cookies :
+              d&apos;audience</strong>. La fréquentation est mesurée par Vercel Web
+              Analytics, <strong>sans cookie</strong> et sans identifier les visiteurs :
+              pages vues, provenance, type d&apos;appareil, et quelques actions comme
+              l&apos;envoi d&apos;une inscription en ligne. Ces statistiques anonymes,
+              exemptées de consentement, ne servent qu&apos;à améliorer le site.
+              En revanche, certains contenus proviennent de services externes
+              susceptibles de déposer des cookies :
             </p>
             <ul className="legal__liste">
               <li><strong>Elfsight</strong> — formulaire de contact, avis Google, flux Instagram</li>
@@ -116,7 +121,7 @@ export default function Confidentialite() {
             <p>
               Cette politique peut évoluer, notamment en cas d&apos;évolution
               législative ou de changement de prestataire. Dernière mise à jour :
-              août 2026.
+              novembre 2026.
             </p>
           </div>
         </section>

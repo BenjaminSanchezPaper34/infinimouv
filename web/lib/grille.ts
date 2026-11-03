@@ -36,6 +36,15 @@ export const ACCES = [
   { id: "badge", nom: "Badge physique", prix: 1000, note: "10,00 €", remplacement: 1000 },
 ] as const;
 
+/* Horaires d'accès libre du club, 7j/7 (heures pleines, heure de Paris) */
+export const HORAIRES = { ouverture: 6, fermeture: 23 } as const;
+
+/** Le club est-il ouvert à cet instant (heure de Paris) ? */
+export function clubOuvert(maintenant = new Date()) {
+  const h = Number(new Intl.DateTimeFormat("fr-FR", { hour: "numeric", hourCycle: "h23", timeZone: "Europe/Paris" }).format(maintenant));
+  return h >= HORAIRES.ouverture && h < HORAIRES.fermeture;
+}
+
 /* Frais fixes à la souscription (contrat) */
 export const FRAIS = {
   inscription: 1490,       // frais d'inscription TTC

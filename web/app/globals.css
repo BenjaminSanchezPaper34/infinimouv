@@ -1085,6 +1085,10 @@ body {
 .sim__encadre { background: #fff; border: 1px solid var(--im-line); border-radius: 14px; padding: 14px 16px; margin-top: 14px; font-size: 15px; line-height: 1.5; }
 .sim__encadre--alerte { border-color: var(--im-green-300); background: var(--im-green-50); margin: 0 0 22px; }
 .sim__encadre .champs { margin: 14px 0 0; }
+.sim__encadre--serre { margin: 0; }
+.sim__encadre-bouton { margin-top: 12px; min-height: 44px; padding: 0 20px; border-radius: 100px; background: var(--im-green-700);
+  color: #fff; font-weight: 700; font-size: 15px; transition: background .2s ease; }
+.sim__encadre-bouton:hover { background: var(--im-green-800); }
 
 .sim__offre { display: grid; gap: 2px; max-width: 760px; margin: 28px auto 0; background: var(--im-ink); color: #fff;
   border-radius: var(--radius); padding: 18px 20px; border-left: 6px solid var(--im-lime); box-shadow: var(--shadow); }

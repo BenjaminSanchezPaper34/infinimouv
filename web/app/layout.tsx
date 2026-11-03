@@ -3,6 +3,7 @@ import "./globals.css";
 import OfferPopup from "@/components/OfferPopup";
 import OfferBanner from "@/components/OfferBanner";
 import { ConsentProvider } from "@/components/Consent";
+import { Analytics } from "@vercel/analytics/next";
 
 /* Données structurées — référencement local (Google Maps / rich results) */
 const JSON_LD = {
@@ -148,6 +149,8 @@ export default function RootLayout({
           <OfferPopup />
           <OfferBanner />
         </ConsentProvider>
+        {/* Mesure d'audience Vercel : sans cookie, exemptée de consentement */}
+        <Analytics />
       </body>
     </html>
   );

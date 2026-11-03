@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ACCES, DUREES, FAMILLES, FRAIS, PRESTATIONS, calculer, eur, type AccesId, type DureeId } from "@/lib/grille";
+import { track } from "@vercel/analytics";
+import { ACCES, DUREES, FAMILLES, FRAIS, HORAIRES, PRESTATIONS, calculer, clubOuvert, eur, type AccesId, type DureeId } from "@/lib/grille";
 import { OFFRE, offreEnCours } from "@/lib/offre";
 import SignaturePad from "./SignaturePad";
 import Bienvenue from "./Bienvenue";
@@ -42,7 +43,7 @@ type Dossier = {
   certificat: boolean;
   autorisation: boolean;
   demarrage: boolean;
-  offres: boolean;
+  newsletter: boolean;
   mention: string;
 };
 
@@ -52,7 +53,7 @@ const VIERGE: Dossier = {
   adresse: "", cp: "", ville: "", profession: "",
   parrainage: false, parrain: "", representant: "",
   mode: "cb", cgv: false, certificat: false, autorisation: false,
-  demarrage: false, offres: false, mention: "",
+  demarrage: false, newsletter: false, mention: "",
 };
 
 /** Âge révolu à partir d'une date AAAA-MM-JJ. */
@@ -97,7 +98,18 @@ export default function Inscription() {
   const [envoi, setEnvoi] = useState(false);
   const [fini, setFini] = useState(false);
   const [pret, setPret] = useState(false);
+  const [ouvert, setOuvert] = useState(true);
   const haut = useRef<HTMLDivElement>(null);
+  const depart = useRef<Dossier | null>(null);
+  const commence = useRef(false);
+
+  // Club ouvert ou fermé, à la minute près (heure de Paris) : conditionne l'accès immédiat.
+  useEffect(() => {
+    const lire = () => setOuvert(clubOuvert());
+    lire();
+    const id = window.setInterval(lire, 60_000);
+    return () => window.clearInterval(id);
+  }, []);
 
   // Reprise d'un dossier en cours (rechargement de la page).
   useEffect(() => {
@@ -107,6 +119,13 @@ export default function Inscription() {
     setD({ ...VIERGE, ...repris, mention: "" });
     setPret(true);
   }, []);
+
+  // Première saisie du visiteur : l'inscription commence (une seule fois).
+  useEffect(() => {
+    if (!pret) return;
+    if (!depart.current) { depart.current = d; return; }
+    if (depart.current !== d && !commence.current) { commence.current = true; track("inscription_debut"); }
+  }, [d, pret, fini]);
 
   useEffect(() => {
     if (!pret || fini) return;
@@ -131,6 +150,7 @@ export default function Inscription() {
     setErreurs(e);
     if (Object.keys(e).length) {
       // Amène le premier champ en erreur sous les yeux (et le focus clavier).
+      track("inscription_incomplete", { manques: Object.keys(e).length });
       requestAnimationFrame(() => {
         const el = document.querySelector<HTMLElement>("[aria-invalid='true']");
         el?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -140,6 +160,10 @@ export default function Inscription() {
     }
     // DECIPLUS : création de la fiche adhérent + contrat signé (PDF), empreinte
     // bancaire du dépôt, mandat de prélèvement, puis envoi du QR code.
+    track("inscription_signee", {
+      duree: d.duree, acces: d.acces, options: d.options.length, mode: d.mode,
+      renouvellement: d.renouvellement, demarrage: d.demarrage, montant: calc.aujourdhui / 100,
+    });
     setEnvoi(true);
     window.setTimeout(() => {
       setEnvoi(false);
@@ -313,7 +337,25 @@ export default function Inscription() {
               {engagement("certificat", <>Mon état de santé me permet de pratiquer le sport et je remettrai au club un certificat médical d&apos;aptitude (article 8).</>)}
               {mineur && engagement("autorisation", <>Mon parent ou tuteur{d.representant ? `, ${d.representant},` : ""} autorise mon inscription et signe ce contrat.</>)}
               {engagement("demarrage", <>Je souhaite accéder au club dès aujourd&apos;hui, sans attendre la fin du délai de rétractation de 14 jours. Si je me rétracte, je réglerai la période déjà utilisée.</>, false)}
-              {engagement("offres", <>J&apos;accepte de recevoir les offres et actualités du club par e-mail et SMS.</>, false)}
+              {d.demarrage && !ouvert && (
+                <div className="sim__encadre sim__encadre--alerte sim__encadre--serre" role="status">
+                  {d.acces === "badge" ? (
+                    <>
+                      <p>
+                        <strong>Le club est fermé en ce moment</strong> (accès de {HORAIRES.ouverture}h à {HORAIRES.fermeture}h) :
+                        votre badge ne pourra être retiré à l&apos;accueil qu&apos;à la réouverture.
+                        Avec le QR code, offert, vous entrez dès {HORAIRES.ouverture}h, directement depuis votre téléphone.
+                      </p>
+                      <button type="button" className="sim__encadre-bouton" onClick={() => { maj("acces", "qr"); track("inscription_bascule_qr"); }}>
+                        Passer au QR code
+                      </button>
+                    </>
+                  ) : (
+                    <p><strong>Le club est fermé en ce moment :</strong> votre QR code fonctionnera dès la réouverture, à {HORAIRES.ouverture}h.</p>
+                  )}
+                </div>
+              )}
+              {engagement("newsletter", <>Je souhaite recevoir la newsletter du club par e-mail (offres et actualités).</>, false)}
             </div>
             <p className="sim__apropos">
               Le club vous invite à souscrire une assurance responsabilité civile personnelle (article 9).
