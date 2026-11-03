@@ -1,6 +1,7 @@
 import SoireeAnniversaire from "@/components/SoireeAnniversaire";
 import Image from "next/image";
 import { ElfsightPlatform, ElfsightWidget, CarteGoogle } from "@/components/TiersConsentis";
+import { ITINERAIRE } from "@/lib/club";
 import Motion from "@/components/Motion";
 import HeroVideo from "@/components/HeroVideo";
 import NavFaithful from "@/components/NavFaithful";
@@ -326,7 +327,8 @@ export default function Home() {
             </div>
             <p className="contact__zone">
               Salle de sport à Agde, parking du cinéma — à quelques minutes du
-              Cap d&apos;Agde, du Grau d&apos;Agde, de Vias et de Marseillan.
+              Cap d&apos;Agde, du Grau d&apos;Agde, de Vias et de Marseillan.{" "}
+              <a className="contact__itineraire" href={ITINERAIRE} target="_blank" rel="noopener">Itinéraire</a>
             </p>
           </div>
         </section>

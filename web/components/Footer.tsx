@@ -10,6 +10,7 @@ const FUMEE_INFINIMOUV = [
 ];
 
 import { LienPreferences } from "@/components/Consent";
+import { ITINERAIRE } from "@/lib/club";
 
 export default function Footer() {
   return (
@@ -17,9 +18,11 @@ export default function Footer() {
       <div className="wrap footer__in">
         <div className="footer__info">
           <address>
-            4 avenue du 11 Novembre 1918,
-            <br />
-            34300 AGDE <span className="footer__muted">(parking du cinéma)</span>
+            <a className="footer__adresse" href={ITINERAIRE} target="_blank" rel="noopener" aria-label="Itinéraire vers Infini Mouv, 4 avenue du 11 Novembre 1918, 34300 Agde">
+              4 avenue du 11 Novembre 1918,
+              <br />
+              34300 AGDE <span className="footer__muted">(parking du cinéma)</span>
+            </a>
           </address>
           <div className="footer__row">
             <div className="footer__social">

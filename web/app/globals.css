@@ -871,6 +871,10 @@ body {
 .footer__lien-bouton { background: none; border: 0; padding: 0; font: inherit; color: inherit;
   cursor: pointer; text-decoration: inherit; }
 .footer__lien-bouton:hover { text-decoration: underline; }
+/* Adresse cliquable (itinéraire) : même rendu que le texte, souligné au survol */
+.footer__adresse { color: inherit; text-decoration: none; }
+.footer__adresse:hover { text-decoration: underline; text-underline-offset: 3px; }
+.contact__itineraire { color: var(--im-green-700); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 
 /* Encadré de repli quand un service est coupé */
 .bloque { display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -1090,11 +1094,6 @@ body {
   color: #fff; font-weight: 700; font-size: 15px; transition: background .2s ease; }
 .sim__encadre-bouton:hover { background: var(--im-green-800); }
 
-.sim__offre { display: grid; gap: 2px; max-width: 760px; margin: 28px auto 0; background: var(--im-ink); color: #fff;
-  border-radius: var(--radius); padding: 18px 20px; border-left: 6px solid var(--im-lime); box-shadow: var(--shadow); }
-.sim__offre-accroche { font-family: var(--font-display); font-style: italic; font-weight: 900; text-transform: uppercase; color: var(--im-lime); font-size: 20px; }
-.sim__offre strong { font-size: 18px; font-weight: 600; }
-.sim__offre small { color: var(--im-green-200); font-size: 14px; margin-top: 6px; }
 
 .sim__recap-offre { background: rgba(255,255,255,.1); border-radius: 10px; padding: 10px 12px; font-size: 14px; margin-bottom: 14px; }
 .sim__recap-alerte { background: #fff; color: var(--im-danger); border-radius: 10px; padding: 10px 12px; font-size: 14px; font-weight: 600; margin-bottom: 12px; }

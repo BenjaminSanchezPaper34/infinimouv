@@ -233,14 +233,6 @@ export default function Inscription() {
 
   return (
     <div ref={haut}>
-      {promo && (
-        <aside className="sim__offre" aria-label="Offre du moment" data-reveal>
-          <span className="sim__offre-accroche">{OFFRE.bandeau.accroche}</span>
-          <strong>{OFFRE.bandeau.offre}</strong>
-          <span>{OFFRE.bandeau.condition}</span>
-          <small>Jusqu&apos;au {OFFRE.finLibelle}. Appliquée par le club à la validation de votre inscription, voir conditions au club.</small>
-        </aside>
-      )}
 
       <div className="sim sim--inscription" data-reveal>
         {/* ================= Formule, puis contrat ================= */}
