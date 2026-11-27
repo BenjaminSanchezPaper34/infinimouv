@@ -232,9 +232,9 @@ export default function Home() {
           <div className="wrap">
             {/* Ligne statique (HTML serveur) : lisible par Google/IA même sans JS */}
             <p className="reviews-proof">
-              {/* 1 128 contrats actifs dans Deciplus au 10/11/2026 */}
-              <strong>Plus de 1 100 adhérents</strong> et <strong>4,6/5</strong> sur
-              Google : ils recommandent Infini Mouv, salle de sport à Agde.
+              {/* Pas de nombre d'adhérents : refusé par Cyril le 27/11/2026 */}
+              <strong>4,6/5</strong> sur Google : nos adhérents recommandent
+              Infini Mouv, salle de sport à Agde.
             </p>
             <div className="reviews-embed" data-reveal>
               <ElfsightWidget
